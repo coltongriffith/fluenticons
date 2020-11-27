@@ -18,7 +18,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "Product Sans",
+        "Avenir",
         "Roboto",
         "-apple-system",
         "BlinkMacSystemFont",

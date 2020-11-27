@@ -33,18 +33,11 @@ export default {
     "nuxt-lazy-load",
     //https://www.npmjs.com/package/@nuxtjs/toast
     "@nuxtjs/toast",
-    //https://www.npmjs.com/package/nuxt-webfontloader
-    "nuxt-webfontloader",
     //https://color-mode.nuxtjs.org/
     "@nuxtjs/color-mode"
   ],
   colorMode: {
     classSuffix: ""
-  },
-  webfontloader: {
-    google: {
-      families: ["Product Sans:400,600,700?display=swap"]
-    }
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
