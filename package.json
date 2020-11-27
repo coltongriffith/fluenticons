@@ -21,6 +21,7 @@
     "vue-js-modal": "^2.0.0-rc.6"
   },
   "devDependencies": {
+    "@nuxtjs/color-mode": "^2.0.0",
     "@nuxtjs/tailwindcss": "^3.1.0",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.35",

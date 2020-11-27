@@ -1,10 +1,11 @@
 module.exports = {
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: "#00c58e",
         "google-blue": "#3069E2",
-        "facebook-blue": "#3B5998",
+        "facebook-blue": "#3B5998"
       },
       spacing: {
         "72": "18rem",
@@ -17,7 +18,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "Inter",
+        "Product Sans",
         "Roboto",
         "-apple-system",
         "BlinkMacSystemFont",
@@ -35,9 +36,7 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: [
-    require("@tailwindcss/typography")
-  ],
+  plugins: [require("@tailwindcss/typography")],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === "production",

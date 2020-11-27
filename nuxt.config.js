@@ -1,7 +1,7 @@
-import { defaultHead } from './constants/index';
+import { defaultHead } from "./constants/index";
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
+  target: "static",
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: defaultHead,
@@ -10,8 +10,7 @@ export default {
   css: ["~/assets/styles/main.css"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -19,28 +18,32 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    "@nuxtjs/tailwindcss"
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    "@nuxtjs/pwa",
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    "@nuxt/content",
     //https://www.npmjs.com/package/nuxt-lazy-load
     "nuxt-lazy-load",
     //https://www.npmjs.com/package/@nuxtjs/toast
     "@nuxtjs/toast",
     //https://www.npmjs.com/package/nuxt-webfontloader
-    "nuxt-webfontloader"
+    "nuxt-webfontloader",
+    //https://color-mode.nuxtjs.org/
+    "@nuxtjs/color-mode"
   ],
-
+  colorMode: {
+    classSuffix: ""
+  },
   webfontloader: {
     google: {
-      families: ["Inter:400,600,700?display=swap"]
+      families: ["Product Sans:400,600,700?display=swap"]
     }
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -67,6 +70,5 @@ export default {
   content: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-  }
-}
+  build: {}
+};
