@@ -1,0 +1,29 @@
+{
+  "name": "fluenticons",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxt/content": "^1.9.0",
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/toast": "^3.3.1",
+    "@tailwindcss/typography": "^0.3.1",
+    "core-js": "^3.6.5",
+    "nuxt": "^2.14.6",
+    "nuxt-lazy-load": "^1.2.4",
+    "nuxt-webfontloader": "^1.1.0",
+    "vue-js-modal": "^2.0.0-rc.6"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1"
+  }
+}
