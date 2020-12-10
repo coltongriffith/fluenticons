@@ -1,7 +1,17 @@
 <template>
   <main>
     <home-hero />
-    <home-search />
-    <home-icons />
+    <home-search v-model="query" />
+    <home-icons :query="query"/>
   </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      query: null,
+    };
+  },
+};
+</script>

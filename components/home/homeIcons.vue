@@ -12,10 +12,16 @@
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6"
         >
           <li
-            class="h-32 rounded border dark:bg-gray-800"
-            v-for="n in 320"
+            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center"
+            v-for="(icon, n) in filteredIcons"
             :key="n"
-          ></li>
+          >
+            <img
+              class="h-8 w-8 mx-auto"
+              :src="`/filled_icons/${icon.file_name}`"
+              :alt="icon.name"
+            />
+          </li>
         </ul>
       </div>
       <div class="px-8 py-6 dark:bg-gray-900">
@@ -29,10 +35,16 @@
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6"
         >
           <li
-            class="h-32 rounded border dark:bg-gray-800"
-            v-for="n in 320"
+            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center"
+            v-for="(icon, n) in filteredIcons"
             :key="n"
-          ></li>
+          >
+            <img
+              class="h-8 w-8 mx-auto"
+              :src="`/regular_icons/${icon.file_name}`"
+              :alt="icon.name"
+            />
+          </li>
         </ul>
       </div>
     </div>
@@ -40,8 +52,24 @@
 </template>
 
 <script>
-export default {};
+import icon_db from "../../constants/icon_db.json";
+export default {
+  props: {
+    query: {
+      default: null,
+    },
+  },
+  data() {
+    return {
+      icons: icon_db,
+    };
+  },
+  computed: {
+    filteredIcons() {
+      return this.icons.filter((icon) => {
+        return icon.name.includes(this.query.toLowerCase());
+      });
+    },
+  },
+};
 </script>
-
-<style>
-</style>

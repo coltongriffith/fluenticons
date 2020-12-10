@@ -5,10 +5,24 @@
     <div class="max-w-4xl mx-auto text-center space-y-4">
       <h1 class="text-6xl font-bold animate1">Fluent Icons</h1>
       <h2 class="max-w-2xl mx-auto text-xl animate2">
-        Open source icons by Microsoft. Viewer by Fayaz Ahmed.
+        Open source icons by
+        <a
+          href="https://github.com/microsoft/fluentui-system-icons"
+          target="_blank"
+          rel="noopener"
+          class="underline"
+        >Microsoft</a>. Viewer by
+        <a
+          href="https://twitter.com/fayazara"
+          target="_blank"
+          rel="noopener"
+          class="underline"
+        >
+          Fayaz Ahmed
+        </a>
       </h2>
       <p class="text-xs font-semibold uppercase animate3">
-        Unaffiliated with Microsoft
+        Not Affiliated with Microsoft, in any way
       </p>
       <div class="flex flex-row justify-center">
         <div
