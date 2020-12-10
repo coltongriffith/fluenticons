@@ -18,10 +18,15 @@
           >
             <img
               class="h-8 w-8 mx-auto flex-grow"
-              :src="`/filled_icons/${icon.file_name}`"
+              :src="`/filled_icons/${icon.file}`"
               :alt="icon.name"
+              :class="{ darken: $colorMode.preference === 'dark' }"
             />
-            <p class="text-xs text-center capitalize mb-1 text-gray-500">{{ icon.name }}</p>
+            <p
+              class="text-xs text-center capitalize mb-1 text-gray-500 dark:text-gray-100"
+            >
+              {{ icon.name }}
+            </p>
           </li>
         </ul>
       </div>
@@ -42,10 +47,15 @@
           >
             <img
               class="h-8 w-8 mx-auto flex-grow"
-              :src="`/regular_icons/${icon.file_name}`"
+              :src="`/regular_icons/${icon.file}`"
               :alt="icon.name"
+              :class="{ darken: $colorMode.preference === 'dark' }"
             />
-            <p class="text-xs text-center capitalize mb-1 text-gray-500">{{ icon.name }}</p>
+            <p
+              class="text-xs text-center capitalize mb-1 text-gray-500 dark:text-gray-100"
+            >
+              {{ icon.name }}
+            </p>
           </li>
         </ul>
       </div>
