@@ -34,10 +34,16 @@ export default {
     //https://www.npmjs.com/package/@nuxtjs/toast
     "@nuxtjs/toast",
     //https://color-mode.nuxtjs.org/
-    "@nuxtjs/color-mode"
+    "@nuxtjs/color-mode",
+    //https://www.npmjs.com/package/nuxt-clipboard2
+    "nuxt-clipboard2"
   ],
   colorMode: {
     classSuffix: ""
+  },
+  toast: {
+    position: "bottom-left",
+    duration: 5000
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {

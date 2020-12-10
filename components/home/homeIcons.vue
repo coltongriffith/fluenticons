@@ -5,58 +5,36 @@
         <div class="mb-4">
           <p class="font-semibold text-xl">Regular</p>
           <p class="text-gray-500 dark:text-gray-200 text-sm">
-            2px stroke weight, 24x24 bounding box
+            2px Stroke Width
           </p>
         </div>
         <ul
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 text-center"
         >
-          <li
-            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center flex-col"
+          <icon
             v-for="(icon, n) in filteredIcons"
             :key="n"
-          >
-            <img
-              class="h-8 w-8 mx-auto flex-grow"
-              :src="`/filled_icons/${icon.file}`"
-              :alt="icon.name"
-              :class="{ darken: $colorMode.preference === 'dark' }"
-            />
-            <p
-              class="text-xs text-center capitalize mb-1 text-gray-500 dark:text-gray-100"
-            >
-              {{ icon.name }}
-            </p>
-          </li>
+            :icon="icon"
+            type="regular_icons"
+          />
         </ul>
       </div>
       <div class="px-8 py-6 dark:bg-gray-900">
         <div class="mb-4">
           <p class="font-semibold text-xl">Filled</p>
           <p class="text-gray-500 dark:text-gray-200 text-sm">
-            Solid fill, 20x20 bounding box
+            Solid filled color
           </p>
         </div>
         <ul
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 text-center"
         >
-          <li
-            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center flex-col"
+          <icon
             v-for="(icon, n) in filteredIcons"
             :key="n"
-          >
-            <img
-              class="h-8 w-8 mx-auto flex-grow"
-              :src="`/regular_icons/${icon.file}`"
-              :alt="icon.name"
-              :class="{ darken: $colorMode.preference === 'dark' }"
-            />
-            <p
-              class="text-xs text-center capitalize mb-1 text-gray-500 dark:text-gray-100"
-            >
-              {{ icon.name }}
-            </p>
-          </li>
+            :icon="icon"
+            type="filled_icons"
+          />
         </ul>
       </div>
     </div>

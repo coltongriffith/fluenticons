@@ -32,3 +32,7 @@ html {
 .darken {
   filter: invert(1);
 }
+
+.leading-42px {
+  line-height: 2.625rem;
+}
