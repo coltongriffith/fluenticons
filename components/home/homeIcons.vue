@@ -54,11 +54,7 @@
 <script>
 import icon_db from "../../constants/icon_db.json";
 export default {
-  props: {
-    query: {
-      default: null,
-    },
-  },
+  props: ["query"],
   data() {
     return {
       icons: icon_db,
