@@ -12,15 +12,16 @@
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6"
         >
           <li
-            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center"
+            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center flex-col"
             v-for="(icon, n) in filteredIcons"
             :key="n"
           >
             <img
-              class="h-8 w-8 mx-auto"
+              class="h-8 w-8 mx-auto flex-grow"
               :src="`/filled_icons/${icon.file_name}`"
               :alt="icon.name"
             />
+            <p class="text-xs text-center capitalize mb-1 text-gray-500">{{ icon.name }}</p>
           </li>
         </ul>
       </div>
@@ -35,15 +36,16 @@
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6"
         >
           <li
-            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center"
+            class="h-32 rounded border dark:bg-gray-800 flex items-center justify-center flex-col"
             v-for="(icon, n) in filteredIcons"
             :key="n"
           >
             <img
-              class="h-8 w-8 mx-auto"
+              class="h-8 w-8 mx-auto flex-grow"
               :src="`/regular_icons/${icon.file_name}`"
               :alt="icon.name"
             />
+            <p class="text-xs text-center capitalize mb-1 text-gray-500">{{ icon.name }}</p>
           </li>
         </ul>
       </div>
