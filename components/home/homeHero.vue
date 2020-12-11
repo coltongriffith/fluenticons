@@ -26,7 +26,7 @@
       <p class="text-xs font-semibold uppercase animate3">
         Not Affiliated with Microsoft, in any way
       </p>
-      <div class="flex items-center justify-center space-x-2">
+      <div class="flex items-center justify-center space-x-2 animate4">
         <svg
           class="h-8 w-8"
           viewBox="0 0 24 24"
@@ -53,7 +53,7 @@
             href="https://www.figma.com/community/file/836835755999342788"
             target="_blank"
             rel="noopener"
-            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white dark:bg-gray-600 dark:text-white text-gray-600 font-semibold animate4"
+            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white dark:bg-gray-600 dark:text-white text-gray-600 font-semibold animate5"
           >
             <svg
               id="Layer_1"
@@ -95,7 +95,7 @@
             href="https://github.com/microsoft/fluentui-system-icons"
             target="_blank"
             rel="noopener"
-            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold animate5"
+            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold animate6"
           >
             <svg width="24" height="24" fill="currentColor" class="mr-3">
               <path
@@ -114,23 +114,27 @@
 
 <style>
 .animate1 {
-  animation: fade-up 0.9s 0.5s cubic-bezier(0, 0.9, 0.3, 1.5) forwards;
+  animation: fade-up 0.9s 0.5s cubic-bezier(0, 0.9, 0.3, 1.6) forwards;
   opacity: 0;
 }
 .animate2 {
-  animation: fade-up 0.9s 0.6s cubic-bezier(0, 0.9, 0.3, 1.4) forwards;
+  animation: fade-up 0.9s 0.6s cubic-bezier(0, 0.9, 0.3, 1.5) forwards;
   opacity: 0;
 }
 .animate3 {
-  animation: fade-up 0.9s 0.7s cubic-bezier(0, 0.9, 0.3, 1.3) forwards;
+  animation: fade-up 0.9s 0.7s cubic-bezier(0, 0.9, 0.3, 1.4) forwards;
   opacity: 0;
 }
 .animate4 {
-  animation: fade-up 0.9s 0.8s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
+  animation: fade-up 0.9s 0.8s cubic-bezier(0, 0.9, 0.3, 1.3) forwards;
   opacity: 0;
 }
 .animate5 {
-  animation: fade-up 0.9s 0.9s cubic-bezier(0, 0.9, 0.3, 1.1) forwards;
+  animation: fade-up 0.9s 0.9s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
+  opacity: 0;
+}
+.animate6 {
+  animation: fade-up 0.9s 1s cubic-bezier(0, 0.9, 0.3, 1.1) forwards;
   opacity: 0;
 }
 @keyframes fade-up {

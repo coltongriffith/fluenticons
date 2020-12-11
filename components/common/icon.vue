@@ -80,7 +80,7 @@ export default {
   },
   computed: {
     darken() {
-      if (this.$colorMode.preference === "dark") return "invert-colors";
+      if (this.$colorMode.value === "dark") return "invert-colors";
       return null;
     },
   },
