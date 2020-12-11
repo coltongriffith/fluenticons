@@ -69,7 +69,7 @@
                 d="M200 150c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50z"
               />
             </svg>
-            <p>Figma</p>
+            <p>Open Figma</p>
           </a>
           <a
             href="https://github.com/microsoft/fluentui-system-icons"
