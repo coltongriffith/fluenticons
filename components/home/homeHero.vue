@@ -2,6 +2,7 @@
   <section
     class="py-16 px-4 lg:px-0 xl:px-0 pattern bg-primary dark:bg-gray-800 text-white dark:text-gray-100 relative"
   >
+    <tweet />
     <div class="max-w-4xl mx-auto text-center space-y-4">
       <h1 class="text-6xl font-bold animate1">Fluent Icons</h1>
       <h2 class="max-w-2xl mx-auto text-xl animate2 font-semibold">
@@ -25,6 +26,25 @@
       <p class="text-xs font-semibold uppercase animate3">
         Not Affiliated with Microsoft, in any way
       </p>
+      <div class="flex items-center justify-center space-x-2">
+        <svg
+          class="h-8 w-8"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.94118 5C2.86909 5 2 5.86909 2 6.94118V12C2 16.4183 5.58172 20 10 20C14.0114 20 17.3332 17.0476 17.911 13.1973H18.6487C20.4981 13.1973 21.9973 11.698 21.9973 9.84863C21.9973 7.99923 20.4981 6.5 18.6487 6.5H17.9496C17.7499 5.64046 16.9791 5 16.0588 5H3.94118ZM3.5 6.94118C3.5 6.69752 3.69752 6.5 3.94118 6.5H16.0588C16.3025 6.5 16.5 6.69752 16.5 6.94118V12C16.5 15.5899 13.5899 18.5 10 18.5C6.41015 18.5 3.5 15.5899 3.5 12V6.94118ZM18 8H18.6487C19.6697 8 20.4973 8.82766 20.4973 9.84863C20.4973 10.8696 19.6697 11.6973 18.6487 11.6973H18V8Z"
+            fill="currentColor"
+          />
+        </svg>
+
+        <h3 class="text-xl font-semibold">
+          <a href="https://fayazz.co/coffee" target="_blank" rel="noopener">
+            BUY ME SOME COFFEE?</a
+          >
+        </h3>
+      </div>
       <div class="flex flex-row justify-center">
         <div
           class="flex flex-col sm:flex-row w-full sm:w-auto space-x-0 md:space-x-4 lg:space-x-4 xl:space-x-4 space-y-4 md:space-y-0 lg:space-y-0 xl:space-y-0"

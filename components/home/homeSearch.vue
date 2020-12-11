@@ -26,6 +26,7 @@
           type="text"
           id="search-input"
           autofocus
+          ref="search"
           placeholder="Press / to focus"
           @input="search"
           class="flex-auto py-6 text-base leading-6 focus:outline-none border-none text-gray-600 placeholder-gray-500 focus:placeholder-gray-400 dark:bg-gray-800 dark:text-white"
@@ -33,6 +34,7 @@
       </div>
     </form>
     <theme-toggle class="text-gray-700 dark:text-white" />
+    <search-focus @keyup="focusSearch"></search-focus>
   </div>
 </template>
 
@@ -41,6 +43,11 @@ export default {
   methods: {
     search(e) {
       this.$emit("input", e.target.value);
+    },
+    focusSearch(e) {
+      if (e.key === "/") {
+        this.$refs.search.focus();
+      }
     },
   },
 };

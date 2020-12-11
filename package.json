@@ -19,6 +19,7 @@
     "nuxt-clipboard2": "^0.2.1",
     "nuxt-lazy-load": "^1.2.4",
     "nuxt-webfontloader": "^1.1.0",
+    "vue-gtag": "^1.10.0",
     "vue-js-modal": "^2.0.0-rc.6"
   },
   "devDependencies": {

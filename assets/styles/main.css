@@ -10,11 +10,20 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 4s;
+  transition: all 0.5s;
 }
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.scroll-enter-active,
+.scroll-leave-active {
+  transition: all 0.5s;
+}
+.scroll-enter,
+.scroll-leave-to {
+  transform: translateY(200px);
 }
 
 html {

@@ -1,31 +1,36 @@
 const title = "Fluent Icons - Free & Open Source Icons from Microsoft";
-const description = "MIT open source SVG icons from Microsoft, over 2100 beautiful icoons. Solid and 2px stroke based sets.";
+const description =
+  "MIT open source SVG icons from Microsoft, over 2100 beautiful icoons. Solid and 2px stroke based sets.";
 const host = "https://fluenticons.co";
 export default {
   target: "static",
   head: {
     title,
-    meta: [{
-      charset: "utf-8"
-    }, {
-      name: "viewport",
-      content: "width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-    },
-    {
-      hid: "description",
-      name: "description",
-      content: description
-    },
-    {
-      name: "keywords",
-      content: "icons, svg icons, free icons, fluent icons, microsoft fluent icons, open source icons"
-    }
+    meta: [
+      {
+        charset: "utf-8"
+      },
+      {
+        name: "viewport",
+        content:
+          "width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      },
+      {
+        hid: "description",
+        name: "description",
+        content: description
+      },
+      {
+        name: "keywords",
+        content:
+          "icons, svg icons, free icons, fluent icons, microsoft fluent icons, open source icons"
+      }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
   css: ["~/assets/styles/main.css"],
-  plugins: [],
+  plugins: ["~/plugins/gtag"],
   components: true,
   buildModules: ["@nuxtjs/tailwindcss"],
   modules: [
@@ -59,14 +64,15 @@ export default {
   pwa: {
     meta: {
       name: title,
-      theme_color: "#00c58e",
+      short_name: "Fluent Icons",
+      theme_color: "#2f855a",
       description: description,
       ogHost: host,
       ogImage: "/social/icon.png",
       twitterCard: "summary_large_image",
       twitterSite: "@fayazara",
       twitterCreator: "@fayazara",
-      author: "Fayaz Ahmed",
+      author: "Fayaz Ahmed"
     }
   },
   build: {}

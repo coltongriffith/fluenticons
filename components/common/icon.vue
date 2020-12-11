@@ -35,6 +35,7 @@
         :aria-activedescendant="`${icon.key}-svg`"
       >
         <div
+          v-if="$colorMode.preference === 'light'"
           class="absolute top-1/2 left-1/2 w-8 h-8 -ml-4 -mt-4 bg-white bg-opacity-75"
         ></div>
         <div class="overflow-hidden flex flex-col h-full space-y-1 text-sm">
@@ -74,6 +75,7 @@ export default {
       const { data } = await this.$axios.get(`/${this.type}/${this.icon.file}`);
       await this.$copyText(data);
       this.$toast.show(`Copied '${this.icon.name}'`);
+      this.$gtag.event("Copied Icon", { icon: this.icon.name });
     },
   },
   computed: {
