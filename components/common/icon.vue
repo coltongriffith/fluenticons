@@ -9,6 +9,7 @@
       @mouseleave="menu = false"
     >
       <button
+        @click="menu = true"
         type="button"
         :id="`${icon.key}-btn`"
         :aria-label="icon.key"
@@ -20,7 +21,7 @@
           class="h-7 w-h-7 mx-auto flex-grow"
           :src="`/${type}/${icon.file}`"
           :alt="icon.name"
-          :class="{ darken: $colorMode.preference === 'dark' }"
+          :class="darken"
         />
       </button>
 
@@ -73,6 +74,12 @@ export default {
       const { data } = await this.$axios.get(`/${this.type}/${this.icon.file}`);
       await this.$copyText(data);
       this.$toast.show(`Copied '${this.icon.name}'`);
+    },
+  },
+  computed: {
+    darken() {
+      if (this.$colorMode.preference === "dark") return "invert-colors";
+      return null;
     },
   },
 };
