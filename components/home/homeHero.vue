@@ -4,14 +4,15 @@
   >
     <div class="max-w-4xl mx-auto text-center space-y-4">
       <h1 class="text-6xl font-bold animate1">Fluent Icons</h1>
-      <h2 class="max-w-2xl mx-auto text-xl animate2">
+      <h2 class="max-w-2xl mx-auto text-xl animate2 font-semibold">
         Open source icons by
         <a
           href="https://github.com/microsoft/fluentui-system-icons"
           target="_blank"
           rel="noopener"
           class="underline"
-        >Microsoft</a>. Viewer by
+          >Microsoft</a
+        >. Viewer by
         <a
           href="https://twitter.com/fayazara"
           target="_blank"
@@ -26,30 +27,55 @@
       </p>
       <div class="flex flex-row justify-center">
         <div
-          class="flex flex-col sm:flex-row w-full sm:w-auto space-x-0 lg:space-x-4 xl:space-x-4 space-y-4 lg:space-y-0 xl:space-y-0"
+          class="flex flex-col sm:flex-row w-full sm:w-auto space-x-0 md:space-x-4 lg:space-x-4 xl:space-x-4 space-y-4 md:space-y-0 lg:space-y-0 xl:space-y-0"
         >
-          <button
-            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white dark:bg-gray-600 dark:text-white text-gray-600 font-semibold btn-focus animate4"
+          <a
+            href="https://www.figma.com/community/file/836835755999342788"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white dark:bg-gray-600 dark:text-white text-gray-600 font-semibold animate4"
           >
             <svg
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 200 300"
               width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              height="18"
               class="mr-3"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"
-              ></path>
+                id="path0_fill"
+                class="st0"
+                d="M50 300c27.6 0 50-22.4 50-50v-50H50c-27.6 0-50 22.4-50 50s22.4 50 50 50z"
+              />
+              <path
+                id="path1_fill"
+                class="st1"
+                d="M0 150c0-27.6 22.4-50 50-50h50v100H50c-27.6 0-50-22.4-50-50z"
+              />
+              <path
+                id="path1_fill_1_"
+                class="st2"
+                d="M0 50C0 22.4 22.4 0 50 0h50v100H50C22.4 100 0 77.6 0 50z"
+              />
+              <path
+                id="path2_fill"
+                class="st3"
+                d="M100 0h50c27.6 0 50 22.4 50 50s-22.4 50-50 50h-50V0z"
+              />
+              <path
+                id="path3_fill"
+                class="st4"
+                d="M200 150c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50z"
+              />
             </svg>
-            <p>Download All</p>
-          </button>
-          <button
-            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold btn-focus animate5"
+            <p>Figma</p>
+          </a>
+          <a
+            href="https://github.com/microsoft/fluentui-system-icons"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold animate5"
           >
             <svg width="24" height="24" fill="currentColor" class="mr-3">
               <path
@@ -59,7 +85,7 @@
               ></path>
             </svg>
             <p>View on Github</p>
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -96,5 +122,20 @@
     opacity: 1;
     transform: none;
   }
+}
+.st0 {
+  fill: #0acf83;
+}
+.st1 {
+  fill: #a259ff;
+}
+.st2 {
+  fill: #f24e1e;
+}
+.st3 {
+  fill: #ff7262;
+}
+.st4 {
+  fill: #1abcfe;
 }
 </style>

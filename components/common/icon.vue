@@ -72,7 +72,7 @@ export default {
     async copySvg() {
       const { data } = await this.$axios.get(`/${this.type}/${this.icon.file}`);
       await this.$copyText(data);
-      this.$toast.show(`Copied ${this.icon.name}`);
+      this.$toast.show(`Copied '${this.icon.name}'`);
     },
   },
 };

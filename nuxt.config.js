@@ -27,8 +27,6 @@ export default {
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
-    // https://go.nuxtjs.dev/content
-    "@nuxt/content",
     //https://www.npmjs.com/package/nuxt-lazy-load
     "nuxt-lazy-load",
     //https://www.npmjs.com/package/@nuxtjs/toast
@@ -61,12 +59,17 @@ export default {
   },
   pwa: {
     meta: {
-      theme_color: "#ffcd57"
+      theme_color: "#ffcd57",
+      name: "Fluent Icons",
+      description:
+        "MIT Licensed open source SVG icons from Microsoft, over 2100 beautiful icoons. Solid and 2px stroke based sets.",
+      ogHost: "https://fluenticons.co",
+      ogImage: "/social/icon.png",
+      twitterCard: "summary_large_image",
+      twitterSite: "@fayazara",
+      twitterCreator: "@fayazara"
     }
   },
-
-  // Content module configuration (https://go.nuxtjs.dev/config-content)
-  content: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}

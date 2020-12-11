@@ -10,7 +10,6 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/toast": "^3.3.1",
