@@ -20,11 +20,7 @@
           class="h-7 w-h-7 mx-auto flex-grow"
           :src="`/${type}/${icon.file}`"
           :alt="icon.name"
-          :class="{
-            darken:
-              $colorMode.preference === 'dark' ||
-              $colorMode.preference === 'unknown',
-          }"
+          :class="{ darken: $colorMode.preference === 'dark' }"
         />
       </button>
 
