@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" class="focus:outline-none">
+  <button @click="toggle" class="focus:outline-none p-4">
     <svg
       v-if="!$colorMode.value || $colorMode.value === 'light'"
       class="h-4 w-4 sm:h-6 sm:w-6 md:h-6 md:w-6 lg:h-6 lg:w-6 xl:h-6 xl:w-6"
