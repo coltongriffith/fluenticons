@@ -45,3 +45,54 @@ html {
 .leading-42px {
   line-height: 2.625rem;
 }
+
+.animate1 {
+  animation: fade-up 0.9s 0.5s cubic-bezier(0, 0.9, 0.3, 1.5) forwards;
+  opacity: 0;
+}
+.animate2 {
+  animation: fade-up 0.9s 0.6s cubic-bezier(0, 0.9, 0.3, 1.4) forwards;
+  opacity: 0;
+}
+.animate3 {
+  animation: fade-up 0.9s 0.7s cubic-bezier(0, 0.9, 0.3, 1.3) forwards;
+  opacity: 0;
+}
+.animate4 {
+  animation: fade-up 0.9s 0.8s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
+  opacity: 0;
+}
+.animate5 {
+  animation: fade-up 0.9s 0.9s cubic-bezier(0, 0.9, 0.3, 1.1) forwards;
+  opacity: 0;
+}
+.animate6 {
+  animation: fade-up 0.9s 1s cubic-bezier(0, 0.9, 0.3, 1.1) forwards;
+  opacity: 0;
+}
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.st0 {
+  fill: #0acf83;
+}
+.st1 {
+  fill: #a259ff;
+}
+.st2 {
+  fill: #f24e1e;
+}
+.st3 {
+  fill: #ff7262;
+}
+.st4 {
+  fill: #1abcfe;
+}
+

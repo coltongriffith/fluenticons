@@ -26,34 +26,15 @@
       <p class="text-xs font-semibold uppercase animate3">
         Not Affiliated with Microsoft, in any way
       </p>
-      <div class="flex items-center justify-center space-x-2 animate4">
-        <svg
-          class="h-8 w-8"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3.94118 5C2.86909 5 2 5.86909 2 6.94118V12C2 16.4183 5.58172 20 10 20C14.0114 20 17.3332 17.0476 17.911 13.1973H18.6487C20.4981 13.1973 21.9973 11.698 21.9973 9.84863C21.9973 7.99923 20.4981 6.5 18.6487 6.5H17.9496C17.7499 5.64046 16.9791 5 16.0588 5H3.94118ZM3.5 6.94118C3.5 6.69752 3.69752 6.5 3.94118 6.5H16.0588C16.3025 6.5 16.5 6.69752 16.5 6.94118V12C16.5 15.5899 13.5899 18.5 10 18.5C6.41015 18.5 3.5 15.5899 3.5 12V6.94118ZM18 8H18.6487C19.6697 8 20.4973 8.82766 20.4973 9.84863C20.4973 10.8696 19.6697 11.6973 18.6487 11.6973H18V8Z"
-            fill="currentColor"
-          />
-        </svg>
-
-        <h3 class="text-xl font-semibold">
-          <a href="https://fayazz.co/coffee" target="_blank" rel="noopener">
-            BUY ME SOME COFFEE?</a
-          >
-        </h3>
-      </div>
-      <div class="flex flex-row justify-center">
+      <div class="max-w-lg mx-auto">
         <div
-          class="flex flex-col sm:flex-row w-full sm:w-auto space-x-0 md:space-x-4 lg:space-x-4 xl:space-x-4 space-y-4 md:space-y-0 lg:space-y-0 xl:space-y-0"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4"
         >
           <a
             href="https://www.figma.com/community/file/836835755999342788"
             target="_blank"
             rel="noopener"
-            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white dark:bg-gray-600 dark:text-white text-gray-600 font-semibold animate5"
+            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white dark:bg-gray-600 dark:text-white text-gray-600 font-semibold animate4"
           >
             <svg
               id="Layer_1"
@@ -95,7 +76,7 @@
             href="https://github.com/microsoft/fluentui-system-icons"
             target="_blank"
             rel="noopener"
-            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold animate6"
+            class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold animate5"
           >
             <svg width="24" height="24" fill="currentColor" class="mr-3">
               <path
@@ -111,55 +92,3 @@
     </div>
   </section>
 </template>
-
-<style>
-.animate1 {
-  animation: fade-up 0.9s 0.5s cubic-bezier(0, 0.9, 0.3, 1.6) forwards;
-  opacity: 0;
-}
-.animate2 {
-  animation: fade-up 0.9s 0.6s cubic-bezier(0, 0.9, 0.3, 1.5) forwards;
-  opacity: 0;
-}
-.animate3 {
-  animation: fade-up 0.9s 0.7s cubic-bezier(0, 0.9, 0.3, 1.4) forwards;
-  opacity: 0;
-}
-.animate4 {
-  animation: fade-up 0.9s 0.8s cubic-bezier(0, 0.9, 0.3, 1.3) forwards;
-  opacity: 0;
-}
-.animate5 {
-  animation: fade-up 0.9s 0.9s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
-  opacity: 0;
-}
-.animate6 {
-  animation: fade-up 0.9s 1s cubic-bezier(0, 0.9, 0.3, 1.1) forwards;
-  opacity: 0;
-}
-@keyframes fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(4rem);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-.st0 {
-  fill: #0acf83;
-}
-.st1 {
-  fill: #a259ff;
-}
-.st2 {
-  fill: #f24e1e;
-}
-.st3 {
-  fill: #ff7262;
-}
-.st4 {
-  fill: #1abcfe;
-}
-</style>

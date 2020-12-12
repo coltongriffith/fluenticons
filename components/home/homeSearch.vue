@@ -33,6 +33,7 @@
         />
       </div>
     </form>
+    <coffee />
     <theme-toggle class="text-gray-700 dark:text-white" />
     <search-focus @keyup="focusSearch"></search-focus>
   </div>

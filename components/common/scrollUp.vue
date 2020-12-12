@@ -1,7 +1,7 @@
 <template>
   <a
     href="#top"
-    class="fixed bottom-4 right-4 btn-focus rounded-full bg-primary shadow-lg border"
+    class="fixed bottom-4 right-4 btn-focus rounded-full bg-primary dark:bg-gray-700 shadow-lg border z-50"
   >
     <svg
       class="text-white h-8 w-8"
