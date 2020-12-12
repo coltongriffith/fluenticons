@@ -1,6 +1,6 @@
 <template>
   <section class="text-gray-700 dark:text-white">
-    <div class="grid grid-cols-2 divide-x">
+    <div class="grid grid-cols-2 divide-x min-h-screen">
       <div class="px-8 py-6 dark:bg-gray-900">
         <div class="mb-4">
           <p class="font-semibold text-xl">Regular</p>
