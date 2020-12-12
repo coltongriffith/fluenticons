@@ -2250,11 +2250,6 @@
         "name": "fast mode"
     },
     {
-        "id": "filles_icons.csv",
-        "file": "filles_icons.csv",
-        "name": "filles icons.csv"
-    },
-    {
         "id": "filter",
         "file": "filter.svg",
         "name": "filter"
