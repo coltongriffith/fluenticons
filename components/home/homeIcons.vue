@@ -15,7 +15,8 @@
             v-for="(icon, n) in filteredIcons"
             :key="n"
             :icon="icon"
-            type="regular_icons"
+            type="regular"
+            path="regular_icons"
           />
         </ul>
       </div>
@@ -33,7 +34,8 @@
             v-for="(icon, n) in filteredIcons"
             :key="n"
             :icon="icon"
-            type="filled_icons"
+            type="filled"
+            path="filled_icons"
           />
         </ul>
       </div>
