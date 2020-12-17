@@ -17,7 +17,12 @@
         :aria-controls="icon.key"
         class="absolute inset-0 w-full flex items-center justify-center rounded-lg border border-gray-200 cursor-auto"
       >
-        <component :is="component" class="h-6 w-6 text-gray-800" />
+        <img
+          class="h-7 w-h-7 mx-auto flex-grow"
+          :src="`/${type}/${icon.file}`"
+          :alt="icon.name"
+          :class="darken"
+        />
       </button>
 
       <div
@@ -59,7 +64,7 @@
 
 <script>
 export default {
-  props: ["icon", "type", "path"],
+  props: ["icon", "type"],
   data() {
     return {
       menu: false,
@@ -77,9 +82,6 @@ export default {
     darken() {
       if (this.$colorMode.value === "dark") return "invert-colors";
       return null;
-    },
-    component() {
-      return () => import(`../icons/${this.path}/${this.type}_${this.icon.id}`);
     },
   },
 };
