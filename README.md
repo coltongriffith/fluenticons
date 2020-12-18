@@ -22,7 +22,11 @@ I have used some hack to show these icons like I am using the `img` tag to show 
 ## Roadmap
 1. Make use of inline SVG tags in the `icon` component, so we can try changing the color of the icon. Making sure the performance is not affected (we could just keep the images and show a modal with the inline SVG).
 2. Make an image API similar to [svgbox](https://svgbox.net/), using vercel serverless functions.
-3. 
+
+## License
+
+Open source software licensed as MIT.
+
 
 ## Website Build Setup
 ```bash
