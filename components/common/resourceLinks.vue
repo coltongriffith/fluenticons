@@ -46,7 +46,7 @@
         <p>Open Figma</p>
       </a>
       <a
-        href="https://github.com/microsoft/fluentui-system-icons"
+        href="https://github.com/fayazara/fluenticons"
         target="_blank"
         rel="noopener"
         class="flex items-center justify-center px-5 py-3 rounded-lg shadow bg-white text-gray-600 dark:bg-gray-600 dark:text-white font-semibold animate5"
