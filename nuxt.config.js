@@ -39,7 +39,13 @@ export default {
     "nuxt-lazy-load",
     "@nuxtjs/toast",
     "@nuxtjs/color-mode",
-    "nuxt-clipboard2"
+    "nuxt-clipboard2",
+    [
+      "@nuxtjs/google-adsense",
+      {
+        id: "ca-pub-8623588625998030"
+      }
+    ]
   ],
   colorMode: {
     classSuffix: ""
