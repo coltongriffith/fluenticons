@@ -1,7 +1,7 @@
 # Fluenticons Viewer
 
 4000+ pixel perfect open source icons from [Microsoft](https://github.com/microsoft/fluentui-system-icons).
-![Fluent Icons](https://fluenticons.co/social/icon.png)
+![Fluent Icons](https://fluenticons.co/social.png)
 
 This site is not affiliated or connected to Microsoft in any way, this is just a viewer for the open-source icons from them.
 
