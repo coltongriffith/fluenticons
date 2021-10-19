@@ -156,7 +156,7 @@
       </a>
     </div>
     <div
-      class="text-center text-gray-500 text-xs py-4 border-t absolute bottom-0 left-0 w-full border-gray-300
+      class="text-center text-gray-700 text-xs py-4 border-t absolute bottom-0 left-0 w-full border-gray-300
             dark:border-gray-700 bg-gray-100 dark:bg-[#070d19]"
     >
       <a
