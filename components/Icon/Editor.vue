@@ -157,7 +157,7 @@
     </div>
     <div
       class="text-center text-gray-500 text-xs py-4 border-t absolute bottom-0 left-0 w-full border-gray-300
-            dark:border-gray-700"
+            dark:border-gray-700 bg-gray-100 dark:bg-[#070d19]"
     >
       <a
         href="https://github.com/fayazara/fluenticons"
@@ -171,6 +171,8 @@
           src="https://api.iconify.design/mdi:github.svg"
           alt="Github Icon"
           class="inline-block ml-2 h-6 w-6"
+          height="24"
+          width="24"
         />
       </a>
     </div>
