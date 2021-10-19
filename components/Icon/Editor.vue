@@ -156,7 +156,7 @@
       </a>
     </div>
     <div
-      class="text-center text-gray-700 text-xs py-4 border-t absolute bottom-0 left-0 w-full border-gray-300
+      class="text-center text-gray-700 dark:text-gray-400 text-xs py-4 border-t absolute bottom-0 left-0 w-full border-gray-300
             dark:border-gray-700 bg-gray-100 dark:bg-[#070d19]"
     >
       <a
@@ -167,13 +167,7 @@
         <span>
           WIP, You're welcome to contribute.
         </span>
-        <img
-          src="https://api.iconify.design/mdi:github.svg"
-          alt="Github Icon"
-          class="inline-block ml-2 h-6 w-6"
-          height="24"
-          width="24"
-        />
+        <icon-github class="inline-block ml-2 h-6 w-6"/>
       </a>
     </div>
   </aside>
