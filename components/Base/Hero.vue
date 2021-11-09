@@ -5,7 +5,11 @@
         <h1 class="text-5xl font-bold mb-6">Fluent Icons</h1>
         <p class="text-lg mb-2">
           Open source icons by Microsoft. Viewer by
-          <a href="https://twitter.com/fayazara" target="_blank" rel="noopener"
+          <a
+            href="https://twitter.com/fayazara"
+            target="_blank"
+            rel="noopener"
+            class="underline"
             >Fayaz Ahmed</a
           >
         </p>
@@ -77,5 +81,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>

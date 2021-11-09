@@ -150,26 +150,12 @@
         target="_blank"
         rel="noopener"
       >
-        <IconThumbsUp class="h-24 w-24 mx-auto" />
+        <IconThumbsUp class="h-12 w-12 mx-auto" />
         <p class="font-semibold">Donate &amp; Support</p>
         <p class="text-gray-500 text-xs mt-1">Help keep this project alive.</p>
       </a>
     </div>
-    <div
-      class="text-center text-gray-700 dark:text-gray-400 text-xs py-4 border-t absolute bottom-0 left-0 w-full border-gray-300
-            dark:border-gray-700 bg-gray-100 dark:bg-[#070d19]"
-    >
-      <a
-        href="https://github.com/fayazara/fluenticons"
-        target="_blank"
-        rel="noopener"
-      >
-        <span>
-          WIP, You're welcome to contribute.
-        </span>
-        <icon-github class="inline-block ml-2 h-6 w-6"/>
-      </a>
-    </div>
+    <sponsor-sidebar />
   </aside>
 </template>
 
