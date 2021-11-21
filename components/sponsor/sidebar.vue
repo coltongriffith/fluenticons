@@ -5,7 +5,7 @@
     rel="noopener"
   >
     <img
-      src="/iconfinder.svg"
+      src="/iconfinder-blackfriday.png"
       alt="Icon Finder"
       class="absolute bottom-0 left-0 w-full"
     />
