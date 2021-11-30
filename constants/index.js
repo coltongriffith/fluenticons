@@ -11,7 +11,15 @@ export const head = {
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     { hid: "description", name: "description", content: description }
   ],
-  link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+  link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+  script: [
+    {
+      src: "https://cdn.splitbee.io/sb.js",
+      async: true,
+      defer: true,
+      hid: "splitbee"
+    }
+  ]
 };
 
 export const pwa = {
