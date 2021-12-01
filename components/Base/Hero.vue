@@ -1,6 +1,6 @@
 <template>
   <div class="py-12 px-8">
-    <div class="grid grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
         <h1 class="text-5xl font-bold mb-6">Fluent Icons</h1>
         <p class="text-lg mb-2">
