@@ -74,5 +74,11 @@ export const modules = [
   "nuxt-clipboard2",
   "@nuxtjs/toast",
   "@nuxtjs/google-fonts",
-  "@nuxtjs/robots"
+  "@nuxtjs/robots",
+  [
+    "@nuxtjs/google-adsense",
+    {
+      id: "ca-pub-4503487934271846"
+    }
+  ]
 ];
