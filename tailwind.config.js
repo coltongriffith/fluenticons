@@ -1,6 +1,5 @@
 module.exports = {
   darkMode: "class",
-  mode: "jit",
   theme: {
     fontFamily: {
       sans: [
@@ -26,7 +25,8 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms")({
       strategy: "class"
-    })
+    }),
+    require("@tailwindcss/typography")
   ],
   purge: {
     enabled: process.env.NODE_ENV === "production",

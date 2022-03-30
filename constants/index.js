@@ -60,11 +60,11 @@ export const colorMode = {
 };
 
 export const toast = {
-  position: "bottom-right",
+  position: "top-right",
   duration: 7000
 };
 
-export const buildModules = ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"];
+export const buildModules = ["@nuxtjs/color-mode", "@nuxt/postcss8"];
 
 export const modules = [
   "@nuxtjs/axios",
@@ -82,3 +82,12 @@ export const modules = [
     }
   ]
 ];
+
+export const build = {
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
+    }
+  }
+};

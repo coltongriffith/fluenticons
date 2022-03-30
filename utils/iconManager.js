@@ -37,15 +37,15 @@ export async function svgToHtml(svgString, iconName) {
     outputFormat: "base64"
   };
   return svgToImage(imageDefaults)
-    .then(function(outputData) {
+    .then(function (outputData) {
       return `<img src="${outputData}" alt=" ${iconName.replace(".svg", "")}" />`;
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log(err);
     });
 }
 
-export async function getIconSnippet(type, icon, color) {
+export async function getIconSnippet(type, icon, color = "#000000") {
   if (!icon) return;
   switch (type) {
     case "svg":
@@ -75,7 +75,7 @@ export async function svgToImage(settings) {
     _settings[key] = settings[key];
   }
 
-  return new Promise(function(resolve) {
+  return new Promise(function (resolve) {
     let svgNode;
 
     // Create SVG Node if a plain string has been provided
@@ -97,54 +97,40 @@ export async function svgToImage(settings) {
 
     const image = new Image();
 
-    image.onload = function() {
+    image.onload = function () {
       let finalWidth, finalHeight;
-
-      // Calculate width if set to auto and the height is specified (to preserve aspect ratio)
       if (_settings.width === "auto" && _settings.height !== "auto") {
         finalWidth = (this.width / this.height) * _settings.height;
-        // Use image original width
       } else if (_settings.width === "auto") {
         finalWidth = this.naturalWidth;
-        // Use custom width
       } else {
         finalWidth = _settings.width;
       }
-
-      // Calculate height if set to auto and the width is specified (to preserve aspect ratio)
       if (_settings.height === "auto" && _settings.width !== "auto") {
         finalHeight = (this.height / this.width) * _settings.width;
-        // Use image original height
       } else if (_settings.height === "auto") {
         finalHeight = this.naturalHeight;
-        // Use custom height
       } else {
         finalHeight = _settings.height;
       }
 
-      // Define the canvas intrinsic size
       canvas.width = finalWidth;
       canvas.height = finalHeight;
-
-      // Render image in the canvas
       context.drawImage(this, 0, 0, finalWidth, finalHeight);
 
       if (_settings.outputFormat == "blob") {
-        // Fullfil and Return the Blob image
         canvas.toBlob(
-          function(blob) {
+          function (blob) {
             resolve(blob);
           },
           _settings.mimetype,
           _settings.quality
         );
       } else {
-        // Fullfil and Return the Base64 image
         resolve(canvas.toDataURL(_settings.mimetype, _settings.quality));
       }
     };
 
-    // Load the SVG in Base64 to the image
     image.src = svgBase64;
   });
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-8">
-    <div class="grid grid-cols-6 gap-6">
+    <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
       <lazy-icon-card
         v-for="(icon, i) in filteredIcons.slice(0, elementsToShow)"
         :key="i"
@@ -63,27 +63,27 @@ import icons from "~/assets/icons/outlined.json";
 export default {
   props: {
     selectedIcon: {
-      type: Object,
+      type: Object
     },
     searchQuery: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   data() {
     return {
       icons,
-      elementsToShow: 48,
+      elementsToShow: 48
     };
   },
   computed: {
     filteredIcons() {
-      return this.icons.filter((icon) => {
+      return this.icons.filter(icon => {
         return icon.name
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase().replace(" ", ""));
       });
-    },
+    }
   },
   methods: {
     setIcon(payload) {
@@ -91,7 +91,7 @@ export default {
     },
     showMore() {
       this.elementsToShow += 48;
-    },
-  },
+    }
+  }
 };
 </script>

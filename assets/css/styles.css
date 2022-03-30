@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   @apply antialiased text-gray-700 dark:text-white dark:bg-gray-900;
@@ -140,11 +144,10 @@ html.dark {
 }
 
 .editor-sidebar {
-  @apply h-screen sticky top-0 border-l w-72 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto;
+  @apply h-screen sticky top-0 border-l w-72 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto flex-shrink-0;
 }
-
 .toasted.toasted-primary {
-  @apply font-semibold text-sm rounded-lg shadow-xl border bg-white text-gray-600 border-gray-200 !important;
+  @apply rounded-lg font-medium text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 !important;
 }
 .show-more-btn {
   @apply block border dark:border-gray-700 rounded-lg mx-auto px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm focus:outline-none;
@@ -153,7 +156,7 @@ html.dark {
   @apply border dark:border-gray-700 rounded-lg px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm focus:outline-none;
 }
 .navbar-btn {
-  @apply h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200;
+  @apply h-10 px-4 rounded-full flex items-center justify-center space-x-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200;
 }
 
 .expand-enter-active,
@@ -187,4 +190,13 @@ html.dark {
 
 .shape-bg {
   background-image: url("/shape.svg");
+}
+
+.bg-squares {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+@media (prefers-color-scheme: dark) {
+  .bg-squares {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
 }

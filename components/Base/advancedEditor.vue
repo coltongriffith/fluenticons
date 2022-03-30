@@ -12,6 +12,7 @@
           class="bg-transparent focus:outline-none px-4 py-2"
           placeholder="PNG Size"
           v-model="size"
+          ref="sizeInput"
         />
         <button
           class="
@@ -47,6 +48,9 @@ export default {
       //   this.$emit("downloadCustomSize", this.size);
       // }
     }
+  },
+  mounted() {
+    this.$refs.sizeInput.focus();
   }
 };
 </script>
