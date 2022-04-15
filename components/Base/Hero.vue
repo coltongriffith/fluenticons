@@ -4,8 +4,7 @@
       class="absolute inset-0 bg-bottom bg-no-repeat bg-slate-50 dark:bg-[#0B1120] index_beams bg-[url('/gradient-bg-white.jpg')] dark:bg-[url('/gradient-bg-dark.jpg')]"
     ></div>
     <div
-      class="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] dark:bg-grid-slate-400/[0.05] dark:bg-bottom bg-squares"
-      style="mask-image:linear-gradient(to bottom, transparent, black);-webkit-mask-image:linear-gradient(to bottom, transparent, black)"
+      class="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] dark:bg-grid-slate-400/[0.05] dark:bg-bottom bg-squares-dark dark-webkit-mask"
     ></div>
     <div>
       <div class="container mx-auto slate-gray-800 dark:text-white">
@@ -30,7 +29,7 @@
                 href="https://github.com/fayazara/fluenticons"
                 target="_blank"
                 rel="noopener"
-                class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md  bg-gradient-to-b from-white dark:from-slate-700 to-gray-200 dark:to-slate-900 transition ease-in-out duration-150 ring-1 ring-gray-900/10 dark:ring-gray-200/20 relative border-transparent text-gray-700 dark:text-slate-100"
+                class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md bg-gradient-to-b from-white dark:from-slate-700 to-gray-200 dark:to-slate-900 transition ease-in-out duration-150 ring-1 ring-gray-900/10 dark:ring-gray-200/20 relative border-transparent text-gray-700 dark:text-slate-100"
               >
                 <svg width="24" height="24" fill="currentColor" class="mr-3">
                   <path
@@ -57,5 +56,8 @@ export default {};
 <style scoped>
 .index_beams {
   background-size: 150rem;
+}
+.dark-webkit-mask {
+  mask-image: linear-gradient(to bottom, transparent, black);
 }
 </style>

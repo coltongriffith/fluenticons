@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 html,
 body {
   @apply antialiased text-gray-700 dark:text-white dark:bg-gray-900;
@@ -195,8 +191,10 @@ html.dark {
 .bg-squares {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 }
-@media (prefers-color-scheme: dark) {
-  .bg-squares {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
-  }
+.bg-squares-dark {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+.navbar {
+  @apply h-[75px] border-t border-b sticky top-0 z-50 bg-white bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-50 dark:border-gray-700 backdrop-filter backdrop-blur flex items-center justify-between px-8 flex-wrap;
 }
