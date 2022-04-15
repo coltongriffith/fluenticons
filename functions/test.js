@@ -1,5 +1,4 @@
-let Parser = require('rss-parser');
-let parser = new Parser();
+import parser from 'rss-parser';
 export async function onRequest(context) {
     let feed = await parser.parseURL('https://www.reddit.com/.rss');
     return new Response(JSON.stringify(feed), {
