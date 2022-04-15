@@ -1,6 +1,5 @@
 module.exports = {
   darkMode: "class",
-  mode: "jit",
   theme: {
     fontFamily: {
       sans: [
@@ -26,16 +25,14 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms")({
       strategy: "class"
-    })
+    }),
+    require("@tailwindcss/typography")
   ],
-  purge: {
-    enabled: process.env.NODE_ENV === "production",
-    content: [
-      "./components/**/*.{vue,js}",
-      "./layouts/**/*.vue",
-      "./pages/**/*.vue",
-      "./plugins/**/*.{js,ts}",
-      "./nuxt.config.{js,ts}"
-    ]
-  }
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+  ],
 };

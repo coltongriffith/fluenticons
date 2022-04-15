@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-8">
-    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6">
+    <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
       <lazy-icon-card
         v-for="(icon, i) in filteredIcons.slice(0, elementsToShow)"
         :key="i"
@@ -22,7 +22,7 @@
         Show More Icons
       </button>
 
-      <div class="flex-center mt-8">
+      <div class="flex-center mt-8 flex-col">
         <a
           v-if="$colorMode.value === 'dark'"
           href="https://splitbee.io/?ref=badge"
@@ -39,6 +39,9 @@
             alt="Analytics by Splitbee.io"
           />
         </a>
+        <small class="mt-8"
+          ><nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link></small
+        >
       </div>
     </div>
   </div>

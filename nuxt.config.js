@@ -7,7 +7,8 @@ import {
   toast,
   buildModules,
   modules,
-  colorMode
+  colorMode,
+  build
 } from "./constants";
 
 export default {
@@ -23,5 +24,5 @@ export default {
   toast,
   colorMode,
   content: {},
-  build: {}
+  build
 };

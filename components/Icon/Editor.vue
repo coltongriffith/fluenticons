@@ -1,19 +1,11 @@
 <template>
   <aside class="editor-sidebar">
-    <div class="h-16 border-b dark:border-gray-700 flex-between px-4">
+    <div class="h-[75px] border-b dark:border-gray-700 flex-between px-4">
       <div class="text-sm font-medium">
         {{ icon ? icon.name.replace(/([A-Z])/g, " $1") : "Preview" }}
       </div>
       <button
-        class="
-          focus:outline-none
-          p-2
-          rounded-full
-          focus:bg-gray-100
-          hover:bg-gray-100
-          dark:focus:bg-gray-700
-          dark:hover:bg-gray-700
-        "
+        class="focus:outline-none p-2 rounded-full focus:bg-gray-100 hover:bg-gray-100 dark:focus:bg-gray-700 dark:hover:bg-gray-700"
         @click="favoriteToggle"
         aria-label="Favorite"
       >
@@ -45,26 +37,12 @@
       </div>
     </div>
     <ul
-      class="
-        divide-y
-        border-t border-b border-gray-300
-        dark:border-gray-700
-        divide-gray-300
-        dark:divide-gray-700
-        text-xs
-        mt-4
-      "
+      class="divide-y border-t border-b border-gray-300 dark:border-gray-700 divide-gray-300 dark:divide-gray-700 text-sm mt-4"
     >
       <li>
         <div class="grid grid-cols-2">
           <select
-            class="
-              form-select
-              border-0
-              focus:outline-none
-              text-xs
-              bg-transparent
-            "
+            class="form-select border-0 focus:outline-none text-xs bg-transparent"
             v-model="selectedCopyType"
           >
             <option v-for="(type, i) in copyTypes" :value="type.value" :key="i">
@@ -72,15 +50,7 @@
             </option>
           </select>
           <button
-            class="
-              flex-between
-              px-4
-              py-2
-              bg-gray-100
-              dark:bg-[#070d19]
-              border-l border-gray-300
-              dark:border-gray-700
-            "
+            class="flex-between px-4 py-2 bg-gray-100 dark:bg-[#070d19] border-l border-gray-300 dark:border-gray-700"
             @click="copy()"
           >
             <p>Copy</p>
@@ -91,13 +61,7 @@
       <li>
         <div class="grid grid-cols-2">
           <select
-            class="
-              form-select
-              border-0
-              focus:outline-none
-              text-xs
-              bg-transparent
-            "
+            class="form-select border-0 focus:outline-none text-xs bg-transparent"
             v-model="selectedExportType"
           >
             <option
@@ -109,15 +73,7 @@
             </option>
           </select>
           <button
-            class="
-              flex-between
-              px-4
-              py-2
-              bg-gray-100
-              dark:bg-[#070d19]
-              border-l border-gray-300
-              dark:border-gray-700
-            "
+            class="flex-between px-4 py-2 bg-gray-100 dark:bg-[#070d19] border-l border-gray-300 dark:border-gray-700"
             @click="exportIcon"
           >
             <p>Download</p>
@@ -128,47 +84,39 @@
       <li>
         <button
           class="flex-between px-4 py-2 w-full"
-          @click="showAdvancedEditor = !showAdvancedEditor"
+          @click="showFavoritesDownloadManager = !showFavoritesDownloadManager"
         >
           <div class="flex-space-x-2">
-            <FluentIconOutlinedSettings class="text-gray-500 h-4 w-4" />
-            <p>Advanced Editor</p>
+            <FluentIconOutlinedFolder class="text-gray-500 h-4 w-4" />
+            <p>Download favorites as zip</p>
           </div>
           <FluentIconOutlinedChevronDown
             class="text-gray-500 h-4 w-4 transform transition-transform"
-            :class="{ '-rotate-90': showAdvancedEditor }"
+            :class="{ '-rotate-90': showFavoritesDownloadManager }"
           />
         </button>
         <base-accordian>
-          <base-advanced-editor v-if="showAdvancedEditor" />
+          <base-favorites-download-manager
+            v-if="showFavoritesDownloadManager"
+          />
         </base-accordian>
       </li>
     </ul>
-    <div class="p-4 text-center ">
-      <a
-        href="https://www.buymeacoffee.com/fayazahmed"
-        target="_blank"
-        rel="noopener"
-      >
-        <IconThumbsUp class="h-12 w-12 mx-auto" />
-        <p class="font-semibold">Donate &amp; Support</p>
-        <p class="text-gray-500 text-xs mt-1">Help keep this project alive.</p>
-      </a>
-    </div>
+    <buy-me-coffee />
   </aside>
 </template>
 
 <script>
-import { getIconSnippet, svgToImage } from "../../utils/icon";
+import { getIconSnippet, svgToImage } from "../../utils/iconManager";
 import FileSaver from "file-saver";
 export default {
   props: {
     icon: {
       type: Object,
-      default: function() {
+      default: function () {
         return {};
-      }
-    }
+      },
+    },
   },
   data() {
     return {
@@ -177,46 +125,46 @@ export default {
       copyTypes: [
         {
           name: "SVG",
-          value: "svg"
+          value: "svg",
         },
         {
           name: "HTML Image",
-          value: "html"
+          value: "html",
         },
         {
           name: "Vue Component",
-          value: "vue"
+          value: "vue",
         },
         {
           name: "React Component",
-          value: "react"
-        }
+          value: "react",
+        },
       ],
       exportTypes: [
         {
           name: "PNG",
-          value: "png"
+          value: "png",
         },
         {
           name: "SVG",
-          value: "svg"
+          value: "svg",
         },
         {
           name: "WEBP",
-          value: "webp"
+          value: "webp",
         },
         {
           name: "Vue Component",
-          value: "vue"
+          value: "vue",
         },
         {
           name: "React Component",
-          value: "react"
-        }
+          value: "react",
+        },
       ],
       selectedCopyType: "svg",
       selectedExportType: "png",
-      showAdvancedEditor: false
+      showFavoritesDownloadManager: false,
     };
   },
   watch: {
@@ -227,8 +175,8 @@ export default {
           if (val === "dark") this.color = "#fff";
           else this.color = "#212121";
         }
-      }
-    }
+      },
+    },
   },
   methods: {
     favoriteToggle() {
@@ -254,27 +202,7 @@ export default {
       }
     },
     showToast(message) {
-      this.$toast.show(`
-            <div class="flex items-center space-x-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="h-5 w-5 flex-shrink-0 text-green-500"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 16 16"
-              >
-                <g fill="none">
-                  <path
-                    d="M8 2a6 6 0 1 1 0 12A6 6 0 0 1 8 2zm2.12 4.164L7.25 9.042L5.854 7.646a.5.5 0 1 0-.708.708l1.75 1.75a.5.5 0 0 0 .708 0l3.224-3.234a.5.5 0 0 0-.708-.706z"
-                    fill="currentColor"
-                  ></path>
-                </g>
-              </svg>
-              <p class="flex-1">${message}</p>
-            </div>
-        `);
+      this.$toast.show(message);
     },
     async convertToImage(type) {
       let imageDefaults = {
@@ -283,7 +211,7 @@ export default {
         width: 512,
         height: 512,
         quality: 1,
-        outputFormat: "base64"
+        outputFormat: "base64",
       };
       let image = await svgToImage(imageDefaults);
       return image;
@@ -332,7 +260,7 @@ export default {
         this.color
       );
       let blob = new Blob([snippet], {
-        type: "text/plain;charset=utf-8"
+        type: "text/plain;charset=utf-8",
       });
       FileSaver.saveAs(
         blob,
@@ -340,7 +268,10 @@ export default {
           this.selectedExportType === "vue" ? "vue" : "js"
         }`
       );
-    }
+    },
+    downloadFavorites() {
+      console.log("downloading favorites");
+    },
   },
   computed: {
     isAFavorite() {
@@ -348,7 +279,13 @@ export default {
     },
     colorPreference() {
       return this.$colorMode.preference;
-    }
-  }
+    },
+  },
+  mounted() {
+    const systemDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (systemDarkMode) this.color = "#ffffff";
+  },
 };
 </script>

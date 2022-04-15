@@ -1,64 +1,26 @@
 <template>
   <div
-    class="
-      h-16
-      border-t border-b
-      sticky
-      top-0
-      z-50
-      bg-white bg-opacity-50
-      dark:bg-gray-900 dark:bg-opacity-50
-      dark:border-gray-700
-      backdrop-filter backdrop-blur
-      flex-between
-      px-8
-    "
+    class="h-[75px] border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-8 flex-wrap navbar-frosted"
   >
     <p>
-      <span class="text-lg font-medium">{{ iconType.style }} Icons</span>
-      <span class="text-gray-600">({{ iconType.subtitle }})</span>
+      <span class="text-lg font-medium">{{ page.title }} Icons</span>
+      <span class="text-gray-600" v-if="page.subtitle"
+        >({{ page.subtitle }})</span
+      >
     </p>
     <div class="flex-space-x-4">
       <div
-        class="
-          relative
-          flex
-          items-center
-          overflow-hidden
-          rounded-full
-          bg-gray-50
-          dark:bg-gray-700
-          focus-within:bg-gray-100
-          dark:focus-within:bg-gray-800
-        "
+        class="relative flex items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800"
       >
         <input
           type="text"
-          class="
-            focus:outline-none
-            bg-transparent
-            z-10
-            h-full
-            rounded-l-full
-            px-6
-            text-sm
-          "
+          class="focus:outline-none bg-transparent z-10 h-full rounded-l-full px-6 text-sm"
           placeholder="Search (Press / to focus)"
           ref="search"
           @input="search"
         />
         <button
-          class="
-            h-10
-            w-10
-            flex-center
-            bg-gray-100
-            dark:bg-gray-800
-            hover:bg-gray-200
-            z-20
-            focus:outline-none
-            focus:bg-gray-200
-          "
+          class="h-10 w-10 flex-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 z-20 focus:outline-none focus:bg-gray-200"
           @click="$refs.search.focus()"
           aria-label="Search"
         >
@@ -68,26 +30,24 @@
       <nuxt-link
         :to="altIcons.path"
         class="navbar-btn"
-        v-tooltip="`Switch to ${altIcons.name} Icons`"
         :aria-label="`${altIcons.name} Icons`"
       >
-        <FluentIconFilledPositionBackward class="text-gray-500 h-5 w-5" />
+        <FluentIconFilledPositionBackward class="h-5 w-5" />
+        <p class="text-sm">{{ altIcons.name }} Icons</p>
       </nuxt-link>
-      <button
-        @click="toggleDarkMode"
-        class="navbar-btn"
-        v-tooltip="'Dark Mode'"
-        aria-label="Dark Mode"
-      >
-        <FluentIconOutlinedWeatherMoon class="text-gray-500 h-5 w-5" />
+      <button @click="toggleDarkMode" class="navbar-btn" aria-label="Dark Mode">
+        <FluentIconOutlinedWeatherSunny
+          v-if="$colorMode.value === 'dark'"
+          class="h-5 w-5"
+        />
+        <FluentIconOutlinedWeatherMoon v-else class="h-5 w-5" />
+        <p class="text-sm">
+          {{ $colorMode.value === "dark" ? "Light" : "Dark" }} Mode
+        </p>
       </button>
-      <nuxt-link
-        to="/favorites"
-        class="navbar-btn"
-        v-tooltip="'Favorites'"
-        aria-label="Favorites"
-      >
-        <FluentIconOutlinedHeart class="text-gray-500 h-5 w-5" />
+      <nuxt-link to="/favorites" class="navbar-btn" aria-label="Favorites">
+        <FluentIconOutlinedHeart class="h-5 w-5" />
+        <p class="text-sm">Favorites</p>
       </nuxt-link>
     </div>
     <base-search-focus @keyup="focusSearch" />
@@ -119,10 +79,15 @@ export default {
         };
       }
     },
-    iconType() {
-      if (this.$route.path === "/outlined")
-        return { style: "Outlined", subtitle: "2 px stroked" };
-      else return { style: "Filled", subtitle: "Solid filled style" };
+    page() {
+      switch (this.$route.path) {
+        case "/outlined":
+          return { title: "Outlined", subtitle: "2 px stroked" };
+        case "/favorites":
+          return { title: "Favorites" };
+        default:
+          return { title: "Filled", subtitle: "2 px filled" };
+      }
     },
   },
   methods: {

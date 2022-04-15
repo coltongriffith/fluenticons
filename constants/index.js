@@ -9,7 +9,7 @@ export const head = {
   meta: [
     { charset: "utf-8" },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
-    { hid: "description", name: "description", content: description }
+    { hid: "description", name: "description", content: description },
   ],
   link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   script: [
@@ -17,9 +17,9 @@ export const head = {
       src: "https://cdn.splitbee.io/sb.js",
       async: true,
       defer: true,
-      hid: "splitbee"
-    }
-  ]
+      hid: "splitbee",
+    },
+  ],
 };
 
 export const pwa = {
@@ -30,17 +30,17 @@ export const pwa = {
     ogImage: "/social.png",
     twitterCard: "summary_large_image",
     twitterSite: "@fayazara",
-    twitterCreator: "@fayazara"
+    twitterCreator: "@fayazara",
   },
   manifest: {
     lang: "en",
     name: appTitle,
-    short_name: appTitleSmall
-  }
+    short_name: appTitleSmall,
+  },
 };
 
 export const axios = {
-  baseURL: "/"
+  baseURL: "/",
 };
 
 export const css = ["~/assets/css/styles.css"];
@@ -49,22 +49,22 @@ export const plugins = ["~/plugins/tooltip"];
 
 export const googleFonts = {
   families: {
-    Inter: [400, 500, 600, 700]
+    Inter: [400, 500, 600, 700],
   },
   display: "swap",
-  download: true
+  download: true,
 };
 
 export const colorMode = {
-  classSuffix: ""
+  classSuffix: "",
 };
 
 export const toast = {
-  position: "bottom-right",
-  duration: 7000
+  position: "top-right",
+  duration: 7000,
 };
 
-export const buildModules = ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"];
+export const buildModules = ["@nuxtjs/color-mode"];
 
 export const modules = [
   "@nuxtjs/axios",
@@ -75,10 +75,7 @@ export const modules = [
   "@nuxtjs/toast",
   "@nuxtjs/google-fonts",
   "@nuxtjs/robots",
-  [
-    "@nuxtjs/google-adsense",
-    {
-      id: "ca-pub-4503487934271846"
-    }
-  ]
+  "@nuxtjs/tailwindcss",
 ];
+
+export const build = {};
