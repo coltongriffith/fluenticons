@@ -1,5 +1,5 @@
 <template>
-  <header class="py-[66px] px-8 relative">
+  <header class="py-[71.5px] px-8 relative">
     <div
       class="absolute inset-0 bg-bottom bg-no-repeat bg-slate-50 dark:bg-[#0B1120] index_beams bg-[url('/gradient-bg-white.jpg')] dark:bg-[url('/gradient-bg-dark.jpg')]"
     ></div>

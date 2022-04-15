@@ -1,6 +1,6 @@
 <template>
   <aside class="editor-sidebar">
-    <div class="h-16 border-b dark:border-gray-700 flex-between px-4">
+    <div class="h-[75px] border-b dark:border-gray-700 flex-between px-4">
       <div class="text-sm font-medium">
         {{ icon ? icon.name.replace(/([A-Z])/g, " $1") : "Preview" }}
       </div>

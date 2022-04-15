@@ -1,5 +1,7 @@
 <template>
-  <div class="h-[75px] border-t border-b sticky top-0 z-50 bg-white bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-50 dark:border-gray-700 backdrop-filter backdrop-blur flex-between px-8 flex-wrap">
+  <div
+    class="h-[75px] border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-8 flex-wrap navbar-frosted"
+  >
     <p>
       <span class="text-lg font-medium">{{ page.title }} Icons</span>
       <span class="text-gray-600" v-if="page.subtitle"

@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-8">
-    <div class="grid grid-cols-4 lg:grid-cols-6 gap-6">
+    <div class="grid grid-cols-4 lg:grid-cols-6 gap-6" v-if="icons.length">
       <lazy-icon-card
         v-for="(icon, i) in icons"
         :key="i"
@@ -9,6 +9,7 @@
         :selected="icon.name === selectedIcon.name ? true : false"
       />
     </div>
+    <base-favorites-empty v-else />
   </div>
 </template>
 
