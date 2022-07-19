@@ -18,7 +18,7 @@
                 target="_blank"
                 rel="noopener"
                 class="underline"
-                >Fayaz Ahmed</a
+                >Colton Griffith</a
               >
             </p>
             <p class="text-xs mb-8">
