@@ -22,23 +22,7 @@
         Show More Icons
       </button>
 
-      <div class="flex-center mt-8 flex-col">
-        <a
-          v-if="$colorMode.value === 'dark'"
-          href="https://splitbee.io/?ref=badge"
-          target="_blank"
-        >
-          <img
-            src="https://splitbee-cdn.fra1.cdn.digitaloceanspaces.com/static/badge/splitbee-badge-dark.svg"
-            alt="Analytics by Splitbee.io"
-          />
-        </a>
-        <a v-else href="https://splitbee.io/?ref=badge" target="_blank">
-          <img
-            src="https://splitbee-cdn.fra1.cdn.digitaloceanspaces.com/static/badge/splitbee-badge.svg"
-            alt="Analytics by Splitbee.io"
-          />
-        </a>
+      <div class="flex-center flex-col">
         <small class="mt-8"
           ><nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link></small
         >
@@ -52,27 +36,27 @@ import icons from "~/assets/icons/filled.json";
 export default {
   props: {
     selectedIcon: {
-      type: Object
+      type: Object,
     },
     searchQuery: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   data() {
     return {
       icons,
-      elementsToShow: 48
+      elementsToShow: 48,
     };
   },
   computed: {
     filteredIcons() {
-      return this.icons.filter(icon => {
+      return this.icons.filter((icon) => {
         return icon.name
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase().replace(" ", ""));
       });
-    }
+    },
   },
   methods: {
     setIcon(payload) {
@@ -80,7 +64,7 @@ export default {
     },
     showMore() {
       this.elementsToShow += 48;
-    }
-  }
+    },
+  },
 };
 </script>

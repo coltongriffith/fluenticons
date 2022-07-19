@@ -12,14 +12,6 @@ export const head = {
     { hid: "description", name: "description", content: description },
   ],
   link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-  script: [
-    {
-      src: "https://cdn.splitbee.io/sb.js",
-      async: true,
-      defer: true,
-      hid: "splitbee",
-    },
-  ],
 };
 
 export const pwa = {
@@ -45,7 +37,7 @@ export const axios = {
 
 export const css = ["~/assets/css/styles.css"];
 
-export const plugins = ["~/plugins/tooltip"];
+export const plugins = ["~/plugins/tooltip", "~/plugins/gtag"];
 
 export const googleFonts = {
   families: {
