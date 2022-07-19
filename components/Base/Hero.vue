@@ -14,7 +14,7 @@
             <p class="text-lg mb-2">
               Open source icons by Microsoft. Viewer by
               <a
-                href="https://twitter.com/fayazara"
+                href="https://twitter.com/coltongriffith"
                 target="_blank"
                 rel="noopener"
                 class="underline"
@@ -26,7 +26,7 @@
             </p>
             <div class="flex-space-x-4">
               <a
-                href="https://github.com/fayazara/fluenticons"
+                href="https://github.com/coltongriffith/fluenticons"
                 target="_blank"
                 rel="noopener"
                 class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md bg-gradient-to-b from-white dark:from-slate-700 to-gray-200 dark:to-slate-900 transition ease-in-out duration-150 ring-1 ring-gray-900/10 dark:ring-gray-200/20 relative border-transparent text-gray-700 dark:text-slate-100"
