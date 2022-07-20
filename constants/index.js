@@ -12,6 +12,14 @@ export const head = {
     { hid: "description", name: "description", content: description },
   ],
   link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+  script: [
+    {
+      src: "https://cdn.splitbee.io/sb.js",
+      async: true,
+      defer: true,
+      hid: "splitbee",
+    },
+  ],
 };
 
 export const pwa = {
@@ -68,6 +76,12 @@ export const modules = [
   "@nuxtjs/google-fonts",
   "@nuxtjs/robots",
   "@nuxtjs/tailwindcss",
+  [
+    "@nuxtjs/google-adsense",
+    {
+      id: "ca-pub-9128081695641229",
+    },
+  ],
 ];
 
 export const build = {};
