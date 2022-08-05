@@ -140,7 +140,7 @@ html.dark {
 }
 
 .editor-sidebar {
-  @apply h-screen sticky top-0 border-l w-72 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto flex-shrink-0;
+  @apply h-screen sticky top-0 border-l w-80 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto flex-shrink-0;
 }
 .toasted.toasted-primary {
   @apply rounded-lg font-medium text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 !important;
@@ -197,4 +197,34 @@ html.dark {
 
 .navbar-frosted {
   backdrop-filter: blur(10px);
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+}
+
+.modal-overlay {
+  background-color: #00000033;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  position: absolute;
+}
+
+.modal {
+  text-align: center;
+  background-color: white;
+  height: fit-content;
+  width: 500px;
+  margin-top: 80px;
+  padding: 36px 0;
+  border-radius: 20px;
+  z-index: 9;
 }

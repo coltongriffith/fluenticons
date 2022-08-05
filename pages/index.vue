@@ -9,14 +9,30 @@
         :selectedIcon="selectedIcon"
       />
     </section>
-    <IconEditor :icon="selectedIcon" />
+    <IconEditor :icon="selectedIcon" @login="showModal = 'login'" />
+    <modal v-show="showModal == 'login'" @close="showModal = ''">
+      <Login @signup="showModal = 'register'" @close="showModal = ''" />
+    </modal>
+    <modal v-show="showModal == 'register'" @close="showModal = ''">
+      <Register @login="showModal = 'login'" />
+    </modal>
   </main>
 </template>
 
 <script>
+import Modal from "~/components/Modal"
+import Login from "~/components/Auth/Login"
+import Register from "~/components/Auth/Register"
+
 export default {
+  components: {
+    Modal,
+    Login,
+    Register
+  },
   data() {
     return {
+      showModal: '',
       searchQuery: "",
       elementsToShow: 48,
       selectedIcon: {

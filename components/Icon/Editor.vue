@@ -22,9 +22,21 @@
           :is="icon.componentName"
           class="h-32 w-32"
           :style="{ color }"
+          :type="type"
+          :gradient="gradient"
           ref="icon"
         />
-        <div class="absolute bottom-2 right-2">
+        <div class="absolute bottom-2 left-2">
+          <img
+            src="/gradient.png"
+            width="20"
+            height="20"
+            alt="gradient"
+            class="cursor-pointer"
+            @click="handleGradient"
+          />
+        </div>
+        <div class="absolute bottom-2 right-2" @click="type = 'single'">
           <v-swatches
             v-model="color"
             show-fallback
@@ -34,6 +46,19 @@
             @input="colorHasChanged = true"
           ></v-swatches>
         </div>
+        <client-only>
+          <div class="absolute left-2/4 translate-x-[-50%] top-full z-[99]" v-on-clickout="onClickOut">
+            <color-picker
+              v-if="openPicker"
+              :gradient="gradient"
+              :isGradient="true"
+              :onStartChange="color => onChange(color, 'start')"
+              :onChange="color => onChange(color, 'change')"
+              :onEndChange="color => onChange(color, 'end')"
+              class="shadow-lg py-2"
+            />
+          </div>
+        </client-only>
       </div>
     </div>
     <ul
@@ -108,7 +133,9 @@
 
 <script>
 import { getIconSnippet, svgToImage } from "../../utils/iconManager";
+import { mixin as clickout } from 'vue-clickout'
 import FileSaver from "file-saver";
+import "vue-color-gradient-picker/dist/index.css"
 export default {
   props: {
     icon: {
@@ -118,10 +145,16 @@ export default {
       },
     },
   },
+  mixins: [clickout],
+  components: {
+    'color-picker': () => import('vue-color-gradient-picker').then(({ ColorPicker }) => ColorPicker)
+  },
   data() {
     return {
       color: "#212121",
       colorHasChanged: false,
+      openPicker: false,
+      type: 'single',
       copyTypes: [
         {
           name: "SVG",
@@ -165,6 +198,26 @@ export default {
       selectedCopyType: "svg",
       selectedExportType: "png",
       showFavoritesDownloadManager: false,
+      gradient: {
+        type: 'linear',
+        degree: 0,
+        points: [
+          {
+            left: 0,
+            red: 0,
+            green: 0,
+            blue: 0,
+            alpha: 1
+          },
+          {
+            left: 100,
+            red: 255,
+            green: 0,
+            blue: 0,
+            alpha: 1
+          }
+        ]      
+      }
     };
   },
   watch: {
@@ -179,6 +232,22 @@ export default {
     },
   },
   methods: {
+    handleGradient() {
+      if (!this.openPicker) {
+        setTimeout(() => {
+          this.openPicker = true
+        }, 0)
+      }
+    },
+    onClickOut() {
+      if (this.openPicker) this.openPicker = false
+    },
+    onChange(attrs) {
+      this.type = attrs.type
+      this.gradient = {
+        ...attrs
+      }
+    },
     favoriteToggle() {
       if (this.isAFavorite) {
         this.$store.commit("unFavoriteIcon", this.icon);
@@ -217,6 +286,11 @@ export default {
       return image;
     },
     async exportIcon() {
+      if (!this.$store.state.auth.loggedIn) {
+        this.$emit("login");
+        return;
+      }
+      
       if (!this.selectedExportType) return;
       switch (this.selectedExportType) {
         case "svg":
@@ -279,7 +353,7 @@ export default {
     },
     colorPreference() {
       return this.$colorMode.preference;
-    },
+    }
   },
   mounted() {
     const systemDarkMode = window.matchMedia(

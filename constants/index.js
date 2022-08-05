@@ -40,7 +40,7 @@ export const pwa = {
 };
 
 export const axios = {
-  baseURL: "/",
+  baseURL: "http://localhost:3001",
 };
 
 export const css = ["~/assets/css/styles.css"];
@@ -76,6 +76,7 @@ export const modules = [
   "@nuxtjs/google-fonts",
   "@nuxtjs/robots",
   "@nuxtjs/tailwindcss",
+  "@nuxtjs/auth-next",
   [
     "@nuxtjs/google-adsense",
     {

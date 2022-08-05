@@ -18,6 +18,7 @@
           placeholder="Search (Press / to focus)"
           ref="search"
           @input="search"
+          autocomplete="new-password"
         />
         <button
           class="h-10 w-10 flex-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 z-20 focus:outline-none focus:bg-gray-200"
