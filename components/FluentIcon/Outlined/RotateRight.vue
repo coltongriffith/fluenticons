@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.985 5c-.084 0-.167.002-.25.005h-.017a6.79 6.79 0 0 0-3.132.883C4.024 6.79 3 8.295 3 10c0 1.708 1.028 3.216 2.595 4.118.968.556 2.14.882 3.405.882h.5a.75.75 0 0 0 0-1.5H9a5.401 5.401 0 0 1-2.588-.636C5.256 12.23 4.5 11.184 4.5 10s.756-2.23 1.912-2.864a5.357 5.357 0 0 1 2.363-.632L9 6.5h6.939l-1.72 1.72a.75.75 0 0 0 .977 1.133l.084-.073h.001l3-3a.75.75 0 0 0 0-1.06l-3-3-.085-.073a.75.75 0 0 0-.977 1.132v.001L15.939 5H8.985ZM3.61 20.067a.5.5 0 0 0 .25.933H20a1 1 0 0 0 1-1v-9.133a.5.5 0 0 0-.75-.433L3.61 20.067Zm3.974-.567L19.5 12.602V19.5H7.585Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M8.985 5c-.084 0-.167.002-.25.005h-.017a6.79 6.79 0 0 0-3.132.883C4.024 6.79 3 8.295 3 10c0 1.708 1.028 3.216 2.595 4.118.968.556 2.14.882 3.405.882h.5a.75.75 0 0 0 0-1.5H9a5.401 5.401 0 0 1-2.588-.636C5.256 12.23 4.5 11.184 4.5 10s.756-2.23 1.912-2.864a5.357 5.357 0 0 1 2.363-.632L9 6.5h6.939l-1.72 1.72a.75.75 0 0 0 .977 1.133l.084-.073h.001l3-3a.75.75 0 0 0 0-1.06l-3-3-.085-.073a.75.75 0 0 0-.977 1.132v.001L15.939 5H8.985ZM3.61 20.067a.5.5 0 0 0 .25.933H20a1 1 0 0 0 1-1v-9.133a.5.5 0 0 0-.75-.433L3.61 20.067Zm3.974-.567L19.5 12.602V19.5H7.585Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedRotateRight',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedRotateRight',
+    mixins: [icon]
+};
+</script>

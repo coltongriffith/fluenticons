@@ -1,9 +1,23 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 3 .184.005a3.25 3.25 0 0 1 3.062 3.06L21 6.25v6.36c-.687-.13-1.345-.501-1.995-1.18L19 11.425V8H5v9.75c0 .647.491 1.18 1.122 1.244L6.25 19h7.126a5.865 5.865 0 0 0 1.159 2H6.25a3.25 3.25 0 0 1-3.245-3.066L3 17.75V6.25a3.25 3.25 0 0 1 3.065-3.245L6.25 3h11.5Z" fill="currentColor"/><path d="M19 12.764c.626.474 1.291.759 2 .86.197.029.397.043.6.043.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-.726-.252-1.35-.579-1.874-.979a4.834 4.834 0 0 1-1.555-2c-.267-.636-.414-1.353-.44-2.15L14 16.584v-2.5c0-.23.18-.417.4-.417 1.223 0 2.324-.51 3.318-1.545a.389.389 0 0 1 .566 0c.233.243.471.457.716.642Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="m17.75 3 .184.005a3.25 3.25 0 0 1 3.062 3.06L21 6.25v6.36c-.687-.13-1.345-.501-1.995-1.18L19 11.425V8H5v9.75c0 .647.491 1.18 1.122 1.244L6.25 19h7.126a5.865 5.865 0 0 0 1.159 2H6.25a3.25 3.25 0 0 1-3.245-3.066L3 17.75V6.25a3.25 3.25 0 0 1 3.065-3.245L6.25 3h11.5Z" :fill="fill" :fill-opacity="opacity" />
 
-  <script>
-    export default {
-      name: 'FluentIconFilledWindowShield',
-  };
-  </script>
+<path d="M19 12.764c.626.474 1.291.759 2 .86.197.029.397.043.6.043.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-.726-.252-1.35-.579-1.874-.979a4.834 4.834 0 0 1-1.555-2c-.267-.636-.414-1.353-.44-2.15L14 16.584v-2.5c0-.23.18-.417.4-.417 1.223 0 2.324-.51 3.318-1.545a.389.389 0 0 1 .566 0c.233.243.471.457.716.642Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
+
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledWindowShield',
+    mixins: [icon]
+};
+</script>

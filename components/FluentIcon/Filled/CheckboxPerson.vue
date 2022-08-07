@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 2a3 3 0 0 1 3 3v7.154a3 3 0 0 0-3.236 4.83H16.5a2.5 2.5 0 0 0-2.5 2.5c0 .175.01.348.027.516H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h12Zm-1.53 4.97L9 13.44l-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l7-7a.75.75 0 0 0-1.06-1.06ZM19 12.984a2 2 0 1 1 .002 3.998A2 2 0 0 1 19 12.984Zm-2.5 5h5a1.5 1.5 0 0 1 1.5 1.5c0 1.116-.459 2.01-1.212 2.614-.741.595-1.735.886-2.788.886-1.053 0-2.047-.29-2.788-.886A3.187 3.187 0 0 1 15.034 20a3.832 3.832 0 0 1-.034-.516 1.5 1.5 0 0 1 1.5-1.5Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M17 2a3 3 0 0 1 3 3v7.154a3 3 0 0 0-3.236 4.83H16.5a2.5 2.5 0 0 0-2.5 2.5c0 .175.01.348.027.516H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h12Zm-1.53 4.97L9 13.44l-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l7-7a.75.75 0 0 0-1.06-1.06ZM19 12.984a2 2 0 1 1 .002 3.998A2 2 0 0 1 19 12.984Zm-2.5 5h5a1.5 1.5 0 0 1 1.5 1.5c0 1.116-.459 2.01-1.212 2.614-.741.595-1.735.886-2.788.886-1.053 0-2.047-.29-2.788-.886A3.187 3.187 0 0 1 15.034 20a3.832 3.832 0 0 1-.034-.516 1.5 1.5 0 0 1 1.5-1.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledCheckboxPerson',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledCheckboxPerson',
+    mixins: [icon]
+};
+</script>

@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.28 2.22a.75.75 0 0 0-1.06 1.06l1.25 1.25A3.247 3.247 0 0 0 2 7.25v9.505a3.25 3.25 0 0 0 3.25 3.25h13.5c.063 0 .126-.002.188-.006l1.781 1.781a.75.75 0 0 0 1.061-1.06L3.28 2.22Zm14.164 16.284H5.25a1.75 1.75 0 0 1-1.75-1.75V7.25c0-.727.443-1.35 1.074-1.615l2.828 2.828C6.292 9.043 5.5 10.3 5.5 12c0 3.143 2.715 4.775 5.12 3.406a.75.75 0 0 0-.74-1.303C8.483 14.896 7 14.005 7 12c0-1.37.69-2.22 1.573-2.366l8.87 8.87Zm2.986-1.256c.045-.157.07-.322.07-.494V7.25a1.75 1.75 0 0 0-1.75-1.75H8.682L7.182 4H18.75A3.25 3.25 0 0 1 22 7.25v9.505c0 .593-.159 1.148-.436 1.627l-1.134-1.134Zm-5.877-5.877-1.197-1.197c.813-1.888 2.882-2.65 4.766-1.575a.75.75 0 0 1-.744 1.302c-1.241-.708-2.549-.085-2.825 1.47Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M3.28 2.22a.75.75 0 0 0-1.06 1.06l1.25 1.25A3.247 3.247 0 0 0 2 7.25v9.505a3.25 3.25 0 0 0 3.25 3.25h13.5c.063 0 .126-.002.188-.006l1.781 1.781a.75.75 0 0 0 1.061-1.06L3.28 2.22Zm14.164 16.284H5.25a1.75 1.75 0 0 1-1.75-1.75V7.25c0-.727.443-1.35 1.074-1.615l2.828 2.828C6.292 9.043 5.5 10.3 5.5 12c0 3.143 2.715 4.775 5.12 3.406a.75.75 0 0 0-.74-1.303C8.483 14.896 7 14.005 7 12c0-1.37.69-2.22 1.573-2.366l8.87 8.87Zm2.986-1.256c.045-.157.07-.322.07-.494V7.25a1.75 1.75 0 0 0-1.75-1.75H8.682L7.182 4H18.75A3.25 3.25 0 0 1 22 7.25v9.505c0 .593-.159 1.148-.436 1.627l-1.134-1.134Zm-5.877-5.877-1.197-1.197c.813-1.888 2.882-2.65 4.766-1.575a.75.75 0 0 1-.744 1.302c-1.241-.708-2.549-.085-2.825 1.47Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedClosedCaptionOff',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedClosedCaptionOff',
+    mixins: [icon]
+};
+</script>

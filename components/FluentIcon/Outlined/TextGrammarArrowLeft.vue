@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 12a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm-.78 2.589-.07.057-2.516 2.517-.04.05-.044.077-.023.059-.02.085-.002.11.015.086.03.08.033.061.051.066 2.516 2.517a.5.5 0 0 0 .765-.638l-.058-.07L15.711 18H20.5a.5.5 0 0 0 .492-.41L21 17.5a.5.5 0 0 0-.41-.492L20.5 17h-4.789l1.646-1.646a.5.5 0 0 0 .058-.638l-.058-.07a.5.5 0 0 0-.638-.057ZM11.019 17H2.75l-.102.007A.75.75 0 0 0 2.75 18.5h8.326a6.554 6.554 0 0 1-.057-1.5ZM11.732 14.5H2.75a.75.75 0 0 1-.102-1.493L2.75 13h10.06c-.427.444-.79.949-1.078 1.5ZM21.25 9H2.75l-.102.007A.75.75 0 0 0 2.75 10.5h18.5l.102-.007A.75.75 0 0 0 21.25 9ZM21.25 5H2.75l-.102.007A.75.75 0 0 0 2.75 6.5h18.5l.102-.007A.75.75 0 0 0 21.25 5Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M17.5 12a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm-.78 2.589-.07.057-2.516 2.517-.04.05-.044.077-.023.059-.02.085-.002.11.015.086.03.08.033.061.051.066 2.516 2.517a.5.5 0 0 0 .765-.638l-.058-.07L15.711 18H20.5a.5.5 0 0 0 .492-.41L21 17.5a.5.5 0 0 0-.41-.492L20.5 17h-4.789l1.646-1.646a.5.5 0 0 0 .058-.638l-.058-.07a.5.5 0 0 0-.638-.057ZM11.019 17H2.75l-.102.007A.75.75 0 0 0 2.75 18.5h8.326a6.554 6.554 0 0 1-.057-1.5ZM11.732 14.5H2.75a.75.75 0 0 1-.102-1.493L2.75 13h10.06c-.427.444-.79.949-1.078 1.5ZM21.25 9H2.75l-.102.007A.75.75 0 0 0 2.75 10.5h18.5l.102-.007A.75.75 0 0 0 21.25 9ZM21.25 5H2.75l-.102.007A.75.75 0 0 0 2.75 6.5h18.5l.102-.007A.75.75 0 0 0 21.25 5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedTextGrammarArrowLeft',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedTextGrammarArrowLeft',
+    mixins: [icon]
+};
+</script>

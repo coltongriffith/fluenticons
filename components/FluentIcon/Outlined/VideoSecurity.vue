@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 3A3.25 3.25 0 0 0 2 6.25v6.5A3.25 3.25 0 0 0 5.25 16h2.243a1.656 1.656 0 0 1-1.65 1.5H3.25a.75.75 0 0 0-.75.75v3c0 .414.336.75.75.75h3A5.75 5.75 0 0 0 12 16.25V16h1.75a3.25 3.25 0 0 0 3.235-2.934l3.88 2.327A.75.75 0 0 0 22 14.75V4.25a.75.75 0 0 0-1.136-.643l-3.88 2.327A3.25 3.25 0 0 0 13.75 3h-8.5ZM17 7.675l3.5-2.1v7.85l-3.5-2.1v-3.65ZM6.25 20.5H4V19h1.844c1.69 0 3.07-1.33 3.152-3H10.5v.25a4.25 4.25 0 0 1-4.25 4.25ZM3.5 6.25c0-.966.784-1.75 1.75-1.75h8.5c.966 0 1.75.784 1.75 1.75v6.5a1.75 1.75 0 0 1-1.75 1.75h-8.5a1.75 1.75 0 0 1-1.75-1.75v-6.5Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M5.25 3A3.25 3.25 0 0 0 2 6.25v6.5A3.25 3.25 0 0 0 5.25 16h2.243a1.656 1.656 0 0 1-1.65 1.5H3.25a.75.75 0 0 0-.75.75v3c0 .414.336.75.75.75h3A5.75 5.75 0 0 0 12 16.25V16h1.75a3.25 3.25 0 0 0 3.235-2.934l3.88 2.327A.75.75 0 0 0 22 14.75V4.25a.75.75 0 0 0-1.136-.643l-3.88 2.327A3.25 3.25 0 0 0 13.75 3h-8.5ZM17 7.675l3.5-2.1v7.85l-3.5-2.1v-3.65ZM6.25 20.5H4V19h1.844c1.69 0 3.07-1.33 3.152-3H10.5v.25a4.25 4.25 0 0 1-4.25 4.25ZM3.5 6.25c0-.966.784-1.75 1.75-1.75h8.5c.966 0 1.75.784 1.75 1.75v6.5a1.75 1.75 0 0 1-1.75 1.75h-8.5a1.75 1.75 0 0 1-1.75-1.75v-6.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedVideoSecurity',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedVideoSecurity',
+    mixins: [icon]
+};
+</script>

@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.78 3.28a.75.75 0 1 0-1.06-1.06L15 7.94l-1.87-1.87a.75.75 0 0 0-1.06 1.06l2.4 2.4a.75.75 0 0 0 1.06 0l6.25-6.25ZM6.85 2.095l-1.077.344c-1.067.341-1.885 1.256-2.149 2.404-.627 2.73.125 6.052 2.258 9.968 2.13 3.91 4.464 6.262 7.003 7.053 1.076.336 2.238.04 3.052-.777l.818-.822c.763-.765.873-2.012.258-2.915l-1.232-1.81c-.529-.778-1.468-1.108-2.33-.82l-2.276.758a8.678 8.678 0 0 1-2.27-2.595c-.607-1.042-.968-2.101-1.085-3.177l1.894-1.798c.68-.646.889-1.685.514-2.568l-.86-2.027c-.432-1.02-1.51-1.54-2.518-1.218Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M21.78 3.28a.75.75 0 1 0-1.06-1.06L15 7.94l-1.87-1.87a.75.75 0 0 0-1.06 1.06l2.4 2.4a.75.75 0 0 0 1.06 0l6.25-6.25ZM6.85 2.095l-1.077.344c-1.067.341-1.885 1.256-2.149 2.404-.627 2.73.125 6.052 2.258 9.968 2.13 3.91 4.464 6.262 7.003 7.053 1.076.336 2.238.04 3.052-.777l.818-.822c.763-.765.873-2.012.258-2.915l-1.232-1.81c-.529-.778-1.468-1.108-2.33-.82l-2.276.758a8.678 8.678 0 0 1-2.27-2.595c-.607-1.042-.968-2.101-1.085-3.177l1.894-1.798c.68-.646.889-1.685.514-2.568l-.86-2.027c-.432-1.02-1.51-1.54-2.518-1.218Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledCallCheckmark',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledCallCheckmark',
+    mixins: [icon]
+};
+</script>

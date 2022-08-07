@@ -1,9 +1,25 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.799 2.026A.75.75 0 0 0 9.7 3.523c5.242.345 9.434 4.538 9.777 9.78a.75.75 0 1 0 1.497-.098C20.581 7.21 15.791 2.42 9.799 2.026ZM8.497 15.622a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" fill="currentColor"/><path d="m7.976 21.772-.388-.386a4307.718 4307.718 0 0 1-2.97-2.954 5.496 5.496 0 1 1 7.773 0c-.444.444-1.284 1.28-2.012 2.003l-1.346 1.337a.75.75 0 0 1-1.057 0ZM5.68 11.72a3.996 3.996 0 0 0 0 5.651c.482.482 1.32 1.316 2.039 2.03l.787.782.816-.812c.729-.724 1.567-1.557 2.01-2a3.996 3.996 0 1 0-5.652-5.651Z" fill="currentColor"/><path d="M9.818 5.503a.75.75 0 0 0-.134 1.494 6.987 6.987 0 0 1 6.319 6.316.75.75 0 1 0 1.494-.135 8.487 8.487 0 0 0-7.679-7.675Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M9.799 2.026A.75.75 0 0 0 9.7 3.523c5.242.345 9.434 4.538 9.777 9.78a.75.75 0 1 0 1.497-.098C20.581 7.21 15.791 2.42 9.799 2.026ZM8.497 15.622a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" :fill="fill" :fill-opacity="opacity" />
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedLocationLive',
-  };
-  </script>
+<path d="m7.976 21.772-.388-.386a4307.718 4307.718 0 0 1-2.97-2.954 5.496 5.496 0 1 1 7.773 0c-.444.444-1.284 1.28-2.012 2.003l-1.346 1.337a.75.75 0 0 1-1.057 0ZM5.68 11.72a3.996 3.996 0 0 0 0 5.651c.482.482 1.32 1.316 2.039 2.03l.787.782.816-.812c.729-.724 1.567-1.557 2.01-2a3.996 3.996 0 1 0-5.652-5.651Z" :fill="fill" :fill-opacity="opacity" />
+
+<path d="M9.818 5.503a.75.75 0 0 0-.134 1.494 6.987 6.987 0 0 1 6.319 6.316.75.75 0 1 0 1.494-.135 8.487 8.487 0 0 0-7.679-7.675Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
+
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedLocationLive',
+    mixins: [icon]
+};
+</script>

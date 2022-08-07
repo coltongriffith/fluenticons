@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m3.28 2.22 18.5 18.5a.75.75 0 0 1-1.06 1.06l-1.083-1.082a3.483 3.483 0 0 1-1.887.552H6.25a3.5 3.5 0 0 1-3.5-3.5V6.25c0-.695.203-1.343.552-1.887L2.22 3.28a.75.75 0 1 1 1.06-1.06ZM18.138 19.2 4.801 5.86c-.033.124-.051.255-.051.389v11.5a1.5 1.5 0 0 0 1.5 1.5h11.5c.134 0 .264-.018.388-.05Zm-5.236-9.48 1.378 1.378c.063-.04.122-.086.177-.14l4.793-4.794v4.086a1 1 0 0 0 2 0v-6.5a1 1 0 0 0-1-1h-6.5a1 1 0 0 0 0 2h4.086l-4.793 4.793a1.004 1.004 0 0 0-.141.177Zm8.335 8.335-1.987-1.987V13.75a1 1 0 1 1 2 0v4c0 .103-.005.204-.014.305ZM5.944 2.763 7.932 4.75h2.318a1 1 0 1 0 0-2h-4c-.103 0-.204.004-.305.013Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="m3.28 2.22 18.5 18.5a.75.75 0 0 1-1.06 1.06l-1.083-1.082a3.483 3.483 0 0 1-1.887.552H6.25a3.5 3.5 0 0 1-3.5-3.5V6.25c0-.695.203-1.343.552-1.887L2.22 3.28a.75.75 0 1 1 1.06-1.06ZM18.138 19.2 4.801 5.86c-.033.124-.051.255-.051.389v11.5a1.5 1.5 0 0 0 1.5 1.5h11.5c.134 0 .264-.018.388-.05Zm-5.236-9.48 1.378 1.378c.063-.04.122-.086.177-.14l4.793-4.794v4.086a1 1 0 0 0 2 0v-6.5a1 1 0 0 0-1-1h-6.5a1 1 0 0 0 0 2h4.086l-4.793 4.793a1.004 1.004 0 0 0-.141.177Zm8.335 8.335-1.987-1.987V13.75a1 1 0 1 1 2 0v4c0 .103-.005.204-.014.305ZM5.944 2.763 7.932 4.75h2.318a1 1 0 1 0 0-2h-4c-.103 0-.204.004-.305.013Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledOpenOff',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledOpenOff',
+    mixins: [icon]
+};
+</script>

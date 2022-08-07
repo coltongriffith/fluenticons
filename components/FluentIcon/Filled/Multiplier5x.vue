@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.01 7.859A1 1 0 0 1 8 7h4a1 1 0 1 1 0 2H8.867l-.186 1.301.35-.055a3.65 3.65 0 0 1 4.219 3.605c0 2.025-1.665 3.649-3.67 3.649a3.699 3.699 0 0 1-2.734-1.207l-.337-.371a1 1 0 1 1 1.482-1.344l.336.37a1.7 1.7 0 0 0 1.253.552c.921 0 1.67-.748 1.67-1.65a1.65 1.65 0 0 0-1.907-1.629l-1.687.267a1 1 0 0 1-1.146-1.13l.5-3.5Zm7.283 4.434a1 1 0 0 1 1.414 0l.793.793.793-.793a1 1 0 0 1 1.414 1.414l-.793.793.793.793a1 1 0 0 1-1.414 1.414l-.793-.793-.793.793a1 1 0 0 1-1.414-1.414l.793-.793-.793-.793a1 1 0 0 1 0-1.414ZM4.75 17a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M7.01 7.859A1 1 0 0 1 8 7h4a1 1 0 1 1 0 2H8.867l-.186 1.301.35-.055a3.65 3.65 0 0 1 4.219 3.605c0 2.025-1.665 3.649-3.67 3.649a3.699 3.699 0 0 1-2.734-1.207l-.337-.371a1 1 0 1 1 1.482-1.344l.336.37a1.7 1.7 0 0 0 1.253.552c.921 0 1.67-.748 1.67-1.65a1.65 1.65 0 0 0-1.907-1.629l-1.687.267a1 1 0 0 1-1.146-1.13l.5-3.5Zm7.283 4.434a1 1 0 0 1 1.414 0l.793.793.793-.793a1 1 0 0 1 1.414 1.414l-.793.793.793.793a1 1 0 0 1-1.414 1.414l-.793-.793-.793.793a1 1 0 0 1-1.414-1.414l.793-.793-.793-.793a1 1 0 0 1 0-1.414ZM4.75 17a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledMultiplier5x',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledMultiplier5x',
+    mixins: [icon]
+};
+</script>

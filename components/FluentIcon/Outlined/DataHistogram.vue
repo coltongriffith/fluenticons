@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5.247A2.249 2.249 0 0 1 10.75 3h2.5a2.249 2.249 0 0 1 2.25 2.247v1.769h3.25A2.249 2.249 0 0 1 21 9.263v10.988a.75.75 0 0 1-.75.749H3.75a.75.75 0 0 1-.75-.75v-7.99a2.249 2.249 0 0 1 2.25-2.248H8.5V5.247ZM10 19.503h4V5.247a.75.75 0 0 0-.75-.749h-2.5a.75.75 0 0 0-.75.75v14.254ZM8.5 11.51H5.25a.75.75 0 0 0-.75.749v7.242h4V11.51Zm7 7.99h4V9.264a.75.75 0 0 0-.75-.75H15.5v10.989Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M8.5 5.247A2.249 2.249 0 0 1 10.75 3h2.5a2.249 2.249 0 0 1 2.25 2.247v1.769h3.25A2.249 2.249 0 0 1 21 9.263v10.988a.75.75 0 0 1-.75.749H3.75a.75.75 0 0 1-.75-.75v-7.99a2.249 2.249 0 0 1 2.25-2.248H8.5V5.247ZM10 19.503h4V5.247a.75.75 0 0 0-.75-.749h-2.5a.75.75 0 0 0-.75.75v14.254ZM8.5 11.51H5.25a.75.75 0 0 0-.75.749v7.242h4V11.51Zm7 7.99h4V9.264a.75.75 0 0 0-.75-.75H15.5v10.989Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedDataHistogram',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedDataHistogram',
+    mixins: [icon]
+};
+</script>

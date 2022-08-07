@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 3A2.25 2.25 0 0 0 3 5.25v13.5A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V5.25A2.25 2.25 0 0 0 18.75 3H5.25ZM6 6.75A.75.75 0 0 1 6.75 6h2.5a.75.75 0 0 1 0 1.5h-.69l1.72 1.72a.75.75 0 1 1-1.06 1.06L7.5 8.56v.691a.75.75 0 1 1-1.5 0V6.75Zm11.78 11.031a.75.75 0 0 1-.53.22h-2.5a.75.75 0 0 1 0-1.5h.69l-1.72-1.72a.75.75 0 0 1 1.06-1.061l1.72 1.72v-.69a.75.75 0 0 1 1.5 0v2.501a.75.75 0 0 1-.22.53ZM18 6.751v2.5a.75.75 0 0 1-1.5 0v-.69l-1.72 1.72a.75.75 0 1 1-1.06-1.061l1.72-1.72h-.69a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 1 .75.75ZM6.22 17.78a.75.75 0 0 1-.22-.53v-2.5a.75.75 0 0 1 1.5 0v.689l1.72-1.72a.75.75 0 0 1 1.06 1.06L8.56 16.5h.691a.75.75 0 1 1 0 1.5H6.75a.75.75 0 0 1-.53-.22Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M5.25 3A2.25 2.25 0 0 0 3 5.25v13.5A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V5.25A2.25 2.25 0 0 0 18.75 3H5.25ZM6 6.75A.75.75 0 0 1 6.75 6h2.5a.75.75 0 0 1 0 1.5h-.69l1.72 1.72a.75.75 0 1 1-1.06 1.06L7.5 8.56v.691a.75.75 0 1 1-1.5 0V6.75Zm11.78 11.031a.75.75 0 0 1-.53.22h-2.5a.75.75 0 0 1 0-1.5h.69l-1.72-1.72a.75.75 0 0 1 1.06-1.061l1.72 1.72v-.69a.75.75 0 0 1 1.5 0v2.501a.75.75 0 0 1-.22.53ZM18 6.751v2.5a.75.75 0 0 1-1.5 0v-.69l-1.72 1.72a.75.75 0 1 1-1.06-1.061l1.72-1.72h-.69a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 1 .75.75ZM6.22 17.78a.75.75 0 0 1-.22-.53v-2.5a.75.75 0 0 1 1.5 0v.689l1.72-1.72a.75.75 0 0 1 1.06 1.06L8.56 16.5h.691a.75.75 0 1 1 0 1.5H6.75a.75.75 0 0 1-.53-.22Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledScaleFill',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledScaleFill',
+    mixins: [icon]
+};
+</script>

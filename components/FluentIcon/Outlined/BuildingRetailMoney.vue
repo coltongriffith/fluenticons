@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 8a.75.75 0 0 0-.75.75v3.5c0 .414.336.75.75.75h10.5a.75.75 0 0 0 .75-.75v-3.5a.75.75 0 0 0-.75-.75H6.75Zm.75 3.5v-2h9v2h-9Zm6.25 2.5a.75.75 0 0 0-.75.75v.3c.162-.033.329-.05.5-.05H18v-.25a.75.75 0 0 0-.75-.75h-3.5Zm-2.25.75V16c-.314.418-.5.937-.5 1.5V21H3.75a.75.75 0 0 1-.75-.75V6.732A2 2 0 0 1 4 3h16a2 2 0 0 1 1 3.732V15h-1.5V7h-15v12.5H6v-4.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75ZM3.5 5a.5.5 0 0 0 .5.5h16a.5.5 0 0 0 0-1H4a.5.5 0 0 0-.5.5ZM10 19.5v-4H7.5v4H10Zm2-2a1.5 1.5 0 0 1 1.5-1.5h8a1.5 1.5 0 0 1 1.5 1.5v4a1.5 1.5 0 0 1-1.5 1.5h-8a1.5 1.5 0 0 1-1.5-1.5v-4Zm10 .5a1 1 0 0 1-1-1h-1a2 2 0 0 0 2 2v-1Zm0 2a2 2 0 0 0-2 2h1a1 1 0 0 1 1-1v-1Zm-8-3a1 1 0 0 1-1 1v1a2 2 0 0 0 2-2h-1Zm1 5a2 2 0 0 0-2-2v1a1 1 0 0 1 1 1h1Zm4.25-2.5a1.75 1.75 0 1 0-3.5 0 1.75 1.75 0 0 0 3.5 0Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M6.75 8a.75.75 0 0 0-.75.75v3.5c0 .414.336.75.75.75h10.5a.75.75 0 0 0 .75-.75v-3.5a.75.75 0 0 0-.75-.75H6.75Zm.75 3.5v-2h9v2h-9Zm6.25 2.5a.75.75 0 0 0-.75.75v.3c.162-.033.329-.05.5-.05H18v-.25a.75.75 0 0 0-.75-.75h-3.5Zm-2.25.75V16c-.314.418-.5.937-.5 1.5V21H3.75a.75.75 0 0 1-.75-.75V6.732A2 2 0 0 1 4 3h16a2 2 0 0 1 1 3.732V15h-1.5V7h-15v12.5H6v-4.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75ZM3.5 5a.5.5 0 0 0 .5.5h16a.5.5 0 0 0 0-1H4a.5.5 0 0 0-.5.5ZM10 19.5v-4H7.5v4H10Zm2-2a1.5 1.5 0 0 1 1.5-1.5h8a1.5 1.5 0 0 1 1.5 1.5v4a1.5 1.5 0 0 1-1.5 1.5h-8a1.5 1.5 0 0 1-1.5-1.5v-4Zm10 .5a1 1 0 0 1-1-1h-1a2 2 0 0 0 2 2v-1Zm0 2a2 2 0 0 0-2 2h1a1 1 0 0 1 1-1v-1Zm-8-3a1 1 0 0 1-1 1v1a2 2 0 0 0 2-2h-1Zm1 5a2 2 0 0 0-2-2v1a1 1 0 0 1 1 1h1Zm4.25-2.5a1.75 1.75 0 1 0-3.5 0 1.75 1.75 0 0 0 3.5 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedBuildingRetailMoney',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedBuildingRetailMoney',
+    mixins: [icon]
+};
+</script>

@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.259 2.004a.75.75 0 0 1 .742.649l.007.102-.004 4.497a2.254 2.254 0 0 1-2.001 2.234v2.26a2.25 2.25 0 0 1-2.096 2.245l-.154.005H16.5v2.792a2.25 2.25 0 0 1-1.14 1.958l-.155.08-6.635 3.106a.75.75 0 0 1-1.061-.579l-.007-.1v-7.257H7.25A2.25 2.25 0 0 1 5.005 11.9L5 11.746v-2.26a2.25 2.25 0 0 1-1.994-2.072L3 7.25V2.754a.75.75 0 0 1 1.493-.102l.007.102V7.25c0 .38.282.694.648.744L5.25 8h13.501c.38 0 .695-.283.746-.649l.007-.101.004-4.497a.75.75 0 0 1 .75-.75ZM15 13.996H9.003v6.077l5.567-2.606a.75.75 0 0 0 .424-.572l.008-.107L15 13.996ZM17.502 9.5H6.5v2.246c0 .38.282.694.648.743l.102.007h9.503a.75.75 0 0 0 .743-.648l.007-.102-.001-2.246Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M20.259 2.004a.75.75 0 0 1 .742.649l.007.102-.004 4.497a2.254 2.254 0 0 1-2.001 2.234v2.26a2.25 2.25 0 0 1-2.096 2.245l-.154.005H16.5v2.792a2.25 2.25 0 0 1-1.14 1.958l-.155.08-6.635 3.106a.75.75 0 0 1-1.061-.579l-.007-.1v-7.257H7.25A2.25 2.25 0 0 1 5.005 11.9L5 11.746v-2.26a2.25 2.25 0 0 1-1.994-2.072L3 7.25V2.754a.75.75 0 0 1 1.493-.102l.007.102V7.25c0 .38.282.694.648.744L5.25 8h13.501c.38 0 .695-.283.746-.649l.007-.101.004-4.497a.75.75 0 0 1 .75-.75ZM15 13.996H9.003v6.077l5.567-2.606a.75.75 0 0 0 .424-.572l.008-.107L15 13.996ZM17.502 9.5H6.5v2.246c0 .38.282.694.648.743l.102.007h9.503a.75.75 0 0 0 .743-.648l.007-.102-.001-2.246Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedHighlight',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedHighlight',
+    mixins: [icon]
+};
+</script>

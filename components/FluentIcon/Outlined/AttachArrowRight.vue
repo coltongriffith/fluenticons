@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.772 3.743a6 6 0 0 1 8.867 8.063 6.457 6.457 0 0 0-1.486-.594l.044-.044a4.502 4.502 0 0 0-6.198-6.524l-.168.16-.013.014-9.536 9.536a.75.75 0 0 1-1.133-.976l.072-.084 9.549-9.551h.002Zm-.56 15.408c.14.534.345 1.041.608 1.512l-.377.378-.037.03a3.723 3.723 0 0 1-5.489-4.974.765.765 0 0 1 .085-.13l.054-.06.086-.087.142-.148.002.003 7.436-7.455a.75.75 0 0 1 .977-.074l.084.073a.75.75 0 0 1 .074.976l-.073.085-7.594 7.613a2.23 2.23 0 0 0 3.174 3.105l.848-.847ZM23 17.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-8.5-.5a.5.5 0 0 0 0 1h4.793l-1.646 1.646a.5.5 0 0 0 .707.708l2.5-2.5a.5.5 0 0 0 0-.708l-2.5-2.5a.5.5 0 0 0-.707.708L19.293 17H14.5Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M11.772 3.743a6 6 0 0 1 8.867 8.063 6.457 6.457 0 0 0-1.486-.594l.044-.044a4.502 4.502 0 0 0-6.198-6.524l-.168.16-.013.014-9.536 9.536a.75.75 0 0 1-1.133-.976l.072-.084 9.549-9.551h.002Zm-.56 15.408c.14.534.345 1.041.608 1.512l-.377.378-.037.03a3.723 3.723 0 0 1-5.489-4.974.765.765 0 0 1 .085-.13l.054-.06.086-.087.142-.148.002.003 7.436-7.455a.75.75 0 0 1 .977-.074l.084.073a.75.75 0 0 1 .074.976l-.073.085-7.594 7.613a2.23 2.23 0 0 0 3.174 3.105l.848-.847ZM23 17.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-8.5-.5a.5.5 0 0 0 0 1h4.793l-1.646 1.646a.5.5 0 0 0 .707.708l2.5-2.5a.5.5 0 0 0 0-.708l-2.5-2.5a.5.5 0 0 0-.707.708L19.293 17H14.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedAttachArrowRight',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedAttachArrowRight',
+    mixins: [icon]
+};
+</script>

@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.002 8.012c3.168 0 4.966 2.098 5.227 4.63h.08a3.687 3.687 0 0 1 3.692 3.683 3.687 3.687 0 0 1-3.692 3.683H7.694a3.687 3.687 0 0 1-3.692-3.683 3.687 3.687 0 0 1 3.692-3.683h.08c.263-2.549 2.06-4.63 5.228-4.63ZM6.589 4.005a5.058 5.058 0 0 1 2.263.673 5.057 5.057 0 0 1 2.208 2.595c-1.984.563-3.404 2.002-3.994 3.947l-.069.246-.058.238-.206.038a4.67 4.67 0 0 0-2.804 1.814 5.06 5.06 0 0 1-1.797-1.599.75.75 0 0 1 .366-1.132c1.643-.588 2.527-1.25 3.034-2.215.552-1.055.654-2.174.287-3.678a.75.75 0 0 1 .77-.927Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M13.002 8.012c3.168 0 4.966 2.098 5.227 4.63h.08a3.687 3.687 0 0 1 3.692 3.683 3.687 3.687 0 0 1-3.692 3.683H7.694a3.687 3.687 0 0 1-3.692-3.683 3.687 3.687 0 0 1 3.692-3.683h.08c.263-2.549 2.06-4.63 5.228-4.63ZM6.589 4.005a5.058 5.058 0 0 1 2.263.673 5.057 5.057 0 0 1 2.208 2.595c-1.984.563-3.404 2.002-3.994 3.947l-.069.246-.058.238-.206.038a4.67 4.67 0 0 0-2.804 1.814 5.06 5.06 0 0 1-1.797-1.599.75.75 0 0 1 .366-1.132c1.643-.588 2.527-1.25 3.034-2.215.552-1.055.654-2.174.287-3.678a.75.75 0 0 1 .77-.927Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledWeatherPartlyCloudyNight',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledWeatherPartlyCloudyNight',
+    mixins: [icon]
+};
+</script>

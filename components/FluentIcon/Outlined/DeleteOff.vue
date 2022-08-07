@@ -1,9 +1,23 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.94 5 2.22 3.28a.75.75 0 0 1 1.06-1.06l18.5 18.5a.75.75 0 0 1-1.06 1.06l-2.293-2.292-.003.031a2.75 2.75 0 0 1-2.561 2.476l-.176.005H8.313a2.75 2.75 0 0 1-2.714-2.307l-.023-.174L4.295 6.5H3.5a.75.75 0 0 1-.743-.648L2.75 5.75a.75.75 0 0 1 .648-.743L3.5 5h.44Zm13.115 13.116L14.5 15.56V17a.75.75 0 0 1-1.493.102L13 17v-2.94l-2-2V17a.75.75 0 0 1-1.493.102L9.5 17v-6.44L5.842 6.903l1.227 12.47a1.25 1.25 0 0 0 1.117 1.122l.127.006h7.374c.6 0 1.109-.425 1.225-1.002l.02-.126.123-1.256ZM13.018 9.836l1.482 1.482V10l-.007-.102a.75.75 0 0 0-1.475-.062Z" fill="currentColor"/><path d="m18.197 6.5-.762 7.753 1.372 1.372.897-9.125h.796l.102-.007A.75.75 0 0 0 20.5 5h-5.25l-.005-.184A3.25 3.25 0 0 0 8.75 5h-.568l1.5 1.5h8.515ZM12 3.25c.966 0 1.75.784 1.75 1.75h-3.5l.006-.144A1.75 1.75 0 0 1 12 3.25Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M3.94 5 2.22 3.28a.75.75 0 0 1 1.06-1.06l18.5 18.5a.75.75 0 0 1-1.06 1.06l-2.293-2.292-.003.031a2.75 2.75 0 0 1-2.561 2.476l-.176.005H8.313a2.75 2.75 0 0 1-2.714-2.307l-.023-.174L4.295 6.5H3.5a.75.75 0 0 1-.743-.648L2.75 5.75a.75.75 0 0 1 .648-.743L3.5 5h.44Zm13.115 13.116L14.5 15.56V17a.75.75 0 0 1-1.493.102L13 17v-2.94l-2-2V17a.75.75 0 0 1-1.493.102L9.5 17v-6.44L5.842 6.903l1.227 12.47a1.25 1.25 0 0 0 1.117 1.122l.127.006h7.374c.6 0 1.109-.425 1.225-1.002l.02-.126.123-1.256ZM13.018 9.836l1.482 1.482V10l-.007-.102a.75.75 0 0 0-1.475-.062Z" :fill="fill" :fill-opacity="opacity" />
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedDeleteOff',
-  };
-  </script>
+<path d="m18.197 6.5-.762 7.753 1.372 1.372.897-9.125h.796l.102-.007A.75.75 0 0 0 20.5 5h-5.25l-.005-.184A3.25 3.25 0 0 0 8.75 5h-.568l1.5 1.5h8.515ZM12 3.25c.966 0 1.75.784 1.75 1.75h-3.5l.006-.144A1.75 1.75 0 0 1 12 3.25Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
+
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedDeleteOff',
+    mixins: [icon]
+};
+</script>

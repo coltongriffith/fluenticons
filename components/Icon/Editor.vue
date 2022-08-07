@@ -26,7 +26,7 @@
           :gradient="gradient"
           ref="icon"
         />
-        <!-- <div class="absolute bottom-2 left-2">
+        <div class="absolute bottom-2 left-2">
           <img
             src="/gradient.png"
             width="20"
@@ -35,7 +35,7 @@
             class="cursor-pointer"
             @click="handleGradient"
           />
-        </div> -->
+        </div>
         <div class="absolute bottom-2 right-2" @click="type = 'single'">
           <v-swatches
             v-model="color"
@@ -286,10 +286,10 @@ export default {
       return image;
     },
     async exportIcon() {
-      // if (!this.$store.state.auth.loggedIn) {
-      //   this.$emit("login");
-      //   return;
-      // }
+      if (!this.$store.state.auth.loggedIn && this.type !== 'single') {
+        this.$emit("login");
+        return;
+      }
       
       if (!this.selectedExportType) return;
       switch (this.selectedExportType) {

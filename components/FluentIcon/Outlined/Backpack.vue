@@ -1,9 +1,23 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.417 8A2.417 2.417 0 0 0 8 10.417C8 11.29 8.709 12 9.583 12h4.834C15.29 12 16 11.291 16 10.417A2.417 2.417 0 0 0 13.583 8h-3.166ZM9.5 10.417c0-.507.41-.917.917-.917h3.166c.507 0 .917.41.917.917a.083.083 0 0 1-.083.083H9.583a.083.083 0 0 1-.083-.083Z" fill="currentColor"/><path d="M12 2a3.75 3.75 0 0 0-3.736 3.424A7.999 7.999 0 0 0 4 12.5v6.25A3.25 3.25 0 0 0 7.25 22h9.5A3.25 3.25 0 0 0 20 18.75V12.5a7.999 7.999 0 0 0-4.264-7.076A3.75 3.75 0 0 0 12 2Zm6.5 12h-13v-1.5a6.5 6.5 0 0 1 13 0V14ZM8 17.25a.75.75 0 0 0 1.5 0v-1.536h9v3.036a1.75 1.75 0 0 1-1.75 1.75h-9.5a1.75 1.75 0 0 1-1.75-1.75v-3.036H8v1.536ZM12 4.5c-.698 0-1.374.09-2.02.257a2.25 2.25 0 0 1 4.04 0A8.013 8.013 0 0 0 12 4.5Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M10.417 8A2.417 2.417 0 0 0 8 10.417C8 11.29 8.709 12 9.583 12h4.834C15.29 12 16 11.291 16 10.417A2.417 2.417 0 0 0 13.583 8h-3.166ZM9.5 10.417c0-.507.41-.917.917-.917h3.166c.507 0 .917.41.917.917a.083.083 0 0 1-.083.083H9.583a.083.083 0 0 1-.083-.083Z" :fill="fill" :fill-opacity="opacity" />
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedBackpack',
-  };
-  </script>
+<path d="M12 2a3.75 3.75 0 0 0-3.736 3.424A7.999 7.999 0 0 0 4 12.5v6.25A3.25 3.25 0 0 0 7.25 22h9.5A3.25 3.25 0 0 0 20 18.75V12.5a7.999 7.999 0 0 0-4.264-7.076A3.75 3.75 0 0 0 12 2Zm6.5 12h-13v-1.5a6.5 6.5 0 0 1 13 0V14ZM8 17.25a.75.75 0 0 0 1.5 0v-1.536h9v3.036a1.75 1.75 0 0 1-1.75 1.75h-9.5a1.75 1.75 0 0 1-1.75-1.75v-3.036H8v1.536ZM12 4.5c-.698 0-1.374.09-2.02.257a2.25 2.25 0 0 1 4.04 0A8.013 8.013 0 0 0 12 4.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
+
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedBackpack',
+    mixins: [icon]
+};
+</script>

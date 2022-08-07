@@ -1,9 +1,23 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 17.5a6.47 6.47 0 0 1 1.023-3.5h-7.77a2.249 2.249 0 0 0-2.25 2.25v.919c0 .572.18 1.13.511 1.596C4.056 20.929 6.58 22 10 22c.932 0 1.797-.08 2.592-.24A6.475 6.475 0 0 1 11 17.502ZM15 7.005a5 5 0 1 0-10 0 5 5 0 0 0 10 0Z" fill="currentColor"/><path d="M23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-5.59-3.492L17.5 14l.09.008a.5.5 0 0 1 .402.402l.008.09V17h2.504l.09.008a.5.5 0 0 1 .402.402l.008.09-.008.09a.5.5 0 0 1-.402.402l-.09.008H18L18 20.5l-.008.09a.5.5 0 0 1-.402.402L17.5 21l-.09-.008a.5.5 0 0 1-.402-.402L17 20.5V18h-2.496l-.09-.008a.5.5 0 0 1-.402-.402l-.008-.09.008-.09a.5.5 0 0 1 .402-.402l.09-.008H17L17 14.5l.008-.09a.5.5 0 0 1 .402-.402Z" fill="currentColor"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M11 17.5a6.47 6.47 0 0 1 1.023-3.5h-7.77a2.249 2.249 0 0 0-2.25 2.25v.919c0 .572.18 1.13.511 1.596C4.056 20.929 6.58 22 10 22c.932 0 1.797-.08 2.592-.24A6.475 6.475 0 0 1 11 17.502ZM15 7.005a5 5 0 1 0-10 0 5 5 0 0 0 10 0Z" :fill="fill" :fill-opacity="opacity" />
 
-  <script>
-    export default {
-      name: 'FluentIconFilledPersonAdd',
-  };
-  </script>
+<path d="M23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-5.59-3.492L17.5 14l.09.008a.5.5 0 0 1 .402.402l.008.09V17h2.504l.09.008a.5.5 0 0 1 .402.402l.008.09-.008.09a.5.5 0 0 1-.402.402l-.09.008H18L18 20.5l-.008.09a.5.5 0 0 1-.402.402L17.5 21l-.09-.008a.5.5 0 0 1-.402-.402L17 20.5V18h-2.496l-.09-.008a.5.5 0 0 1-.402-.402l-.008-.09.008-.09a.5.5 0 0 1 .402-.402l.09-.008H17L17 14.5l.008-.09a.5.5 0 0 1 .402-.402Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
+
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledPersonAdd',
+    mixins: [icon]
+};
+</script>
