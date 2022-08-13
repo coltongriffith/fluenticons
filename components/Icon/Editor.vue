@@ -290,7 +290,6 @@ export default {
         this.$emit("login");
         return;
       }
-      
       if (!this.selectedExportType) return;
       switch (this.selectedExportType) {
         case "svg":

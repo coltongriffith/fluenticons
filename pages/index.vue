@@ -42,6 +42,9 @@ export default {
       },
     };
   },
+  // mounted() {
+  //   this.$auth.logout()
+  // },
   methods: {
     setIcon(payload) {
       this.selectedIcon = payload;

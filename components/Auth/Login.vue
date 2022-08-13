@@ -87,7 +87,6 @@ export default {
         });
         if (response.data.success) {
           await this.$auth.setUserToken(response.data.token)
-          console.log(response.data.token)
           this.$emit("close")
         } else {
           this.error = {
