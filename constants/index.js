@@ -40,7 +40,7 @@ export const pwa = {
 };
 
 export const axios = {
-  baseURL: "http://localhost:3001",
+  baseURL: "http://178.128.135.186:3001",
 };
 
 export const css = ["~/assets/css/styles.css"];
