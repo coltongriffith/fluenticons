@@ -85,4 +85,4 @@ export const modules = [
   ],
 ];
 
-export const build = { babel: { compact: true }, standalone: true };
+export const build = { babel: { compact: true } };
