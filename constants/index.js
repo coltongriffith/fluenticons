@@ -44,7 +44,7 @@ export const pwa = {
 };
 
 export const axios = {
-  baseURL: "http://178.128.135.186:3001",
+  baseURL: "https://api.fluenticons.co",
 };
 
 export const css = ["~/assets/css/styles.css"];
