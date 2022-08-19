@@ -4,7 +4,7 @@
       <p class="font-bold">Login was failed!</p>
       <p class="text-sm">{{ error.request }}</p>
     </div>
-    <h1 class="font-semibold text-4xl mb-3">Welcome back!</h1>
+    <h1 class="font-semibold text-4xl mb-3">Log in or sign up to download</h1>
     <p class="text-gray-400 text-sm mb-4 font-semibold">Log in with your data that you enterd during your registration.</p>
     <SocialLogin />
     <div class="relative flex py-5 items-center">
