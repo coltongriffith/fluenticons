@@ -10,7 +10,7 @@
     <div
       class="flex items-center justify-center flex-wrap -mx-3 overflow-hidden"
     >
-      <div class="my-3 px-3 w-1/3 overflow-hidden" v-for="n in 5" :key="n">
+      <div class="my-3 px-3 w-1/3 overflow-hidden" v-for="n in 1" :key="n">
         <a
           class="underline"
           target="_blank"
