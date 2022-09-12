@@ -1,5 +1,5 @@
 <template>
-  <a href="https://apresinc.shop/" target="_blank" style="cursor: pointer">
+  <a href="https://apresinc.shop/" target="_blank" style="cursor: pointer; margin-top: -14px;">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
