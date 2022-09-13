@@ -21,7 +21,7 @@
           >
             <component
               :is="`sponsor-place-holder-${n}`"
-              class="text-gray-400 dark:text-gray-500 h-7 w-auto"
+              class="text-gray-400 dark:text-gray-500 p-2"
             />
           </div>
         </a>
