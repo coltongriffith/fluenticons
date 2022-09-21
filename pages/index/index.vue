@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import icons from "~/assets/icons/filled.json";
+import icons from "~/assets/icons/fluent/filled.json";
 export default {
   props: {
     selectedIcon: {
