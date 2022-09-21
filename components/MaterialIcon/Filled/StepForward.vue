@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-step-forward" viewBox="0 0 24 24"><path d="M5,5V19H8V5M10,5V19L21,12" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledStepForward.svg',
+  };
+  </script>

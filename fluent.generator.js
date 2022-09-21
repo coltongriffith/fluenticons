@@ -24,7 +24,7 @@ fs.readdirSync(iconsFolder).forEach((file) => {
     file.replace("ic_fluent_", "").split("_24")[0]
   )}.vue`;
   let content = `<template>
-    ${readFile(`./static/icons/${file}`, "utf8")}
+    ${readFile(`./static/icons/fluent/${file}`, "utf8")}
   </template>
 
   <script>
@@ -48,12 +48,12 @@ fs.readdirSync(iconsFolder).forEach((file) => {
 });
 
 createFile(
-  "./filled.json",
+  "./assets/icons/fluent/filled.json",
   "filled.json",
   JSON.stringify(filledIcons, null, 2)
 );
 createFile(
-  "./outlined.json",
+  "./assets/icons/fluent/outlined.json",
   "outlined.json",
   JSON.stringify(outlinedIcons, null, 2)
 );

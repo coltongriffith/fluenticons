@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-color-helper" viewBox="0 0 24 24"><path d="M0,24H24V20H0V24Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledColorHelper.svg',
+  };
+  </script>

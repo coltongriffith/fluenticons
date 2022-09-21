@@ -20,7 +20,9 @@ fs.readdirSync(iconsFolder).forEach((file) => {
       svgFileName: file,
     });
   }
-  let ComponentName = `${pascalize(file.split("-outline")[0])}.vue`;
+  let ComponentName = `${pascalize(
+    file.slice(0, -4).split("-outline")[0]
+  )}.vue`;
   let content = `<template>
     ${readFile(`./static/icons/material/${file}`, "utf8")}
   </template>
@@ -32,13 +34,13 @@ fs.readdirSync(iconsFolder).forEach((file) => {
   </script>`;
   if (type === "filled") {
     createFile(
-      `../components/MaterialIcon/Filled/${ComponentName}`,
+      `./components/MaterialIcon/Filled/${ComponentName}`,
       IconName,
       content
     );
   } else {
     createFile(
-      `../components/MaterialIcon/Outlined/${ComponentName}`,
+      `./components/MaterialIcon/Outlined/${ComponentName}`,
       IconName,
       content
     );
@@ -46,13 +48,13 @@ fs.readdirSync(iconsFolder).forEach((file) => {
 });
 
 createFile(
-  "./mfilled.json",
-  "mfilled.json",
+  "./assets/icons/material/filled.json",
+  "filled.json",
   JSON.stringify(filledIcons, null, 2)
 );
 createFile(
-  "./moutlined.json",
-  "moutlined.json",
+  "./assets/icons/material/outlined.json",
+  "outlined.json",
   JSON.stringify(outlinedIcons, null, 2)
 );
 

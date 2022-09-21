@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-tie" viewBox="0 0 24 24"><path d="M6,2L10,6L7,17L12,22L17,17L14,6L18,2Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledTie.svg',
+  };
+  </script>

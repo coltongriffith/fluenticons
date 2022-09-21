@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-triangle-small-up" viewBox="0 0 24 24"><path d="M8 15H16L12 8" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledTriangleSmallUp.svg',
+  };
+  </script>

@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-star-four-points" viewBox="0 0 24 24"><path d="M12,1L9,9L1,12L9,15L12,23L15,15L23,12L15,9L12,1Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledStarFourPoints.svg',
+  };
+  </script>

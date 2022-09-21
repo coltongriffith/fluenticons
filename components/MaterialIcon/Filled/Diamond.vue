@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-diamond" viewBox="0 0 24 24"><path d="M6,2L2,8L12,22L22,8L18,2H6Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledDiamond.svg',
+  };
+  </script>

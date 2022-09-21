@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-curtains-closed" viewBox="0 0 24 24"><path d="M23 3H1V1H23V3M2 22H11V4H2V22M22 4H13V22H22V4Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledCurtainsClosed.svg',
+  };
+  </script>

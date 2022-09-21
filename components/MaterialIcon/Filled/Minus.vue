@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-minus" viewBox="0 0 24 24"><path d="M19,13H5V11H19V13Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledMinus.svg',
+  };
+  </script>

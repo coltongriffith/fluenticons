@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-network-strength-1" viewBox="0 0 24 24"><path d="M1,21H21V1M19,5.83V19H11V13.83" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledNetworkStrength1.svg',
+  };
+  </script>

@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-moon-first-quarter" viewBox="0 0 24 24"><path d="M12 2V22A10 10 0 0 0 12 2Z" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledMoonFirstQuarter.svg',
+  };
+  </script>

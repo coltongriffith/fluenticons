@@ -1,0 +1,9 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-step-backward" viewBox="0 0 24 24"><path d="M19,5V19H16V5M14,5V19L3,12" /></svg>
+  </template>
+
+  <script>
+    export default {
+      name: 'MaterialIconFilledStepBackward.svg',
+  };
+  </script>
