@@ -3,6 +3,7 @@
     href="https://apresinc.shop/"
     target="_blank"
     style="cursor: pointer"
+    class="max-w-[144px]"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +44,7 @@
           fill-rule="nonzero"
         />
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(2.542718, 84.50263)">
           <g>
             <path
@@ -52,7 +53,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(82.656196, 84.50263)">
           <g>
             <path
@@ -61,7 +62,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(143.547038, 84.50263)">
           <g>
             <path
@@ -70,7 +71,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(197.186243, 84.50263)">
           <g>
             <path
@@ -79,7 +80,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(250.249908, 84.50263)">
           <g>
             <path
@@ -88,7 +89,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(272.727167, 95.585584)">
           <g>
             <path
@@ -97,7 +98,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(276.93845, 95.585584)">
           <g>
             <path
@@ -106,7 +107,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(285.271405, 95.585584)">
           <g>
             <path
@@ -115,7 +116,7 @@
           </g>
         </g>
       </g>
-      <g fill="#222d35" fill-opacity="1">
+      <g fill="currentColor" fill-opacity="1">
         <g transform="translate(291.827266, 95.585584)">
           <g>
             <path
@@ -130,7 +131,7 @@
         fill="none"
         stroke-linejoin="miter"
         d="M -0.00193893 -0.000757554 L 284.681055 -0.000757554 "
-        stroke="#222d35"
+        stroke="currentColor"
         stroke-width="1"
         stroke-opacity="1"
         stroke-miterlimit="4"
@@ -141,7 +142,7 @@
         fill="none"
         stroke-linejoin="miter"
         d="M 0.000196687 0.000750557 L 94.117543 0.000750557 "
-        stroke="#222d35"
+        stroke="currentColor"
         stroke-width="1"
         stroke-opacity="1"
         stroke-miterlimit="4"

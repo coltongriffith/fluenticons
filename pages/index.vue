@@ -2,9 +2,10 @@
   <main class="flex">
     <section class="flex-grow">
       <base-hero />
-      <base-navbar v-model="searchQuery" />
+      <base-navbar v-model="searchQuery" @setType="setType" />
       <nuxt-child
         @setIcon="setIcon"
+        :type="type"
         :searchQuery="searchQuery"
         :selectedIcon="selectedIcon"
       />
@@ -20,20 +21,21 @@
 </template>
 
 <script>
-import Modal from "~/components/Modal"
-import Login from "~/components/Auth/Login"
-import Register from "~/components/Auth/Register"
+import Modal from "~/components/Modal";
+import Login from "~/components/Auth/Login";
+import Register from "~/components/Auth/Register";
 
 export default {
   components: {
     Modal,
     Login,
-    Register
+    Register,
   },
   data() {
     return {
-      showModal: '',
+      showModal: "",
       searchQuery: "",
+      type: "fluent",
       elementsToShow: 48,
       selectedIcon: {
         name: "Select and preview icons here",
@@ -48,6 +50,9 @@ export default {
   methods: {
     setIcon(payload) {
       this.selectedIcon = payload;
+    },
+    setType(payload) {
+      this.type = payload;
     },
   },
 };

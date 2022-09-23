@@ -2,12 +2,18 @@
   <div
     class="h-[75px] border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-8 flex-wrap navbar-frosted"
   >
-    <p>
-      <span class="text-lg font-medium">{{ page.title }} Icons</span>
-      <span class="text-gray-600" v-if="page.subtitle"
-        >({{ page.subtitle }})</span
-      >
-    </p>
+    <div class="flex">
+      <div class="text-lg font-medium my-auto">{{ page.title }} Icons</div>
+      <div class="text-gray-600 my-auto" v-if="page.subtitle">
+        ({{ page.subtitle }})
+      </div>
+      <button class="navbar-type-btn ml-4" :class="{'bg-gray-200 dark:bg-gray-700': type === 'fluent', 'bg-gray-100 dark:bg-gray-800': type !== 'fluent'}" @click="type = 'fluent'">
+        Fluent Icons
+      </button>
+      <button class="navbar-type-btn ml-2" :class="{'bg-gray-200 dark:bg-gray-700': type === 'material', 'bg-gray-100 dark:bg-gray-800': type !== 'material'}" @click="type = 'material'">
+        Material Icons
+      </button>
+    </div>
     <div class="flex-space-x-4">
       <div
         class="relative flex items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800"
@@ -61,7 +67,13 @@ export default {
     return {
       query: null,
       debounce: null,
+      type: "fluent",
     };
+  },
+  watch: {
+    type() {
+      this.$emit("setType", this.type);
+    },
   },
   computed: {
     isDarkMode() {
