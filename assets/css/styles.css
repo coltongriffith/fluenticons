@@ -154,6 +154,9 @@ html.dark {
 .navbar-btn {
   @apply h-10 px-4 rounded-full flex items-center justify-center space-x-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200;
 }
+.navbar-type-btn {
+  @apply h-10 px-4 rounded-full flex items-center justify-center space-x-3 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700;
+}
 
 .expand-enter-active,
 .expand-leave-active {

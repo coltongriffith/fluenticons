@@ -6,7 +6,7 @@ let outlinedIcons = [];
 
 fs.readdirSync(iconsFolder).forEach((file) => {
   let type = file.includes("outline") === true ? "outlined" : "filled";
-  let IconName = pascalize(file.split("-outline")[0]);
+  let IconName = pascalize(file.slice(0, -4).split("-outline")[0]);
   if (type === "filled") {
     filledIcons.push({
       name: IconName,

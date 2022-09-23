@@ -7,36 +7,12 @@
       <div class="text-gray-600 my-auto" v-if="page.subtitle">
         ({{ page.subtitle }})
       </div>
-      <div class="form-check form-check-inline mr-2 ml-4">
-        <input
-          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-          type="radio"
-          name="iconType"
-          id="fluent"
-          value="fluent"
-          v-model="type"
-        />
-        <label
-          class="form-check-label inline-block text-gray-800 dark:text-white"
-          for="fluent"
-          >Fluent</label
-        >
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-          type="radio"
-          name="iconType"
-          id="material"
-          value="material"
-          v-model="type"
-        />
-        <label
-          class="form-check-label inline-block text-gray-800 dark:text-white"
-          for="material"
-          >Material</label
-        >
-      </div>
+      <button class="navbar-type-btn ml-4" :class="{'bg-gray-200 dark:bg-gray-700': type === 'fluent', 'bg-gray-100 dark:bg-gray-800': type !== 'fluent'}" @click="type = 'fluent'">
+        Fluent Icons
+      </button>
+      <button class="navbar-type-btn ml-2" :class="{'bg-gray-200 dark:bg-gray-700': type === 'material', 'bg-gray-100 dark:bg-gray-800': type !== 'material'}" @click="type = 'material'">
+        Material Icons
+      </button>
     </div>
     <div class="flex-space-x-4">
       <div
@@ -132,7 +108,7 @@ export default {
       this.query = e.target.value;
       clearTimeout(this.debounce);
       this.debounce = setTimeout(() => {
-        // this.$emit("input", e.target.value);
+        this.$emit("input", e.target.value);
       }, 600);
     },
     focusSearch(e) {

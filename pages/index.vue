@@ -52,7 +52,6 @@ export default {
       this.selectedIcon = payload;
     },
     setType(payload) {
-      console.log({ payload });
       this.type = payload;
     },
   },
