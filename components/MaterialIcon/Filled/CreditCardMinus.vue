@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-credit-card-minus" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.89 2 6V18C2 19.11 2.9 20 4 20H13.09C13.03 19.67 13 19.34 13 19C13 15.69 15.69 13 19 13C20.06 13 21.09 13.28 22 13.81V6C22 4.89 21.11 4 20 4M20 11H4V8H20M23 18V20H15V18H23Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-credit-card-minus" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M20 4H4C2.9 4 2 4.89 2 6V18C2 19.11 2.9 20 4 20H13.09C13.03 19.67 13 19.34 13 19C13 15.69 15.69 13 19 13C20.06 13 21.09 13.28 22 13.81V6C22 4.89 21.11 4 20 4M20 11H4V8H20M23 18V20H15V18H23Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledCreditCardMinus.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

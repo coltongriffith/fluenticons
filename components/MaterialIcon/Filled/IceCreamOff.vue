@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-ice-cream-off" viewBox="0 0 24 24"><path d="M22.11 21.46L2.39 1.73L1.11 3L4.95 6.84C4.37 7.38 4 8.14 4 9C4 10.66 5.34 12 7 12L12 22L14.7 16.59L20.84 22.73L22.11 21.46M12 17.53L8.89 11.31C8.95 11.26 9 11.21 9.08 11.16C9.21 11.24 9.35 11.3 9.5 11.37L13.21 15.1L12 17.53M7.15 3.95C8.07 2.2 9.89 1 12 1C14.89 1 17.25 3.22 17.5 6.05C18.91 6.28 20 7.5 20 9C20 10.66 18.66 12 17 12L16.4 13.2L7.15 3.95Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-ice-cream-off" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M22.11 21.46L2.39 1.73L1.11 3L4.95 6.84C4.37 7.38 4 8.14 4 9C4 10.66 5.34 12 7 12L12 22L14.7 16.59L20.84 22.73L22.11 21.46M12 17.53L8.89 11.31C8.95 11.26 9 11.21 9.08 11.16C9.21 11.24 9.35 11.3 9.5 11.37L13.21 15.1L12 17.53M7.15 3.95C8.07 2.2 9.89 1 12 1C14.89 1 17.25 3.22 17.5 6.05C18.91 6.28 20 7.5 20 9C20 10.66 18.66 12 17 12L16.4 13.2L7.15 3.95Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledIceCreamOff.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

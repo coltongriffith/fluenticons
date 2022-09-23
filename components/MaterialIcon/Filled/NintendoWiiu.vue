@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-nintendo-wiiu" viewBox="0 0 24 24"><path d="M2,15.96C2,18.19 3.54,19.5 5.79,19.5H18.57C20.47,19.5 22,18.2 22,16.32V6.97C22,5.83 21.15,4.6 20.11,4.6H17.15V12.3C17.15,18.14 6.97,18.09 6.97,12.41V4.5H4.72C3.26,4.5 2,5.41 2,6.85V15.96M9.34,11.23C9.34,15.74 14.66,15.09 14.66,11.94V4.5H9.34V11.23Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-nintendo-wiiu" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M2,15.96C2,18.19 3.54,19.5 5.79,19.5H18.57C20.47,19.5 22,18.2 22,16.32V6.97C22,5.83 21.15,4.6 20.11,4.6H17.15V12.3C17.15,18.14 6.97,18.09 6.97,12.41V4.5H4.72C3.26,4.5 2,5.41 2,6.85V15.96M9.34,11.23C9.34,15.74 14.66,15.09 14.66,11.94V4.5H9.34V11.23Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledNintendoWiiu.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-hand-back-left" viewBox="0 0 24 24"><path d="M3 16V5.75C3 5.06 3.56 4.5 4.25 4.5S5.5 5.06 5.5 5.75V12H6.5V2.75C6.5 2.06 7.06 1.5 7.75 1.5C8.44 1.5 9 2.06 9 2.75V12H10V1.25C10 .56 10.56 0 11.25 0S12.5 .56 12.5 1.25V12H13.5V3.25C13.5 2.56 14.06 2 14.75 2S16 2.56 16 3.25V15H16.75L18.16 11.47C18.38 10.92 18.84 10.5 19.4 10.31L20.19 10.05C21 9.79 21.74 10.58 21.43 11.37L18.4 19C17.19 22 14.26 24 11 24C6.58 24 3 20.42 3 16Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-hand-back-left" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M3 16V5.75C3 5.06 3.56 4.5 4.25 4.5S5.5 5.06 5.5 5.75V12H6.5V2.75C6.5 2.06 7.06 1.5 7.75 1.5C8.44 1.5 9 2.06 9 2.75V12H10V1.25C10 .56 10.56 0 11.25 0S12.5 .56 12.5 1.25V12H13.5V3.25C13.5 2.56 14.06 2 14.75 2S16 2.56 16 3.25V15H16.75L18.16 11.47C18.38 10.92 18.84 10.5 19.4 10.31L20.19 10.05C21 9.79 21.74 10.58 21.43 11.37L18.4 19C17.19 22 14.26 24 11 24C6.58 24 3 20.42 3 16Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledHandBackLeft.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

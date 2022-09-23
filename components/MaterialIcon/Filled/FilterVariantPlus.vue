@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-filter-variant-plus" viewBox="0 0 24 24"><path d="M21 8H3V6H21V8M13.81 16H10V18H13.09C13.21 17.28 13.46 16.61 13.81 16M18 11H6V13H18V11M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-filter-variant-plus" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M21 8H3V6H21V8M13.81 16H10V18H13.09C13.21 17.28 13.46 16.61 13.81 16M18 11H6V13H18V11M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledFilterVariantPlus.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-paperclip-lock" viewBox="0 0 24 24"><path d="M18 13C16.6 13 15.2 14.1 15.2 15.5V17C14.6 17 14 17.6 14 18.2V21.7C14 22.4 14.6 23 15.2 23H20.7C21.4 23 22 22.4 22 21.8V18.3C22 17.6 21.4 17 20.8 17V15.5C20.8 14.1 19.4 13 18 13M18 14.2C18.8 14.2 19.5 14.7 19.5 15.5V17H16.5V15.5C16.5 14.7 17.2 14.2 18 14.2M8.9 2C6.8 2 5 3.8 5 6V16.5C5 19.5 7.5 22 10.5 22C11 22 11.5 21.9 12 21.8V20.2C11.5 20.4 11 20.5 10.5 20.5C8.3 20.5 6.5 18.7 6.5 16.5V6C6.5 4.6 7.6 3.5 9 3.5S11.5 4.6 11.5 6V14.5C11.5 15.1 11.1 15.5 10.5 15.5S9.5 15.1 9.5 14.5V7H8V14.5C8 15.9 9.1 17 10.5 17S13 15.9 13 14.5V6C13 3.8 11.2 2 8.9 2C9 2 9 2 8.9 2M14.5 7V12.4C14.9 12 15.4 11.6 16 11.4V7H14.5Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-paperclip-lock" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M18 13C16.6 13 15.2 14.1 15.2 15.5V17C14.6 17 14 17.6 14 18.2V21.7C14 22.4 14.6 23 15.2 23H20.7C21.4 23 22 22.4 22 21.8V18.3C22 17.6 21.4 17 20.8 17V15.5C20.8 14.1 19.4 13 18 13M18 14.2C18.8 14.2 19.5 14.7 19.5 15.5V17H16.5V15.5C16.5 14.7 17.2 14.2 18 14.2M8.9 2C6.8 2 5 3.8 5 6V16.5C5 19.5 7.5 22 10.5 22C11 22 11.5 21.9 12 21.8V20.2C11.5 20.4 11 20.5 10.5 20.5C8.3 20.5 6.5 18.7 6.5 16.5V6C6.5 4.6 7.6 3.5 9 3.5S11.5 4.6 11.5 6V14.5C11.5 15.1 11.1 15.5 10.5 15.5S9.5 15.1 9.5 14.5V7H8V14.5C8 15.9 9.1 17 10.5 17S13 15.9 13 14.5V6C13 3.8 11.2 2 8.9 2C9 2 9 2 8.9 2M14.5 7V12.4C14.9 12 15.4 11.6 16 11.4V7H14.5Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledPaperclipLock.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

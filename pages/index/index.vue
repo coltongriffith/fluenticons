@@ -32,11 +32,16 @@
 </template>
 
 <script>
-import icons from "~/assets/icons/fluent/filled.json";
+import fluentIcons from "~/assets/icons/fluent/filled.json";
+import materialIcons from "~/assets/icons/material/filled.json";
 export default {
   props: {
     selectedIcon: {
       type: Object,
+    },
+    type: {
+      type: String,
+      default: "fluent",
     },
     searchQuery: {
       type: String,
@@ -45,13 +50,16 @@ export default {
   },
   data() {
     return {
-      icons,
+      fluentIcons,
+      materialIcons,
       elementsToShow: 48,
     };
   },
   computed: {
     filteredIcons() {
-      return this.icons.filter((icon) => {
+      return (
+        this.type === "fluent" ? this.fluentIcons : this.materialIcons
+      ).filter((icon) => {
         return icon.name
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase().replace(" ", ""));

@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-phone-sync" viewBox="0 0 24 24"><path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79M17 3V1.5L14.75 3.75L17 6V4.5C18.38 4.5 19.5 5.62 19.5 7C19.5 7.4 19.41 7.78 19.24 8.12L20.33 9.21C20.75 8.58 21 7.82 21 7C21 4.79 19.21 3 17 3M17 9.5C15.62 9.5 14.5 8.38 14.5 7C14.5 6.6 14.59 6.22 14.76 5.88L13.67 4.79C13.25 5.42 13 6.18 13 7C13 9.21 14.79 11 17 11V12.5L19.25 10.25L17 8V9.5Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-phone-sync" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79M17 3V1.5L14.75 3.75L17 6V4.5C18.38 4.5 19.5 5.62 19.5 7C19.5 7.4 19.41 7.78 19.24 8.12L20.33 9.21C20.75 8.58 21 7.82 21 7C21 4.79 19.21 3 17 3M17 9.5C15.62 9.5 14.5 8.38 14.5 7C14.5 6.6 14.59 6.22 14.76 5.88L13.67 4.79C13.25 5.42 13 6.18 13 7C13 9.21 14.79 11 17 11V12.5L19.25 10.25L17 8V9.5Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledPhoneSync.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>

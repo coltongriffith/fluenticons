@@ -2,12 +2,42 @@
   <div
     class="h-[75px] border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-8 flex-wrap navbar-frosted"
   >
-    <p>
-      <span class="text-lg font-medium">{{ page.title }} Icons</span>
-      <span class="text-gray-600" v-if="page.subtitle"
-        >({{ page.subtitle }})</span
-      >
-    </p>
+    <div class="flex">
+      <div class="text-lg font-medium my-auto">{{ page.title }} Icons</div>
+      <div class="text-gray-600 my-auto" v-if="page.subtitle">
+        ({{ page.subtitle }})
+      </div>
+      <div class="form-check form-check-inline mr-2 ml-4">
+        <input
+          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+          type="radio"
+          name="iconType"
+          id="fluent"
+          value="fluent"
+          v-model="type"
+        />
+        <label
+          class="form-check-label inline-block text-gray-800 dark:text-white"
+          for="fluent"
+          >Fluent</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+          type="radio"
+          name="iconType"
+          id="material"
+          value="material"
+          v-model="type"
+        />
+        <label
+          class="form-check-label inline-block text-gray-800 dark:text-white"
+          for="material"
+          >Material</label
+        >
+      </div>
+    </div>
     <div class="flex-space-x-4">
       <div
         class="relative flex items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800"
@@ -61,7 +91,13 @@ export default {
     return {
       query: null,
       debounce: null,
+      type: "fluent",
     };
+  },
+  watch: {
+    type() {
+      this.$emit("setType", this.type);
+    },
   },
   computed: {
     isDarkMode() {
@@ -96,7 +132,7 @@ export default {
       this.query = e.target.value;
       clearTimeout(this.debounce);
       this.debounce = setTimeout(() => {
-        this.$emit("input", e.target.value);
+        // this.$emit("input", e.target.value);
       }, 600);
     },
     focusSearch(e) {

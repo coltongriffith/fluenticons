@@ -1,9 +1,30 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" id="mdi-baseball-diamond" viewBox="0 0 24 24"><path d="M5.79 12.79L2 9C2 9 6 3 12 3S22 9 22 9L18.21 12.79L12 6.59L5.79 12.79M13.5 18H10.5V20L12 21L13.5 20V18M16.79 14.21L14.2 16.8C13.6 16.31 12.84 16 12 16S10.4 16.31 9.8 16.8L7.21 14.21L12 9.41L16.79 14.21M13 14C13 13.45 12.55 13 12 13S11 13.45 11 14 11.45 15 12 15 13 14.55 13 14Z" /></svg>
-  </template>
+    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-baseball-diamond" viewBox="0 0 24 24">
+    <linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="`rotate(${angle})`"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient><path :fill="fill" :fill-opacity="opacity" d="M5.79 12.79L2 9C2 9 6 3 12 3S22 9 22 9L18.21 12.79L12 6.59L5.79 12.79M13.5 18H10.5V20L12 21L13.5 20V18M16.79 14.21L14.2 16.8C13.6 16.31 12.84 16 12 16S10.4 16.31 9.8 16.8L7.21 14.21L12 9.41L16.79 14.21M13 14C13 13.45 12.55 13 12 13S11 13.45 11 14 11.45 15 12 15 13 14.55 13 14Z" /></svg>
+</template>
 
-  <script>
-    export default {
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
       name: 'MaterialIconFilledBaseballDiamond.svg',
-  };
-  </script>
+  mixins: [icon]
+};
+</script>
