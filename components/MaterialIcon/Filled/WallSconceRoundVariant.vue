@@ -1,9 +1,8 @@
 <template>
-    <svg  width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-wall-sconce-round-variant" viewBox="0 0 24 24">
-    <linearGradient
+  <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="mdi-wall-sconce-round-variant" viewBox="0 0 24 24"><linearGradient
       v-if="fill === 'url(#g1)'"
       id="g1"
-      :gradientTransform="`rotate(${angle})`"
+      :gradientTransform="'rotate(' + angle + ')'"
     >
       <stop class="main-stop" offset="0%" :stop-color="start" />
       <stop class="alt-stop" offset="100%" :stop-color="end" />
@@ -24,7 +23,7 @@
 import icon from "../../../mixins/icon.js";
 
 export default {
-      name: 'MaterialIconFilledWallSconceRoundVariant.svg',
+  name: 'MaterialIconFilledWallSconceRoundVariant',
   mixins: [icon]
 };
 </script>
