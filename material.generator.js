@@ -24,14 +24,43 @@ fs.readdirSync(iconsFolder).forEach((file) => {
     file.slice(0, -4).split("-outline")[0]
   )}.vue`;
   let content = `<template>
-    ${readFile(`./static/icons/material/${file}`, "utf8")}
-  </template>
+  ${readFile(`./static/icons/material/${file}`, "utf8")}
+</template>
 
-  <script>
-    export default {
-      name: 'MaterialIcon${capitalizeString(type)}${IconName}',
-  };
-  </script>`;
+<script>
+import icon from "../../../mixins/icon.js";
+
+export default {
+  name: 'MaterialIcon${capitalizeString(type)}${IconName}',
+  mixins: [icon]
+};
+</script>`;
+  content = content
+    .replaceAll("<svg", '<svg width="24" height="24" fill="none"')
+    .replaceAll("<path", '<path :fill="fill" :fill-opacity="opacity"');
+  content = [
+    content.split('viewBox="0 0 24 24">')[0],
+    'viewBox="0 0 24 24">',
+    `<linearGradient
+      v-if="fill === 'url(#g1)'"
+      id="g1"
+      :gradientTransform="'rotate(' + angle + ')'"
+    >
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient
+      v-if="fill === 'url(#g2)'"
+      id="g2"
+      cx="50%"
+      cy="50%"
+      r="50%"
+    >
+      <stop :stop-color="start" offset="0%" />
+      <stop :stop-color="end" offset="100%" />
+    </radialGradient>`,
+    content.split('viewBox="0 0 24 24">')[1],
+  ].join('');
   if (type === "filled") {
     createFile(
       `./components/MaterialIcon/Filled/${ComponentName}`,
