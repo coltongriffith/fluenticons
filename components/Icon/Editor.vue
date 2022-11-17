@@ -144,6 +144,10 @@ export default {
         return {};
       },
     },
+    type: {
+      type: String,
+      default: 'fluent'
+    }
   },
   mixins: [clickout],
   components: {
@@ -262,7 +266,8 @@ export default {
         let snippet = await getIconSnippet(
           this.selectedCopyType,
           this.icon.svgFileName,
-          this.color
+          this.color,
+          this.type
         );
         this.showToast(`Copied ${this.selectedCopyType} snippet`);
         await this.$copyText(snippet);
@@ -330,7 +335,8 @@ export default {
       let snippet = await getIconSnippet(
         this.selectedExportType,
         this.icon.svgFileName,
-        this.color
+        this.color,
+        this.type
       );
       let blob = new Blob([snippet], {
         type: "text/plain;charset=utf-8",

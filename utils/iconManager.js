@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export async function getSvg(icon, color) {
-  const { data } = await axios.get(`/icons/${icon}`);
+export async function getSvg(icon, color, path) {
+  const { data } = await axios.get(`/icons/${path}/${icon}`);
   if (color) {
     return data.replace(/#212121/g, color);
   }
@@ -45,17 +45,17 @@ export async function svgToHtml(svgString, iconName) {
     });
 }
 
-export async function getIconSnippet(type, icon, color = "#000000") {
+export async function getIconSnippet(type, icon, color = "#000000", path) {
   if (!icon) return;
   switch (type) {
     case "svg":
-      return await getSvg(icon, color);
+      return await getSvg(icon, color, path);
     case "vue":
-      return svgToVue(await getSvg(icon, color), icon);
+      return svgToVue(await getSvg(icon, color, path), icon);
     case "react":
-      return svgToReact(await getSvg(icon, color), icon);
+      return svgToReact(await getSvg(icon, color, path), icon);
     case "html":
-      return svgToHtml(await getSvg(icon, color), icon);
+      return svgToHtml(await getSvg(icon, color, path), icon);
   }
 }
 
