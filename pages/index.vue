@@ -39,8 +39,8 @@ export default {
       elementsToShow: 48,
       selectedIcon: {
         name: "Select and preview icons here",
-        componentName: "FluentIconOutlinedSticker",
-        svgFileName: "ic_fluent_sticker_24_regular.svg",
+        componentName: "FluentIconFilledAccessTime",
+        svgFileName: "ic_fluent_access_time_24_filled.svg",
       },
     };
   },
