@@ -10,7 +10,7 @@
         :selectedIcon="selectedIcon"
       />
     </section>
-    <IconEditor :icon="selectedIcon" @login="showModal = 'login'" :type="type" />
+    <IconEditor :icon="selectedIcon" @login="showModal = 'login'" :iconType="type" />
     <modal v-show="showModal == 'login'" @close="showModal = ''">
       <Login @signup="showModal = 'register'" @close="showModal = ''" />
     </modal>
