@@ -6,6 +6,7 @@
     <div
       class="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] dark:bg-grid-slate-400/[0.05] dark:bg-bottom bg-squares-dark dark-webkit-mask"
     ></div>
+    <Header />
     <div>
       <div class="container mx-auto slate-gray-800 dark:text-white">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
@@ -50,7 +51,11 @@
 </template>
 
 <script>
-export default {};
+import Header from "~/components/Header";
+
+export default {
+  components: { Header }
+};
 </script>
 
 <style scoped>

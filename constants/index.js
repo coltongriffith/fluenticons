@@ -16,14 +16,6 @@ export const head = {
     },
   ],
   link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-  script: [
-    {
-      src: "https://cdn.splitbee.io/sb.js",
-      async: true,
-      defer: true,
-      hid: "splitbee",
-    },
-  ],
 };
 
 export const pwa = {
@@ -44,7 +36,7 @@ export const pwa = {
 };
 
 export const axios = {
-  baseURL: "https://api.fluenticons.co",
+  baseURL: process.env.NODE_ENV !== "production" ? "http://localhost:3001" : "https://api.fluenticons.co",
 };
 
 export const css = ["~/assets/css/styles.css"];

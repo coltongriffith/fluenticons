@@ -24,6 +24,9 @@ export default {
   toast,
   colorMode,
   content: {},
+  env: {
+    api: process.env.NODE_ENV !== "production" ? "http://localhost:3001" : "https://api.fluenticons.co"
+  },
   auth: {
     strategies: {
       local: {
