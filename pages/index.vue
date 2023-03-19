@@ -4,12 +4,12 @@
       <section class="flex-grow">
         <base-hero />
         <base-navbar v-model="searchQuery" @setType="setType" />
-        <!-- <nuxt-child
+        <nuxt-child
           @setIcon="setIcon"
           :type="type"
           :searchQuery="searchQuery"
           :selectedIcon="selectedIcon"
-        /> -->
+        />
       </section>
       <IconEditor :icon="selectedIcon" @login="showModal = 'login'" :iconType="type" />
       <modal v-show="showModal == 'login'" @close="showModal = ''">
