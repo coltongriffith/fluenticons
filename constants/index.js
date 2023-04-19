@@ -11,11 +11,16 @@ export const head = {
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     { hid: "description", name: "description", content: description },
     {
-      'http-equiv': "Content-Security-Policy",
+      "http-equiv": "Content-Security-Policy",
       content: "upgrade-insecure-requests",
     },
   ],
   link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+  script: [
+    {
+      src: "https://cdn.splitbee.io/sb.js",
+    },
+  ],
 };
 
 export const pwa = {
@@ -36,7 +41,10 @@ export const pwa = {
 };
 
 export const axios = {
-  baseURL: process.env.NODE_ENV !== "production" ? "http://localhost:3001" : "https://api.fluenticons.co",
+  baseURL:
+    process.env.NODE_ENV !== "production"
+      ? "http://localhost:3001"
+      : "https://api.fluenticons.co",
 };
 
 export const css = ["~/assets/css/styles.css"];

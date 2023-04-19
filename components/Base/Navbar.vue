@@ -18,14 +18,16 @@
       <div
         class="relative flex items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800"
       >
-        <input
-          type="text"
-          class="focus:outline-none bg-transparent z-10 h-full rounded-l-full px-6 text-sm"
-          placeholder="Search (Press / to focus)"
-          ref="search"
-          @input="search"
-          autocomplete="new-password"
-        />
+        <form autoComplete='false'>
+          <input
+            type="text"
+            class="focus:outline-none bg-transparent z-10 h-full rounded-l-full px-6 text-sm"
+            placeholder="Search (Press / to focus)"
+            ref="search"
+            @input="search"
+            autoComplete="none"
+          />
+        </form>
         <button
           class="h-10 w-10 flex-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 z-20 focus:outline-none focus:bg-gray-200"
           @click="$refs.search.focus()"
