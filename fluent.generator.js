@@ -1,25 +1,56 @@
 const iconsFolder = "./static/icons/fluent/";
 const fs = require("fs");
-const axios = require("axios");
 let filledIcons = [];
 let outlinedIcons = [];
 
+const categoryMapping = {
+  'Accessibility': ['access', 'wheelchair', 'braille', 'vision', 'hearing', 'assistive'],
+  'Animals': ['dog', 'cat', 'lion', 'fish', 'bird', 'horse', 'insect'],
+  'Arrows': ['up', 'down', 'left', 'right', 'next', 'previous', 'forward', 'backward', 'arrow'],
+  'Audio': ['audio', 'music', 'sound', 'volume', 'mute', 'speaker'],
+  'Business': ['business', 'office', 'work', 'job', 'career', 'company'],
+  'Communication': ['communication', 'message', 'chat', 'talk', 'call', 'mail'],
+  'Design': ['design', 'art', 'draw', 'paint', 'color', 'shape'],
+  'Devices': ['device', 'phone', 'tablet', 'laptop', 'computer', 'watch'],
+  'Emojis': ['emoji', 'smile', 'face', 'emotion', 'expression'],
+  'Finance': ['finance', 'money', 'bank', 'payment', 'credit', 'dollar'],
+  'Food and Drink': ['food', 'drink', 'eat', 'meal', 'fruit', 'vegetable', 'coffee', 'tea'],
+  'Health': ['health', 'medical', 'doctor', 'hospital', 'medicine', 'wellness'],
+  'Holidays': ['holiday', 'christmas', 'new year', 'easter', 'halloween', 'birthday'],
+  'Home': ['home', 'house', 'room', 'kitchen', 'bathroom', 'bedroom'],
+  'Maps and Locations': ['map', 'location', 'place', 'direction', 'navigation', 'gps'],
+  'Nature': ['nature', 'tree', 'flower', 'plant', 'leaf', 'forest'],
+  'People': ['people', 'person', 'user', 'man', 'woman', 'child'],
+  'Science': ['science', 'lab', 'research', 'experiment', 'chemistry', 'biology'],
+  'Sports': ['sport', 'game', 'play', 'ball', 'race', 'fitness'],
+  'Technology': ['technology', 'tech', 'internet', 'web', 'code', 'software'],
+  'Tools': ['tool', 'hammer', 'screwdriver', 'wrench', 'drill', 'saw'],
+  'Transportation': ['transportation', 'car', 'bus', 'bike', 'plane', 'train'],
+  'Weather': ['weather', 'sun', 'rain', 'snow', 'cloud', 'storm'],
+};
+
 fs.readdirSync(iconsFolder).forEach((file) => {
   let type = file.includes("filled") === true ? "filled" : "outlined";
-  let IconName = pascalize(file.replace("ic_fluent_", "").split("_24")[0]);
+  let iconName = pascalize(file.replace("ic_fluent_", "").split("_24")[0]);
+
+  let category = Object.keys(categoryMapping).find(category => 
+    categoryMapping[category].some(keyword => iconName.toLowerCase().includes(keyword))
+  );
+  category = category || 'Uncategorized';
+
+  let iconData = {
+    name: iconName,
+    componentName: `FluentIcon${capitalizeString(type)}${iconName}`,
+    svgFileName: file,
+    category: category,
+  };
+
   if (type === "filled") {
-    filledIcons.push({
-      name: IconName,
-      componentName: `FluentIcon${capitalizeString(type)}${IconName}`,
-      svgFileName: file,
-    });
+    filledIcons.push(iconData);
   } else {
-    outlinedIcons.push({
-      name: IconName,
-      componentName: `FluentIcon${capitalizeString(type)}${IconName}`,
-      svgFileName: file,
-    });
+    outlinedIcons.push(iconData);
   }
+
   let ComponentName = `${pascalize(
     file.replace("ic_fluent_", "").split("_24")[0]
   )}.vue`;
@@ -29,19 +60,19 @@ fs.readdirSync(iconsFolder).forEach((file) => {
 
   <script>
     export default {
-      name: 'FluentIcon${capitalizeString(type)}${IconName}',
+      name: 'FluentIcon${capitalizeString(type)}${iconName}',
   };
   </script>`;
   if (type === "filled") {
     createFile(
       `./components/FluentIcon/Filled/${ComponentName}`,
-      IconName,
+      iconName,
       content
     );
   } else {
     createFile(
       `./components/FluentIcon/Outlined/${ComponentName}`,
-      IconName,
+      iconName,
       content
     );
   }
@@ -61,14 +92,6 @@ createFile(
 // function to capitalize a string
 function capitalizeString(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-// function to get synonyms of a given word from datamuse.com
-async function getSynonyms(word) {
-  const { data } = await axios.get(
-    `https://api.datamuse.com/words?rel_syn=${word}`
-  );
-  return data.map((item) => item.word);
 }
 
 // function to create and save a file on given path

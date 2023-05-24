@@ -1,23 +1,9 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
-      <stop class="main-stop" offset="0%" :stop-color="start" />
-      <stop class="alt-stop" offset="100%" :stop-color="end" />
-    </linearGradient>
-    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
-      <stop :stop-color="start" offset = "0%"/>
-      <stop :stop-color="end" offset = "100%"/>
-    </radialGradient>
-<path d="M6.75 2A2.25 2.25 0 0 0 4.5 4.25v16.5c0 .414.336.75.75.75H7.5v-4.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 .75.75v4.25h2.25a.75.75 0 0 0 .75-.75v-9a2.25 2.25 0 0 0-2.25-2.25h-.75V4.25A2.25 2.25 0 0 0 14.25 2h-7.5Zm.75 4.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-1-2.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0ZM12 5.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-1 8a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm4.5-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" :fill="fill" :fill-opacity="opacity" />
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 2A2.25 2.25 0 0 0 4.5 4.25v16.5c0 .414.336.75.75.75H7.5v-4.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 .75.75v4.25h2.25a.75.75 0 0 0 .75-.75v-9a2.25 2.25 0 0 0-2.25-2.25h-.75V4.25A2.25 2.25 0 0 0 14.25 2h-7.5Zm.75 4.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-1-2.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0ZM12 5.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-1 8a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm4.5-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#212121"/><path d="M15 21.5V18h-2.25v3.5H15ZM11.25 21.5V18H9v3.5h2.25Z" fill="#212121"/></svg>
+  </template>
 
-<path d="M15 21.5V18h-2.25v3.5H15ZM11.25 21.5V18H9v3.5h2.25Z" :fill="fill" :fill-opacity="opacity" /></svg>
-</template>
-
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledBuilding',
-    mixins: [icon]
-};
-</script>
+  <script>
+    export default {
+      name: 'FluentIconFilledBuilding',
+  };
+  </script>

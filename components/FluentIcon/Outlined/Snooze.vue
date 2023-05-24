@@ -1,21 +1,9 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
-      <stop class="main-stop" offset="0%" :stop-color="start" />
-      <stop class="alt-stop" offset="100%" :stop-color="end" />
-    </linearGradient>
-    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
-      <stop :stop-color="start" offset = "0%"/>
-      <stop :stop-color="end" offset = "100%"/>
-    </radialGradient>
-<path d="M8.245 13.003a.75.75 0 0 1 .661 1.104l-.057.09-4.622 6.302h4.018a.75.75 0 0 1 .743.648l.007.102a.75.75 0 0 1-.649.743L8.245 22H2.748a.75.75 0 0 1-.662-1.104l.057-.09 4.621-6.302H2.75a.75.75 0 0 1-.743-.648l-.007-.102a.75.75 0 0 1 .648-.743l.102-.007h5.496ZM21.252 2c.6 0 .943.66.639 1.145l-.06.083-8.492 10.269h7.913a.75.75 0 0 1 .743.648l.007.102a.75.75 0 0 1-.648.743l-.102.007h-9.504a.75.75 0 0 1-.639-1.144l.06-.084 8.49-10.27-7.911.001a.75.75 0 0 1-.743-.648l-.007-.102a.75.75 0 0 1 .648-.743L11.748 2h9.504Z" :fill="fill" :fill-opacity="opacity" /></svg>
-</template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.245 13.003a.75.75 0 0 1 .661 1.104l-.057.09-4.622 6.302h4.018a.75.75 0 0 1 .743.648l.007.102a.75.75 0 0 1-.649.743L8.245 22H2.748a.75.75 0 0 1-.662-1.104l.057-.09 4.621-6.302H2.75a.75.75 0 0 1-.743-.648l-.007-.102a.75.75 0 0 1 .648-.743l.102-.007h5.496ZM21.252 2c.6 0 .943.66.639 1.145l-.06.083-8.492 10.269h7.913a.75.75 0 0 1 .743.648l.007.102a.75.75 0 0 1-.648.743l-.102.007h-9.504a.75.75 0 0 1-.639-1.144l.06-.084 8.49-10.27-7.911.001a.75.75 0 0 1-.743-.648l-.007-.102a.75.75 0 0 1 .648-.743L11.748 2h9.504Z" fill="#212121"/></svg>
+  </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedSnooze',
-    mixins: [icon]
-};
-</script>
+  <script>
+    export default {
+      name: 'FluentIconOutlinedSnooze',
+  };
+  </script>

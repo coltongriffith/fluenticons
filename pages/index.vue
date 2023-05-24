@@ -3,11 +3,12 @@
     <div class="flex">
       <section class="flex-grow">
         <base-hero />
-        <base-navbar v-model="searchQuery" @setType="setType" />
+        <base-navbar v-model="searchQuery" @setType="setType" @selectCategory="selectCategory" />
         <nuxt-child
           @setIcon="setIcon"
           :type="type"
           :searchQuery="searchQuery"
+          :selectedCategory="selectedCategory"
           :selectedIcon="selectedIcon"
         />
       </section>
@@ -46,17 +47,18 @@ export default {
         componentName: "FluentIconFilledAccessTime",
         svgFileName: "ic_fluent_access_time_24_filled.svg",
       },
+      selectedCategory: null,
     };
   },
-  // mounted() {
-  //   this.$auth.logout()
-  // },
   methods: {
     setIcon(payload) {
       this.selectedIcon = payload;
     },
     setType(payload) {
       this.type = payload;
+    },
+    selectCategory(category) {
+      this.selectedCategory = category;
     },
   },
 };

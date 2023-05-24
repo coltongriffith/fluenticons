@@ -1,25 +1,49 @@
 const iconsFolder = "./static/icons/material/";
 const fs = require("fs");
-const axios = require("axios");
 let filledIcons = [];
 let outlinedIcons = [];
 
+const categoryMapping = {
+  'Action': ['action', 'do', 'perform', 'execute', 'act', 'move'],
+  'Alert': ['alert', 'warning', 'alarm', 'notify', 'danger', 'caution'],
+  'Avatars': ['avatar', 'user', 'person', 'profile', 'account', 'character'],
+  'Communication': ['communication', 'message', 'chat', 'talk', 'call', 'mail'],
+  'Content': ['content', 'text', 'image', 'video', 'audio', 'media'],
+  'Device': ['device', 'phone', 'tablet', 'laptop', 'computer', 'watch'],
+  'Editor': ['editor', 'write', 'edit', 'text', 'format', 'style'],
+  'File': ['file', 'document', 'folder', 'paper', 'pdf', 'excel', 'word'],
+  'Hardware': ['hardware', 'computer', 'laptop', 'phone', 'tablet', 'keyboard', 'mouse'],
+  'Image': ['image', 'photo', 'picture', 'gallery', 'camera', 'edit'],
+  'Maps': ['map', 'location', 'place', 'direction', 'navigation', 'gps'],
+  'Navigation': ['navigation', 'menu', 'sidebar', 'drawer', 'up', 'down', 'left', 'right'],
+  'Notification': ['notification', 'alert', 'message', 'alarm', 'bell', 'reminder'],
+  'Places': ['place', 'location', 'map', 'area', 'spot', 'site'],
+  'Social': ['social', 'friend', 'group', 'people', 'community', 'share'],
+  'Toggle': ['toggle', 'switch', 'change', 'on', 'off', 'enable', 'disable'],
+};
+
 fs.readdirSync(iconsFolder).forEach((file) => {
   let type = file.includes("outline") === true ? "outlined" : "filled";
-  let IconName = pascalize(file.slice(0, -4).split("-outline")[0]);
+  let iconName = pascalize(file.slice(0, -4).split("-outline")[0]);
+
+  let category = Object.keys(categoryMapping).find(category => 
+    categoryMapping[category].some(keyword => iconName.toLowerCase().includes(keyword))
+  );
+  category = category || 'Uncategorized';
+
+  let iconData = {
+    name: iconName,
+    componentName: `MaterialIcon${capitalizeString(type)}${iconName}`,
+    svgFileName: file,
+    category: category,
+  };
+
   if (type === "filled") {
-    filledIcons.push({
-      name: IconName,
-      componentName: `MaterialIcon${capitalizeString(type)}${IconName}`,
-      svgFileName: file,
-    });
+    filledIcons.push(iconData);
   } else {
-    outlinedIcons.push({
-      name: IconName,
-      componentName: `MaterialIcon${capitalizeString(type)}${IconName}`,
-      svgFileName: file,
-    });
+    outlinedIcons.push(iconData);
   }
+
   let ComponentName = `${pascalize(
     file.slice(0, -4).split("-outline")[0]
   )}.vue`;
@@ -31,7 +55,7 @@ fs.readdirSync(iconsFolder).forEach((file) => {
 import icon from "../../../mixins/icon.js";
 
 export default {
-  name: 'MaterialIcon${capitalizeString(type)}${IconName}',
+  name: 'MaterialIcon${capitalizeString(type)}${iconName}',
   mixins: [icon]
 };
 </script>`;
@@ -64,13 +88,13 @@ export default {
   if (type === "filled") {
     createFile(
       `./components/MaterialIcon/Filled/${ComponentName}`,
-      IconName,
+      iconName,
       content
     );
   } else {
     createFile(
       `./components/MaterialIcon/Outlined/${ComponentName}`,
-      IconName,
+      iconName,
       content
     );
   }
@@ -90,14 +114,6 @@ createFile(
 // function to capitalize a string
 function capitalizeString(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-// function to get synonyms of a given word from datamuse.com
-async function getSynonyms(word) {
-  const { data } = await axios.get(
-    `https://api.datamuse.com/words?rel_syn=${word}`
-  );
-  return data.map((item) => item.word);
 }
 
 // function to create and save a file on given path

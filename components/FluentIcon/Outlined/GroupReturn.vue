@@ -1,21 +1,9 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
-      <stop class="main-stop" offset="0%" :stop-color="start" />
-      <stop class="alt-stop" offset="100%" :stop-color="end" />
-    </linearGradient>
-    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
-      <stop :stop-color="start" offset = "0%"/>
-      <stop :stop-color="end" offset = "100%"/>
-    </radialGradient>
-<path d="M7 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM7 19a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 5c0 .17-.014.337-.041.5H12.5a1 1 0 0 1 1 1V9h-2A2.5 2.5 0 0 0 9 11.5v2H6.5a1 1 0 0 1-1-1V7.959a3.02 3.02 0 0 1-1.5-.13V12.5A2.5 2.5 0 0 0 6.5 15H9v2.5a2.5 2.5 0 0 0 2.498 2.5 6.451 6.451 0 0 1-.436-1.6 1 1 0 0 1-.562-.9v-6a1 1 0 0 1 1-1h6a1 1 0 0 1 .9.562c.559.077 1.095.226 1.6.436A2.5 2.5 0 0 0 17.5 9H15V6.5A2.5 2.5 0 0 0 12.5 4H7.83c.11.313.17.65.17 1Zm15 12.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0ZM15.707 16l.647-.646a.5.5 0 0 0-.708-.708l-1.5 1.5a.5.5 0 0 0 0 .708l1.5 1.5a.5.5 0 0 0 .708-.708L15.707 17h2.043A2.25 2.25 0 0 1 20 19.25v.25a.5.5 0 0 0 1 0v-.25A3.25 3.25 0 0 0 17.75 16h-2.043Z" :fill="fill" :fill-opacity="opacity" /></svg>
-</template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM7 19a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 5c0 .17-.014.337-.041.5H12.5a1 1 0 0 1 1 1V9h-2A2.5 2.5 0 0 0 9 11.5v2H6.5a1 1 0 0 1-1-1V7.959a3.02 3.02 0 0 1-1.5-.13V12.5A2.5 2.5 0 0 0 6.5 15H9v2.5a2.5 2.5 0 0 0 2.498 2.5 6.451 6.451 0 0 1-.436-1.6 1 1 0 0 1-.562-.9v-6a1 1 0 0 1 1-1h6a1 1 0 0 1 .9.562c.559.077 1.095.226 1.6.436A2.5 2.5 0 0 0 17.5 9H15V6.5A2.5 2.5 0 0 0 12.5 4H7.83c.11.313.17.65.17 1Zm15 12.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0ZM15.707 16l.647-.646a.5.5 0 0 0-.708-.708l-1.5 1.5a.5.5 0 0 0 0 .708l1.5 1.5a.5.5 0 0 0 .708-.708L15.707 17h2.043A2.25 2.25 0 0 1 20 19.25v.25a.5.5 0 0 0 1 0v-.25A3.25 3.25 0 0 0 17.75 16h-2.043Z" fill="#212121"/></svg>
+  </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedGroupReturn',
-    mixins: [icon]
-};
-</script>
+  <script>
+    export default {
+      name: 'FluentIconOutlinedGroupReturn',
+  };
+  </script>

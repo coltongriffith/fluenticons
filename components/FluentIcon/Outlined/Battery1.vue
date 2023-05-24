@@ -1,21 +1,9 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
-      <stop class="main-stop" offset="0%" :stop-color="start" />
-      <stop class="alt-stop" offset="100%" :stop-color="end" />
-    </linearGradient>
-    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
-      <stop :stop-color="start" offset = "0%"/>
-      <stop :stop-color="end" offset = "100%"/>
-    </radialGradient>
-<path d="M17 6a3 3 0 0 1 3 3v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h12Zm-.002 1.5H5a1.5 1.5 0 0 0-1.493 1.356L3.5 9v6a1.5 1.5 0 0 0 1.355 1.493L5 16.5h11.998a1.5 1.5 0 0 0 1.493-1.355l.007-.145V9a1.5 1.5 0 0 0-1.355-1.493l-.145-.007ZM6.003 8.999H7a1 1 0 0 1 .993.883L8 10v4a1 1 0 0 1-.883.993L7 14.999h-.997a1 1 0 0 1-.993-.884L5.003 14v-4a1 1 0 0 1 .883-.994L6.003 9H7h-.997Z" :fill="fill" :fill-opacity="opacity" /></svg>
-</template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6a3 3 0 0 1 3 3v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h12Zm-.002 1.5H5a1.5 1.5 0 0 0-1.493 1.356L3.5 9v6a1.5 1.5 0 0 0 1.355 1.493L5 16.5h11.998a1.5 1.5 0 0 0 1.493-1.355l.007-.145V9a1.5 1.5 0 0 0-1.355-1.493l-.145-.007ZM6.003 8.999H7a1 1 0 0 1 .993.883L8 10v4a1 1 0 0 1-.883.993L7 14.999h-.997a1 1 0 0 1-.993-.884L5.003 14v-4a1 1 0 0 1 .883-.994L6.003 9H7h-.997Z" fill="#212121"/></svg>
+  </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedBattery1',
-    mixins: [icon]
-};
-</script>
+  <script>
+    export default {
+      name: 'FluentIconOutlinedBattery1',
+  };
+  </script>

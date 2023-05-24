@@ -47,6 +47,10 @@ export default {
       type: String,
       default: "",
     },
+    selectedCategory: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -62,7 +66,8 @@ export default {
       ).filter((icon) => {
         return icon.name
           .toLowerCase()
-          .includes(this.searchQuery.toLowerCase().replace(" ", ""));
+          .includes(this.searchQuery.toLowerCase().replace(" ", "")) &&
+          (this.selectedCategory ? icon.category === this.selectedCategory : true);
       });
     },
   },

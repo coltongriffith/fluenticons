@@ -1,21 +1,9 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
-      <stop class="main-stop" offset="0%" :stop-color="start" />
-      <stop class="alt-stop" offset="100%" :stop-color="end" />
-    </linearGradient>
-    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
-      <stop :stop-color="start" offset = "0%"/>
-      <stop :stop-color="end" offset = "100%"/>
-    </radialGradient>
-<path d="M17 2.5A2.5 2.5 0 0 1 19.5 5v2.5a2.5 2.5 0 0 1 0 5V18a2.5 2.5 0 0 1-5 0V5A2.5 2.5 0 0 1 17 2.5ZM18 18v-7h1.5a1 1 0 1 0 0-2H18V5a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0ZM2.5 8A2.5 2.5 0 0 1 5 5.5h6A2.5 2.5 0 0 1 13.5 8c0 1.837-.333 4.314-1.521 6.426C10.709 16.685 8.44 18.5 5 18.5a2.5 2.5 0 0 1 0-5c.74 0 1.25-.174 1.624-.411.383-.243.712-.609.997-1.115.243-.431.433-.934.573-1.474H5A2.5 2.5 0 0 1 2.5 8Zm7.236 2.5c-.17.779-.432 1.542-.808 2.21C8.177 14.045 6.984 15 5 15a1 1 0 1 0 0 2c2.816 0 4.623-1.445 5.672-3.31C11.687 11.886 12 9.695 12 8a1 1 0 0 0-1-1H5a1 1 0 0 0 0 2h4.959c-.041.493-.113 1-.223 1.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
-</template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 2.5A2.5 2.5 0 0 1 19.5 5v2.5a2.5 2.5 0 0 1 0 5V18a2.5 2.5 0 0 1-5 0V5A2.5 2.5 0 0 1 17 2.5ZM18 18v-7h1.5a1 1 0 1 0 0-2H18V5a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0ZM2.5 8A2.5 2.5 0 0 1 5 5.5h6A2.5 2.5 0 0 1 13.5 8c0 1.837-.333 4.314-1.521 6.426C10.709 16.685 8.44 18.5 5 18.5a2.5 2.5 0 0 1 0-5c.74 0 1.25-.174 1.624-.411.383-.243.712-.609.997-1.115.243-.431.433-.934.573-1.474H5A2.5 2.5 0 0 1 2.5 8Zm7.236 2.5c-.17.779-.432 1.542-.808 2.21C8.177 14.045 6.984 15 5 15a1 1 0 1 0 0 2c2.816 0 4.623-1.445 5.672-3.31C11.687 11.886 12 9.695 12 8a1 1 0 0 0-1-1H5a1 1 0 0 0 0 2h4.959c-.041.493-.113 1-.223 1.5Z" fill="#212121"/></svg>
+  </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTextEffectsGa',
-    mixins: [icon]
-};
-</script>
+  <script>
+    export default {
+      name: 'FluentIconOutlinedTextEffectsGa',
+  };
+  </script>
