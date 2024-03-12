@@ -33,6 +33,7 @@
 
 <script>
 import fluentIcons from "~/assets/icons/fluent/filled.json";
+import materialIcons from "~/assets/icons/material/filled.json";
 export default {
   props: {
     selectedIcon: {
@@ -54,20 +55,19 @@ export default {
   data() {
     return {
       fluentIcons,
+      materialIcons,
       elementsToShow: 48,
     };
   },
   computed: {
     filteredIcons() {
-      return this.fluentIcons.filter((icon) => {
-        return (
-          icon.name
-            .toLowerCase()
-            .includes(this.searchQuery.toLowerCase().replace(" ", "")) &&
-          (this.selectedCategory
-            ? icon.category === this.selectedCategory
-            : true)
-        );
+      return (
+        this.type === "fluent" ? this.fluentIcons : this.materialIcons
+      ).filter((icon) => {
+        return icon.name
+          .toLowerCase()
+          .includes(this.searchQuery.toLowerCase().replace(" ", "")) &&
+          (this.selectedCategory ? icon.category === this.selectedCategory : true);
       });
     },
   },

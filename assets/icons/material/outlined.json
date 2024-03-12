@@ -1,0 +1,6500 @@
+[
+  {
+    "name": "Account",
+    "componentName": "MaterialIconOutlinedAccount",
+    "svgFileName": "account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "AccountPlus",
+    "componentName": "MaterialIconOutlinedAccountPlus",
+    "svgFileName": "account-plus-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "AccountRemove",
+    "componentName": "MaterialIconOutlinedAccountRemove",
+    "svgFileName": "account-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "AccountSearch",
+    "componentName": "MaterialIconOutlinedAccountSearch",
+    "svgFileName": "account-search-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "AlertBox",
+    "componentName": "MaterialIconOutlinedAlertBox",
+    "svgFileName": "alert-box-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "AlertCircleCheck",
+    "componentName": "MaterialIconOutlinedAlertCircleCheck",
+    "svgFileName": "alert-circle-check-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "AlertCircle",
+    "componentName": "MaterialIconOutlinedAlertCircle",
+    "svgFileName": "alert-circle-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "AlertMinus",
+    "componentName": "MaterialIconOutlinedAlertMinus",
+    "svgFileName": "alert-minus-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "Alert",
+    "componentName": "MaterialIconOutlinedAlert",
+    "svgFileName": "alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "AlertPlus",
+    "componentName": "MaterialIconOutlinedAlertPlus",
+    "svgFileName": "alert-plus-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "AlertRemove",
+    "componentName": "MaterialIconOutlinedAlertRemove",
+    "svgFileName": "alert-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "AlertRhombus",
+    "componentName": "MaterialIconOutlinedAlertRhombus",
+    "svgFileName": "alert-rhombus-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "ArrowDownBoldBox",
+    "componentName": "MaterialIconOutlinedArrowDownBoldBox",
+    "svgFileName": "arrow-down-bold-box-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowDownBoldCircle",
+    "componentName": "MaterialIconOutlinedArrowDownBoldCircle",
+    "svgFileName": "arrow-down-bold-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowDownBold",
+    "componentName": "MaterialIconOutlinedArrowDownBold",
+    "svgFileName": "arrow-down-bold-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowDownCircle",
+    "componentName": "MaterialIconOutlinedArrowDownCircle",
+    "svgFileName": "arrow-down-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowDownDropCircle",
+    "componentName": "MaterialIconOutlinedArrowDownDropCircle",
+    "svgFileName": "arrow-down-drop-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowDownThinCircle",
+    "componentName": "MaterialIconOutlinedArrowDownThinCircle",
+    "svgFileName": "arrow-down-thin-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowLeftBoldBox",
+    "componentName": "MaterialIconOutlinedArrowLeftBoldBox",
+    "svgFileName": "arrow-left-bold-box-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftBoldCircle",
+    "componentName": "MaterialIconOutlinedArrowLeftBoldCircle",
+    "svgFileName": "arrow-left-bold-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftBoldHexagon",
+    "componentName": "MaterialIconOutlinedArrowLeftBoldHexagon",
+    "svgFileName": "arrow-left-bold-hexagon-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftBold",
+    "componentName": "MaterialIconOutlinedArrowLeftBold",
+    "svgFileName": "arrow-left-bold-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftCircle",
+    "componentName": "MaterialIconOutlinedArrowLeftCircle",
+    "svgFileName": "arrow-left-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftDropCircle",
+    "componentName": "MaterialIconOutlinedArrowLeftDropCircle",
+    "svgFileName": "arrow-left-drop-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftRightBold",
+    "componentName": "MaterialIconOutlinedArrowLeftRightBold",
+    "svgFileName": "arrow-left-right-bold-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowLeftThinCircle",
+    "componentName": "MaterialIconOutlinedArrowLeftThinCircle",
+    "svgFileName": "arrow-left-thin-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightBoldBox",
+    "componentName": "MaterialIconOutlinedArrowRightBoldBox",
+    "svgFileName": "arrow-right-bold-box-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightBoldCircle",
+    "componentName": "MaterialIconOutlinedArrowRightBoldCircle",
+    "svgFileName": "arrow-right-bold-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightBoldHexagon",
+    "componentName": "MaterialIconOutlinedArrowRightBoldHexagon",
+    "svgFileName": "arrow-right-bold-hexagon-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightBold",
+    "componentName": "MaterialIconOutlinedArrowRightBold",
+    "svgFileName": "arrow-right-bold-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightCircle",
+    "componentName": "MaterialIconOutlinedArrowRightCircle",
+    "svgFileName": "arrow-right-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightDropCircle",
+    "componentName": "MaterialIconOutlinedArrowRightDropCircle",
+    "svgFileName": "arrow-right-drop-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowRightThinCircle",
+    "componentName": "MaterialIconOutlinedArrowRightThinCircle",
+    "svgFileName": "arrow-right-thin-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowUpBoldBox",
+    "componentName": "MaterialIconOutlinedArrowUpBoldBox",
+    "svgFileName": "arrow-up-bold-box-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowUpBoldCircle",
+    "componentName": "MaterialIconOutlinedArrowUpBoldCircle",
+    "svgFileName": "arrow-up-bold-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowUpBold",
+    "componentName": "MaterialIconOutlinedArrowUpBold",
+    "svgFileName": "arrow-up-bold-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowUpCircle",
+    "componentName": "MaterialIconOutlinedArrowUpCircle",
+    "svgFileName": "arrow-up-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowUpDownBold",
+    "componentName": "MaterialIconOutlinedArrowUpDownBold",
+    "svgFileName": "arrow-up-down-bold-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ArrowUpDropCircle",
+    "componentName": "MaterialIconOutlinedArrowUpDropCircle",
+    "svgFileName": "arrow-up-drop-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ArrowUpThinCircle",
+    "componentName": "MaterialIconOutlinedArrowUpThinCircle",
+    "svgFileName": "arrow-up-thin-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "BabyBottle",
+    "componentName": "MaterialIconOutlinedBabyBottle",
+    "svgFileName": "baby-bottle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BabyFace",
+    "componentName": "MaterialIconOutlinedBabyFace",
+    "svgFileName": "baby-face-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Backspace",
+    "componentName": "MaterialIconOutlinedBackspace",
+    "svgFileName": "backspace-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BackspaceReverse",
+    "componentName": "MaterialIconOutlinedBackspaceReverse",
+    "svgFileName": "backspace-reverse-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Ballot",
+    "componentName": "MaterialIconOutlinedBallot",
+    "svgFileName": "ballot-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BallotRecount",
+    "componentName": "MaterialIconOutlinedBallotRecount",
+    "svgFileName": "ballot-recount-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BankOff",
+    "componentName": "MaterialIconOutlinedBankOff",
+    "svgFileName": "bank-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Bank",
+    "componentName": "MaterialIconOutlinedBank",
+    "svgFileName": "bank-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryAlertVariant",
+    "componentName": "MaterialIconOutlinedBatteryAlertVariant",
+    "svgFileName": "battery-alert-variant-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "BatteryArrowDown",
+    "componentName": "MaterialIconOutlinedBatteryArrowDown",
+    "svgFileName": "battery-arrow-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BatteryArrowUp",
+    "componentName": "MaterialIconOutlinedBatteryArrowUp",
+    "svgFileName": "battery-arrow-up-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "BatteryCharging",
+    "componentName": "MaterialIconOutlinedBatteryCharging",
+    "svgFileName": "battery-charging-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryChargingWireless",
+    "componentName": "MaterialIconOutlinedBatteryChargingWireless",
+    "svgFileName": "battery-charging-wireless-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryCheck",
+    "componentName": "MaterialIconOutlinedBatteryCheck",
+    "svgFileName": "battery-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryClock",
+    "componentName": "MaterialIconOutlinedBatteryClock",
+    "svgFileName": "battery-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryHeart",
+    "componentName": "MaterialIconOutlinedBatteryHeart",
+    "svgFileName": "battery-heart-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryMinus",
+    "componentName": "MaterialIconOutlinedBatteryMinus",
+    "svgFileName": "battery-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryOff",
+    "componentName": "MaterialIconOutlinedBatteryOff",
+    "svgFileName": "battery-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Battery",
+    "componentName": "MaterialIconOutlinedBattery",
+    "svgFileName": "battery-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryPlus",
+    "componentName": "MaterialIconOutlinedBatteryPlus",
+    "svgFileName": "battery-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BatteryRemove",
+    "componentName": "MaterialIconOutlinedBatteryRemove",
+    "svgFileName": "battery-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BatterySync",
+    "componentName": "MaterialIconOutlinedBatterySync",
+    "svgFileName": "battery-sync-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BedDouble",
+    "componentName": "MaterialIconOutlinedBedDouble",
+    "svgFileName": "bed-double-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BedKing",
+    "componentName": "MaterialIconOutlinedBedKing",
+    "svgFileName": "bed-king-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Bed",
+    "componentName": "MaterialIconOutlinedBed",
+    "svgFileName": "bed-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BedQueen",
+    "componentName": "MaterialIconOutlinedBedQueen",
+    "svgFileName": "bed-queen-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BedSingle",
+    "componentName": "MaterialIconOutlinedBedSingle",
+    "svgFileName": "bed-single-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BellAlert",
+    "componentName": "MaterialIconOutlinedBellAlert",
+    "svgFileName": "bell-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "BellBadge",
+    "componentName": "MaterialIconOutlinedBellBadge",
+    "svgFileName": "bell-badge-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellCancel",
+    "componentName": "MaterialIconOutlinedBellCancel",
+    "svgFileName": "bell-cancel-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellCheck",
+    "componentName": "MaterialIconOutlinedBellCheck",
+    "svgFileName": "bell-check-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellCircle",
+    "componentName": "MaterialIconOutlinedBellCircle",
+    "svgFileName": "bell-circle-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellCog",
+    "componentName": "MaterialIconOutlinedBellCog",
+    "svgFileName": "bell-cog-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellMinus",
+    "componentName": "MaterialIconOutlinedBellMinus",
+    "svgFileName": "bell-minus-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellOff",
+    "componentName": "MaterialIconOutlinedBellOff",
+    "svgFileName": "bell-off-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "Bell",
+    "componentName": "MaterialIconOutlinedBell",
+    "svgFileName": "bell-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellPlus",
+    "componentName": "MaterialIconOutlinedBellPlus",
+    "svgFileName": "bell-plus-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellRemove",
+    "componentName": "MaterialIconOutlinedBellRemove",
+    "svgFileName": "bell-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BellRing",
+    "componentName": "MaterialIconOutlinedBellRing",
+    "svgFileName": "bell-ring-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BellSleep",
+    "componentName": "MaterialIconOutlinedBellSleep",
+    "svgFileName": "bell-sleep-outline.svg",
+    "category": "Notification"
+  },
+  {
+    "name": "BookAccount",
+    "componentName": "MaterialIconOutlinedBookAccount",
+    "svgFileName": "book-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "BookMarker",
+    "componentName": "MaterialIconOutlinedBookMarker",
+    "svgFileName": "book-marker-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookMinusMultiple",
+    "componentName": "MaterialIconOutlinedBookMinusMultiple",
+    "svgFileName": "book-minus-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookMinus",
+    "componentName": "MaterialIconOutlinedBookMinus",
+    "svgFileName": "book-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookMultiple",
+    "componentName": "MaterialIconOutlinedBookMultiple",
+    "svgFileName": "book-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookMusic",
+    "componentName": "MaterialIconOutlinedBookMusic",
+    "svgFileName": "book-music-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookOff",
+    "componentName": "MaterialIconOutlinedBookOff",
+    "svgFileName": "book-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "BookOpen",
+    "componentName": "MaterialIconOutlinedBookOpen",
+    "svgFileName": "book-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookOpenPageVariant",
+    "componentName": "MaterialIconOutlinedBookOpenPageVariant",
+    "svgFileName": "book-open-page-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Book",
+    "componentName": "MaterialIconOutlinedBook",
+    "svgFileName": "book-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookPlay",
+    "componentName": "MaterialIconOutlinedBookPlay",
+    "svgFileName": "book-play-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookPlusMultiple",
+    "componentName": "MaterialIconOutlinedBookPlusMultiple",
+    "svgFileName": "book-plus-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookPlus",
+    "componentName": "MaterialIconOutlinedBookPlus",
+    "svgFileName": "book-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookRefresh",
+    "componentName": "MaterialIconOutlinedBookRefresh",
+    "svgFileName": "book-refresh-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookRemoveMultiple",
+    "componentName": "MaterialIconOutlinedBookRemoveMultiple",
+    "svgFileName": "book-remove-multiple-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BookRemove",
+    "componentName": "MaterialIconOutlinedBookRemove",
+    "svgFileName": "book-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BookmarkBoxMultiple",
+    "componentName": "MaterialIconOutlinedBookmarkBoxMultiple",
+    "svgFileName": "bookmark-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkBox",
+    "componentName": "MaterialIconOutlinedBookmarkBox",
+    "svgFileName": "bookmark-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkCheck",
+    "componentName": "MaterialIconOutlinedBookmarkCheck",
+    "svgFileName": "bookmark-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkMinus",
+    "componentName": "MaterialIconOutlinedBookmarkMinus",
+    "svgFileName": "bookmark-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkMultiple",
+    "componentName": "MaterialIconOutlinedBookmarkMultiple",
+    "svgFileName": "bookmark-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkMusic",
+    "componentName": "MaterialIconOutlinedBookmarkMusic",
+    "svgFileName": "bookmark-music-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkOff",
+    "componentName": "MaterialIconOutlinedBookmarkOff",
+    "svgFileName": "bookmark-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Bookmark",
+    "componentName": "MaterialIconOutlinedBookmark",
+    "svgFileName": "bookmark-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkPlus",
+    "componentName": "MaterialIconOutlinedBookmarkPlus",
+    "svgFileName": "bookmark-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BookmarkRemove",
+    "componentName": "MaterialIconOutlinedBookmarkRemove",
+    "svgFileName": "bookmark-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BreadSlice",
+    "componentName": "MaterialIconOutlinedBreadSlice",
+    "svgFileName": "bread-slice-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseAccount",
+    "componentName": "MaterialIconOutlinedBriefcaseAccount",
+    "svgFileName": "briefcase-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "BriefcaseCheck",
+    "componentName": "MaterialIconOutlinedBriefcaseCheck",
+    "svgFileName": "briefcase-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseClock",
+    "componentName": "MaterialIconOutlinedBriefcaseClock",
+    "svgFileName": "briefcase-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseDownload",
+    "componentName": "MaterialIconOutlinedBriefcaseDownload",
+    "svgFileName": "briefcase-download-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BriefcaseEdit",
+    "componentName": "MaterialIconOutlinedBriefcaseEdit",
+    "svgFileName": "briefcase-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "BriefcaseEye",
+    "componentName": "MaterialIconOutlinedBriefcaseEye",
+    "svgFileName": "briefcase-eye-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseMinus",
+    "componentName": "MaterialIconOutlinedBriefcaseMinus",
+    "svgFileName": "briefcase-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseOff",
+    "componentName": "MaterialIconOutlinedBriefcaseOff",
+    "svgFileName": "briefcase-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Briefcase",
+    "componentName": "MaterialIconOutlinedBriefcase",
+    "svgFileName": "briefcase-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcasePlus",
+    "componentName": "MaterialIconOutlinedBriefcasePlus",
+    "svgFileName": "briefcase-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseRemove",
+    "componentName": "MaterialIconOutlinedBriefcaseRemove",
+    "svgFileName": "briefcase-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "BriefcaseSearch",
+    "componentName": "MaterialIconOutlinedBriefcaseSearch",
+    "svgFileName": "briefcase-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BriefcaseUpload",
+    "componentName": "MaterialIconOutlinedBriefcaseUpload",
+    "svgFileName": "briefcase-upload-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "Brush",
+    "componentName": "MaterialIconOutlinedBrush",
+    "svgFileName": "brush-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Bucket",
+    "componentName": "MaterialIconOutlinedBucket",
+    "svgFileName": "bucket-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BugCheck",
+    "componentName": "MaterialIconOutlinedBugCheck",
+    "svgFileName": "bug-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Bug",
+    "componentName": "MaterialIconOutlinedBug",
+    "svgFileName": "bug-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BugPause",
+    "componentName": "MaterialIconOutlinedBugPause",
+    "svgFileName": "bug-pause-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BugPlay",
+    "componentName": "MaterialIconOutlinedBugPlay",
+    "svgFileName": "bug-play-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BugStop",
+    "componentName": "MaterialIconOutlinedBugStop",
+    "svgFileName": "bug-stop-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Bullhorn",
+    "componentName": "MaterialIconOutlinedBullhorn",
+    "svgFileName": "bullhorn-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BullhornVariant",
+    "componentName": "MaterialIconOutlinedBullhornVariant",
+    "svgFileName": "bullhorn-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "BunkBed",
+    "componentName": "MaterialIconOutlinedBunkBed",
+    "svgFileName": "bunk-bed-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalculatorVariant",
+    "componentName": "MaterialIconOutlinedCalculatorVariant",
+    "svgFileName": "calculator-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarAccount",
+    "componentName": "MaterialIconOutlinedCalendarAccount",
+    "svgFileName": "calendar-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "CalendarAlert",
+    "componentName": "MaterialIconOutlinedCalendarAlert",
+    "svgFileName": "calendar-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "CalendarBadge",
+    "componentName": "MaterialIconOutlinedCalendarBadge",
+    "svgFileName": "calendar-badge-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarBlank",
+    "componentName": "MaterialIconOutlinedCalendarBlank",
+    "svgFileName": "calendar-blank-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarCheck",
+    "componentName": "MaterialIconOutlinedCalendarCheck",
+    "svgFileName": "calendar-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarClock",
+    "componentName": "MaterialIconOutlinedCalendarClock",
+    "svgFileName": "calendar-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarCollapseHorizontal",
+    "componentName": "MaterialIconOutlinedCalendarCollapseHorizontal",
+    "svgFileName": "calendar-collapse-horizontal-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CalendarCursor",
+    "componentName": "MaterialIconOutlinedCalendarCursor",
+    "svgFileName": "calendar-cursor-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarEdit",
+    "componentName": "MaterialIconOutlinedCalendarEdit",
+    "svgFileName": "calendar-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "CalendarEnd",
+    "componentName": "MaterialIconOutlinedCalendarEnd",
+    "svgFileName": "calendar-end-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarExpandHorizontal",
+    "componentName": "MaterialIconOutlinedCalendarExpandHorizontal",
+    "svgFileName": "calendar-expand-horizontal-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CalendarExport",
+    "componentName": "MaterialIconOutlinedCalendarExport",
+    "svgFileName": "calendar-export-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarFilter",
+    "componentName": "MaterialIconOutlinedCalendarFilter",
+    "svgFileName": "calendar-filter-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarHeart",
+    "componentName": "MaterialIconOutlinedCalendarHeart",
+    "svgFileName": "calendar-heart-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarImport",
+    "componentName": "MaterialIconOutlinedCalendarImport",
+    "svgFileName": "calendar-import-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarLockOpen",
+    "componentName": "MaterialIconOutlinedCalendarLockOpen",
+    "svgFileName": "calendar-lock-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarLock",
+    "componentName": "MaterialIconOutlinedCalendarLock",
+    "svgFileName": "calendar-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarMinus",
+    "componentName": "MaterialIconOutlinedCalendarMinus",
+    "svgFileName": "calendar-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarMonth",
+    "componentName": "MaterialIconOutlinedCalendarMonth",
+    "svgFileName": "calendar-month-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CalendarMultiselect",
+    "componentName": "MaterialIconOutlinedCalendarMultiselect",
+    "svgFileName": "calendar-multiselect-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Calendar",
+    "componentName": "MaterialIconOutlinedCalendar",
+    "svgFileName": "calendar-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarPlus",
+    "componentName": "MaterialIconOutlinedCalendarPlus",
+    "svgFileName": "calendar-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarQuestion",
+    "componentName": "MaterialIconOutlinedCalendarQuestion",
+    "svgFileName": "calendar-question-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CalendarRange",
+    "componentName": "MaterialIconOutlinedCalendarRange",
+    "svgFileName": "calendar-range-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarRefresh",
+    "componentName": "MaterialIconOutlinedCalendarRefresh",
+    "svgFileName": "calendar-refresh-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarRemove",
+    "componentName": "MaterialIconOutlinedCalendarRemove",
+    "svgFileName": "calendar-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "CalendarSearch",
+    "componentName": "MaterialIconOutlinedCalendarSearch",
+    "svgFileName": "calendar-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarStar",
+    "componentName": "MaterialIconOutlinedCalendarStar",
+    "svgFileName": "calendar-star-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarStart",
+    "componentName": "MaterialIconOutlinedCalendarStart",
+    "svgFileName": "calendar-start-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarSync",
+    "componentName": "MaterialIconOutlinedCalendarSync",
+    "svgFileName": "calendar-sync-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarText",
+    "componentName": "MaterialIconOutlinedCalendarText",
+    "svgFileName": "calendar-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "CalendarToday",
+    "componentName": "MaterialIconOutlinedCalendarToday",
+    "svgFileName": "calendar-today-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarWeekBegin",
+    "componentName": "MaterialIconOutlinedCalendarWeekBegin",
+    "svgFileName": "calendar-week-begin-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarWeek",
+    "componentName": "MaterialIconOutlinedCalendarWeek",
+    "svgFileName": "calendar-week-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CalendarWeekend",
+    "componentName": "MaterialIconOutlinedCalendarWeekend",
+    "svgFileName": "calendar-weekend-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CameraEnhance",
+    "componentName": "MaterialIconOutlinedCameraEnhance",
+    "svgFileName": "camera-enhance-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraFlip",
+    "componentName": "MaterialIconOutlinedCameraFlip",
+    "svgFileName": "camera-flip-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraLock",
+    "componentName": "MaterialIconOutlinedCameraLock",
+    "svgFileName": "camera-lock-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraMarker",
+    "componentName": "MaterialIconOutlinedCameraMarker",
+    "svgFileName": "camera-marker-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraOff",
+    "componentName": "MaterialIconOutlinedCameraOff",
+    "svgFileName": "camera-off-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "Camera",
+    "componentName": "MaterialIconOutlinedCamera",
+    "svgFileName": "camera-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraPlus",
+    "componentName": "MaterialIconOutlinedCameraPlus",
+    "svgFileName": "camera-plus-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraRetake",
+    "componentName": "MaterialIconOutlinedCameraRetake",
+    "svgFileName": "camera-retake-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraSwitch",
+    "componentName": "MaterialIconOutlinedCameraSwitch",
+    "svgFileName": "camera-switch-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "CameraWireless",
+    "componentName": "MaterialIconOutlinedCameraWireless",
+    "svgFileName": "camera-wireless-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "Car",
+    "componentName": "MaterialIconOutlinedCar",
+    "svgFileName": "car-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CarSearch",
+    "componentName": "MaterialIconOutlinedCarSearch",
+    "svgFileName": "car-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CarWindshield",
+    "componentName": "MaterialIconOutlinedCarWindshield",
+    "svgFileName": "car-windshield-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CardAccountDetails",
+    "componentName": "MaterialIconOutlinedCardAccountDetails",
+    "svgFileName": "card-account-details-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "CardBulletedOff",
+    "componentName": "MaterialIconOutlinedCardBulletedOff",
+    "svgFileName": "card-bulleted-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "CardBulleted",
+    "componentName": "MaterialIconOutlinedCardBulleted",
+    "svgFileName": "card-bulleted-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CardMinus",
+    "componentName": "MaterialIconOutlinedCardMinus",
+    "svgFileName": "card-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CardMultiple",
+    "componentName": "MaterialIconOutlinedCardMultiple",
+    "svgFileName": "card-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CardOff",
+    "componentName": "MaterialIconOutlinedCardOff",
+    "svgFileName": "card-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Card",
+    "componentName": "MaterialIconOutlinedCard",
+    "svgFileName": "card-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CardText",
+    "componentName": "MaterialIconOutlinedCardText",
+    "svgFileName": "card-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "Cart",
+    "componentName": "MaterialIconOutlinedCart",
+    "svgFileName": "cart-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CeilingLightMultiple",
+    "componentName": "MaterialIconOutlinedCeilingLightMultiple",
+    "svgFileName": "ceiling-light-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CeilingLight",
+    "componentName": "MaterialIconOutlinedCeilingLight",
+    "svgFileName": "ceiling-light-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Certificate",
+    "componentName": "MaterialIconOutlinedCertificate",
+    "svgFileName": "certificate-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ChartBox",
+    "componentName": "MaterialIconOutlinedChartBox",
+    "svgFileName": "chart-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ChartBoxPlus",
+    "componentName": "MaterialIconOutlinedChartBoxPlus",
+    "svgFileName": "chart-box-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ChatAlert",
+    "componentName": "MaterialIconOutlinedChatAlert",
+    "svgFileName": "chat-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "ChatMinus",
+    "componentName": "MaterialIconOutlinedChatMinus",
+    "svgFileName": "chat-minus-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "Chat",
+    "componentName": "MaterialIconOutlinedChat",
+    "svgFileName": "chat-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "ChatPlus",
+    "componentName": "MaterialIconOutlinedChatPlus",
+    "svgFileName": "chat-plus-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "ChatProcessing",
+    "componentName": "MaterialIconOutlinedChatProcessing",
+    "svgFileName": "chat-processing-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "ChatQuestion",
+    "componentName": "MaterialIconOutlinedChatQuestion",
+    "svgFileName": "chat-question-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "ChatRemove",
+    "componentName": "MaterialIconOutlinedChatRemove",
+    "svgFileName": "chat-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ChatSleep",
+    "componentName": "MaterialIconOutlinedChatSleep",
+    "svgFileName": "chat-sleep-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "CheckCircle",
+    "componentName": "MaterialIconOutlinedCheckCircle",
+    "svgFileName": "check-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckDecagram",
+    "componentName": "MaterialIconOutlinedCheckDecagram",
+    "svgFileName": "check-decagram-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckNetwork",
+    "componentName": "MaterialIconOutlinedCheckNetwork",
+    "svgFileName": "check-network-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Check",
+    "componentName": "MaterialIconOutlinedCheck",
+    "svgFileName": "check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckUnderlineCircle",
+    "componentName": "MaterialIconOutlinedCheckUnderlineCircle",
+    "svgFileName": "check-underline-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxBlankBadge",
+    "componentName": "MaterialIconOutlinedCheckboxBlankBadge",
+    "svgFileName": "checkbox-blank-badge-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxBlankCircle",
+    "componentName": "MaterialIconOutlinedCheckboxBlankCircle",
+    "svgFileName": "checkbox-blank-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxBlankOff",
+    "componentName": "MaterialIconOutlinedCheckboxBlankOff",
+    "svgFileName": "checkbox-blank-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CheckboxBlank",
+    "componentName": "MaterialIconOutlinedCheckboxBlank",
+    "svgFileName": "checkbox-blank-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMarkedCircle",
+    "componentName": "MaterialIconOutlinedCheckboxMarkedCircle",
+    "svgFileName": "checkbox-marked-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMarkedCirclePlus",
+    "componentName": "MaterialIconOutlinedCheckboxMarkedCirclePlus",
+    "svgFileName": "checkbox-marked-circle-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMarked",
+    "componentName": "MaterialIconOutlinedCheckboxMarked",
+    "svgFileName": "checkbox-marked-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMultipleBlankCircle",
+    "componentName": "MaterialIconOutlinedCheckboxMultipleBlankCircle",
+    "svgFileName": "checkbox-multiple-blank-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMultipleBlank",
+    "componentName": "MaterialIconOutlinedCheckboxMultipleBlank",
+    "svgFileName": "checkbox-multiple-blank-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMultipleMarkedCircle",
+    "componentName": "MaterialIconOutlinedCheckboxMultipleMarkedCircle",
+    "svgFileName": "checkbox-multiple-marked-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMultipleMarked",
+    "componentName": "MaterialIconOutlinedCheckboxMultipleMarked",
+    "svgFileName": "checkbox-multiple-marked-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CheckboxMultiple",
+    "componentName": "MaterialIconOutlinedCheckboxMultiple",
+    "svgFileName": "checkbox-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Checkbox",
+    "componentName": "MaterialIconOutlinedCheckbox",
+    "svgFileName": "checkbox-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ChevronDownBox",
+    "componentName": "MaterialIconOutlinedChevronDownBox",
+    "svgFileName": "chevron-down-box-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ChevronDownCircle",
+    "componentName": "MaterialIconOutlinedChevronDownCircle",
+    "svgFileName": "chevron-down-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ChevronLeftBox",
+    "componentName": "MaterialIconOutlinedChevronLeftBox",
+    "svgFileName": "chevron-left-box-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ChevronLeftCircle",
+    "componentName": "MaterialIconOutlinedChevronLeftCircle",
+    "svgFileName": "chevron-left-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ChevronRightBox",
+    "componentName": "MaterialIconOutlinedChevronRightBox",
+    "svgFileName": "chevron-right-box-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ChevronRightCircle",
+    "componentName": "MaterialIconOutlinedChevronRightCircle",
+    "svgFileName": "chevron-right-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ChevronUpBox",
+    "componentName": "MaterialIconOutlinedChevronUpBox",
+    "svgFileName": "chevron-up-box-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ChevronUpCircle",
+    "componentName": "MaterialIconOutlinedChevronUpCircle",
+    "svgFileName": "chevron-up-circle-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "CircleBox",
+    "componentName": "MaterialIconOutlinedCircleBox",
+    "svgFileName": "circle-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CircleEdit",
+    "componentName": "MaterialIconOutlinedCircleEdit",
+    "svgFileName": "circle-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "CircleMultiple",
+    "componentName": "MaterialIconOutlinedCircleMultiple",
+    "svgFileName": "circle-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CircleOff",
+    "componentName": "MaterialIconOutlinedCircleOff",
+    "svgFileName": "circle-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Circle",
+    "componentName": "MaterialIconOutlinedCircle",
+    "svgFileName": "circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardAccount",
+    "componentName": "MaterialIconOutlinedClipboardAccount",
+    "svgFileName": "clipboard-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "ClipboardAlert",
+    "componentName": "MaterialIconOutlinedClipboardAlert",
+    "svgFileName": "clipboard-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "ClipboardArrowDown",
+    "componentName": "MaterialIconOutlinedClipboardArrowDown",
+    "svgFileName": "clipboard-arrow-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ClipboardArrowLeft",
+    "componentName": "MaterialIconOutlinedClipboardArrowLeft",
+    "svgFileName": "clipboard-arrow-left-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ClipboardArrowRight",
+    "componentName": "MaterialIconOutlinedClipboardArrowRight",
+    "svgFileName": "clipboard-arrow-right-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ClipboardArrowUp",
+    "componentName": "MaterialIconOutlinedClipboardArrowUp",
+    "svgFileName": "clipboard-arrow-up-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ClipboardCheckMultiple",
+    "componentName": "MaterialIconOutlinedClipboardCheckMultiple",
+    "svgFileName": "clipboard-check-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardCheck",
+    "componentName": "MaterialIconOutlinedClipboardCheck",
+    "svgFileName": "clipboard-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardClock",
+    "componentName": "MaterialIconOutlinedClipboardClock",
+    "svgFileName": "clipboard-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardEdit",
+    "componentName": "MaterialIconOutlinedClipboardEdit",
+    "svgFileName": "clipboard-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "ClipboardFile",
+    "componentName": "MaterialIconOutlinedClipboardFile",
+    "svgFileName": "clipboard-file-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "ClipboardFlow",
+    "componentName": "MaterialIconOutlinedClipboardFlow",
+    "svgFileName": "clipboard-flow-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardList",
+    "componentName": "MaterialIconOutlinedClipboardList",
+    "svgFileName": "clipboard-list-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardMinus",
+    "componentName": "MaterialIconOutlinedClipboardMinus",
+    "svgFileName": "clipboard-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardMultiple",
+    "componentName": "MaterialIconOutlinedClipboardMultiple",
+    "svgFileName": "clipboard-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardOff",
+    "componentName": "MaterialIconOutlinedClipboardOff",
+    "svgFileName": "clipboard-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Clipboard",
+    "componentName": "MaterialIconOutlinedClipboard",
+    "svgFileName": "clipboard-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardPlayMultiple",
+    "componentName": "MaterialIconOutlinedClipboardPlayMultiple",
+    "svgFileName": "clipboard-play-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardPlay",
+    "componentName": "MaterialIconOutlinedClipboardPlay",
+    "svgFileName": "clipboard-play-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardPlus",
+    "componentName": "MaterialIconOutlinedClipboardPlus",
+    "svgFileName": "clipboard-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardPulse",
+    "componentName": "MaterialIconOutlinedClipboardPulse",
+    "svgFileName": "clipboard-pulse-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardRemove",
+    "componentName": "MaterialIconOutlinedClipboardRemove",
+    "svgFileName": "clipboard-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ClipboardSearch",
+    "componentName": "MaterialIconOutlinedClipboardSearch",
+    "svgFileName": "clipboard-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClipboardTextClock",
+    "componentName": "MaterialIconOutlinedClipboardTextClock",
+    "svgFileName": "clipboard-text-clock-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ClipboardTextMultiple",
+    "componentName": "MaterialIconOutlinedClipboardTextMultiple",
+    "svgFileName": "clipboard-text-multiple-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ClipboardTextOff",
+    "componentName": "MaterialIconOutlinedClipboardTextOff",
+    "svgFileName": "clipboard-text-off-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ClipboardText",
+    "componentName": "MaterialIconOutlinedClipboardText",
+    "svgFileName": "clipboard-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ClipboardTextPlay",
+    "componentName": "MaterialIconOutlinedClipboardTextPlay",
+    "svgFileName": "clipboard-text-play-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ClipboardTextSearch",
+    "componentName": "MaterialIconOutlinedClipboardTextSearch",
+    "svgFileName": "clipboard-text-search-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ClockAlert",
+    "componentName": "MaterialIconOutlinedClockAlert",
+    "svgFileName": "clock-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "ClockCheck",
+    "componentName": "MaterialIconOutlinedClockCheck",
+    "svgFileName": "clock-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClockEdit",
+    "componentName": "MaterialIconOutlinedClockEdit",
+    "svgFileName": "clock-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "ClockMinus",
+    "componentName": "MaterialIconOutlinedClockMinus",
+    "svgFileName": "clock-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Clock",
+    "componentName": "MaterialIconOutlinedClock",
+    "svgFileName": "clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClockPlus",
+    "componentName": "MaterialIconOutlinedClockPlus",
+    "svgFileName": "clock-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClockRemove",
+    "componentName": "MaterialIconOutlinedClockRemove",
+    "svgFileName": "clock-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "CloseBoxMultiple",
+    "componentName": "MaterialIconOutlinedCloseBoxMultiple",
+    "svgFileName": "close-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloseBox",
+    "componentName": "MaterialIconOutlinedCloseBox",
+    "svgFileName": "close-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloseCircle",
+    "componentName": "MaterialIconOutlinedCloseCircle",
+    "svgFileName": "close-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Close",
+    "componentName": "MaterialIconOutlinedClose",
+    "svgFileName": "close-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ClosedCaption",
+    "componentName": "MaterialIconOutlinedClosedCaption",
+    "svgFileName": "closed-caption-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CloudCheck",
+    "componentName": "MaterialIconOutlinedCloudCheck",
+    "svgFileName": "cloud-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloudDownload",
+    "componentName": "MaterialIconOutlinedCloudDownload",
+    "svgFileName": "cloud-download-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "CloudLock",
+    "componentName": "MaterialIconOutlinedCloudLock",
+    "svgFileName": "cloud-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloudOff",
+    "componentName": "MaterialIconOutlinedCloudOff",
+    "svgFileName": "cloud-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Cloud",
+    "componentName": "MaterialIconOutlinedCloud",
+    "svgFileName": "cloud-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloudPercent",
+    "componentName": "MaterialIconOutlinedCloudPercent",
+    "svgFileName": "cloud-percent-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloudSearch",
+    "componentName": "MaterialIconOutlinedCloudSearch",
+    "svgFileName": "cloud-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CloudUpload",
+    "componentName": "MaterialIconOutlinedCloudUpload",
+    "svgFileName": "cloud-upload-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "CoffeeMakerCheck",
+    "componentName": "MaterialIconOutlinedCoffeeMakerCheck",
+    "svgFileName": "coffee-maker-check-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CoffeeMaker",
+    "componentName": "MaterialIconOutlinedCoffeeMaker",
+    "svgFileName": "coffee-maker-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CoffeeOff",
+    "componentName": "MaterialIconOutlinedCoffeeOff",
+    "svgFileName": "coffee-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Coffee",
+    "componentName": "MaterialIconOutlinedCoffee",
+    "svgFileName": "coffee-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CoffeeToGo",
+    "componentName": "MaterialIconOutlinedCoffeeToGo",
+    "svgFileName": "coffee-to-go-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CogOff",
+    "componentName": "MaterialIconOutlinedCogOff",
+    "svgFileName": "cog-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Cog",
+    "componentName": "MaterialIconOutlinedCog",
+    "svgFileName": "cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CollapseAll",
+    "componentName": "MaterialIconOutlinedCollapseAll",
+    "svgFileName": "collapse-all-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommaBox",
+    "componentName": "MaterialIconOutlinedCommaBox",
+    "svgFileName": "comma-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommaCircle",
+    "componentName": "MaterialIconOutlinedCommaCircle",
+    "svgFileName": "comma-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentAccount",
+    "componentName": "MaterialIconOutlinedCommentAccount",
+    "svgFileName": "comment-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "CommentAlert",
+    "componentName": "MaterialIconOutlinedCommentAlert",
+    "svgFileName": "comment-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "CommentArrowLeft",
+    "componentName": "MaterialIconOutlinedCommentArrowLeft",
+    "svgFileName": "comment-arrow-left-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "CommentArrowRight",
+    "componentName": "MaterialIconOutlinedCommentArrowRight",
+    "svgFileName": "comment-arrow-right-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "CommentBookmark",
+    "componentName": "MaterialIconOutlinedCommentBookmark",
+    "svgFileName": "comment-bookmark-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentCheck",
+    "componentName": "MaterialIconOutlinedCommentCheck",
+    "svgFileName": "comment-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentEdit",
+    "componentName": "MaterialIconOutlinedCommentEdit",
+    "svgFileName": "comment-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "CommentEye",
+    "componentName": "MaterialIconOutlinedCommentEye",
+    "svgFileName": "comment-eye-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentFlash",
+    "componentName": "MaterialIconOutlinedCommentFlash",
+    "svgFileName": "comment-flash-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentMinus",
+    "componentName": "MaterialIconOutlinedCommentMinus",
+    "svgFileName": "comment-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentMultiple",
+    "componentName": "MaterialIconOutlinedCommentMultiple",
+    "svgFileName": "comment-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentOff",
+    "componentName": "MaterialIconOutlinedCommentOff",
+    "svgFileName": "comment-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Comment",
+    "componentName": "MaterialIconOutlinedComment",
+    "svgFileName": "comment-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentPlus",
+    "componentName": "MaterialIconOutlinedCommentPlus",
+    "svgFileName": "comment-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentProcessing",
+    "componentName": "MaterialIconOutlinedCommentProcessing",
+    "svgFileName": "comment-processing-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentQuestion",
+    "componentName": "MaterialIconOutlinedCommentQuestion",
+    "svgFileName": "comment-question-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "CommentQuote",
+    "componentName": "MaterialIconOutlinedCommentQuote",
+    "svgFileName": "comment-quote-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentRemove",
+    "componentName": "MaterialIconOutlinedCommentRemove",
+    "svgFileName": "comment-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "CommentSearch",
+    "componentName": "MaterialIconOutlinedCommentSearch",
+    "svgFileName": "comment-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CommentTextMultiple",
+    "componentName": "MaterialIconOutlinedCommentTextMultiple",
+    "svgFileName": "comment-text-multiple-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "CommentText",
+    "componentName": "MaterialIconOutlinedCommentText",
+    "svgFileName": "comment-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "CompassOff",
+    "componentName": "MaterialIconOutlinedCompassOff",
+    "svgFileName": "compass-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Compass",
+    "componentName": "MaterialIconOutlinedCompass",
+    "svgFileName": "compass-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ContactlessPaymentCircle",
+    "componentName": "MaterialIconOutlinedContactlessPaymentCircle",
+    "svgFileName": "contactless-payment-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Contacts",
+    "componentName": "MaterialIconOutlinedContacts",
+    "svgFileName": "contacts-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ContentSaveAlert",
+    "componentName": "MaterialIconOutlinedContentSaveAlert",
+    "svgFileName": "content-save-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "ContentSaveAll",
+    "componentName": "MaterialIconOutlinedContentSaveAll",
+    "svgFileName": "content-save-all-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSaveCheck",
+    "componentName": "MaterialIconOutlinedContentSaveCheck",
+    "svgFileName": "content-save-check-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSaveCog",
+    "componentName": "MaterialIconOutlinedContentSaveCog",
+    "svgFileName": "content-save-cog-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSaveEdit",
+    "componentName": "MaterialIconOutlinedContentSaveEdit",
+    "svgFileName": "content-save-edit-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSaveMinus",
+    "componentName": "MaterialIconOutlinedContentSaveMinus",
+    "svgFileName": "content-save-minus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSaveMove",
+    "componentName": "MaterialIconOutlinedContentSaveMove",
+    "svgFileName": "content-save-move-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ContentSaveOff",
+    "componentName": "MaterialIconOutlinedContentSaveOff",
+    "svgFileName": "content-save-off-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSave",
+    "componentName": "MaterialIconOutlinedContentSave",
+    "svgFileName": "content-save-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSavePlus",
+    "componentName": "MaterialIconOutlinedContentSavePlus",
+    "svgFileName": "content-save-plus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ContentSaveSettings",
+    "componentName": "MaterialIconOutlinedContentSaveSettings",
+    "svgFileName": "content-save-settings-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "Cross",
+    "componentName": "MaterialIconOutlinedCross",
+    "svgFileName": "cross-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CrownCircle",
+    "componentName": "MaterialIconOutlinedCrownCircle",
+    "svgFileName": "crown-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Crown",
+    "componentName": "MaterialIconOutlinedCrown",
+    "svgFileName": "crown-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CubeOff",
+    "componentName": "MaterialIconOutlinedCubeOff",
+    "svgFileName": "cube-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Cube",
+    "componentName": "MaterialIconOutlinedCube",
+    "svgFileName": "cube-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CupOff",
+    "componentName": "MaterialIconOutlinedCupOff",
+    "svgFileName": "cup-off-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "Cup",
+    "componentName": "MaterialIconOutlinedCup",
+    "svgFileName": "cup-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "Cupboard",
+    "componentName": "MaterialIconOutlinedCupboard",
+    "svgFileName": "cupboard-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "CursorDefaultClick",
+    "componentName": "MaterialIconOutlinedCursorDefaultClick",
+    "svgFileName": "cursor-default-click-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CursorDefaultGesture",
+    "componentName": "MaterialIconOutlinedCursorDefaultGesture",
+    "svgFileName": "cursor-default-gesture-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "CursorDefault",
+    "componentName": "MaterialIconOutlinedCursorDefault",
+    "svgFileName": "cursor-default-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseAlert",
+    "componentName": "MaterialIconOutlinedDatabaseAlert",
+    "svgFileName": "database-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "DatabaseArrowDown",
+    "componentName": "MaterialIconOutlinedDatabaseArrowDown",
+    "svgFileName": "database-arrow-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DatabaseArrowLeft",
+    "componentName": "MaterialIconOutlinedDatabaseArrowLeft",
+    "svgFileName": "database-arrow-left-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "DatabaseArrowRight",
+    "componentName": "MaterialIconOutlinedDatabaseArrowRight",
+    "svgFileName": "database-arrow-right-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "DatabaseArrowUp",
+    "componentName": "MaterialIconOutlinedDatabaseArrowUp",
+    "svgFileName": "database-arrow-up-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "DatabaseCheck",
+    "componentName": "MaterialIconOutlinedDatabaseCheck",
+    "svgFileName": "database-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseClock",
+    "componentName": "MaterialIconOutlinedDatabaseClock",
+    "svgFileName": "database-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseCog",
+    "componentName": "MaterialIconOutlinedDatabaseCog",
+    "svgFileName": "database-cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseEdit",
+    "componentName": "MaterialIconOutlinedDatabaseEdit",
+    "svgFileName": "database-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "DatabaseExport",
+    "componentName": "MaterialIconOutlinedDatabaseExport",
+    "svgFileName": "database-export-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseEyeOff",
+    "componentName": "MaterialIconOutlinedDatabaseEyeOff",
+    "svgFileName": "database-eye-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "DatabaseEye",
+    "componentName": "MaterialIconOutlinedDatabaseEye",
+    "svgFileName": "database-eye-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseImport",
+    "componentName": "MaterialIconOutlinedDatabaseImport",
+    "svgFileName": "database-import-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseLock",
+    "componentName": "MaterialIconOutlinedDatabaseLock",
+    "svgFileName": "database-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseMarker",
+    "componentName": "MaterialIconOutlinedDatabaseMarker",
+    "svgFileName": "database-marker-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseMinus",
+    "componentName": "MaterialIconOutlinedDatabaseMinus",
+    "svgFileName": "database-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseOff",
+    "componentName": "MaterialIconOutlinedDatabaseOff",
+    "svgFileName": "database-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Database",
+    "componentName": "MaterialIconOutlinedDatabase",
+    "svgFileName": "database-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabasePlus",
+    "componentName": "MaterialIconOutlinedDatabasePlus",
+    "svgFileName": "database-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseRefresh",
+    "componentName": "MaterialIconOutlinedDatabaseRefresh",
+    "svgFileName": "database-refresh-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseRemove",
+    "componentName": "MaterialIconOutlinedDatabaseRemove",
+    "svgFileName": "database-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DatabaseSearch",
+    "componentName": "MaterialIconOutlinedDatabaseSearch",
+    "svgFileName": "database-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseSettings",
+    "componentName": "MaterialIconOutlinedDatabaseSettings",
+    "svgFileName": "database-settings-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DatabaseSync",
+    "componentName": "MaterialIconOutlinedDatabaseSync",
+    "svgFileName": "database-sync-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Decagram",
+    "componentName": "MaterialIconOutlinedDecagram",
+    "svgFileName": "decagram-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DeleteAlert",
+    "componentName": "MaterialIconOutlinedDeleteAlert",
+    "svgFileName": "delete-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "DeleteCircle",
+    "componentName": "MaterialIconOutlinedDeleteCircle",
+    "svgFileName": "delete-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DeleteClock",
+    "componentName": "MaterialIconOutlinedDeleteClock",
+    "svgFileName": "delete-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DeleteEmpty",
+    "componentName": "MaterialIconOutlinedDeleteEmpty",
+    "svgFileName": "delete-empty-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DeleteForever",
+    "componentName": "MaterialIconOutlinedDeleteForever",
+    "svgFileName": "delete-forever-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DeleteOff",
+    "componentName": "MaterialIconOutlinedDeleteOff",
+    "svgFileName": "delete-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Delete",
+    "componentName": "MaterialIconOutlinedDelete",
+    "svgFileName": "delete-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DeleteSweep",
+    "componentName": "MaterialIconOutlinedDeleteSweep",
+    "svgFileName": "delete-sweep-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Diameter",
+    "componentName": "MaterialIconOutlinedDiameter",
+    "svgFileName": "diameter-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Diamond",
+    "componentName": "MaterialIconOutlinedDiamond",
+    "svgFileName": "diamond-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Dns",
+    "componentName": "MaterialIconOutlinedDns",
+    "svgFileName": "dns-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "DotsHorizontalCircle",
+    "componentName": "MaterialIconOutlinedDotsHorizontalCircle",
+    "svgFileName": "dots-horizontal-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DotsVerticalCircle",
+    "componentName": "MaterialIconOutlinedDotsVerticalCircle",
+    "svgFileName": "dots-vertical-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DownloadBox",
+    "componentName": "MaterialIconOutlinedDownloadBox",
+    "svgFileName": "download-box-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DownloadCircle",
+    "componentName": "MaterialIconOutlinedDownloadCircle",
+    "svgFileName": "download-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DownloadLock",
+    "componentName": "MaterialIconOutlinedDownloadLock",
+    "svgFileName": "download-lock-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DownloadNetwork",
+    "componentName": "MaterialIconOutlinedDownloadNetwork",
+    "svgFileName": "download-network-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "DownloadOff",
+    "componentName": "MaterialIconOutlinedDownloadOff",
+    "svgFileName": "download-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Download",
+    "componentName": "MaterialIconOutlinedDownload",
+    "svgFileName": "download-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Dresser",
+    "componentName": "MaterialIconOutlinedDresser",
+    "svgFileName": "dresser-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "EarbudsOff",
+    "componentName": "MaterialIconOutlinedEarbudsOff",
+    "svgFileName": "earbuds-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Earbuds",
+    "componentName": "MaterialIconOutlinedEarbuds",
+    "svgFileName": "earbuds-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "EggOff",
+    "componentName": "MaterialIconOutlinedEggOff",
+    "svgFileName": "egg-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Egg",
+    "componentName": "MaterialIconOutlinedEgg",
+    "svgFileName": "egg-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "EjectCircle",
+    "componentName": "MaterialIconOutlinedEjectCircle",
+    "svgFileName": "eject-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Eject",
+    "componentName": "MaterialIconOutlinedEject",
+    "svgFileName": "eject-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ElevatorPassengerOff",
+    "componentName": "MaterialIconOutlinedElevatorPassengerOff",
+    "svgFileName": "elevator-passenger-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "ElevatorPassenger",
+    "componentName": "MaterialIconOutlinedElevatorPassenger",
+    "svgFileName": "elevator-passenger-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Ellipse",
+    "componentName": "MaterialIconOutlinedEllipse",
+    "svgFileName": "ellipse-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "EmailAlert",
+    "componentName": "MaterialIconOutlinedEmailAlert",
+    "svgFileName": "email-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "EmailArrowLeft",
+    "componentName": "MaterialIconOutlinedEmailArrowLeft",
+    "svgFileName": "email-arrow-left-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailArrowRight",
+    "componentName": "MaterialIconOutlinedEmailArrowRight",
+    "svgFileName": "email-arrow-right-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailCheck",
+    "componentName": "MaterialIconOutlinedEmailCheck",
+    "svgFileName": "email-check-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailEdit",
+    "componentName": "MaterialIconOutlinedEmailEdit",
+    "svgFileName": "email-edit-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailFast",
+    "componentName": "MaterialIconOutlinedEmailFast",
+    "svgFileName": "email-fast-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailLock",
+    "componentName": "MaterialIconOutlinedEmailLock",
+    "svgFileName": "email-lock-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailMinus",
+    "componentName": "MaterialIconOutlinedEmailMinus",
+    "svgFileName": "email-minus-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailMultiple",
+    "componentName": "MaterialIconOutlinedEmailMultiple",
+    "svgFileName": "email-multiple-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailOff",
+    "componentName": "MaterialIconOutlinedEmailOff",
+    "svgFileName": "email-off-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailOpenMultiple",
+    "componentName": "MaterialIconOutlinedEmailOpenMultiple",
+    "svgFileName": "email-open-multiple-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EmailOpen",
+    "componentName": "MaterialIconOutlinedEmailOpen",
+    "svgFileName": "email-open-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "Email",
+    "componentName": "MaterialIconOutlinedEmail",
+    "svgFileName": "email-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "EngineOff",
+    "componentName": "MaterialIconOutlinedEngineOff",
+    "svgFileName": "engine-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Engine",
+    "componentName": "MaterialIconOutlinedEngine",
+    "svgFileName": "engine-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Equalizer",
+    "componentName": "MaterialIconOutlinedEqualizer",
+    "svgFileName": "equalizer-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ExpandAll",
+    "componentName": "MaterialIconOutlinedExpandAll",
+    "svgFileName": "expand-all-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "EyeOff",
+    "componentName": "MaterialIconOutlinedEyeOff",
+    "svgFileName": "eye-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Eye",
+    "componentName": "MaterialIconOutlinedEye",
+    "svgFileName": "eye-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FastForward",
+    "componentName": "MaterialIconOutlinedFastForward",
+    "svgFileName": "fast-forward-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FeatureSearch",
+    "componentName": "MaterialIconOutlinedFeatureSearch",
+    "svgFileName": "feature-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FileAccount",
+    "componentName": "MaterialIconOutlinedFileAccount",
+    "svgFileName": "file-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "FileCancel",
+    "componentName": "MaterialIconOutlinedFileCancel",
+    "svgFileName": "file-cancel-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileCertificate",
+    "componentName": "MaterialIconOutlinedFileCertificate",
+    "svgFileName": "file-certificate-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileChartCheck",
+    "componentName": "MaterialIconOutlinedFileChartCheck",
+    "svgFileName": "file-chart-check-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileChart",
+    "componentName": "MaterialIconOutlinedFileChart",
+    "svgFileName": "file-chart-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileCheck",
+    "componentName": "MaterialIconOutlinedFileCheck",
+    "svgFileName": "file-check-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileClock",
+    "componentName": "MaterialIconOutlinedFileClock",
+    "svgFileName": "file-clock-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileCloud",
+    "componentName": "MaterialIconOutlinedFileCloud",
+    "svgFileName": "file-cloud-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileCode",
+    "componentName": "MaterialIconOutlinedFileCode",
+    "svgFileName": "file-code-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileCog",
+    "componentName": "MaterialIconOutlinedFileCog",
+    "svgFileName": "file-cog-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileDelimited",
+    "componentName": "MaterialIconOutlinedFileDelimited",
+    "svgFileName": "file-delimited-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileDocument",
+    "componentName": "MaterialIconOutlinedFileDocument",
+    "svgFileName": "file-document-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FileDownload",
+    "componentName": "MaterialIconOutlinedFileDownload",
+    "svgFileName": "file-download-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FileEdit",
+    "componentName": "MaterialIconOutlinedFileEdit",
+    "svgFileName": "file-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "FileExcelBox",
+    "componentName": "MaterialIconOutlinedFileExcelBox",
+    "svgFileName": "file-excel-box-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileExcel",
+    "componentName": "MaterialIconOutlinedFileExcel",
+    "svgFileName": "file-excel-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileExport",
+    "componentName": "MaterialIconOutlinedFileExport",
+    "svgFileName": "file-export-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileFind",
+    "componentName": "MaterialIconOutlinedFileFind",
+    "svgFileName": "file-find-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileImage",
+    "componentName": "MaterialIconOutlinedFileImage",
+    "svgFileName": "file-image-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "FileImport",
+    "componentName": "MaterialIconOutlinedFileImport",
+    "svgFileName": "file-import-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileKey",
+    "componentName": "MaterialIconOutlinedFileKey",
+    "svgFileName": "file-key-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FileLink",
+    "componentName": "MaterialIconOutlinedFileLink",
+    "svgFileName": "file-link-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FilterCheck",
+    "componentName": "MaterialIconOutlinedFilterCheck",
+    "svgFileName": "filter-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FilterCog",
+    "componentName": "MaterialIconOutlinedFilterCog",
+    "svgFileName": "filter-cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FilterMenu",
+    "componentName": "MaterialIconOutlinedFilterMenu",
+    "svgFileName": "filter-menu-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "FilterMinus",
+    "componentName": "MaterialIconOutlinedFilterMinus",
+    "svgFileName": "filter-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FilterMultiple",
+    "componentName": "MaterialIconOutlinedFilterMultiple",
+    "svgFileName": "filter-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FilterOff",
+    "componentName": "MaterialIconOutlinedFilterOff",
+    "svgFileName": "filter-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Filter",
+    "componentName": "MaterialIconOutlinedFilter",
+    "svgFileName": "filter-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FilterPlus",
+    "componentName": "MaterialIconOutlinedFilterPlus",
+    "svgFileName": "filter-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FilterRemove",
+    "componentName": "MaterialIconOutlinedFilterRemove",
+    "svgFileName": "filter-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FilterSettings",
+    "componentName": "MaterialIconOutlinedFilterSettings",
+    "svgFileName": "filter-settings-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Fishbowl",
+    "componentName": "MaterialIconOutlinedFishbowl",
+    "svgFileName": "fishbowl-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FitToPage",
+    "componentName": "MaterialIconOutlinedFitToPage",
+    "svgFileName": "fit-to-page-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FitToScreen",
+    "componentName": "MaterialIconOutlinedFitToScreen",
+    "svgFileName": "fit-to-screen-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagMinus",
+    "componentName": "MaterialIconOutlinedFlagMinus",
+    "svgFileName": "flag-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagOff",
+    "componentName": "MaterialIconOutlinedFlagOff",
+    "svgFileName": "flag-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Flag",
+    "componentName": "MaterialIconOutlinedFlag",
+    "svgFileName": "flag-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagPlus",
+    "componentName": "MaterialIconOutlinedFlagPlus",
+    "svgFileName": "flag-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagRemove",
+    "componentName": "MaterialIconOutlinedFlagRemove",
+    "svgFileName": "flag-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FlagVariantMinus",
+    "componentName": "MaterialIconOutlinedFlagVariantMinus",
+    "svgFileName": "flag-variant-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagVariantOff",
+    "componentName": "MaterialIconOutlinedFlagVariantOff",
+    "svgFileName": "flag-variant-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "FlagVariant",
+    "componentName": "MaterialIconOutlinedFlagVariant",
+    "svgFileName": "flag-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagVariantPlus",
+    "componentName": "MaterialIconOutlinedFlagVariantPlus",
+    "svgFileName": "flag-variant-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlagVariantRemove",
+    "componentName": "MaterialIconOutlinedFlagVariantRemove",
+    "svgFileName": "flag-variant-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FlashAlert",
+    "componentName": "MaterialIconOutlinedFlashAlert",
+    "svgFileName": "flash-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "FlashOff",
+    "componentName": "MaterialIconOutlinedFlashOff",
+    "svgFileName": "flash-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Flash",
+    "componentName": "MaterialIconOutlinedFlash",
+    "svgFileName": "flash-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlashTriangle",
+    "componentName": "MaterialIconOutlinedFlashTriangle",
+    "svgFileName": "flash-triangle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FloorLampDual",
+    "componentName": "MaterialIconOutlinedFloorLampDual",
+    "svgFileName": "floor-lamp-dual-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FloorLamp",
+    "componentName": "MaterialIconOutlinedFloorLamp",
+    "svgFileName": "floor-lamp-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FloorLampTorchiere",
+    "componentName": "MaterialIconOutlinedFloorLampTorchiere",
+    "svgFileName": "floor-lamp-torchiere-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FloorLampTorchiereVariant",
+    "componentName": "MaterialIconOutlinedFloorLampTorchiereVariant",
+    "svgFileName": "floor-lamp-torchiere-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Flower",
+    "componentName": "MaterialIconOutlinedFlower",
+    "svgFileName": "flower-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlowerPollen",
+    "componentName": "MaterialIconOutlinedFlowerPollen",
+    "svgFileName": "flower-pollen-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FlowerTulip",
+    "componentName": "MaterialIconOutlinedFlowerTulip",
+    "svgFileName": "flower-tulip-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FolderAccount",
+    "componentName": "MaterialIconOutlinedFolderAccount",
+    "svgFileName": "folder-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "FolderCancel",
+    "componentName": "MaterialIconOutlinedFolderCancel",
+    "svgFileName": "folder-cancel-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderCheck",
+    "componentName": "MaterialIconOutlinedFolderCheck",
+    "svgFileName": "folder-check-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderClock",
+    "componentName": "MaterialIconOutlinedFolderClock",
+    "svgFileName": "folder-clock-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderCog",
+    "componentName": "MaterialIconOutlinedFolderCog",
+    "svgFileName": "folder-cog-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderDownload",
+    "componentName": "MaterialIconOutlinedFolderDownload",
+    "svgFileName": "folder-download-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FolderEdit",
+    "componentName": "MaterialIconOutlinedFolderEdit",
+    "svgFileName": "folder-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "FolderEye",
+    "componentName": "MaterialIconOutlinedFolderEye",
+    "svgFileName": "folder-eye-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderFile",
+    "componentName": "MaterialIconOutlinedFolderFile",
+    "svgFileName": "folder-file-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderHeart",
+    "componentName": "MaterialIconOutlinedFolderHeart",
+    "svgFileName": "folder-heart-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderHome",
+    "componentName": "MaterialIconOutlinedFolderHome",
+    "svgFileName": "folder-home-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderInformation",
+    "componentName": "MaterialIconOutlinedFolderInformation",
+    "svgFileName": "folder-information-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "FolderKeyNetwork",
+    "componentName": "MaterialIconOutlinedFolderKeyNetwork",
+    "svgFileName": "folder-key-network-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderKey",
+    "componentName": "MaterialIconOutlinedFolderKey",
+    "svgFileName": "folder-key-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderLockOpen",
+    "componentName": "MaterialIconOutlinedFolderLockOpen",
+    "svgFileName": "folder-lock-open-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderLock",
+    "componentName": "MaterialIconOutlinedFolderLock",
+    "svgFileName": "folder-lock-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderMarker",
+    "componentName": "MaterialIconOutlinedFolderMarker",
+    "svgFileName": "folder-marker-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderMinus",
+    "componentName": "MaterialIconOutlinedFolderMinus",
+    "svgFileName": "folder-minus-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderMove",
+    "componentName": "MaterialIconOutlinedFolderMove",
+    "svgFileName": "folder-move-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FolderMultiple",
+    "componentName": "MaterialIconOutlinedFolderMultiple",
+    "svgFileName": "folder-multiple-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderMultiplePlus",
+    "componentName": "MaterialIconOutlinedFolderMultiplePlus",
+    "svgFileName": "folder-multiple-plus-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderMusic",
+    "componentName": "MaterialIconOutlinedFolderMusic",
+    "svgFileName": "folder-music-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderNetwork",
+    "componentName": "MaterialIconOutlinedFolderNetwork",
+    "svgFileName": "folder-network-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderOff",
+    "componentName": "MaterialIconOutlinedFolderOff",
+    "svgFileName": "folder-off-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderOpen",
+    "componentName": "MaterialIconOutlinedFolderOpen",
+    "svgFileName": "folder-open-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "Folder",
+    "componentName": "MaterialIconOutlinedFolder",
+    "svgFileName": "folder-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderPlay",
+    "componentName": "MaterialIconOutlinedFolderPlay",
+    "svgFileName": "folder-play-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderPlus",
+    "componentName": "MaterialIconOutlinedFolderPlus",
+    "svgFileName": "folder-plus-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderPound",
+    "componentName": "MaterialIconOutlinedFolderPound",
+    "svgFileName": "folder-pound-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderQuestion",
+    "componentName": "MaterialIconOutlinedFolderQuestion",
+    "svgFileName": "folder-question-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderRefresh",
+    "componentName": "MaterialIconOutlinedFolderRefresh",
+    "svgFileName": "folder-refresh-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderRemove",
+    "componentName": "MaterialIconOutlinedFolderRemove",
+    "svgFileName": "folder-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FolderSearch",
+    "componentName": "MaterialIconOutlinedFolderSearch",
+    "svgFileName": "folder-search-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderSettings",
+    "componentName": "MaterialIconOutlinedFolderSettings",
+    "svgFileName": "folder-settings-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderStarMultiple",
+    "componentName": "MaterialIconOutlinedFolderStarMultiple",
+    "svgFileName": "folder-star-multiple-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderStar",
+    "componentName": "MaterialIconOutlinedFolderStar",
+    "svgFileName": "folder-star-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderSwap",
+    "componentName": "MaterialIconOutlinedFolderSwap",
+    "svgFileName": "folder-swap-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderSync",
+    "componentName": "MaterialIconOutlinedFolderSync",
+    "svgFileName": "folder-sync-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderTable",
+    "componentName": "MaterialIconOutlinedFolderTable",
+    "svgFileName": "folder-table-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderText",
+    "componentName": "MaterialIconOutlinedFolderText",
+    "svgFileName": "folder-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "FolderUpload",
+    "componentName": "MaterialIconOutlinedFolderUpload",
+    "svgFileName": "folder-upload-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderWrench",
+    "componentName": "MaterialIconOutlinedFolderWrench",
+    "svgFileName": "folder-wrench-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FolderZip",
+    "componentName": "MaterialIconOutlinedFolderZip",
+    "svgFileName": "folder-zip-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "FormatQuoteClose",
+    "componentName": "MaterialIconOutlinedFormatQuoteClose",
+    "svgFileName": "format-quote-close-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "FormatQuoteOpen",
+    "componentName": "MaterialIconOutlinedFormatQuoteOpen",
+    "svgFileName": "format-quote-open-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "FormatTextVariant",
+    "componentName": "MaterialIconOutlinedFormatTextVariant",
+    "svgFileName": "format-text-variant-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ForumMinus",
+    "componentName": "MaterialIconOutlinedForumMinus",
+    "svgFileName": "forum-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Forum",
+    "componentName": "MaterialIconOutlinedForum",
+    "svgFileName": "forum-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ForumPlus",
+    "componentName": "MaterialIconOutlinedForumPlus",
+    "svgFileName": "forum-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ForumRemove",
+    "componentName": "MaterialIconOutlinedForumRemove",
+    "svgFileName": "forum-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "FridgeAlert",
+    "componentName": "MaterialIconOutlinedFridgeAlert",
+    "svgFileName": "fridge-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "FridgeIndustrialAlert",
+    "componentName": "MaterialIconOutlinedFridgeIndustrialAlert",
+    "svgFileName": "fridge-industrial-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "FridgeIndustrialOff",
+    "componentName": "MaterialIconOutlinedFridgeIndustrialOff",
+    "svgFileName": "fridge-industrial-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "FridgeIndustrial",
+    "componentName": "MaterialIconOutlinedFridgeIndustrial",
+    "svgFileName": "fridge-industrial-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FridgeOff",
+    "componentName": "MaterialIconOutlinedFridgeOff",
+    "svgFileName": "fridge-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Fridge",
+    "componentName": "MaterialIconOutlinedFridge",
+    "svgFileName": "fridge-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FridgeVariantAlert",
+    "componentName": "MaterialIconOutlinedFridgeVariantAlert",
+    "svgFileName": "fridge-variant-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "FridgeVariantOff",
+    "componentName": "MaterialIconOutlinedFridgeVariantOff",
+    "svgFileName": "fridge-variant-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "FridgeVariant",
+    "componentName": "MaterialIconOutlinedFridgeVariant",
+    "svgFileName": "fridge-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "FruitGrapes",
+    "componentName": "MaterialIconOutlinedFruitGrapes",
+    "svgFileName": "fruit-grapes-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GamepadCircle",
+    "componentName": "MaterialIconOutlinedGamepadCircle",
+    "svgFileName": "gamepad-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Gamepad",
+    "componentName": "MaterialIconOutlinedGamepad",
+    "svgFileName": "gamepad-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GamepadRound",
+    "componentName": "MaterialIconOutlinedGamepadRound",
+    "svgFileName": "gamepad-round-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GamepadSquare",
+    "componentName": "MaterialIconOutlinedGamepadSquare",
+    "svgFileName": "gamepad-square-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GamepadVariant",
+    "componentName": "MaterialIconOutlinedGamepadVariant",
+    "svgFileName": "gamepad-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GasStationOff",
+    "componentName": "MaterialIconOutlinedGasStationOff",
+    "svgFileName": "gas-station-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "GasStation",
+    "componentName": "MaterialIconOutlinedGasStation",
+    "svgFileName": "gas-station-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "GhostOff",
+    "componentName": "MaterialIconOutlinedGhostOff",
+    "svgFileName": "ghost-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Ghost",
+    "componentName": "MaterialIconOutlinedGhost",
+    "svgFileName": "ghost-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GiftOff",
+    "componentName": "MaterialIconOutlinedGiftOff",
+    "svgFileName": "gift-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "GiftOpen",
+    "componentName": "MaterialIconOutlinedGiftOpen",
+    "svgFileName": "gift-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Gift",
+    "componentName": "MaterialIconOutlinedGift",
+    "svgFileName": "gift-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GlassPint",
+    "componentName": "MaterialIconOutlinedGlassPint",
+    "svgFileName": "glass-pint-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GlobeLight",
+    "componentName": "MaterialIconOutlinedGlobeLight",
+    "svgFileName": "globe-light-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Graph",
+    "componentName": "MaterialIconOutlinedGraph",
+    "svgFileName": "graph-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Grill",
+    "componentName": "MaterialIconOutlinedGrill",
+    "svgFileName": "grill-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "GuitarPick",
+    "componentName": "MaterialIconOutlinedGuitarPick",
+    "svgFileName": "guitar-pick-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HandBackLeftOff",
+    "componentName": "MaterialIconOutlinedHandBackLeftOff",
+    "svgFileName": "hand-back-left-off-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "HandBackLeft",
+    "componentName": "MaterialIconOutlinedHandBackLeft",
+    "svgFileName": "hand-back-left-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "HandBackRightOff",
+    "componentName": "MaterialIconOutlinedHandBackRightOff",
+    "svgFileName": "hand-back-right-off-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "HandBackRight",
+    "componentName": "MaterialIconOutlinedHandBackRight",
+    "svgFileName": "hand-back-right-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "HandCoin",
+    "componentName": "MaterialIconOutlinedHandCoin",
+    "svgFileName": "hand-coin-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HandExtended",
+    "componentName": "MaterialIconOutlinedHandExtended",
+    "svgFileName": "hand-extended-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HandFrontLeft",
+    "componentName": "MaterialIconOutlinedHandFrontLeft",
+    "svgFileName": "hand-front-left-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "HandFrontRight",
+    "componentName": "MaterialIconOutlinedHandFrontRight",
+    "svgFileName": "hand-front-right-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "HandHeart",
+    "componentName": "MaterialIconOutlinedHandHeart",
+    "svgFileName": "hand-heart-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HandWash",
+    "componentName": "MaterialIconOutlinedHandWash",
+    "svgFileName": "hand-wash-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HandWave",
+    "componentName": "MaterialIconOutlinedHandWave",
+    "svgFileName": "hand-wave-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Handshake",
+    "componentName": "MaterialIconOutlinedHandshake",
+    "svgFileName": "handshake-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Head",
+    "componentName": "MaterialIconOutlinedHead",
+    "svgFileName": "head-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HeartBox",
+    "componentName": "MaterialIconOutlinedHeartBox",
+    "svgFileName": "heart-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HeartBroken",
+    "componentName": "MaterialIconOutlinedHeartBroken",
+    "svgFileName": "heart-broken-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HeartCircle",
+    "componentName": "MaterialIconOutlinedHeartCircle",
+    "svgFileName": "heart-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HeartCog",
+    "componentName": "MaterialIconOutlinedHeartCog",
+    "svgFileName": "heart-cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HeartOff",
+    "componentName": "MaterialIconOutlinedHeartOff",
+    "svgFileName": "heart-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Heart",
+    "componentName": "MaterialIconOutlinedHeart",
+    "svgFileName": "heart-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HeatPump",
+    "componentName": "MaterialIconOutlinedHeatPump",
+    "svgFileName": "heat-pump-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HelpCircle",
+    "componentName": "MaterialIconOutlinedHelpCircle",
+    "svgFileName": "help-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HelpRhombus",
+    "componentName": "MaterialIconOutlinedHelpRhombus",
+    "svgFileName": "help-rhombus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HexagonMultiple",
+    "componentName": "MaterialIconOutlinedHexagonMultiple",
+    "svgFileName": "hexagon-multiple-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Hexagon",
+    "componentName": "MaterialIconOutlinedHexagon",
+    "svgFileName": "hexagon-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Hexagram",
+    "componentName": "MaterialIconOutlinedHexagram",
+    "svgFileName": "hexagram-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeAlert",
+    "componentName": "MaterialIconOutlinedHomeAlert",
+    "svgFileName": "home-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "HomeBattery",
+    "componentName": "MaterialIconOutlinedHomeBattery",
+    "svgFileName": "home-battery-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeCircle",
+    "componentName": "MaterialIconOutlinedHomeCircle",
+    "svgFileName": "home-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeCity",
+    "componentName": "MaterialIconOutlinedHomeCity",
+    "svgFileName": "home-city-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeClock",
+    "componentName": "MaterialIconOutlinedHomeClock",
+    "svgFileName": "home-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeEdit",
+    "componentName": "MaterialIconOutlinedHomeEdit",
+    "svgFileName": "home-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "HomeExport",
+    "componentName": "MaterialIconOutlinedHomeExport",
+    "svgFileName": "home-export-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeImport",
+    "componentName": "MaterialIconOutlinedHomeImport",
+    "svgFileName": "home-import-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeLightbulb",
+    "componentName": "MaterialIconOutlinedHomeLightbulb",
+    "svgFileName": "home-lightbulb-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeLightningBolt",
+    "componentName": "MaterialIconOutlinedHomeLightningBolt",
+    "svgFileName": "home-lightning-bolt-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeMinus",
+    "componentName": "MaterialIconOutlinedHomeMinus",
+    "svgFileName": "home-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeOff",
+    "componentName": "MaterialIconOutlinedHomeOff",
+    "svgFileName": "home-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Home",
+    "componentName": "MaterialIconOutlinedHome",
+    "svgFileName": "home-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomePlus",
+    "componentName": "MaterialIconOutlinedHomePlus",
+    "svgFileName": "home-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HomeRemove",
+    "componentName": "MaterialIconOutlinedHomeRemove",
+    "svgFileName": "home-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "HomeVariant",
+    "componentName": "MaterialIconOutlinedHomeVariant",
+    "svgFileName": "home-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "HospitalBox",
+    "componentName": "MaterialIconOutlinedHospitalBox",
+    "svgFileName": "hospital-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ImageCheck",
+    "componentName": "MaterialIconOutlinedImageCheck",
+    "svgFileName": "image-check-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageEdit",
+    "componentName": "MaterialIconOutlinedImageEdit",
+    "svgFileName": "image-edit-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageFilterCenterFocusStrong",
+    "componentName": "MaterialIconOutlinedImageFilterCenterFocusStrong",
+    "svgFileName": "image-filter-center-focus-strong-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageLock",
+    "componentName": "MaterialIconOutlinedImageLock",
+    "svgFileName": "image-lock-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageMarker",
+    "componentName": "MaterialIconOutlinedImageMarker",
+    "svgFileName": "image-marker-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageMinus",
+    "componentName": "MaterialIconOutlinedImageMinus",
+    "svgFileName": "image-minus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageMultiple",
+    "componentName": "MaterialIconOutlinedImageMultiple",
+    "svgFileName": "image-multiple-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageOff",
+    "componentName": "MaterialIconOutlinedImageOff",
+    "svgFileName": "image-off-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "Image",
+    "componentName": "MaterialIconOutlinedImage",
+    "svgFileName": "image-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImagePlus",
+    "componentName": "MaterialIconOutlinedImagePlus",
+    "svgFileName": "image-plus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageRefresh",
+    "componentName": "MaterialIconOutlinedImageRefresh",
+    "svgFileName": "image-refresh-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageRemove",
+    "componentName": "MaterialIconOutlinedImageRemove",
+    "svgFileName": "image-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ImageSearch",
+    "componentName": "MaterialIconOutlinedImageSearch",
+    "svgFileName": "image-search-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ImageSync",
+    "componentName": "MaterialIconOutlinedImageSync",
+    "svgFileName": "image-sync-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "InboxArrowDown",
+    "componentName": "MaterialIconOutlinedInboxArrowDown",
+    "svgFileName": "inbox-arrow-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "InboxArrowUp",
+    "componentName": "MaterialIconOutlinedInboxArrowUp",
+    "svgFileName": "inbox-arrow-up-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "InboxFull",
+    "componentName": "MaterialIconOutlinedInboxFull",
+    "svgFileName": "inbox-full-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "InboxMultiple",
+    "componentName": "MaterialIconOutlinedInboxMultiple",
+    "svgFileName": "inbox-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Inbox",
+    "componentName": "MaterialIconOutlinedInbox",
+    "svgFileName": "inbox-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "InboxRemove",
+    "componentName": "MaterialIconOutlinedInboxRemove",
+    "svgFileName": "inbox-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "InformationOff",
+    "componentName": "MaterialIconOutlinedInformationOff",
+    "svgFileName": "information-off-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "Information",
+    "componentName": "MaterialIconOutlinedInformation",
+    "svgFileName": "information-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "IpNetwork",
+    "componentName": "MaterialIconOutlinedIpNetwork",
+    "svgFileName": "ip-network-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Ip",
+    "componentName": "MaterialIconOutlinedIp",
+    "svgFileName": "ip-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "KeyAlert",
+    "componentName": "MaterialIconOutlinedKeyAlert",
+    "svgFileName": "key-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "Key",
+    "componentName": "MaterialIconOutlinedKey",
+    "svgFileName": "key-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "KeyboardOff",
+    "componentName": "MaterialIconOutlinedKeyboardOff",
+    "svgFileName": "keyboard-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Keyboard",
+    "componentName": "MaterialIconOutlinedKeyboard",
+    "svgFileName": "keyboard-outline.svg",
+    "category": "Hardware"
+  },
+  {
+    "name": "KeyboardSettings",
+    "componentName": "MaterialIconOutlinedKeyboardSettings",
+    "svgFileName": "keyboard-settings-outline.svg",
+    "category": "Hardware"
+  },
+  {
+    "name": "Kite",
+    "componentName": "MaterialIconOutlinedKite",
+    "svgFileName": "kite-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LabelMultiple",
+    "componentName": "MaterialIconOutlinedLabelMultiple",
+    "svgFileName": "label-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LabelOff",
+    "componentName": "MaterialIconOutlinedLabelOff",
+    "svgFileName": "label-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Label",
+    "componentName": "MaterialIconOutlinedLabel",
+    "svgFileName": "label-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LabelPercent",
+    "componentName": "MaterialIconOutlinedLabelPercent",
+    "svgFileName": "label-percent-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LabelVariant",
+    "componentName": "MaterialIconOutlinedLabelVariant",
+    "svgFileName": "label-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Lamp",
+    "componentName": "MaterialIconOutlinedLamp",
+    "svgFileName": "lamp-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Lamps",
+    "componentName": "MaterialIconOutlinedLamps",
+    "svgFileName": "lamps-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LayersOff",
+    "componentName": "MaterialIconOutlinedLayersOff",
+    "svgFileName": "layers-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Layers",
+    "componentName": "MaterialIconOutlinedLayers",
+    "svgFileName": "layers-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LayersSearch",
+    "componentName": "MaterialIconOutlinedLayersSearch",
+    "svgFileName": "layers-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LayersTriple",
+    "componentName": "MaterialIconOutlinedLayersTriple",
+    "svgFileName": "layers-triple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LeafCircle",
+    "componentName": "MaterialIconOutlinedLeafCircle",
+    "svgFileName": "leaf-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Led",
+    "componentName": "MaterialIconOutlinedLed",
+    "svgFileName": "led-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LedVariant",
+    "componentName": "MaterialIconOutlinedLedVariant",
+    "svgFileName": "led-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Library",
+    "componentName": "MaterialIconOutlinedLibrary",
+    "svgFileName": "library-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LightningBolt",
+    "componentName": "MaterialIconOutlinedLightningBolt",
+    "svgFileName": "lightning-bolt-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LinkBox",
+    "componentName": "MaterialIconOutlinedLinkBox",
+    "svgFileName": "link-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LinkBoxVariant",
+    "componentName": "MaterialIconOutlinedLinkBoxVariant",
+    "svgFileName": "link-box-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ListBox",
+    "componentName": "MaterialIconOutlinedListBox",
+    "svgFileName": "list-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockAlert",
+    "componentName": "MaterialIconOutlinedLockAlert",
+    "svgFileName": "lock-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "LockCheck",
+    "componentName": "MaterialIconOutlinedLockCheck",
+    "svgFileName": "lock-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockMinus",
+    "componentName": "MaterialIconOutlinedLockMinus",
+    "svgFileName": "lock-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockOff",
+    "componentName": "MaterialIconOutlinedLockOff",
+    "svgFileName": "lock-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "LockOpenAlert",
+    "componentName": "MaterialIconOutlinedLockOpenAlert",
+    "svgFileName": "lock-open-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "LockOpenCheck",
+    "componentName": "MaterialIconOutlinedLockOpenCheck",
+    "svgFileName": "lock-open-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockOpenMinus",
+    "componentName": "MaterialIconOutlinedLockOpenMinus",
+    "svgFileName": "lock-open-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockOpen",
+    "componentName": "MaterialIconOutlinedLockOpen",
+    "svgFileName": "lock-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockOpenPlus",
+    "componentName": "MaterialIconOutlinedLockOpenPlus",
+    "svgFileName": "lock-open-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockOpenRemove",
+    "componentName": "MaterialIconOutlinedLockOpenRemove",
+    "svgFileName": "lock-open-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "LockOpenVariant",
+    "componentName": "MaterialIconOutlinedLockOpenVariant",
+    "svgFileName": "lock-open-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Lock",
+    "componentName": "MaterialIconOutlinedLock",
+    "svgFileName": "lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockPlus",
+    "componentName": "MaterialIconOutlinedLockPlus",
+    "svgFileName": "lock-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "LockRemove",
+    "componentName": "MaterialIconOutlinedLockRemove",
+    "svgFileName": "lock-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "MagnifyMinus",
+    "componentName": "MaterialIconOutlinedMagnifyMinus",
+    "svgFileName": "magnify-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MagnifyPlus",
+    "componentName": "MaterialIconOutlinedMagnifyPlus",
+    "svgFileName": "magnify-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MagnifyRemove",
+    "componentName": "MaterialIconOutlinedMagnifyRemove",
+    "svgFileName": "magnify-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "MailboxOpen",
+    "componentName": "MaterialIconOutlinedMailboxOpen",
+    "svgFileName": "mailbox-open-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MailboxOpenUp",
+    "componentName": "MaterialIconOutlinedMailboxOpenUp",
+    "svgFileName": "mailbox-open-up-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "Mailbox",
+    "componentName": "MaterialIconOutlinedMailbox",
+    "svgFileName": "mailbox-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MailboxUp",
+    "componentName": "MaterialIconOutlinedMailboxUp",
+    "svgFileName": "mailbox-up-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MapCheck",
+    "componentName": "MaterialIconOutlinedMapCheck",
+    "svgFileName": "map-check-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapClock",
+    "componentName": "MaterialIconOutlinedMapClock",
+    "svgFileName": "map-clock-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerAccount",
+    "componentName": "MaterialIconOutlinedMapMarkerAccount",
+    "svgFileName": "map-marker-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "MapMarkerAlert",
+    "componentName": "MaterialIconOutlinedMapMarkerAlert",
+    "svgFileName": "map-marker-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "MapMarkerCheck",
+    "componentName": "MaterialIconOutlinedMapMarkerCheck",
+    "svgFileName": "map-marker-check-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerMinus",
+    "componentName": "MaterialIconOutlinedMapMarkerMinus",
+    "svgFileName": "map-marker-minus-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerMultiple",
+    "componentName": "MaterialIconOutlinedMapMarkerMultiple",
+    "svgFileName": "map-marker-multiple-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerOff",
+    "componentName": "MaterialIconOutlinedMapMarkerOff",
+    "svgFileName": "map-marker-off-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarker",
+    "componentName": "MaterialIconOutlinedMapMarker",
+    "svgFileName": "map-marker-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerPlus",
+    "componentName": "MaterialIconOutlinedMapMarkerPlus",
+    "svgFileName": "map-marker-plus-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerQuestion",
+    "componentName": "MaterialIconOutlinedMapMarkerQuestion",
+    "svgFileName": "map-marker-question-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerRadius",
+    "componentName": "MaterialIconOutlinedMapMarkerRadius",
+    "svgFileName": "map-marker-radius-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapMarkerRemove",
+    "componentName": "MaterialIconOutlinedMapMarkerRemove",
+    "svgFileName": "map-marker-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "MapMarkerRight",
+    "componentName": "MaterialIconOutlinedMapMarkerRight",
+    "svgFileName": "map-marker-right-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "Map",
+    "componentName": "MaterialIconOutlinedMap",
+    "svgFileName": "map-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "MapSearch",
+    "componentName": "MaterialIconOutlinedMapSearch",
+    "svgFileName": "map-search-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "Medal",
+    "componentName": "MaterialIconOutlinedMedal",
+    "svgFileName": "medal-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Medication",
+    "componentName": "MaterialIconOutlinedMedication",
+    "svgFileName": "medication-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "MenuDown",
+    "componentName": "MaterialIconOutlinedMenuDown",
+    "svgFileName": "menu-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "MenuLeft",
+    "componentName": "MaterialIconOutlinedMenuLeft",
+    "svgFileName": "menu-left-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "MenuRight",
+    "componentName": "MaterialIconOutlinedMenuRight",
+    "svgFileName": "menu-right-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "MenuSwap",
+    "componentName": "MaterialIconOutlinedMenuSwap",
+    "svgFileName": "menu-swap-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "MenuUp",
+    "componentName": "MaterialIconOutlinedMenuUp",
+    "svgFileName": "menu-up-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "MessageAlert",
+    "componentName": "MaterialIconOutlinedMessageAlert",
+    "svgFileName": "message-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "MessageArrowLeft",
+    "componentName": "MaterialIconOutlinedMessageArrowLeft",
+    "svgFileName": "message-arrow-left-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageArrowRight",
+    "componentName": "MaterialIconOutlinedMessageArrowRight",
+    "svgFileName": "message-arrow-right-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageBadge",
+    "componentName": "MaterialIconOutlinedMessageBadge",
+    "svgFileName": "message-badge-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageBookmark",
+    "componentName": "MaterialIconOutlinedMessageBookmark",
+    "svgFileName": "message-bookmark-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageCheck",
+    "componentName": "MaterialIconOutlinedMessageCheck",
+    "svgFileName": "message-check-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageCog",
+    "componentName": "MaterialIconOutlinedMessageCog",
+    "svgFileName": "message-cog-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageFast",
+    "componentName": "MaterialIconOutlinedMessageFast",
+    "svgFileName": "message-fast-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageFlash",
+    "componentName": "MaterialIconOutlinedMessageFlash",
+    "svgFileName": "message-flash-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageImage",
+    "componentName": "MaterialIconOutlinedMessageImage",
+    "svgFileName": "message-image-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageLock",
+    "componentName": "MaterialIconOutlinedMessageLock",
+    "svgFileName": "message-lock-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageMinus",
+    "componentName": "MaterialIconOutlinedMessageMinus",
+    "svgFileName": "message-minus-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageOff",
+    "componentName": "MaterialIconOutlinedMessageOff",
+    "svgFileName": "message-off-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "Message",
+    "componentName": "MaterialIconOutlinedMessage",
+    "svgFileName": "message-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessagePlus",
+    "componentName": "MaterialIconOutlinedMessagePlus",
+    "svgFileName": "message-plus-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageProcessing",
+    "componentName": "MaterialIconOutlinedMessageProcessing",
+    "svgFileName": "message-processing-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageQuestion",
+    "componentName": "MaterialIconOutlinedMessageQuestion",
+    "svgFileName": "message-question-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageReply",
+    "componentName": "MaterialIconOutlinedMessageReply",
+    "svgFileName": "message-reply-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageReplyText",
+    "componentName": "MaterialIconOutlinedMessageReplyText",
+    "svgFileName": "message-reply-text-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageSettings",
+    "componentName": "MaterialIconOutlinedMessageSettings",
+    "svgFileName": "message-settings-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageStar",
+    "componentName": "MaterialIconOutlinedMessageStar",
+    "svgFileName": "message-star-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageTextClock",
+    "componentName": "MaterialIconOutlinedMessageTextClock",
+    "svgFileName": "message-text-clock-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageTextFast",
+    "componentName": "MaterialIconOutlinedMessageTextFast",
+    "svgFileName": "message-text-fast-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageTextLock",
+    "componentName": "MaterialIconOutlinedMessageTextLock",
+    "svgFileName": "message-text-lock-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MessageText",
+    "componentName": "MaterialIconOutlinedMessageText",
+    "svgFileName": "message-text-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "MeterElectric",
+    "componentName": "MaterialIconOutlinedMeterElectric",
+    "svgFileName": "meter-electric-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MeterGas",
+    "componentName": "MaterialIconOutlinedMeterGas",
+    "svgFileName": "meter-gas-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Microphone",
+    "componentName": "MaterialIconOutlinedMicrophone",
+    "svgFileName": "microphone-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "Middleware",
+    "componentName": "MaterialIconOutlinedMiddleware",
+    "svgFileName": "middleware-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MinusBoxMultiple",
+    "componentName": "MaterialIconOutlinedMinusBoxMultiple",
+    "svgFileName": "minus-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MinusBox",
+    "componentName": "MaterialIconOutlinedMinusBox",
+    "svgFileName": "minus-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MinusCircleMultiple",
+    "componentName": "MaterialIconOutlinedMinusCircleMultiple",
+    "svgFileName": "minus-circle-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MinusCircleOff",
+    "componentName": "MaterialIconOutlinedMinusCircleOff",
+    "svgFileName": "minus-circle-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "MinusCircle",
+    "componentName": "MaterialIconOutlinedMinusCircle",
+    "svgFileName": "minus-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MinusNetwork",
+    "componentName": "MaterialIconOutlinedMinusNetwork",
+    "svgFileName": "minus-network-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieCheck",
+    "componentName": "MaterialIconOutlinedMovieCheck",
+    "svgFileName": "movie-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieCog",
+    "componentName": "MaterialIconOutlinedMovieCog",
+    "svgFileName": "movie-cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieEdit",
+    "componentName": "MaterialIconOutlinedMovieEdit",
+    "svgFileName": "movie-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "MovieFilter",
+    "componentName": "MaterialIconOutlinedMovieFilter",
+    "svgFileName": "movie-filter-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieMinus",
+    "componentName": "MaterialIconOutlinedMovieMinus",
+    "svgFileName": "movie-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieOff",
+    "componentName": "MaterialIconOutlinedMovieOff",
+    "svgFileName": "movie-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "MovieOpenCheck",
+    "componentName": "MaterialIconOutlinedMovieOpenCheck",
+    "svgFileName": "movie-open-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieOpenCog",
+    "componentName": "MaterialIconOutlinedMovieOpenCog",
+    "svgFileName": "movie-open-cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieOpenEdit",
+    "componentName": "MaterialIconOutlinedMovieOpenEdit",
+    "svgFileName": "movie-open-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "MovieOpenMinus",
+    "componentName": "MaterialIconOutlinedMovieOpenMinus",
+    "svgFileName": "movie-open-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MovieOpenOff",
+    "componentName": "MaterialIconOutlinedMovieOpenOff",
+    "svgFileName": "movie-open-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "MovieOpen",
+    "componentName": "MaterialIconOutlinedMovieOpen",
+    "svgFileName": "movie-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Movie",
+    "componentName": "MaterialIconOutlinedMovie",
+    "svgFileName": "movie-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MushroomOff",
+    "componentName": "MaterialIconOutlinedMushroomOff",
+    "svgFileName": "mushroom-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Mushroom",
+    "componentName": "MaterialIconOutlinedMushroom",
+    "svgFileName": "mushroom-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MusicBoxMultiple",
+    "componentName": "MaterialIconOutlinedMusicBoxMultiple",
+    "svgFileName": "music-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MusicBox",
+    "componentName": "MaterialIconOutlinedMusicBox",
+    "svgFileName": "music-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MusicCircle",
+    "componentName": "MaterialIconOutlinedMusicCircle",
+    "svgFileName": "music-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "MusicNoteOff",
+    "componentName": "MaterialIconOutlinedMusicNoteOff",
+    "svgFileName": "music-note-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "MusicNote",
+    "componentName": "MaterialIconOutlinedMusicNote",
+    "svgFileName": "music-note-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Navigation",
+    "componentName": "MaterialIconOutlinedNavigation",
+    "svgFileName": "navigation-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "NavigationVariant",
+    "componentName": "MaterialIconOutlinedNavigationVariant",
+    "svgFileName": "navigation-variant-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "NetworkOff",
+    "componentName": "MaterialIconOutlinedNetworkOff",
+    "svgFileName": "network-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Network",
+    "componentName": "MaterialIconOutlinedNetwork",
+    "svgFileName": "network-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "NetworkStrengthOff",
+    "componentName": "MaterialIconOutlinedNetworkStrengthOff",
+    "svgFileName": "network-strength-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "NetworkStrength",
+    "componentName": "MaterialIconOutlinedNetworkStrength",
+    "svgFileName": "network-strength-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "NewspaperVariantMultiple",
+    "componentName": "MaterialIconOutlinedNewspaperVariantMultiple",
+    "svgFileName": "newspaper-variant-multiple-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "NewspaperVariant",
+    "componentName": "MaterialIconOutlinedNewspaperVariant",
+    "svgFileName": "newspaper-variant-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "NoteCheck",
+    "componentName": "MaterialIconOutlinedNoteCheck",
+    "svgFileName": "note-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "NoteMultiple",
+    "componentName": "MaterialIconOutlinedNoteMultiple",
+    "svgFileName": "note-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "NoteOff",
+    "componentName": "MaterialIconOutlinedNoteOff",
+    "svgFileName": "note-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Note",
+    "componentName": "MaterialIconOutlinedNote",
+    "svgFileName": "note-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "NoteText",
+    "componentName": "MaterialIconOutlinedNoteText",
+    "svgFileName": "note-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "NotebookCheck",
+    "componentName": "MaterialIconOutlinedNotebookCheck",
+    "svgFileName": "notebook-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "NotebookEdit",
+    "componentName": "MaterialIconOutlinedNotebookEdit",
+    "svgFileName": "notebook-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "NotebookMinus",
+    "componentName": "MaterialIconOutlinedNotebookMinus",
+    "svgFileName": "notebook-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Notebook",
+    "componentName": "MaterialIconOutlinedNotebook",
+    "svgFileName": "notebook-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Octagon",
+    "componentName": "MaterialIconOutlinedOctagon",
+    "svgFileName": "octagon-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Octagram",
+    "componentName": "MaterialIconOutlinedOctagram",
+    "svgFileName": "octagram-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Palette",
+    "componentName": "MaterialIconOutlinedPalette",
+    "svgFileName": "palette-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PaletteSwatch",
+    "componentName": "MaterialIconOutlinedPaletteSwatch",
+    "svgFileName": "palette-swatch-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PanoramaHorizontal",
+    "componentName": "MaterialIconOutlinedPanoramaHorizontal",
+    "svgFileName": "panorama-horizontal-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Panorama",
+    "componentName": "MaterialIconOutlinedPanorama",
+    "svgFileName": "panorama-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PanoramaSphere",
+    "componentName": "MaterialIconOutlinedPanoramaSphere",
+    "svgFileName": "panorama-sphere-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PanoramaVariant",
+    "componentName": "MaterialIconOutlinedPanoramaVariant",
+    "svgFileName": "panorama-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PanoramaVertical",
+    "componentName": "MaterialIconOutlinedPanoramaVertical",
+    "svgFileName": "panorama-vertical-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PanoramaWideAngle",
+    "componentName": "MaterialIconOutlinedPanoramaWideAngle",
+    "svgFileName": "panorama-wide-angle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Parachute",
+    "componentName": "MaterialIconOutlinedParachute",
+    "svgFileName": "parachute-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PauseBox",
+    "componentName": "MaterialIconOutlinedPauseBox",
+    "svgFileName": "pause-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PauseCircle",
+    "componentName": "MaterialIconOutlinedPauseCircle",
+    "svgFileName": "pause-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PauseOctagon",
+    "componentName": "MaterialIconOutlinedPauseOctagon",
+    "svgFileName": "pause-octagon-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "PawOff",
+    "componentName": "MaterialIconOutlinedPawOff",
+    "svgFileName": "paw-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Paw",
+    "componentName": "MaterialIconOutlinedPaw",
+    "svgFileName": "paw-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilBoxMultiple",
+    "componentName": "MaterialIconOutlinedPencilBoxMultiple",
+    "svgFileName": "pencil-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilBox",
+    "componentName": "MaterialIconOutlinedPencilBox",
+    "svgFileName": "pencil-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilCircle",
+    "componentName": "MaterialIconOutlinedPencilCircle",
+    "svgFileName": "pencil-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilLock",
+    "componentName": "MaterialIconOutlinedPencilLock",
+    "svgFileName": "pencil-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilMinus",
+    "componentName": "MaterialIconOutlinedPencilMinus",
+    "svgFileName": "pencil-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilOff",
+    "componentName": "MaterialIconOutlinedPencilOff",
+    "svgFileName": "pencil-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Pencil",
+    "componentName": "MaterialIconOutlinedPencil",
+    "svgFileName": "pencil-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilPlus",
+    "componentName": "MaterialIconOutlinedPencilPlus",
+    "svgFileName": "pencil-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PencilRemove",
+    "componentName": "MaterialIconOutlinedPencilRemove",
+    "svgFileName": "pencil-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Pentagon",
+    "componentName": "MaterialIconOutlinedPentagon",
+    "svgFileName": "pentagon-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "PercentBox",
+    "componentName": "MaterialIconOutlinedPercentBox",
+    "svgFileName": "percent-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PercentCircle",
+    "componentName": "MaterialIconOutlinedPercentCircle",
+    "svgFileName": "percent-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Percent",
+    "componentName": "MaterialIconOutlinedPercent",
+    "svgFileName": "percent-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PhoneAlert",
+    "componentName": "MaterialIconOutlinedPhoneAlert",
+    "svgFileName": "phone-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "PhoneBluetooth",
+    "componentName": "MaterialIconOutlinedPhoneBluetooth",
+    "svgFileName": "phone-bluetooth-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneCancel",
+    "componentName": "MaterialIconOutlinedPhoneCancel",
+    "svgFileName": "phone-cancel-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneCheck",
+    "componentName": "MaterialIconOutlinedPhoneCheck",
+    "svgFileName": "phone-check-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneDial",
+    "componentName": "MaterialIconOutlinedPhoneDial",
+    "svgFileName": "phone-dial-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneForward",
+    "componentName": "MaterialIconOutlinedPhoneForward",
+    "svgFileName": "phone-forward-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneHangup",
+    "componentName": "MaterialIconOutlinedPhoneHangup",
+    "svgFileName": "phone-hangup-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneInTalk",
+    "componentName": "MaterialIconOutlinedPhoneInTalk",
+    "svgFileName": "phone-in-talk-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "PhoneIncomingOutgoing",
+    "componentName": "MaterialIconOutlinedPhoneIncomingOutgoing",
+    "svgFileName": "phone-incoming-outgoing-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneIncoming",
+    "componentName": "MaterialIconOutlinedPhoneIncoming",
+    "svgFileName": "phone-incoming-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneLock",
+    "componentName": "MaterialIconOutlinedPhoneLock",
+    "svgFileName": "phone-lock-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneLog",
+    "componentName": "MaterialIconOutlinedPhoneLog",
+    "svgFileName": "phone-log-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneMessage",
+    "componentName": "MaterialIconOutlinedPhoneMessage",
+    "svgFileName": "phone-message-outline.svg",
+    "category": "Communication"
+  },
+  {
+    "name": "PhoneMinus",
+    "componentName": "MaterialIconOutlinedPhoneMinus",
+    "svgFileName": "phone-minus-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneMissed",
+    "componentName": "MaterialIconOutlinedPhoneMissed",
+    "svgFileName": "phone-missed-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneOff",
+    "componentName": "MaterialIconOutlinedPhoneOff",
+    "svgFileName": "phone-off-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneOutgoing",
+    "componentName": "MaterialIconOutlinedPhoneOutgoing",
+    "svgFileName": "phone-outgoing-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "Phone",
+    "componentName": "MaterialIconOutlinedPhone",
+    "svgFileName": "phone-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhonePaused",
+    "componentName": "MaterialIconOutlinedPhonePaused",
+    "svgFileName": "phone-paused-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhonePlus",
+    "componentName": "MaterialIconOutlinedPhonePlus",
+    "svgFileName": "phone-plus-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneRefresh",
+    "componentName": "MaterialIconOutlinedPhoneRefresh",
+    "svgFileName": "phone-refresh-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneRemove",
+    "componentName": "MaterialIconOutlinedPhoneRemove",
+    "svgFileName": "phone-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "PhoneReturn",
+    "componentName": "MaterialIconOutlinedPhoneReturn",
+    "svgFileName": "phone-return-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PhoneRing",
+    "componentName": "MaterialIconOutlinedPhoneRing",
+    "svgFileName": "phone-ring-outline.svg",
+    "category": "Device"
+  },
+  {
+    "name": "PictureInPictureBottomRight",
+    "componentName": "MaterialIconOutlinedPictureInPictureBottomRight",
+    "svgFileName": "picture-in-picture-bottom-right-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "PictureInPictureTopRight",
+    "componentName": "MaterialIconOutlinedPictureInPictureTopRight",
+    "svgFileName": "picture-in-picture-top-right-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "PinOff",
+    "componentName": "MaterialIconOutlinedPinOff",
+    "svgFileName": "pin-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Pin",
+    "componentName": "MaterialIconOutlinedPin",
+    "svgFileName": "pin-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Pinwheel",
+    "componentName": "MaterialIconOutlinedPinwheel",
+    "svgFileName": "pinwheel-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlayBoxLockOpen",
+    "componentName": "MaterialIconOutlinedPlayBoxLockOpen",
+    "svgFileName": "play-box-lock-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlayBoxLock",
+    "componentName": "MaterialIconOutlinedPlayBoxLock",
+    "svgFileName": "play-box-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlayBoxMultiple",
+    "componentName": "MaterialIconOutlinedPlayBoxMultiple",
+    "svgFileName": "play-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlayBox",
+    "componentName": "MaterialIconOutlinedPlayBox",
+    "svgFileName": "play-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlayCircle",
+    "componentName": "MaterialIconOutlinedPlayCircle",
+    "svgFileName": "play-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlayNetwork",
+    "componentName": "MaterialIconOutlinedPlayNetwork",
+    "svgFileName": "play-network-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Play",
+    "componentName": "MaterialIconOutlinedPlay",
+    "svgFileName": "play-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlaylistMusic",
+    "componentName": "MaterialIconOutlinedPlaylistMusic",
+    "svgFileName": "playlist-music-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlusBoxMultiple",
+    "componentName": "MaterialIconOutlinedPlusBoxMultiple",
+    "svgFileName": "plus-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlusBox",
+    "componentName": "MaterialIconOutlinedPlusBox",
+    "svgFileName": "plus-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PlusCircle",
+    "componentName": "MaterialIconOutlinedPlusCircle",
+    "svgFileName": "plus-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Plus",
+    "componentName": "MaterialIconOutlinedPlus",
+    "svgFileName": "plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Post",
+    "componentName": "MaterialIconOutlinedPost",
+    "svgFileName": "post-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PotMix",
+    "componentName": "MaterialIconOutlinedPotMix",
+    "svgFileName": "pot-mix-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Pot",
+    "componentName": "MaterialIconOutlinedPot",
+    "svgFileName": "pot-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PotSteam",
+    "componentName": "MaterialIconOutlinedPotSteam",
+    "svgFileName": "pot-steam-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PoundBox",
+    "componentName": "MaterialIconOutlinedPoundBox",
+    "svgFileName": "pound-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PowerPlugOff",
+    "componentName": "MaterialIconOutlinedPowerPlugOff",
+    "svgFileName": "power-plug-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "PowerPlug",
+    "componentName": "MaterialIconOutlinedPowerPlug",
+    "svgFileName": "power-plug-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ProjectorScreenOff",
+    "componentName": "MaterialIconOutlinedProjectorScreenOff",
+    "svgFileName": "projector-screen-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "ProjectorScreen",
+    "componentName": "MaterialIconOutlinedProjectorScreen",
+    "svgFileName": "projector-screen-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ProjectorScreenVariantOff",
+    "componentName": "MaterialIconOutlinedProjectorScreenVariantOff",
+    "svgFileName": "projector-screen-variant-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "ProjectorScreenVariant",
+    "componentName": "MaterialIconOutlinedProjectorScreenVariant",
+    "svgFileName": "projector-screen-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "PropaneTank",
+    "componentName": "MaterialIconOutlinedPropaneTank",
+    "svgFileName": "propane-tank-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Purse",
+    "componentName": "MaterialIconOutlinedPurse",
+    "svgFileName": "purse-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Puzzle",
+    "componentName": "MaterialIconOutlinedPuzzle",
+    "svgFileName": "puzzle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "RadioactiveCircle",
+    "componentName": "MaterialIconOutlinedRadioactiveCircle",
+    "svgFileName": "radioactive-circle-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "RadiologyBox",
+    "componentName": "MaterialIconOutlinedRadiologyBox",
+    "svgFileName": "radiology-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Radius",
+    "componentName": "MaterialIconOutlinedRadius",
+    "svgFileName": "radius-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Receipt",
+    "componentName": "MaterialIconOutlinedReceipt",
+    "svgFileName": "receipt-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ReceiptTextCheck",
+    "componentName": "MaterialIconOutlinedReceiptTextCheck",
+    "svgFileName": "receipt-text-check-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ReceiptTextMinus",
+    "componentName": "MaterialIconOutlinedReceiptTextMinus",
+    "svgFileName": "receipt-text-minus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ReceiptText",
+    "componentName": "MaterialIconOutlinedReceiptText",
+    "svgFileName": "receipt-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ReceiptTextPlus",
+    "componentName": "MaterialIconOutlinedReceiptTextPlus",
+    "svgFileName": "receipt-text-plus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ReceiptTextRemove",
+    "componentName": "MaterialIconOutlinedReceiptTextRemove",
+    "svgFileName": "receipt-text-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "RecordCircle",
+    "componentName": "MaterialIconOutlinedRecordCircle",
+    "svgFileName": "record-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Rectangle",
+    "componentName": "MaterialIconOutlinedRectangle",
+    "svgFileName": "rectangle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ReplyAll",
+    "componentName": "MaterialIconOutlinedReplyAll",
+    "svgFileName": "reply-all-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Reply",
+    "componentName": "MaterialIconOutlinedReply",
+    "svgFileName": "reply-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Rewind",
+    "componentName": "MaterialIconOutlinedRewind",
+    "svgFileName": "rewind-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "RhombusMedium",
+    "componentName": "MaterialIconOutlinedRhombusMedium",
+    "svgFileName": "rhombus-medium-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Rhombus",
+    "componentName": "MaterialIconOutlinedRhombus",
+    "svgFileName": "rhombus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "RhombusSplit",
+    "componentName": "MaterialIconOutlinedRhombusSplit",
+    "svgFileName": "rhombus-split-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "RocketLaunch",
+    "componentName": "MaterialIconOutlinedRocketLaunch",
+    "svgFileName": "rocket-launch-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Rocket",
+    "componentName": "MaterialIconOutlinedRocket",
+    "svgFileName": "rocket-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Rolodex",
+    "componentName": "MaterialIconOutlinedRolodex",
+    "svgFileName": "rolodex-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "RoomService",
+    "componentName": "MaterialIconOutlinedRoomService",
+    "svgFileName": "room-service-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Sale",
+    "componentName": "MaterialIconOutlinedSale",
+    "svgFileName": "sale-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "School",
+    "componentName": "MaterialIconOutlinedSchool",
+    "svgFileName": "school-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Scoreboard",
+    "componentName": "MaterialIconOutlinedScoreboard",
+    "svgFileName": "scoreboard-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Script",
+    "componentName": "MaterialIconOutlinedScript",
+    "svgFileName": "script-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ScriptText",
+    "componentName": "MaterialIconOutlinedScriptText",
+    "svgFileName": "script-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "Seat",
+    "componentName": "MaterialIconOutlinedSeat",
+    "svgFileName": "seat-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SeedOff",
+    "componentName": "MaterialIconOutlinedSeedOff",
+    "svgFileName": "seed-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Seed",
+    "componentName": "MaterialIconOutlinedSeed",
+    "svgFileName": "seed-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SendCheck",
+    "componentName": "MaterialIconOutlinedSendCheck",
+    "svgFileName": "send-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SendCircle",
+    "componentName": "MaterialIconOutlinedSendCircle",
+    "svgFileName": "send-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SendClock",
+    "componentName": "MaterialIconOutlinedSendClock",
+    "svgFileName": "send-clock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SendLock",
+    "componentName": "MaterialIconOutlinedSendLock",
+    "svgFileName": "send-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Send",
+    "componentName": "MaterialIconOutlinedSend",
+    "svgFileName": "send-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Shape",
+    "componentName": "MaterialIconOutlinedShape",
+    "svgFileName": "shape-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShareAll",
+    "componentName": "MaterialIconOutlinedShareAll",
+    "svgFileName": "share-all-outline.svg",
+    "category": "Places"
+  },
+  {
+    "name": "ShareOff",
+    "componentName": "MaterialIconOutlinedShareOff",
+    "svgFileName": "share-off-outline.svg",
+    "category": "Social"
+  },
+  {
+    "name": "Share",
+    "componentName": "MaterialIconOutlinedShare",
+    "svgFileName": "share-outline.svg",
+    "category": "Social"
+  },
+  {
+    "name": "ShareVariant",
+    "componentName": "MaterialIconOutlinedShareVariant",
+    "svgFileName": "share-variant-outline.svg",
+    "category": "Social"
+  },
+  {
+    "name": "SharkFin",
+    "componentName": "MaterialIconOutlinedSharkFin",
+    "svgFileName": "shark-fin-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldAccount",
+    "componentName": "MaterialIconOutlinedShieldAccount",
+    "svgFileName": "shield-account-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "ShieldAccountVariant",
+    "componentName": "MaterialIconOutlinedShieldAccountVariant",
+    "svgFileName": "shield-account-variant-outline.svg",
+    "category": "Avatars"
+  },
+  {
+    "name": "ShieldAlert",
+    "componentName": "MaterialIconOutlinedShieldAlert",
+    "svgFileName": "shield-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "ShieldCheck",
+    "componentName": "MaterialIconOutlinedShieldCheck",
+    "svgFileName": "shield-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldCross",
+    "componentName": "MaterialIconOutlinedShieldCross",
+    "svgFileName": "shield-cross-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldCrown",
+    "componentName": "MaterialIconOutlinedShieldCrown",
+    "svgFileName": "shield-crown-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldEdit",
+    "componentName": "MaterialIconOutlinedShieldEdit",
+    "svgFileName": "shield-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "ShieldHome",
+    "componentName": "MaterialIconOutlinedShieldHome",
+    "svgFileName": "shield-home-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldKey",
+    "componentName": "MaterialIconOutlinedShieldKey",
+    "svgFileName": "shield-key-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldLinkVariant",
+    "componentName": "MaterialIconOutlinedShieldLinkVariant",
+    "svgFileName": "shield-link-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldLockOpen",
+    "componentName": "MaterialIconOutlinedShieldLockOpen",
+    "svgFileName": "shield-lock-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldLock",
+    "componentName": "MaterialIconOutlinedShieldLock",
+    "svgFileName": "shield-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldMoon",
+    "componentName": "MaterialIconOutlinedShieldMoon",
+    "svgFileName": "shield-moon-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "ShieldOff",
+    "componentName": "MaterialIconOutlinedShieldOff",
+    "svgFileName": "shield-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Shield",
+    "componentName": "MaterialIconOutlinedShield",
+    "svgFileName": "shield-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldPlus",
+    "componentName": "MaterialIconOutlinedShieldPlus",
+    "svgFileName": "shield-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldRefresh",
+    "componentName": "MaterialIconOutlinedShieldRefresh",
+    "svgFileName": "shield-refresh-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldRemove",
+    "componentName": "MaterialIconOutlinedShieldRemove",
+    "svgFileName": "shield-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ShieldStar",
+    "componentName": "MaterialIconOutlinedShieldStar",
+    "svgFileName": "shield-star-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldSun",
+    "componentName": "MaterialIconOutlinedShieldSun",
+    "svgFileName": "shield-sun-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShieldSword",
+    "componentName": "MaterialIconOutlinedShieldSword",
+    "svgFileName": "shield-sword-outline.svg",
+    "category": "File"
+  },
+  {
+    "name": "ShieldSync",
+    "componentName": "MaterialIconOutlinedShieldSync",
+    "svgFileName": "shield-sync-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Shopping",
+    "componentName": "MaterialIconOutlinedShopping",
+    "svgFileName": "shopping-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ShoppingSearch",
+    "componentName": "MaterialIconOutlinedShoppingSearch",
+    "svgFileName": "shopping-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SimAlert",
+    "componentName": "MaterialIconOutlinedSimAlert",
+    "svgFileName": "sim-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "SimOff",
+    "componentName": "MaterialIconOutlinedSimOff",
+    "svgFileName": "sim-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Sim",
+    "componentName": "MaterialIconOutlinedSim",
+    "svgFileName": "sim-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Sitemap",
+    "componentName": "MaterialIconOutlinedSitemap",
+    "svgFileName": "sitemap-outline.svg",
+    "category": "Maps"
+  },
+  {
+    "name": "SkipBackward",
+    "componentName": "MaterialIconOutlinedSkipBackward",
+    "svgFileName": "skip-backward-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SkipForward",
+    "componentName": "MaterialIconOutlinedSkipForward",
+    "svgFileName": "skip-forward-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SkipNextCircle",
+    "componentName": "MaterialIconOutlinedSkipNextCircle",
+    "svgFileName": "skip-next-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SkipNext",
+    "componentName": "MaterialIconOutlinedSkipNext",
+    "svgFileName": "skip-next-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SkipPreviousCircle",
+    "componentName": "MaterialIconOutlinedSkipPreviousCircle",
+    "svgFileName": "skip-previous-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SkipPrevious",
+    "componentName": "MaterialIconOutlinedSkipPrevious",
+    "svgFileName": "skip-previous-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SlotMachine",
+    "componentName": "MaterialIconOutlinedSlotMachine",
+    "svgFileName": "slot-machine-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SmartCardOff",
+    "componentName": "MaterialIconOutlinedSmartCardOff",
+    "svgFileName": "smart-card-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "SmartCard",
+    "componentName": "MaterialIconOutlinedSmartCard",
+    "svgFileName": "smart-card-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SmokeDetectorAlert",
+    "componentName": "MaterialIconOutlinedSmokeDetectorAlert",
+    "svgFileName": "smoke-detector-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "SmokeDetectorOff",
+    "componentName": "MaterialIconOutlinedSmokeDetectorOff",
+    "svgFileName": "smoke-detector-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "SmokeDetector",
+    "componentName": "MaterialIconOutlinedSmokeDetector",
+    "svgFileName": "smoke-detector-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Sofa",
+    "componentName": "MaterialIconOutlinedSofa",
+    "svgFileName": "sofa-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SofaSingle",
+    "componentName": "MaterialIconOutlinedSofaSingle",
+    "svgFileName": "sofa-single-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Spa",
+    "componentName": "MaterialIconOutlinedSpa",
+    "svgFileName": "spa-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Sprout",
+    "componentName": "MaterialIconOutlinedSprout",
+    "svgFileName": "sprout-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SquareEdit",
+    "componentName": "MaterialIconOutlinedSquareEdit",
+    "svgFileName": "square-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "SquareMedium",
+    "componentName": "MaterialIconOutlinedSquareMedium",
+    "svgFileName": "square-medium-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SquareOff",
+    "componentName": "MaterialIconOutlinedSquareOff",
+    "svgFileName": "square-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Square",
+    "componentName": "MaterialIconOutlinedSquare",
+    "svgFileName": "square-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SquareRoundedBadge",
+    "componentName": "MaterialIconOutlinedSquareRoundedBadge",
+    "svgFileName": "square-rounded-badge-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SquareRounded",
+    "componentName": "MaterialIconOutlinedSquareRounded",
+    "svgFileName": "square-rounded-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarBoxMultiple",
+    "componentName": "MaterialIconOutlinedStarBoxMultiple",
+    "svgFileName": "star-box-multiple-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarBox",
+    "componentName": "MaterialIconOutlinedStarBox",
+    "svgFileName": "star-box-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarCircle",
+    "componentName": "MaterialIconOutlinedStarCircle",
+    "svgFileName": "star-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarFourPoints",
+    "componentName": "MaterialIconOutlinedStarFourPoints",
+    "svgFileName": "star-four-points-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarMinus",
+    "componentName": "MaterialIconOutlinedStarMinus",
+    "svgFileName": "star-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarOff",
+    "componentName": "MaterialIconOutlinedStarOff",
+    "svgFileName": "star-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Star",
+    "componentName": "MaterialIconOutlinedStar",
+    "svgFileName": "star-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StarThreePoints",
+    "componentName": "MaterialIconOutlinedStarThreePoints",
+    "svgFileName": "star-three-points-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StickerAlert",
+    "componentName": "MaterialIconOutlinedStickerAlert",
+    "svgFileName": "sticker-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "StickerCheck",
+    "componentName": "MaterialIconOutlinedStickerCheck",
+    "svgFileName": "sticker-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StickerCircle",
+    "componentName": "MaterialIconOutlinedStickerCircle",
+    "svgFileName": "sticker-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StickerMinus",
+    "componentName": "MaterialIconOutlinedStickerMinus",
+    "svgFileName": "sticker-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Sticker",
+    "componentName": "MaterialIconOutlinedSticker",
+    "svgFileName": "sticker-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StickerPlus",
+    "componentName": "MaterialIconOutlinedStickerPlus",
+    "svgFileName": "sticker-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StickerRemove",
+    "componentName": "MaterialIconOutlinedStickerRemove",
+    "svgFileName": "sticker-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "StickerText",
+    "componentName": "MaterialIconOutlinedStickerText",
+    "svgFileName": "sticker-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "StopCircle",
+    "componentName": "MaterialIconOutlinedStopCircle",
+    "svgFileName": "stop-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "StretchToPage",
+    "componentName": "MaterialIconOutlinedStretchToPage",
+    "svgFileName": "stretch-to-page-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Subtitles",
+    "componentName": "MaterialIconOutlinedSubtitles",
+    "svgFileName": "subtitles-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "SwapHorizontalCircle",
+    "componentName": "MaterialIconOutlinedSwapHorizontalCircle",
+    "svgFileName": "swap-horizontal-circle-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "SwapVerticalCircle",
+    "componentName": "MaterialIconOutlinedSwapVerticalCircle",
+    "svgFileName": "swap-vertical-circle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Tag",
+    "componentName": "MaterialIconOutlinedTag",
+    "svgFileName": "tag-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Tea",
+    "componentName": "MaterialIconOutlinedTea",
+    "svgFileName": "tea-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TextBoxCheck",
+    "componentName": "MaterialIconOutlinedTextBoxCheck",
+    "svgFileName": "text-box-check-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TextBoxEdit",
+    "componentName": "MaterialIconOutlinedTextBoxEdit",
+    "svgFileName": "text-box-edit-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TextBoxMinus",
+    "componentName": "MaterialIconOutlinedTextBoxMinus",
+    "svgFileName": "text-box-minus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TextBoxMultiple",
+    "componentName": "MaterialIconOutlinedTextBoxMultiple",
+    "svgFileName": "text-box-multiple-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TextBox",
+    "componentName": "MaterialIconOutlinedTextBox",
+    "svgFileName": "text-box-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TextBoxPlus",
+    "componentName": "MaterialIconOutlinedTextBoxPlus",
+    "svgFileName": "text-box-plus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TextBoxRemove",
+    "componentName": "MaterialIconOutlinedTextBoxRemove",
+    "svgFileName": "text-box-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "TextBoxSearch",
+    "componentName": "MaterialIconOutlinedTextBoxSearch",
+    "svgFileName": "text-box-search-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ThoughtBubble",
+    "componentName": "MaterialIconOutlinedThoughtBubble",
+    "svgFileName": "thought-bubble-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ThumbDown",
+    "componentName": "MaterialIconOutlinedThumbDown",
+    "svgFileName": "thumb-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ThumbUp",
+    "componentName": "MaterialIconOutlinedThumbUp",
+    "svgFileName": "thumb-up-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "ThumbsUpDown",
+    "componentName": "MaterialIconOutlinedThumbsUpDown",
+    "svgFileName": "thumbs-up-down-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "TimerEdit",
+    "componentName": "MaterialIconOutlinedTimerEdit",
+    "svgFileName": "timer-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "TimerLockOpen",
+    "componentName": "MaterialIconOutlinedTimerLockOpen",
+    "svgFileName": "timer-lock-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerLock",
+    "componentName": "MaterialIconOutlinedTimerLock",
+    "svgFileName": "timer-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerMarker",
+    "componentName": "MaterialIconOutlinedTimerMarker",
+    "svgFileName": "timer-marker-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerOff",
+    "componentName": "MaterialIconOutlinedTimerOff",
+    "svgFileName": "timer-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Timer",
+    "componentName": "MaterialIconOutlinedTimer",
+    "svgFileName": "timer-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerPause",
+    "componentName": "MaterialIconOutlinedTimerPause",
+    "svgFileName": "timer-pause-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerPlay",
+    "componentName": "MaterialIconOutlinedTimerPlay",
+    "svgFileName": "timer-play-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerPlus",
+    "componentName": "MaterialIconOutlinedTimerPlus",
+    "svgFileName": "timer-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerRefresh",
+    "componentName": "MaterialIconOutlinedTimerRefresh",
+    "svgFileName": "timer-refresh-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerSettings",
+    "componentName": "MaterialIconOutlinedTimerSettings",
+    "svgFileName": "timer-settings-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerStar",
+    "componentName": "MaterialIconOutlinedTimerStar",
+    "svgFileName": "timer-star-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerStop",
+    "componentName": "MaterialIconOutlinedTimerStop",
+    "svgFileName": "timer-stop-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TimerSync",
+    "componentName": "MaterialIconOutlinedTimerSync",
+    "svgFileName": "timer-sync-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ToggleSwitchOff",
+    "componentName": "MaterialIconOutlinedToggleSwitchOff",
+    "svgFileName": "toggle-switch-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "ToggleSwitch",
+    "componentName": "MaterialIconOutlinedToggleSwitch",
+    "svgFileName": "toggle-switch-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Toolbox",
+    "componentName": "MaterialIconOutlinedToolbox",
+    "svgFileName": "toolbox-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TooltipCheck",
+    "componentName": "MaterialIconOutlinedTooltipCheck",
+    "svgFileName": "tooltip-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TooltipEdit",
+    "componentName": "MaterialIconOutlinedTooltipEdit",
+    "svgFileName": "tooltip-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "TooltipImage",
+    "componentName": "MaterialIconOutlinedTooltipImage",
+    "svgFileName": "tooltip-image-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "TooltipMinus",
+    "componentName": "MaterialIconOutlinedTooltipMinus",
+    "svgFileName": "tooltip-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Tooltip",
+    "componentName": "MaterialIconOutlinedTooltip",
+    "svgFileName": "tooltip-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TooltipPlus",
+    "componentName": "MaterialIconOutlinedTooltipPlus",
+    "svgFileName": "tooltip-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TooltipQuestion",
+    "componentName": "MaterialIconOutlinedTooltipQuestion",
+    "svgFileName": "tooltip-question-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "TooltipRemove",
+    "componentName": "MaterialIconOutlinedTooltipRemove",
+    "svgFileName": "tooltip-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "TooltipText",
+    "componentName": "MaterialIconOutlinedTooltipText",
+    "svgFileName": "tooltip-text-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "Tooth",
+    "componentName": "MaterialIconOutlinedTooth",
+    "svgFileName": "tooth-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ToyBrickMarker",
+    "componentName": "MaterialIconOutlinedToyBrickMarker",
+    "svgFileName": "toy-brick-marker-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ToyBrickMinus",
+    "componentName": "MaterialIconOutlinedToyBrickMinus",
+    "svgFileName": "toy-brick-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ToyBrick",
+    "componentName": "MaterialIconOutlinedToyBrick",
+    "svgFileName": "toy-brick-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ToyBrickPlus",
+    "componentName": "MaterialIconOutlinedToyBrickPlus",
+    "svgFileName": "toy-brick-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ToyBrickRemove",
+    "componentName": "MaterialIconOutlinedToyBrickRemove",
+    "svgFileName": "toy-brick-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ToyBrickSearch",
+    "componentName": "MaterialIconOutlinedToyBrickSearch",
+    "svgFileName": "toy-brick-search-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TrafficLight",
+    "componentName": "MaterialIconOutlinedTrafficLight",
+    "svgFileName": "traffic-light-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TrashCan",
+    "componentName": "MaterialIconOutlinedTrashCan",
+    "svgFileName": "trash-can-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Tree",
+    "componentName": "MaterialIconOutlinedTree",
+    "svgFileName": "tree-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Triangle",
+    "componentName": "MaterialIconOutlinedTriangle",
+    "svgFileName": "triangle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Trophy",
+    "componentName": "MaterialIconOutlinedTrophy",
+    "svgFileName": "trophy-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TrophyVariant",
+    "componentName": "MaterialIconOutlinedTrophyVariant",
+    "svgFileName": "trophy-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TruckAlert",
+    "componentName": "MaterialIconOutlinedTruckAlert",
+    "svgFileName": "truck-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "TruckDelivery",
+    "componentName": "MaterialIconOutlinedTruckDelivery",
+    "svgFileName": "truck-delivery-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TruckFast",
+    "componentName": "MaterialIconOutlinedTruckFast",
+    "svgFileName": "truck-fast-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TruckMinus",
+    "componentName": "MaterialIconOutlinedTruckMinus",
+    "svgFileName": "truck-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Truck",
+    "componentName": "MaterialIconOutlinedTruck",
+    "svgFileName": "truck-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TruckPlus",
+    "componentName": "MaterialIconOutlinedTruckPlus",
+    "svgFileName": "truck-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TruckRemove",
+    "componentName": "MaterialIconOutlinedTruckRemove",
+    "svgFileName": "truck-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "TshirtCrew",
+    "componentName": "MaterialIconOutlinedTshirtCrew",
+    "svgFileName": "tshirt-crew-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "TshirtV",
+    "componentName": "MaterialIconOutlinedTshirtV",
+    "svgFileName": "tshirt-v-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Tunnel",
+    "componentName": "MaterialIconOutlinedTunnel",
+    "svgFileName": "tunnel-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Turnstile",
+    "componentName": "MaterialIconOutlinedTurnstile",
+    "svgFileName": "turnstile-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Ufo",
+    "componentName": "MaterialIconOutlinedUfo",
+    "svgFileName": "ufo-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "UmbrellaBeach",
+    "componentName": "MaterialIconOutlinedUmbrellaBeach",
+    "svgFileName": "umbrella-beach-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "UmbrellaClosed",
+    "componentName": "MaterialIconOutlinedUmbrellaClosed",
+    "svgFileName": "umbrella-closed-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Umbrella",
+    "componentName": "MaterialIconOutlinedUmbrella",
+    "svgFileName": "umbrella-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "UploadLock",
+    "componentName": "MaterialIconOutlinedUploadLock",
+    "svgFileName": "upload-lock-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "UploadNetwork",
+    "componentName": "MaterialIconOutlinedUploadNetwork",
+    "svgFileName": "upload-network-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "UploadOff",
+    "componentName": "MaterialIconOutlinedUploadOff",
+    "svgFileName": "upload-off-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "Upload",
+    "componentName": "MaterialIconOutlinedUpload",
+    "svgFileName": "upload-outline.svg",
+    "category": "Navigation"
+  },
+  {
+    "name": "UsbFlashDrive",
+    "componentName": "MaterialIconOutlinedUsbFlashDrive",
+    "svgFileName": "usb-flash-drive-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Vacuum",
+    "componentName": "MaterialIconOutlinedVacuum",
+    "svgFileName": "vacuum-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "VideoCheck",
+    "componentName": "MaterialIconOutlinedVideoCheck",
+    "svgFileName": "video-check-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "VideoMarker",
+    "componentName": "MaterialIconOutlinedVideoMarker",
+    "svgFileName": "video-marker-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "VideoMinus",
+    "componentName": "MaterialIconOutlinedVideoMinus",
+    "svgFileName": "video-minus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "VideoOff",
+    "componentName": "MaterialIconOutlinedVideoOff",
+    "svgFileName": "video-off-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "Video",
+    "componentName": "MaterialIconOutlinedVideo",
+    "svgFileName": "video-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "VideoPlus",
+    "componentName": "MaterialIconOutlinedVideoPlus",
+    "svgFileName": "video-plus-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "VideoSwitch",
+    "componentName": "MaterialIconOutlinedVideoSwitch",
+    "svgFileName": "video-switch-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "VideoWireless",
+    "componentName": "MaterialIconOutlinedVideoWireless",
+    "svgFileName": "video-wireless-outline.svg",
+    "category": "Content"
+  },
+  {
+    "name": "ViewAgenda",
+    "componentName": "MaterialIconOutlinedViewAgenda",
+    "svgFileName": "view-agenda-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewArray",
+    "componentName": "MaterialIconOutlinedViewArray",
+    "svgFileName": "view-array-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewCarousel",
+    "componentName": "MaterialIconOutlinedViewCarousel",
+    "svgFileName": "view-carousel-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewColumn",
+    "componentName": "MaterialIconOutlinedViewColumn",
+    "svgFileName": "view-column-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewComfy",
+    "componentName": "MaterialIconOutlinedViewComfy",
+    "svgFileName": "view-comfy-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewCompact",
+    "componentName": "MaterialIconOutlinedViewCompact",
+    "svgFileName": "view-compact-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "ViewDashboardEdit",
+    "componentName": "MaterialIconOutlinedViewDashboardEdit",
+    "svgFileName": "view-dashboard-edit-outline.svg",
+    "category": "Editor"
+  },
+  {
+    "name": "ViewDashboard",
+    "componentName": "MaterialIconOutlinedViewDashboard",
+    "svgFileName": "view-dashboard-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewDashboardVariant",
+    "componentName": "MaterialIconOutlinedViewDashboardVariant",
+    "svgFileName": "view-dashboard-variant-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewDay",
+    "componentName": "MaterialIconOutlinedViewDay",
+    "svgFileName": "view-day-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewGallery",
+    "componentName": "MaterialIconOutlinedViewGallery",
+    "svgFileName": "view-gallery-outline.svg",
+    "category": "Image"
+  },
+  {
+    "name": "ViewGrid",
+    "componentName": "MaterialIconOutlinedViewGrid",
+    "svgFileName": "view-grid-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewGridPlus",
+    "componentName": "MaterialIconOutlinedViewGridPlus",
+    "svgFileName": "view-grid-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewList",
+    "componentName": "MaterialIconOutlinedViewList",
+    "svgFileName": "view-list-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewModule",
+    "componentName": "MaterialIconOutlinedViewModule",
+    "svgFileName": "view-module-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewParallel",
+    "componentName": "MaterialIconOutlinedViewParallel",
+    "svgFileName": "view-parallel-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewQuilt",
+    "componentName": "MaterialIconOutlinedViewQuilt",
+    "svgFileName": "view-quilt-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewSequential",
+    "componentName": "MaterialIconOutlinedViewSequential",
+    "svgFileName": "view-sequential-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewStream",
+    "componentName": "MaterialIconOutlinedViewStream",
+    "svgFileName": "view-stream-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "ViewWeek",
+    "componentName": "MaterialIconOutlinedViewWeek",
+    "svgFileName": "view-week-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "VirusOff",
+    "componentName": "MaterialIconOutlinedVirusOff",
+    "svgFileName": "virus-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Virus",
+    "componentName": "MaterialIconOutlinedVirus",
+    "svgFileName": "virus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Volcano",
+    "componentName": "MaterialIconOutlinedVolcano",
+    "svgFileName": "volcano-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Vote",
+    "componentName": "MaterialIconOutlinedVote",
+    "svgFileName": "vote-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WallSconceFlat",
+    "componentName": "MaterialIconOutlinedWallSconceFlat",
+    "svgFileName": "wall-sconce-flat-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "WallSconceFlatVariant",
+    "componentName": "MaterialIconOutlinedWallSconceFlatVariant",
+    "svgFileName": "wall-sconce-flat-variant-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "WallSconce",
+    "componentName": "MaterialIconOutlinedWallSconce",
+    "svgFileName": "wall-sconce-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "WallSconceRound",
+    "componentName": "MaterialIconOutlinedWallSconceRound",
+    "svgFileName": "wall-sconce-round-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "WallSconceRoundVariant",
+    "componentName": "MaterialIconOutlinedWallSconceRoundVariant",
+    "svgFileName": "wall-sconce-round-variant-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Wallet",
+    "componentName": "MaterialIconOutlinedWallet",
+    "svgFileName": "wallet-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WalletPlus",
+    "componentName": "MaterialIconOutlinedWalletPlus",
+    "svgFileName": "wallet-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Wardrobe",
+    "componentName": "MaterialIconOutlinedWardrobe",
+    "svgFileName": "wardrobe-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WaterAlert",
+    "componentName": "MaterialIconOutlinedWaterAlert",
+    "svgFileName": "water-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "WaterCheck",
+    "componentName": "MaterialIconOutlinedWaterCheck",
+    "svgFileName": "water-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WaterMinus",
+    "componentName": "MaterialIconOutlinedWaterMinus",
+    "svgFileName": "water-minus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WaterOff",
+    "componentName": "MaterialIconOutlinedWaterOff",
+    "svgFileName": "water-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "Water",
+    "componentName": "MaterialIconOutlinedWater",
+    "svgFileName": "water-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WaterPlus",
+    "componentName": "MaterialIconOutlinedWaterPlus",
+    "svgFileName": "water-plus-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WaterRemove",
+    "componentName": "MaterialIconOutlinedWaterRemove",
+    "svgFileName": "water-remove-outline.svg",
+    "category": "Action"
+  },
+  {
+    "name": "WaterThermometer",
+    "componentName": "MaterialIconOutlinedWaterThermometer",
+    "svgFileName": "water-thermometer-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WaterWell",
+    "componentName": "MaterialIconOutlinedWaterWell",
+    "svgFileName": "water-well-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WateringCan",
+    "componentName": "MaterialIconOutlinedWateringCan",
+    "svgFileName": "watering-can-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Whistle",
+    "componentName": "MaterialIconOutlinedWhistle",
+    "svgFileName": "whistle-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Widgets",
+    "componentName": "MaterialIconOutlinedWidgets",
+    "svgFileName": "widgets-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WifiStrengthAlert",
+    "componentName": "MaterialIconOutlinedWifiStrengthAlert",
+    "svgFileName": "wifi-strength-alert-outline.svg",
+    "category": "Alert"
+  },
+  {
+    "name": "WifiStrengthLockOpen",
+    "componentName": "MaterialIconOutlinedWifiStrengthLockOpen",
+    "svgFileName": "wifi-strength-lock-open-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WifiStrengthLock",
+    "componentName": "MaterialIconOutlinedWifiStrengthLock",
+    "svgFileName": "wifi-strength-lock-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WifiStrengthOff",
+    "componentName": "MaterialIconOutlinedWifiStrengthOff",
+    "svgFileName": "wifi-strength-off-outline.svg",
+    "category": "Toggle"
+  },
+  {
+    "name": "WifiStrength",
+    "componentName": "MaterialIconOutlinedWifiStrength",
+    "svgFileName": "wifi-strength-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WindPower",
+    "componentName": "MaterialIconOutlinedWindPower",
+    "svgFileName": "wind-power-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WrenchCheck",
+    "componentName": "MaterialIconOutlinedWrenchCheck",
+    "svgFileName": "wrench-check-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "WrenchCog",
+    "componentName": "MaterialIconOutlinedWrenchCog",
+    "svgFileName": "wrench-cog-outline.svg",
+    "category": "Uncategorized"
+  },
+  {
+    "name": "Wrench",
+    "componentName": "MaterialIconOutlinedWrench",
+    "svgFileName": "wrench-outline.svg",
+    "category": "Uncategorized"
+  }
+]

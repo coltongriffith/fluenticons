@@ -49,6 +49,7 @@
 
 <script>
 import fluentIcons from "~/assets/icons/fluent/outlined.json";
+import materialIcons from "~/assets/icons/material/outlined.json";
 
 export default {
   props: {
@@ -67,12 +68,15 @@ export default {
   data() {
     return {
       fluentIcons,
+      materialIcons,
       elementsToShow: 48,
     };
   },
   computed: {
     filteredIcons() {
-      return this.fluentIcons.filter((icon) => {
+      return (
+        this.type === "fluent" ? this.fluentIcons : this.materialIcons
+      ).filter((icon) => {
         return icon.name
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase().replace(" ", ""));
