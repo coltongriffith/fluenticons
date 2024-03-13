@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.244 11.2a1.5 1.5 0 0 1 .556.556l4.01 6.998A1.5 1.5 0 0 1 11.507 21H3.489a1.5 1.5 0 0 1-1.302-2.246l4.01-6.998a1.5 1.5 0 0 1 2.047-.556ZM7.5 18a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1ZM17 6a3 3 0 0 1 3 3v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a3 3 0 0 1-3 3h-3.471l-3.861-6.741a2.5 2.5 0 0 0-4.339 0l-2.965 5.176A2.987 2.987 0 0 1 2 15V9a3 3 0 0 1 3-3h12Zm-9.502 7a.5.5 0 0 0-.5.5v3l.008.09a.5.5 0 0 0 .992-.09v-3l-.008-.09a.5.5 0 0 0-.492-.41Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M8.244 11.2a1.5 1.5 0 0 1 .556.556l4.01 6.998A1.5 1.5 0 0 1 11.507 21H3.489a1.5 1.5 0 0 1-1.302-2.246l4.01-6.998a1.5 1.5 0 0 1 2.047-.556ZM7.5 18a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1ZM17 6a3 3 0 0 1 3 3v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a3 3 0 0 1-3 3h-3.471l-3.861-6.741a2.5 2.5 0 0 0-4.339 0l-2.965 5.176A2.987 2.987 0 0 1 2 15V9a3 3 0 0 1 3-3h12Zm-9.502 7a.5.5 0 0 0-.5.5v3l.008.09a.5.5 0 0 0 .992-.09v-3l-.008-.09a.5.5 0 0 0-.492-.41Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledBatteryWarning',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledBatteryWarning',
+    mixins: [icon]
+};
+</script>

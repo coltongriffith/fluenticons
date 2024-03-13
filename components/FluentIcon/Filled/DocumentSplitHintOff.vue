@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.28 2.22a.75.75 0 0 0-1.06 1.06L4 5.06v6.44a.5.5 0 0 0 .5.5h6.44l7.56 7.56V20a.5.5 0 0 1-.5.5h-1.25a.75.75 0 1 0 0 1.5H18a2 2 0 0 0 1.804-1.135l.916.915a.75.75 0 1 0 1.06-1.06L3.28 2.22ZM18.5 15.318l1.361 1.362a.747.747 0 0 0 .14-.435V13.75a.75.75 0 0 0-1.5 0v1.568ZM12.712 9.53l2.47 2.47H19.5a.5.5 0 0 0 .5-.5V10h-6c-.49 0-.94-.177-1.288-.47ZM12 8c0 .49.177.94.47 1.288L5.306 2.124C5.522 2.044 5.756 2 6 2h6v6Zm1.5 0V2.5l6 6H14a.5.5 0 0 1-.5-.5Zm-8 5.75a.75.75 0 0 0-1.5 0v2.495a.75.75 0 0 0 1.5 0V13.75Zm4.75 6.75a.75.75 0 1 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-5.5-2a.75.75 0 0 1 .75.75V20a.5.5 0 0 0 .5.5h1.25a.75.75 0 0 1 0 1.5H6a2 2 0 0 1-2-2v-.75a.75.75 0 0 1 .75-.75Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M3.28 2.22a.75.75 0 0 0-1.06 1.06L4 5.06v6.44a.5.5 0 0 0 .5.5h6.44l7.56 7.56V20a.5.5 0 0 1-.5.5h-1.25a.75.75 0 1 0 0 1.5H18a2 2 0 0 0 1.804-1.135l.916.915a.75.75 0 1 0 1.06-1.06L3.28 2.22ZM18.5 15.318l1.361 1.362a.747.747 0 0 0 .14-.435V13.75a.75.75 0 0 0-1.5 0v1.568ZM12.712 9.53l2.47 2.47H19.5a.5.5 0 0 0 .5-.5V10h-6c-.49 0-.94-.177-1.288-.47ZM12 8c0 .49.177.94.47 1.288L5.306 2.124C5.522 2.044 5.756 2 6 2h6v6Zm1.5 0V2.5l6 6H14a.5.5 0 0 1-.5-.5Zm-8 5.75a.75.75 0 0 0-1.5 0v2.495a.75.75 0 0 0 1.5 0V13.75Zm4.75 6.75a.75.75 0 1 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-5.5-2a.75.75 0 0 1 .75.75V20a.5.5 0 0 0 .5.5h1.25a.75.75 0 0 1 0 1.5H6a2 2 0 0 1-2-2v-.75a.75.75 0 0 1 .75-.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledDocumentSplitHintOff',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledDocumentSplitHintOff',
+    mixins: [icon]
+};
+</script>

@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.98 3.945A2.25 2.25 0 0 0 13.75 2h-3.5a2.25 2.25 0 0 0-2.23 1.945l-.014.135.008-.08H6.25A2.25 2.25 0 0 0 4 6.25v13.5A2.25 2.25 0 0 0 6.25 22h11.5A2.25 2.25 0 0 0 20 19.75V6.25A2.25 2.25 0 0 0 17.75 4h-1.764l.007.08-.014-.135ZM10.25 3.5h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1 0-1.5ZM8 9h8a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 8 9Zm3.25 4.75A.75.75 0 0 1 12 13h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75ZM10 17h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1 0-1.5Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M15.98 3.945A2.25 2.25 0 0 0 13.75 2h-3.5a2.25 2.25 0 0 0-2.23 1.945l-.014.135.008-.08H6.25A2.25 2.25 0 0 0 4 6.25v13.5A2.25 2.25 0 0 0 6.25 22h11.5A2.25 2.25 0 0 0 20 19.75V6.25A2.25 2.25 0 0 0 17.75 4h-1.764l.007.08-.014-.135ZM10.25 3.5h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1 0-1.5ZM8 9h8a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 8 9Zm3.25 4.75A.75.75 0 0 1 12 13h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75ZM10 17h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1 0-1.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledClipboardTextRtl',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledClipboardTextRtl',
+    mixins: [icon]
+};
+</script>

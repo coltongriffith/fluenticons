@@ -144,10 +144,6 @@ export default {
         return {};
       },
     },
-    iconType: {
-      type: String,
-      default: 'fluent'
-    }
   },
   mixins: [clickout],
   components: {
@@ -266,8 +262,7 @@ export default {
         let snippet = await getIconSnippet(
           this.selectedCopyType,
           this.icon.svgFileName,
-          this.color,
-          this.iconType
+          this.color
         );
         this.showToast(`Copied ${this.selectedCopyType} snippet`);
         await this.$copyText(snippet);
@@ -299,7 +294,7 @@ export default {
       switch (this.selectedExportType) {
         case "svg":
           this.downloadImage(
-            `/icons/${this.iconType}/${this.icon.svgFileName}`,
+            `/icons/${this.icon.svgFileName}`,
             this.icon.svgFileName
           );
           break;
@@ -335,8 +330,7 @@ export default {
       let snippet = await getIconSnippet(
         this.selectedExportType,
         this.icon.svgFileName,
-        this.color,
-        this.iconType
+        this.color
       );
       let blob = new Blob([snippet], {
         type: "text/plain;charset=utf-8",

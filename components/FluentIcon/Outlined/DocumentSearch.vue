@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.409 10.946a4.927 4.927 0 0 1 .54 6.326l-.141.19 4.217 4.218.075.087a.773.773 0 0 1-1.081 1.081l-.087-.075-4.257-4.256a4.927 4.927 0 0 1-6.232-7.57 4.926 4.926 0 0 1 6.966 0ZM13.129 2a2.25 2.25 0 0 1 1.59.659l2.812 2.81 2.808 2.812c.421.422.658.994.658 1.59v9.879a2.25 2.25 0 0 1-2.25 2.25h-1.51a1.765 1.765 0 0 0-.334-.83l-.12-.143-.527-.528 2.49.001a.75.75 0 0 0 .75-.75v-9.747H15.25a2.25 2.25 0 0 1-2.245-2.095L13 7.754V3.5H7.25a.75.75 0 0 0-.75.75v4.421a5.894 5.894 0 0 0-1.501.582L5 4.25A2.25 2.25 0 0 1 7.25 2h5.879ZM5.536 12.04a3.38 3.38 0 1 0 4.78 4.779 3.38 3.38 0 0 0-4.78-4.78ZM14.5 4.56v3.194c0 .38.282.693.648.743l.102.007 3.191-.001L14.5 4.56Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M11.409 10.946a4.927 4.927 0 0 1 .54 6.326l-.141.19 4.217 4.218.075.087a.773.773 0 0 1-1.081 1.081l-.087-.075-4.257-4.256a4.927 4.927 0 0 1-6.232-7.57 4.926 4.926 0 0 1 6.966 0ZM13.129 2a2.25 2.25 0 0 1 1.59.659l2.812 2.81 2.808 2.812c.421.422.658.994.658 1.59v9.879a2.25 2.25 0 0 1-2.25 2.25h-1.51a1.765 1.765 0 0 0-.334-.83l-.12-.143-.527-.528 2.49.001a.75.75 0 0 0 .75-.75v-9.747H15.25a2.25 2.25 0 0 1-2.245-2.095L13 7.754V3.5H7.25a.75.75 0 0 0-.75.75v4.421a5.894 5.894 0 0 0-1.501.582L5 4.25A2.25 2.25 0 0 1 7.25 2h5.879ZM5.536 12.04a3.38 3.38 0 1 0 4.78 4.779 3.38 3.38 0 0 0-4.78-4.78ZM14.5 4.56v3.194c0 .38.282.693.648.743l.102.007 3.191-.001L14.5 4.56Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedDocumentSearch',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedDocumentSearch',
+    mixins: [icon]
+};
+</script>

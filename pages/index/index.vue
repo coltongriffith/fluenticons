@@ -32,42 +32,29 @@
 </template>
 
 <script>
-import fluentIcons from "~/assets/icons/fluent/filled.json";
-import materialIcons from "~/assets/icons/material/filled.json";
+import icons from "~/assets/icons/filled.json";
 export default {
   props: {
     selectedIcon: {
       type: Object,
     },
-    type: {
-      type: String,
-      default: "fluent",
-    },
     searchQuery: {
       type: String,
       default: "",
     },
-    selectedCategory: {
-      type: String,
-      default: null,
-    },
   },
   data() {
     return {
-      fluentIcons,
-      materialIcons,
+      icons,
       elementsToShow: 48,
     };
   },
   computed: {
     filteredIcons() {
-      return (
-        this.type === "fluent" ? this.fluentIcons : this.materialIcons
-      ).filter((icon) => {
+      return this.icons.filter((icon) => {
         return icon.name
           .toLowerCase()
-          .includes(this.searchQuery.toLowerCase().replace(" ", "")) &&
-          (this.selectedCategory ? icon.category === this.selectedCategory : true);
+          .includes(this.searchQuery.toLowerCase().replace(" ", ""));
       });
     },
   },

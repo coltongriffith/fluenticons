@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4-8 1.79-8 4 3.582 4 8 4Zm6.328.17A7.61 7.61 0 0 0 20 9.053v3.204a5.477 5.477 0 0 0-4.02-1.233 11.687 11.687 0 0 0 2.348-.854ZM11 16.5a5.502 5.502 0 0 0 3.831 5.242c-.88.167-1.834.258-2.831.258-4.418 0-8-1.79-8-4V9.053a7.61 7.61 0 0 0 1.672 1.117C7.37 11.018 9.608 11.5 12 11.5c.958 0 1.892-.077 2.777-.225A5.502 5.502 0 0 0 11 16.5Zm5.5 4.5a4.48 4.48 0 0 0 2.607-.832l2.613 2.612a.75.75 0 1 0 1.06-1.06l-2.612-2.613A4.5 4.5 0 1 0 16.5 21Zm0-1.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4-8 1.79-8 4 3.582 4 8 4Zm6.328.17A7.61 7.61 0 0 0 20 9.053v3.204a5.477 5.477 0 0 0-4.02-1.233 11.687 11.687 0 0 0 2.348-.854ZM11 16.5a5.502 5.502 0 0 0 3.831 5.242c-.88.167-1.834.258-2.831.258-4.418 0-8-1.79-8-4V9.053a7.61 7.61 0 0 0 1.672 1.117C7.37 11.018 9.608 11.5 12 11.5c.958 0 1.892-.077 2.777-.225A5.502 5.502 0 0 0 11 16.5Zm5.5 4.5a4.48 4.48 0 0 0 2.607-.832l2.613 2.612a.75.75 0 1 0 1.06-1.06l-2.612-2.613A4.5 4.5 0 1 0 16.5 21Zm0-1.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledDatabaseSearch',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledDatabaseSearch',
+    mixins: [icon]
+};
+</script>

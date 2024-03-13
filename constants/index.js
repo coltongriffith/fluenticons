@@ -11,7 +11,7 @@ export const head = {
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     { hid: "description", name: "description", content: description },
     {
-      "http-equiv": "Content-Security-Policy",
+      'http-equiv': "Content-Security-Policy",
       content: "upgrade-insecure-requests",
     },
   ],
@@ -19,6 +19,9 @@ export const head = {
   script: [
     {
       src: "https://cdn.splitbee.io/sb.js",
+      async: true,
+      defer: true,
+      hid: "splitbee",
     },
   ],
 };
@@ -41,10 +44,7 @@ export const pwa = {
 };
 
 export const axios = {
-  baseURL:
-    process.env.NODE_ENV !== "production"
-      ? "http://localhost:3001"
-      : "https://api.fluenticons.co",
+  baseURL: "https://api.fluenticons.co",
 };
 
 export const css = ["~/assets/css/styles.css"];

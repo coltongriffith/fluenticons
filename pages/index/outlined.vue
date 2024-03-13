@@ -37,7 +37,18 @@
         </p>
       </div>
       <button
-        class="block border dark:border-gray-700 rounded-lg mx-auto px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm"
+        class="
+          block
+          border
+          dark:border-gray-700
+          rounded-lg
+          mx-auto
+          px-6
+          py-3
+          hover:bg-gray-100
+          dark:hover:bg-gray-700
+          text-sm
+        "
         @click="showMore"
         v-if="filteredIcons.length > elementsToShow"
       >
@@ -48,40 +59,31 @@
 </template>
 
 <script>
-import fluentIcons from "~/assets/icons/fluent/outlined.json";
-import materialIcons from "~/assets/icons/material/outlined.json";
-
+import icons from "~/assets/icons/outlined.json";
 export default {
   props: {
     selectedIcon: {
-      type: Object,
-    },
-    type: {
-      type: String,
-      default: "fluent",
+      type: Object
     },
     searchQuery: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   data() {
     return {
-      fluentIcons,
-      materialIcons,
-      elementsToShow: 48,
+      icons,
+      elementsToShow: 48
     };
   },
   computed: {
     filteredIcons() {
-      return (
-        this.type === "fluent" ? this.fluentIcons : this.materialIcons
-      ).filter((icon) => {
+      return this.icons.filter(icon => {
         return icon.name
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase().replace(" ", ""));
       });
-    },
+    }
   },
   methods: {
     setIcon(payload) {
@@ -89,7 +91,7 @@ export default {
     },
     showMore() {
       this.elementsToShow += 48;
-    },
-  },
+    }
+  }
 };
 </script>

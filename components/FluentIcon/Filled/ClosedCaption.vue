@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.75 4A3.25 3.25 0 0 1 22 7.25v9.505a3.25 3.25 0 0 1-3.25 3.25H5.25A3.25 3.25 0 0 1 2 16.755V7.25a3.25 3.25 0 0 1 3.066-3.245L5.25 4h13.5Zm-8.128 4.599C8.213 7.225 5.5 8.854 5.5 12c0 3.143 2.715 4.775 5.12 3.407a.75.75 0 0 0-.74-1.304C8.483 14.896 7 14.005 7 12c0-2.006 1.48-2.896 2.878-2.099a.75.75 0 0 0 .744-1.302Zm7.5 0C15.713 7.225 13 8.854 13 12c0 3.143 2.715 4.775 5.12 3.407a.75.75 0 0 0-.74-1.304c-1.396.793-2.88-.098-2.88-2.103 0-2.006 1.48-2.896 2.878-2.099a.75.75 0 0 0 .744-1.302Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M18.75 4A3.25 3.25 0 0 1 22 7.25v9.505a3.25 3.25 0 0 1-3.25 3.25H5.25A3.25 3.25 0 0 1 2 16.755V7.25a3.25 3.25 0 0 1 3.066-3.245L5.25 4h13.5Zm-8.128 4.599C8.213 7.225 5.5 8.854 5.5 12c0 3.143 2.715 4.775 5.12 3.407a.75.75 0 0 0-.74-1.304C8.483 14.896 7 14.005 7 12c0-2.006 1.48-2.896 2.878-2.099a.75.75 0 0 0 .744-1.302Zm7.5 0C15.713 7.225 13 8.854 13 12c0 3.143 2.715 4.775 5.12 3.407a.75.75 0 0 0-.74-1.304c-1.396.793-2.88-.098-2.88-2.103 0-2.006 1.48-2.896 2.878-2.099a.75.75 0 0 0 .744-1.302Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconFilledClosedCaption',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconFilledClosedCaption',
+    mixins: [icon]
+};
+</script>

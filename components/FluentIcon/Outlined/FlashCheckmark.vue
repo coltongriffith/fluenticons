@@ -1,9 +1,21 @@
 <template>
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.527 21.068 8.294 14H5.75a.75.75 0 0 1-.721-.956l3-10.5A.75.75 0 0 1 8.749 2h7a.75.75 0 0 1 .712.987L14.791 8h4.459a.75.75 0 0 1 .54 1.27l-1.687 1.758a6.585 6.585 0 0 0-2.255.184L17.49 9.5H13.75a.75.75 0 0 1-.712-.987L14.71 3.5H9.316l-2.572 9h2.51a.75.75 0 0 1 .728.932l-1.316 5.264 2.483-2.588a6.526 6.526 0 0 0-.091 2.262l-3.262 3.4c-.533.554-1.456.044-1.27-.702ZM17.5 23a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Zm3.353-7.146-4 4a.5.5 0 0 1-.707 0l-2-2a.5.5 0 0 1 .707-.708l1.647 1.647 3.646-3.647a.5.5 0 0 1 .707.708Z" fill="#212121"/></svg>
-  </template>
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<linearGradient v-if="fill === 'url(#g1)'" id="g1" :gradientTransform="`rotate(${angle})`">
+      <stop class="main-stop" offset="0%" :stop-color="start" />
+      <stop class="alt-stop" offset="100%" :stop-color="end" />
+    </linearGradient>
+    <radialGradient v-if="fill === 'url(#g2)'" id="g2" cx = "50%" cy = "50%" r = "50%">
+      <stop :stop-color="start" offset = "0%"/>
+      <stop :stop-color="end" offset = "100%"/>
+    </radialGradient>
+<path d="M6.527 21.068 8.294 14H5.75a.75.75 0 0 1-.721-.956l3-10.5A.75.75 0 0 1 8.749 2h7a.75.75 0 0 1 .712.987L14.791 8h4.459a.75.75 0 0 1 .54 1.27l-1.687 1.758a6.585 6.585 0 0 0-2.255.184L17.49 9.5H13.75a.75.75 0 0 1-.712-.987L14.71 3.5H9.316l-2.572 9h2.51a.75.75 0 0 1 .728.932l-1.316 5.264 2.483-2.588a6.526 6.526 0 0 0-.091 2.262l-3.262 3.4c-.533.554-1.456.044-1.27-.702ZM17.5 23a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Zm3.353-7.146-4 4a.5.5 0 0 1-.707 0l-2-2a.5.5 0 0 1 .707-.708l1.647 1.647 3.646-3.647a.5.5 0 0 1 .707.708Z" :fill="fill" :fill-opacity="opacity" /></svg>
+</template>
 
-  <script>
-    export default {
-      name: 'FluentIconOutlinedFlashCheckmark',
-  };
-  </script>
+<script>
+import icon from "../../../mixins/icon.js"
+
+export default {
+    name: 'FluentIconOutlinedFlashCheckmark',
+    mixins: [icon]
+};
+</script>

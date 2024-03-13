@@ -17,22 +17,6 @@
     <div class="flex flex-wrap mb-3">
       <div class="w-full text-left">
         <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
-          Name
-        </label>
-        <input
-          type="text"
-          placeholder="Joe"
-          v-model="name"
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        />
-        <div class="text-red-500 text-sm font-medium">
-          {{ error.name }}
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-wrap mb-3">
-      <div class="w-full text-left">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
           Email
         </label>
         <input
@@ -98,7 +82,6 @@ export default {
   },
   data() {
     return {
-      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -122,7 +105,6 @@ export default {
         return
       }
       this.$axios.$post("/api/auth/register", {
-        name: this.name,
         email: this.email,
         password: this.password
       }).then(res => {
