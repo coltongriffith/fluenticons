@@ -1,6 +1,6 @@
 <template>
   <a
-    href="https://apresinc.shop/"
+    href="https://freelancedaily.co/subscribe"
     target="_blank"
     style="cursor: pointer"
   >
