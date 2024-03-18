@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "dev": "NODE_OPTIONS=--max_old_space_size=64000 nuxt",
+    "build": "NODE_OPTIONS=--max_old_space_size=64000 nuxt build",
+    "start": "NODE_OPTIONS=--max_old_space_size=64000 nuxt start",
+    "generate": "NODE_OPTIONS=--max_old_space_size=64000 nuxt generate"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
