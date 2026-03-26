@@ -31,5 +31,8 @@
     "vue-gtag": "^2.0.0",
     "vue-toastification": "^2.0.0-rc.5"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0 <22.0.0"
+  }
 }
