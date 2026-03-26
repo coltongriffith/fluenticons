@@ -13,11 +13,8 @@
 <path d="M20.495 17.314V6.25a.75.75 0 0 0-.75-.75H8.682L7.182 4h12.563a2.25 2.25 0 0 1 2.25 2.25v11.505c0 .312-.063.61-.178.88l-1.322-1.321Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedVideoPersonOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

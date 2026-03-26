@@ -11,11 +11,8 @@
 <path d="M16 16.25a3.25 3.25 0 0 1-3.25 3.25h-7.5A3.25 3.25 0 0 1 2 16.25v-8.5A3.25 3.25 0 0 1 5.25 4.5h7.5A3.25 3.25 0 0 1 16 7.75v8.5Zm5.762-10.357a1 1 0 0 1 .238.648v10.918a1 1 0 0 1-1.648.762L17 15.37V8.628l3.352-2.849a1 1 0 0 1 1.41.114Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledVideo',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -11,11 +11,8 @@
 <path d="M6.145 2.368a.75.75 0 0 0-1.29.764L7.739 8h1.744L6.145 2.368Zm4 0L13.483 8h-1.744L8.855 3.132a.75.75 0 0 1 1.29-.764ZM2.765 9A.765.765 0 0 0 2 9.765V12h20V9.765A.765.765 0 0 0 21.235 9H2.765Zm-.653 4.5a10.004 10.004 0 0 0 4.618 7H3.75a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5h-2.98a10.005 10.005 0 0 0 4.618-7H2.112Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledBowlChopsticks',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

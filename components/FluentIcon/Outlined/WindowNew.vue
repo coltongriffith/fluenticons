@@ -13,11 +13,8 @@
 <path d="M6.157 5.25A3.251 3.251 0 0 1 9.25 3h8.5A3.25 3.25 0 0 1 21 6.25v8.588a3.251 3.251 0 0 1-2 3.001v.136c0 1.05-.53 1.845-1.309 2.344-.75.48-1.717.686-2.693.68h-.002l-4.077-.004H7c-1.157 0-2.164-.362-2.89-1.045-.727-.686-1.11-1.64-1.11-2.7V8.5c0-.865.216-1.683.734-2.296.534-.633 1.31-.954 2.222-.954h.2ZM6 6.75h-.044c-.544 0-.871.179-1.076.421-.22.262-.38.694-.38 1.329v8.75c0 .69.242 1.234.64 1.608.4.377 1.017.637 1.86.637h3.92L15 19.5h.004c.788.004 1.445-.166 1.878-.444.372-.238.582-.55.614-.968H9.25A3.25 3.25 0 0 1 6 14.838V6.75ZM9.25 4.5A1.75 1.75 0 0 0 7.5 6.25v8.588c0 .967.784 1.75 1.75 1.75h8.5a1.75 1.75 0 0 0 1.75-1.75V6.25a1.75 1.75 0 0 0-1.75-1.75h-8.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedWindowNew',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

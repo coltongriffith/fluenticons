@@ -13,11 +13,8 @@
 <path d="M9 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15 12a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDataScatter',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

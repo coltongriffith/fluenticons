@@ -11,11 +11,8 @@
 <path d="m21.002 4.75-.002 14a.75.75 0 0 1-1.21.592l-7.29-5.67v5.078a.75.75 0 0 1-1.21.592l-9-7a.75.75 0 0 1 0-1.184l9.001-7a.75.75 0 0 1 1.21.592L12.5 9.827l7.291-5.67a.75.75 0 0 1 1.21.593Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledRewind',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

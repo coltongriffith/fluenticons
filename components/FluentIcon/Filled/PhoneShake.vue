@@ -15,11 +15,8 @@
 <path d="M4.674 16.757a.75.75 0 0 1 1.418.477l-.049.148a1.074 1.074 0 0 0-.03.574c.029.103.085.21.164.316.06.079.118.14.158.178l.033.028a.75.75 0 0 1-.915 1.188 2.606 2.606 0 0 1-.475-.493 2.42 2.42 0 0 1-.413-.828 2.515 2.515 0 0 1 .01-1.282l.052-.176a1.82 1.82 0 0 1 .047-.13Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledPhoneShake',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

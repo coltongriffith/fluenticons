@@ -11,11 +11,8 @@
 <path d="M12 2.005c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10ZM12 13a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM9 8.751a1.25 1.25 0 1 0 0 2.499 1.25 1.25 0 0 0 0-2.499Zm6 0a1.25 1.25 0 1 0 0 2.499 1.25 1.25 0 0 0 0-2.499Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledEmojiSurprise',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

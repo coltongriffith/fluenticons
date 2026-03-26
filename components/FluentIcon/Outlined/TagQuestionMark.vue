@@ -13,11 +13,8 @@
 <path d="M17 5.502a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-6.125 3.005a.625.625 0 1 1 1.25 0 .625.625 0 0 1-1.25 0Zm-1.228-4.548c-.011-1.137.805-1.954 1.853-1.954 1.031 0 1.853.846 1.853 1.95 0 .566-.185.913-.663 1.447l-.265.29-.101.116c-.248.292-.324.462-.324.695a.5.5 0 1 1-1 0c0-.576.187-.926.671-1.468l.265-.29.1-.113c.242-.286.317-.453.317-.677 0-.558-.38-.95-.853-.95-.494 0-.859.366-.853.945a.5.5 0 1 1-1 .01Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTagQuestionMark',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

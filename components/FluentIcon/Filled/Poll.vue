@@ -11,11 +11,8 @@
 <path d="M11.752 2a2.752 2.752 0 0 1 2.752 2.751V19.25a2.752 2.752 0 1 1-5.504 0V4.75A2.752 2.752 0 0 1 11.752 2Zm7 5a2.752 2.752 0 0 1 2.752 2.751v9.499a2.752 2.752 0 1 1-5.504 0V9.75A2.752 2.752 0 0 1 18.752 7Zm-14 5a2.752 2.752 0 0 1 2.752 2.751v4.499a2.752 2.752 0 0 1-5.504 0V14.75A2.752 2.752 0 0 1 4.752 12Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledPoll',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

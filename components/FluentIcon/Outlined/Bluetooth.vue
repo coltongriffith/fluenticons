@@ -11,11 +11,8 @@
 <path d="m11.698 12.974 2.682 2.237-2.876 3.117v-5.193l.194-.161Zm1.171-.976 3.077-2.564a.75.75 0 0 0 .071-1.085l-4.711-5.104a.75.75 0 0 0-1.302.508v5.855l-1.12-.934a.75.75 0 1 0-.96 1.152l2.08 1.735v.871l-2.08 1.734a.75.75 0 0 0 .96 1.152l1.12-.934v5.863a.75.75 0 0 0 1.302.508l4.711-5.106a.75.75 0 0 0-.07-1.085l-3.078-2.566Zm-1.17-.977-.195-.162V5.672l2.876 3.115-2.682 2.234Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedBluetooth',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -13,11 +13,8 @@
 <path d="M12.5 3v2.75c0 .414.336.75.75.75H21v-.75A2.75 2.75 0 0 0 18.25 3H12.5ZM13 13.25a.75.75 0 0 1-.75.75H9.5a.75.75 0 0 1 0-1.5h1.33a4.478 4.478 0 0 0-2.83-1 4.5 4.5 0 1 0 4.5 4.5.75.75 0 0 1 1.5 0 6 6 0 1 1-2.5-4.874V10.5a.747.747 0 0 1 .75-.75.75.75 0 0 1 .75.75v2.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTabDesktopArrowClockwise',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

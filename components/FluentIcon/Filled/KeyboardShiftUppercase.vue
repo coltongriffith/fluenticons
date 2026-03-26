@@ -11,11 +11,8 @@
 <path d="M16 20a1 1 0 0 1 .117 1.993L16 22H8a1 1 0 0 1-.117-1.994L8 20h8ZM11.007 2.37a1.75 1.75 0 0 1 2.23.203l.107.118 7.865 9.438a1.75 1.75 0 0 1-1.2 2.865l-.144.005h-2.866L17 17.25a1.75 1.75 0 0 1-1.458 1.726l-.149.019-.143.006h-6.5a1.75 1.75 0 0 1-1.744-1.607L7 17.25 6.999 15H4.135a1.75 1.75 0 0 1-.832-.211l-.149-.09-.14-.105a1.75 1.75 0 0 1-.32-2.338l.097-.127 7.865-9.438.107-.117.117-.107.127-.096Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledKeyboardShiftUppercase',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -13,11 +13,8 @@
 <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H18a2.5 2.5 0 0 1 2.5 2.5v14.25a.75.75 0 0 1-.75.75H5.5a1 1 0 0 0 1 1h13.25a.75.75 0 0 1 0 1.5H6.5A2.5 2.5 0 0 1 4 19.5v-15Zm5.846 2.602C9.16 7.472 8.5 8.11 8.5 9v4c0 .891.66 1.528 1.346 1.898.718.386 1.657.602 2.654.602.997 0 1.936-.216 2.654-.602.687-.37 1.346-1.007 1.346-1.898V9c0-.891-.66-1.528-1.346-1.898-.718-.386-1.657-.602-2.654-.602-.997 0-1.936.216-2.654.602Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledBookDatabase',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

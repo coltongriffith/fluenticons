@@ -15,11 +15,8 @@
 <path d="M5.25 11A3.25 3.25 0 0 0 2 14.25v4.5A3.25 3.25 0 0 0 5.25 22h4.5A3.25 3.25 0 0 0 13 18.75v-4.5A3.25 3.25 0 0 0 9.75 11h-4.5ZM3.5 14.25c0-.966.784-1.75 1.75-1.75h4.5c.966 0 1.75.784 1.75 1.75v4.5c0 .206-.036.404-.101.588L9.09 17.03a2.25 2.25 0 0 0-3.182 0l-2.308 2.308a1.747 1.747 0 0 1-.101-.588v-4.5Zm4.53 3.841 2.308 2.308a1.746 1.746 0 0 1-.588.101h-4.5c-.206 0-.404-.036-.588-.101L6.97 18.09a.75.75 0 0 1 1.06 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTabDesktopImage',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

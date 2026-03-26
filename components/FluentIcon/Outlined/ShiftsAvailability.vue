@@ -13,11 +13,8 @@
 <path d="M15.5 9a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Zm-5 6.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0ZM11.28 6.72a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 0 1-1.06 0l-1.5-1.502a.75.75 0 0 1 1.061-1.06l.97.971 2.469-2.47a.75.75 0 0 1 1.06 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedShiftsAvailability',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

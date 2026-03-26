@@ -20,11 +20,8 @@
 <path d="M22.836 18.218a.75.75 0 0 0-.117-1.054l-2.5-2a.75.75 0 0 0-.938 1.172l2.5 2a.75.75 0 0 0 1.055-.117ZM1.282 17.164a.75.75 0 1 0 .937 1.172l2.5-2a.75.75 0 0 0-.937-1.172l-2.5 2ZM22.836 3.782a.75.75 0 0 1-.117 1.054l-2.5 2a.75.75 0 0 1-.938-1.172l2.5-2a.75.75 0 0 1 1.055.118Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledStarEmphasis',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

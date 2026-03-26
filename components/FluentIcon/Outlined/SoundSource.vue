@@ -17,11 +17,8 @@
 <path d="M12.564 12.756a.75.75 0 0 0-1.128 0l-7 8A.75.75 0 0 0 5 22h14a.75.75 0 0 0 .564-1.244l-7-8Zm4.783 7.744H6.653L12 14.389l5.347 6.111Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedSoundSource',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

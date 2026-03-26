@@ -11,11 +11,8 @@
 <path d="M10.5 6H16a1 1 0 1 0 0-2h-5.5a6.5 6.5 0 0 0 0 13h5.14l-1.933 1.933a1 1 0 0 0 1.414 1.414l3.53-3.529a.997.997 0 0 0 .21-.308.997.997 0 0 0-.18-1.243 1.044 1.044 0 0 0-.028-.029l-3.531-3.53a1 1 0 0 0-1.415 1.413L15.586 15H10.5a4.5 4.5 0 1 1 0-9Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledArrowHookDownRight',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

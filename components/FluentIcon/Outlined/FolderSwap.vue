@@ -13,11 +13,8 @@
 <path d="M13.78 16.79a.75.75 0 0 0-1.06-1.062l-2.5 2.499a.75.75 0 0 0 0 1.06l2.5 2.497a.75.75 0 1 0 1.06-1.061L12.556 19.5h6.883l-1.219 1.216a.75.75 0 1 0 1.06 1.061l2.5-2.495a.75.75 0 0 0 0-1.061l-2.5-2.499a.75.75 0 0 0-1.06 1.062L19.437 18h-6.869l1.212-1.212Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedFolderSwap',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

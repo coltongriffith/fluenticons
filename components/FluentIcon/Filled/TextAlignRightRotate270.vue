@@ -11,11 +11,8 @@
 <path d="M6 2a1 1 0 0 0-1 1v15a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1Zm12 0a1 1 0 0 0-1 1v11a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1Zm-7 1a1 1 0 1 1 2 0v18a1 1 0 1 1-2 0V3Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTextAlignRightRotate270',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

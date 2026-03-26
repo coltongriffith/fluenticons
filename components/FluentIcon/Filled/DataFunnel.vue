@@ -11,11 +11,8 @@
 <path d="M19.248 7.504a2.752 2.752 0 1 0 0-5.504H4.75a2.752 2.752 0 0 0 0 5.504h14.498ZM17.248 14.504a2.752 2.752 0 1 0 0-5.504H6.75a2.752 2.752 0 0 0 0 5.504h10.498ZM17 18.752A2.752 2.752 0 0 0 14.248 16H9.75a2.752 2.752 0 0 0 0 5.504h4.498A2.752 2.752 0 0 0 17 18.752Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDataFunnel',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

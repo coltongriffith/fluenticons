@@ -11,11 +11,8 @@
 <path d="M7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm0-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm7 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm0-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm7 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm0-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledReOrderDotsHorizontal',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

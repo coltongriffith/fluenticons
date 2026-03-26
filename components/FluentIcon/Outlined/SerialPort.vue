@@ -13,11 +13,8 @@
 <path d="M4.907 7a2.75 2.75 0 0 0-2.675 3.386l1.071 4.502A2.75 2.75 0 0 0 5.98 17h12.038a2.75 2.75 0 0 0 2.675-2.112l1.074-4.501A2.75 2.75 0 0 0 19.092 7H4.906Zm-1.216 3.039a1.25 1.25 0 0 1 1.216-1.54h14.184a1.25 1.25 0 0 1 1.216 1.54l-1.074 4.502a1.25 1.25 0 0 1-1.216.96H5.98a1.25 1.25 0 0 1-1.216-.96L3.69 10.038Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedSerialPort',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

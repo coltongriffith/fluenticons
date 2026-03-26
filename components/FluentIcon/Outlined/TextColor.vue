@@ -11,11 +11,8 @@
 <path d="M17.75 14.5A2.25 2.25 0 0 1 20 16.75v3A2.25 2.25 0 0 1 17.75 22H5.25A2.25 2.25 0 0 1 3 19.75v-3a2.25 2.25 0 0 1 2.25-2.25h12.5Zm0 1.5H5.25a.75.75 0 0 0-.75.75v3c0 .415.336.75.75.75h12.5a.75.75 0 0 0 .75-.75v-3a.75.75 0 0 0-.75-.75ZM7.053 11.97l3.753-9.496c.236-.595 1.043-.63 1.345-.104l.05.105 3.747 9.5a.75.75 0 0 1-1.352.643l-.044-.092L13.556 10H9.443l-.996 2.52a.75.75 0 0 1-.876.454l-.097-.031a.75.75 0 0 1-.453-.876l.032-.098 3.753-9.495-3.753 9.495Zm4.45-7.178L10.036 8.5h2.928l-1.461-3.708Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTextColor',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

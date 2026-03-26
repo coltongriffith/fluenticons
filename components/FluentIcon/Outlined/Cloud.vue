@@ -11,11 +11,8 @@
 <path d="M6.087 9.75a5.752 5.752 0 0 1 11.326 0h.087a4 4 0 0 1 0 8H6a4 4 0 0 1 0-8h.087ZM11.75 6.5a4.25 4.25 0 0 0-4.245 4.037.75.75 0 0 1-.749.713H6a2.5 2.5 0 0 0 0 5h11.5a2.5 2.5 0 0 0 0-5h-.756a.75.75 0 0 1-.75-.713A4.25 4.25 0 0 0 11.75 6.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedCloud',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

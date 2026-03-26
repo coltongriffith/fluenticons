@@ -13,11 +13,8 @@
 <path d="M7 21.034V18.25c.627.471 1.406.75 2.25.75h8.5a3.75 3.75 0 0 0 3.75-3.75V7.323A2 2 0 0 0 20 4H6.732A2 2 0 0 0 3 5v16.034c0 .534.433.966.966.966h2.068A.966.966 0 0 0 7 21.034ZM5 4.5a.5.5 0 0 1 .49.4l.122.6H20a.5.5 0 0 1 0 1H5.5v14h-1V5a.5.5 0 0 1 .5-.5Zm4.25 13A2.25 2.25 0 0 1 7 15.25V8h13v7.25a2.25 2.25 0 0 1-2.25 2.25h-8.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedRealEstate',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -11,11 +11,8 @@
 <path d="M12 18a1 1 0 0 0 1-1V5.415l1.293 1.292a1 1 0 0 0 1.32.083l.094-.083a1 1 0 0 0 .083-1.32l-.083-.094-3-3a1 1 0 0 0-1.32-.083l-.094.083-3 3a1 1 0 0 0 1.32 1.497l.094-.083L11 5.415V17a1 1 0 0 0 1 1Zm0 4a5 5 0 0 0 2-9.584v1.712a3.5 3.5 0 1 1-4 0v-1.712A5.001 5.001 0 0 0 12 22Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledSwipeUp',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

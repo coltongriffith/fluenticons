@@ -13,11 +13,8 @@
 <path d="M17.75 3A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25A3.25 3.25 0 0 1 6.25 3h11.5Zm1.75 3.25a1.75 1.75 0 0 0-1.75-1.75h-.25v5.147l-.942-1.06A1.744 1.744 0 0 0 16 8.168V4.5H8v3.668a1.744 1.744 0 0 0-.558.42L6.5 9.647V4.5h-.25A1.75 1.75 0 0 0 4.5 6.25v11.5c0 .966.784 1.75 1.75 1.75h.25v-5.147l.942 1.06c.161.181.352.32.558.419V19.5h8v-3.668c.206-.098.397-.238.558-.42l.942-1.06V19.5h.25a1.75 1.75 0 0 0 1.75-1.75V6.25Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTableResizeColumn',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

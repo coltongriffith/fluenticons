@@ -15,11 +15,8 @@
 <path d="M14.5 21c-1.97 0-3.761-.759-5.1-2h.1c.718 0 1.415-.089 2.081-.257.864.482 1.86.757 2.92.757.96 0 1.866-.225 2.669-.625l.243-.121.265.063c.921.22 1.965.445 2.74.61-.176-.751-.415-1.756-.642-2.651l-.07-.276.13-.253A5.971 5.971 0 0 0 20.5 13.5a5.995 5.995 0 0 0-2.747-5.042 8.443 8.443 0 0 0-.8-2.047 7.503 7.503 0 0 1 4.344 10.263c.253 1.008.51 2.1.672 2.803a1.244 1.244 0 0 1-1.468 1.5c-.727-.152-1.87-.396-2.913-.64A7.476 7.476 0 0 1 14.5 21Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedChatBubblesQuestion',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -12,11 +12,8 @@
 <path d="M21.547 6.83c-.945-1.084-2.617-2.5-4.855-2.327-.929.071-1.77.549-2.429 1.057a10.429 10.429 0 0 0-1.598 1.57c-.243.293-.546.486-.86.551l-4.663.972-.966-1.771A1.691 1.691 0 0 0 3 7.692v3.69a2.294 2.294 0 0 0 2.727 2.252l3.3-.635-.507 1.234a2.004 2.004 0 0 0 3.456 1.966l3.236-4.315 5.37-1.852a2.141 2.141 0 0 0 1.343-1.32 1.898 1.898 0 0 0-.378-1.883Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledAirplaneTakeOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

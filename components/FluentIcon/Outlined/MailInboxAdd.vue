@@ -13,11 +13,8 @@
 <path d="M19.5 14v-1.732A6.518 6.518 0 0 0 21 11.19v7.56a3.25 3.25 0 0 1-3.066 3.245L17.75 22H6.25a3.25 3.25 0 0 1-3.245-3.066L3 18.75V7.25a3.25 3.25 0 0 1 3.066-3.245L6.25 4h4.248a6.451 6.451 0 0 0-.422 1.5H6.25a1.75 1.75 0 0 0-1.744 1.606L4.5 7.25V14H9a.75.75 0 0 1 .743.648l.007.102a2.25 2.25 0 0 0 4.495.154l.005-.154a.75.75 0 0 1 .648-.743L15 14h4.5Zm-15 1.5v3.25a1.75 1.75 0 0 0 1.606 1.744l.144.006h11.5a1.75 1.75 0 0 0 1.744-1.607l.006-.143V15.5h-3.825a3.752 3.752 0 0 1-3.475 2.995l-.2.005a3.752 3.752 0 0 1-3.632-2.812l-.043-.188H4.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedMailInboxAdd',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

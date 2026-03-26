@@ -13,11 +13,8 @@
 <path d="M21.998 4.75a2.25 2.25 0 0 0-2.25-2.25H4.252a2.25 2.25 0 0 0-2.25 2.25v9.505a2.25 2.25 0 0 0 2.25 2.25h6.998V18h.002v1.44l-.84-.842-.085-.072a.75.75 0 0 0-.976 1.133l2.121 2.121.084.073a.747.747 0 0 0 .394.145h.105l.103-.014a.747.747 0 0 0 .375-.204l2.121-2.121.073-.084a.75.75 0 0 0-.073-.977l-.084-.072a.75.75 0 0 0-.977.072l-.84.841v-2.934h6.995a2.25 2.25 0 0 0 2.25-2.25V4.75ZM12.75 15.005V15h-1.5v.005H4.252a.75.75 0 0 1-.75-.75V4.75a.75.75 0 0 1 .75-.75h15.496a.75.75 0 0 1 .75.75v9.505a.75.75 0 0 1-.75.75H12.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedKeyboardDock',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

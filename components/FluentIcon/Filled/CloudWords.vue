@@ -11,11 +11,8 @@
 <path d="M11.75 5a5.752 5.752 0 0 0-5.663 4.75H6a4 4 0 0 0 0 8h11.5a4 4 0 0 0 0-8h-.087A5.752 5.752 0 0 0 11.75 5Zm-2 4h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1 0-1.5ZM5 13.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75Zm8.75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1 0-1.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledCloudWords',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

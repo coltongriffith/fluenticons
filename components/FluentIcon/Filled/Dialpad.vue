@@ -11,11 +11,8 @@
 <path d="M12 17.75a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.996 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm-9.992 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.996-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.996 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm-9.992 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.996-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.996 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm-9.992 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDialpad',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

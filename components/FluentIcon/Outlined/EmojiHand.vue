@@ -15,11 +15,8 @@
 <path d="M13.198 16.733a.75.75 0 0 0-1.081 1.04A3.99 3.99 0 0 0 15 19a3.99 3.99 0 0 0 2.883-1.227.75.75 0 1 0-1.081-1.04A2.49 2.49 0 0 1 15 17.5a2.49 2.49 0 0 1-1.802-.767Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedEmojiHand',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

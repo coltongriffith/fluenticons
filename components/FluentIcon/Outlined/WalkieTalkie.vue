@@ -13,11 +13,8 @@
 <path d="M8.75 1a.75.75 0 0 1 .75.75V3h7.25A2.25 2.25 0 0 1 19 5.25V14a.75.75 0 0 1-.199.509l-1.301 1.41v3.831A2.25 2.25 0 0 1 15.25 22H8.751a2.25 2.25 0 0 1-2.25-2.25v-3.832L5.2 14.508A.75.75 0 0 1 5 14V5.25A2.25 2.25 0 0 1 7.25 3H8V1.75A.75.75 0 0 1 8.75 1ZM6.5 5.25v8.457l1.302 1.41c.128.138.2.32.2.508v4.125c0 .414.335.75.75.75h6.498a.75.75 0 0 0 .75-.75v-4.125a.75.75 0 0 1 .199-.509l1.301-1.41V5.25a.75.75 0 0 0-.75-.75h-9.5a.75.75 0 0 0-.75.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedWalkieTalkie',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

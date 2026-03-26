@@ -1,7 +1,5 @@
-import axios from "axios";
-
 export async function getSvg(icon, color) {
-  const { data } = await axios.get(`/icons/${icon}`);
+  const data = await fetch(`/icons/${icon}`).then((r) => r.text());
   if (color) {
     return data.replace(/#212121/g, color);
   }

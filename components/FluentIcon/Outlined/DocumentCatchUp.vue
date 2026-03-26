@@ -13,11 +13,8 @@
 <path d="M2.75 13h2.505l1.557-3.551a.75.75 0 0 1 1.327-.091l.006.01.05.103 2.413 6.027 1.427-2.1a.75.75 0 0 1 .545-.389l.01-.002.107-.007h2a.75.75 0 0 1 .113 1.492l-.01.001-.103.007h-1.554l-1.979 3.094a.75.75 0 0 1-1.306.04l-.005-.009-.05-.101-2.336-5.835-1.035 2.362a.75.75 0 0 1-.564.439l-.012.002-.11.008H2.75a.75.75 0 0 1-.113-1.492l.01-.001L2.75 13Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedDocumentCatchUp',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

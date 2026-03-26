@@ -13,11 +13,8 @@
 <path d="M17.745 1.996a2.25 2.25 0 0 1 2.245 2.096l.005.154v7.25a6.5 6.5 0 0 0-7.191 10.498H6.245A2.25 2.25 0 0 1 4 19.898l-.005-.154V4.246a2.25 2.25 0 0 1 2.096-2.245l.154-.005h11.5ZM7 6.75v1.5C7 9.217 7.784 10 8.75 10h6.5A1.75 1.75 0 0 0 17 8.25v-1.5A1.75 1.75 0 0 0 15.25 5h-6.5A1.75 1.75 0 0 0 7 6.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDocumentHeaderRemove',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

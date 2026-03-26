@@ -13,11 +13,8 @@
 <path d="M19 12.764c.626.474 1.291.759 2 .86.197.029.397.043.6.043.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-.726-.252-1.35-.579-1.874-.979a4.834 4.834 0 0 1-1.555-2c-.267-.636-.414-1.353-.44-2.15L14 16.584v-2.5c0-.23.18-.417.4-.417 1.223 0 2.324-.51 3.318-1.545a.389.389 0 0 1 .566 0c.233.243.471.457.716.642Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledWindowShield',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -15,11 +15,8 @@
 <path d="M19.874 15.397a3.075 3.075 0 0 0-.674-.747.75.75 0 0 0-.9 1.2c.062.047.19.175.326.379.234.351.374.771.374 1.271 0 .5-.14.921-.374 1.272a1.68 1.68 0 0 1-.326.379l-.084.073a.75.75 0 0 0 .984 1.127c.189-.142.435-.388.674-.747A3.734 3.734 0 0 0 20.5 17.5c0-.812-.235-1.517-.626-2.103ZM17 14.75a.75.75 0 0 0-1.314-.493L14.16 16h-1.41a.75.75 0 0 0-.75.75v1.5c0 .415.336.75.75.75h1.41l1.526 1.744A.75.75 0 0 0 17 20.25v-5.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedDesktopSpeaker',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

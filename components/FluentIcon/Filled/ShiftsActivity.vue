@@ -13,11 +13,8 @@
 <path d="M11 6a1 1 0 0 1 1 1v5h3a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1ZM19.94 7.623a1 1 0 0 1 1.304.547 9.856 9.856 0 0 1 .365 1.063 1 1 0 1 1-1.925.54 7.896 7.896 0 0 0-.291-.846 1 1 0 0 1 .546-1.304Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledShiftsActivity',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

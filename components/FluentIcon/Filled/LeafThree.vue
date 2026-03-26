@@ -13,11 +13,8 @@
 <path d="M9 15.5A6.5 6.5 0 0 1 15.5 9h4.914C21.29 9 22 9.71 22 10.586V15.5a6.5 6.5 0 0 1-10.535 5.096L10.28 21.78a.75.75 0 1 1-1.06-1.06l1.184-1.185A6.473 6.473 0 0 1 9 15.5Zm3.177 4.383 4.603-4.603a.75.75 0 1 0-1.06-1.06l-4.603 4.603c.303.4.66.757 1.06 1.06Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledLeafThree',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

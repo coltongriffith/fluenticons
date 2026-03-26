@@ -1,70 +1,41 @@
 <template>
   <div class="container mx-auto p-8">
     <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-      <lazy-icon-card
+      <LazyIconCard
         v-for="(icon, i) in filteredIcons.slice(0, elementsToShow)"
         :key="i"
         :icon="icon"
-        @setIcon="setIcon(icon)"
-        :selected="icon.name === selectedIcon.name ? true : false"
+        @setIcon="selectedIcon = icon"
+        :selected="icon.name === selectedIcon.name"
       />
     </div>
     <div class="my-8">
-      <base-not-found
-        v-if="!filteredIcons.length"
-        :search-query="searchQuery"
-      />
+      <base-not-found v-if="!filteredIcons.length" :search-query="searchQuery" />
       <button
         class="show-more-btn"
-        @click="showMore"
+        @click="elementsToShow += 48"
         v-if="filteredIcons.length > elementsToShow"
       >
         Show More Icons
       </button>
-
       <div class="flex-center flex-col">
-        <small class="mt-8"
-          ><nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link></small
-        >
+        <small class="mt-8">
+          <NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink>
+        </small>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import icons from "~/assets/icons/filled.json";
-export default {
-  props: {
-    selectedIcon: {
-      type: Object,
-    },
-    searchQuery: {
-      type: String,
-      default: "",
-    },
-  },
-  data() {
-    return {
-      icons,
-      elementsToShow: 48,
-    };
-  },
-  computed: {
-    filteredIcons() {
-      return this.icons.filter((icon) => {
-        return icon.name
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase().replace(" ", ""));
-      });
-    },
-  },
-  methods: {
-    setIcon(payload) {
-      this.$emit("setIcon", payload);
-    },
-    showMore() {
-      this.elementsToShow += 48;
-    },
-  },
-};
+<script setup>
+import icons from '~/assets/icons/filled.json'
+
+const { searchQuery, selectedIcon } = useAppState()
+const elementsToShow = ref(48)
+
+const filteredIcons = computed(() =>
+  icons.filter((icon) =>
+    icon.name.toLowerCase().includes(searchQuery.value.toLowerCase().replace(' ', ''))
+  )
+)
 </script>

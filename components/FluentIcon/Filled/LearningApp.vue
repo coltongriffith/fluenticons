@@ -13,11 +13,8 @@
 <path d="M23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-6.086-2.403 2.806 1.84a.609.609 0 0 1 .28.52.654.654 0 0 1-.072.299.574.574 0 0 1-.198.226l-2.807 1.915a.635.635 0 0 1-.158.077.551.551 0 0 1-.395-.023.686.686 0 0 1-.193-.135.72.72 0 0 1-.13-.2.613.613 0 0 1-.047-.237v-3.758a.622.622 0 0 1 .367-.57.552.552 0 0 1 .547.045Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledLearningApp',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

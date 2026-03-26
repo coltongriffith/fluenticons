@@ -1,0 +1,10 @@
+{
+  "buildCommand": "nuxt generate",
+  "outputDirectory": "dist",
+  "installCommand": "yarn install --ignore-engines",
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max_old_space_size=4096"
+    }
+  }
+}

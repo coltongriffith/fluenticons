@@ -13,11 +13,8 @@
 <path d="M16.095 12.913 6.182 3h13.567a2.25 2.25 0 0 1 2.245 2.095l.005.155v7.268a3.344 3.344 0 0 0-.129-.112 1.75 1.75 0 0 0-2.855 1.114 1.756 1.756 0 0 0-1.238.274 1.782 1.782 0 0 0-1.682-.881Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDesktopSpeakerOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

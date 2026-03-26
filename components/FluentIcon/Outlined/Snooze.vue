@@ -11,11 +11,8 @@
 <path d="M8.245 13.003a.75.75 0 0 1 .661 1.104l-.057.09-4.622 6.302h4.018a.75.75 0 0 1 .743.648l.007.102a.75.75 0 0 1-.649.743L8.245 22H2.748a.75.75 0 0 1-.662-1.104l.057-.09 4.621-6.302H2.75a.75.75 0 0 1-.743-.648l-.007-.102a.75.75 0 0 1 .648-.743l.102-.007h5.496ZM21.252 2c.6 0 .943.66.639 1.145l-.06.083-8.492 10.269h7.913a.75.75 0 0 1 .743.648l.007.102a.75.75 0 0 1-.648.743l-.102.007h-9.504a.75.75 0 0 1-.639-1.144l.06-.084 8.49-10.27-7.911.001a.75.75 0 0 1-.743-.648l-.007-.102a.75.75 0 0 1 .648-.743L11.748 2h9.504Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedSnooze',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

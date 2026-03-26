@@ -13,11 +13,8 @@
 <path d="M17.448 11.294a.5.5 0 0 0-.912 0l-2.693 5.991a.52.52 0 0 0-.01.02l-1.793 3.99a.5.5 0 1 0 .912.41L14.617 18h4.756l1.67 3.706a.5.5 0 0 0 .912-.412l-1.799-3.99a.52.52 0 0 0-.009-.02l-2.7-5.99ZM18.923 17h-3.856l1.926-4.282L18.923 17Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedClipboardLetter',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

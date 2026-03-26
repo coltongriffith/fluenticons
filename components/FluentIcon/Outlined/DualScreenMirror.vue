@@ -13,11 +13,8 @@
 <path d="M12.754 4.001v.002h7.498c.966 0 1.75.784 1.75 1.75v12.495a1.75 1.75 0 0 1-1.75 1.75h-8.998v-.002H3.757a1.75 1.75 0 0 1-1.75-1.75V5.751c0-.967.783-1.75 1.75-1.75h8.997Zm7.498 1.502h-7.498v12.995h7.498a.25.25 0 0 0 .25-.25V5.754a.25.25 0 0 0-.25-.25Zm-8.998-.002H3.757a.25.25 0 0 0-.25.25v12.495c0 .138.112.25.25.25h7.497V5.501Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedDualScreenMirror',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -13,11 +13,8 @@
 <path d="M12 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm-2.5-8.75a.75.75 0 0 1 .75-.75h4.25a.75.75 0 0 1 .495 1.313v.001l-.013.011-.053.05a9.548 9.548 0 0 0-.925 1.048c-.557.731-1.188 1.77-1.53 3.024a.75.75 0 1 1-1.448-.394c.408-1.496 1.152-2.707 1.783-3.538L12.82 14h-2.57a.75.75 0 0 1-.75-.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledLottery',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -15,11 +15,8 @@
 <path d="M22 17v.03l-1.012-1.014a1.742 1.742 0 0 0-.71-.432.497.497 0 0 0-.188-.076L20 15.5h-4.051a2.957 2.957 0 0 0-.595-1.34L15.22 14H20c1.054 0 1.918.816 1.994 1.85L22 16v1ZM13 7.5a4.5 4.5 0 1 0-9 0 4.5 4.5 0 0 0 9 0Zm-7.5 0c0-1.654 1.346-3 3-3s3 1.346 3 3-1.346 3-3 3-3-1.346-3-3ZM21 8.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0Zm-5.5 0c0-1.103.897-2 2-2s2 .897 2 2-.897 2-2 2-2-.897-2-2Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedPeopleSwap',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

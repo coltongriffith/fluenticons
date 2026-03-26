@@ -13,11 +13,8 @@
 <path d="M22 14.75v-4.278c-.445.398-.95.731-1.5.984v3.294a1.75 1.75 0 0 1-1.75 1.75h-6.236L7.5 20.25l-.001-3.75H5.25a1.75 1.75 0 0 1-1.75-1.75v-8.5c0-.967.784-1.75 1.75-1.75h6.939a5.963 5.963 0 0 1 .614-1.5H5.25A3.25 3.25 0 0 0 2 6.25v8.5A3.25 3.25 0 0 0 5.25 18H6v2.75a1.25 1.25 0 0 0 1.999 1L13.012 18h5.738A3.25 3.25 0 0 0 22 14.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedCommentMention',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

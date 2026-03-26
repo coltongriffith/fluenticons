@@ -11,11 +11,8 @@
 <path d="M9.277 7.779a.75.75 0 1 0-1.061-1.06l-4.997 5.003a.75.75 0 0 0 0 1.06l4.997 4.998a.75.75 0 0 0 1.061-1.06L5.557 13h7.842c1.595 0 2.81-.242 3.889-.764l.246-.126a6.203 6.203 0 0 0 2.576-2.576c.61-1.14.89-2.418.89-4.135a.75.75 0 0 0-1.5 0c0 1.484-.228 2.52-.713 3.428a4.702 4.702 0 0 1-1.96 1.96c-.838.448-1.786.676-3.094.709l-.334.004H5.562l3.715-3.721Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedArrowReplyDown',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

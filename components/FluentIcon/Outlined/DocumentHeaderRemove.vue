@@ -13,11 +13,8 @@
 <path d="M14.329 21.994a5.5 5.5 0 1 0 6.343-8.988 5.5 5.5 0 0 0-6.344 8.988Zm3.172-5.2 1.771-1.77a.5.5 0 1 1 .708.708l-1.772 1.77 1.769 1.768a.5.5 0 1 1-.707.707l-1.77-1.769-1.766 1.767a.5.5 0 1 1-.707-.707l1.766-1.767-1.769-1.77a.5.5 0 0 1 .707-.707l1.77 1.77ZM7 6.75C7 5.784 7.784 5 8.75 5h6.5c.967 0 1.75.784 1.75 1.75v1.5A1.75 1.75 0 0 1 15.25 10h-6.5A1.75 1.75 0 0 1 7 8.25v-1.5Zm1.75-.25a.25.25 0 0 0-.25.25v1.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25v-1.5a.25.25 0 0 0-.25-.25h-6.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedDocumentHeaderRemove',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

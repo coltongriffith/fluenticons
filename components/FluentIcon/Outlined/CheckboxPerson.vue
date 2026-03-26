@@ -11,11 +11,8 @@
 <path d="M17.25 2A2.75 2.75 0 0 1 20 4.75v7.404a2.997 2.997 0 0 0-1.5-.129V4.75c0-.69-.56-1.25-1.25-1.25H4.75c-.69 0-1.25.56-1.25 1.25v12.5c0 .69.56 1.25 1.25 1.25h9.45c-.128.302-.2.634-.2.984 0 .175.01.348.027.516H4.75A2.75 2.75 0 0 1 2 17.25V4.75A2.75 2.75 0 0 1 4.75 2h12.5ZM19 12.984a2 2 0 1 1 .002 3.998A2 2 0 0 1 19 12.984Zm2.5 5a1.5 1.5 0 0 1 1.5 1.5c0 1.116-.459 2.01-1.212 2.614-.741.595-1.735.886-2.788.886-1.053 0-2.047-.29-2.788-.886A3.187 3.187 0 0 1 15.034 20a3.832 3.832 0 0 1-.034-.516 1.497 1.497 0 0 1 1.5-1.5h5ZM9 13.439l6.47-6.47a.75.75 0 0 1 1.133.977l-.073.084-7 7a.75.75 0 0 1-.976.073l-.084-.073-3-3a.75.75 0 0 1 .976-1.133l.084.073L9 13.44Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedCheckboxPerson',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

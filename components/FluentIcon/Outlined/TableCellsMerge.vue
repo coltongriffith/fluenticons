@@ -11,11 +11,8 @@
 <path d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h11.5A3.25 3.25 0 0 0 21 17.75V6.25A3.25 3.25 0 0 0 17.75 3H6.25ZM4.5 6.25c0-.966.784-1.75 1.75-1.75H11v3H4.5V6.25Zm8 10.25h7v1.25a1.75 1.75 0 0 1-1.75 1.75H12.5v-3Zm7-9h-7v-3h5.25c.966 0 1.75.784 1.75 1.75V7.5Zm-8.5 9v3H6.25a1.75 1.75 0 0 1-1.75-1.75V16.5H11ZM4.5 9h15v6h-15V9Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTableCellsMerge',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

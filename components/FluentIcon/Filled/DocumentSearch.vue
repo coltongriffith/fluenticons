@@ -13,11 +13,8 @@
 <path d="M14.97 22.78a.75.75 0 1 0 1.06-1.06l-4.112-4.113A4.978 4.978 0 0 0 13 14.5a4.984 4.984 0 0 0-1.43-3.5A4.985 4.985 0 0 0 8 9.5a4.978 4.978 0 0 0-3 1 5 5 0 0 0 5.82 8.13l4.15 4.15ZM8 11a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7ZM14.5 8V2.5l6 6H15a.5.5 0 0 1-.5-.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDocumentSearch',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

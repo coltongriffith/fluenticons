@@ -13,11 +13,8 @@
 <path d="M8.22 8.215a.75.75 0 0 1 1.06 0l2.72 2.72 2.725-2.716a.75.75 0 0 1 1.06 1.062l-2.724 2.715 2.724 2.724a.75.75 0 1 1-1.06 1.06L12 13.057 9.28 15.78a.75.75 0 0 1-1.06-1.06l2.72-2.724-2.72-2.72a.75.75 0 0 1 0-1.06Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedShareScreenStop',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

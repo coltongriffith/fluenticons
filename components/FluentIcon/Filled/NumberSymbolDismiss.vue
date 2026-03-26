@@ -13,11 +13,8 @@
 <path d="M23 17.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-7.146-2.353a.5.5 0 0 0-.708.707l1.647 1.646-1.647 1.647a.5.5 0 0 0 .708.707l1.646-1.647 1.646 1.647a.5.5 0 0 0 .708-.707L18.207 17.5l1.647-1.646a.5.5 0 0 0-.708-.707L17.5 16.793l-1.646-1.646Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledNumberSymbolDismiss',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -13,11 +13,8 @@
 <path d="M8 6V3.75C8 2.784 8.784 2 9.75 2h4.5c.966 0 1.75.784 1.75 1.75V6h5.25a.75.75 0 0 1 .75.75v11.5A2.75 2.75 0 0 1 19.25 21H4.75A2.75 2.75 0 0 1 2 18.25V6.75A.75.75 0 0 1 2.75 6H8Zm1.5-2.25V6h5V3.75a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25Zm-6 14.5c0 .69.56 1.25 1.25 1.25h14.5c.69 0 1.25-.56 1.25-1.25V7.5h-17v10.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedStoreMicrosoft',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

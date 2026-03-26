@@ -13,11 +13,8 @@
 <path d="M20.5 8.25v9.068l1.364 1.365c.089-.296.136-.609.136-.933v-9.5A3.25 3.25 0 0 0 18.75 5h-2.07l-.815-1.387a2.25 2.25 0 0 0-1.94-1.11h-3.803a2.25 2.25 0 0 0-1.917 1.073l-.55.896 1.09 1.091.738-1.202.065-.09a.75.75 0 0 1 .574-.268h3.803a.75.75 0 0 1 .646.37l1.032 1.757c.135.23.381.37.647.37h2.5c.966 0 1.75.784 1.75 1.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedCameraOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

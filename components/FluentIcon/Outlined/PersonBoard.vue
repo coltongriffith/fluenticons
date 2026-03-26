@@ -15,11 +15,8 @@
 <path d="M8.75 20.5A3.248 3.248 0 0 1 6.01 19h9.24A3.75 3.75 0 0 0 19 15.25V6.01a3.247 3.247 0 0 1 1.5 2.74v6.5c0 2.9-2.35 5.25-5.25 5.25h-6.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedPersonBoard',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>
