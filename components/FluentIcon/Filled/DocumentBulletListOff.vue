@@ -11,11 +11,8 @@
 <path d="M4 5.06V20a2 2 0 0 0 2 2h12a2 2 0 0 0 1.804-1.135l.915.916a.75.75 0 0 0 1.061-1.061L3.28 2.22a.75.75 0 1 0-1.06 1.06L4 5.06Zm12.473 12.474.493.493a.75.75 0 0 1-.716.973h-5.5a.75.75 0 0 1 0-1.5h5.5c.078 0 .152.012.223.034ZM14.939 16H10.75a.75.75 0 0 1 0-1.5h2.69l1.5 1.5Zm-3-3H10.75a.75.75 0 0 1-.263-1.453L11.939 13ZM7 12.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Zm0 3a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Zm0 3a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0ZM16.25 13h-.068L20 16.818V10h-6c-.49 0-.94-.177-1.288-.47l1.97 1.97h1.568a.75.75 0 0 1 0 1.5ZM12 8c0 .49.177.94.47 1.288L5.306 2.124C5.522 2.044 5.756 2 6 2h6v6Zm1.5 0V2.5l6 6H14a.5.5 0 0 1-.5-.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDocumentBulletListOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

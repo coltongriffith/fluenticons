@@ -13,11 +13,8 @@
 <path d="M8.493 15.148A.75.75 0 0 0 7 15.25v1l.007.102A.75.75 0 0 0 8.5 16.25v-1l-.007-.102ZM8.5 11.321a.75.75 0 0 0-1.493.102L7 12.57l.007.102A.75.75 0 0 0 8.5 12.57l.007-1.148-.007-.102Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedCalendarWeekNumbers',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

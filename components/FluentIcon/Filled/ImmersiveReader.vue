@@ -15,11 +15,8 @@
 <path d="M19.2 14.65c.189.141.435.388.674.746.391.587.626 1.292.626 2.104s-.235 1.517-.626 2.104c-.239.358-.485.605-.674.746a.75.75 0 0 1-.984-1.127l.084-.073a1.68 1.68 0 0 0 .326-.378C18.86 18.42 19 18 19 17.5s-.14-.92-.374-1.271a1.683 1.683 0 0 0-.326-.379.75.75 0 0 1 .9-1.2ZM16.514 14.048a.75.75 0 0 1 .486.702v5.5a.75.75 0 0 1-1.314.494L14.16 19h-1.41a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h1.41l1.526-1.744a.75.75 0 0 1 .828-.208Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledImmersiveReader',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

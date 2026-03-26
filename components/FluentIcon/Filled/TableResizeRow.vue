@@ -13,11 +13,8 @@
 <path d="M12.75 15.58V8.42l1.002.89a.75.75 0 0 0 .996-1.12l-2.25-2a.75.75 0 0 0-.996 0l-2.25 2a.75.75 0 1 0 .996 1.12l1.002-.89v7.16l-1.002-.89a.75.75 0 1 0-.996 1.12l2.25 2 .012.011a.747.747 0 0 0 .987-.013l2.247-1.997a.75.75 0 0 0-.996-1.121l-1.002.89Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTableResizeRow',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

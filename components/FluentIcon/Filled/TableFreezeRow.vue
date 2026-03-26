@@ -13,11 +13,8 @@
 <path d="M14.5 14.5v-5h-5v5h5ZM9.5 16h5v5h-5v-5ZM8 16H3v1.75A3.25 3.25 0 0 0 6.25 21H8v-5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTableFreezeRow',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

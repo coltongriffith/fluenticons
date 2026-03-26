@@ -13,11 +13,8 @@
 <path d="m18.1 11.67-5.896 5.902a2.686 2.686 0 0 0-.706 1.247l-.457 1.831a1.086 1.086 0 0 0 1.317 1.318l1.829-.457a2.681 2.681 0 0 0 1.246-.707l5.896-5.902a2.287 2.287 0 0 0 0-3.232 2.281 2.281 0 0 0-3.229 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedStarEdit',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

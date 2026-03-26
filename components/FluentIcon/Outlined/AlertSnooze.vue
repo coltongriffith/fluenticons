@@ -13,11 +13,8 @@
 <path d="M15.25 7h-2.5l-.101.007A.75.75 0 0 0 12.75 8.5h1.043l-1.653 2.314-.055.09A.75.75 0 0 0 12.75 12h2.5l.102-.007a.75.75 0 0 0-.102-1.493h-1.042l1.653-2.314.055-.09A.75.75 0 0 0 15.25 7ZM21.25 2h-3.5l-.101.007A.75.75 0 0 0 17.75 3.5h2.134l-2.766 4.347-.05.09A.75.75 0 0 0 17.75 9h3.5l.102-.007A.75.75 0 0 0 21.25 7.5h-2.133l2.766-4.347.05-.09A.75.75 0 0 0 21.25 2Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedAlertSnooze',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

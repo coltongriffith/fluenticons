@@ -1,47 +1,39 @@
-<script>
-export default {
-  name: `TransitionExpand`,
-  functional: true,
-  render(createElement, context) {
-    const data = {
-      props: {
-        name: `expand`,
-      },
-      on: {
-        afterEnter(element) {
-          // eslint-disable-next-line no-param-reassign
-          element.style.height = `auto`;
-        },
-        enter(element) {
-          const { width } = getComputedStyle(element);
-          element.style.width = width;
-          element.style.position = `absolute`;
-          element.style.visibility = `hidden`;
-          element.style.height = `auto`;
-          const { height } = getComputedStyle(element);
-          element.style.width = null;
-          element.style.position = null;
-          element.style.visibility = null;
-          element.style.height = 0;
-          getComputedStyle(element).height;
-          requestAnimationFrame(() => {
-            element.style.height = height;
-          });
-        },
-        leave(element) {
-          const { height } = getComputedStyle(element);
-          element.style.height = height;
-          getComputedStyle(element).height;
-          requestAnimationFrame(() => {
-            element.style.height = 0;
-          });
-        },
-      },
-    };
+<template>
+  <Transition name="expand" @enter="onEnter" @after-enter="onAfterEnter" @leave="onLeave">
+    <slot />
+  </Transition>
+</template>
 
-    return createElement(`transition`, data, context.children);
-  },
-};
+<script setup>
+function onEnter(el) {
+  const { width } = getComputedStyle(el)
+  el.style.width = width
+  el.style.position = 'absolute'
+  el.style.visibility = 'hidden'
+  el.style.height = 'auto'
+  const { height } = getComputedStyle(el)
+  el.style.width = null
+  el.style.position = null
+  el.style.visibility = null
+  el.style.height = '0'
+  getComputedStyle(el).height
+  requestAnimationFrame(() => {
+    el.style.height = height
+  })
+}
+
+function onAfterEnter(el) {
+  el.style.height = 'auto'
+}
+
+function onLeave(el) {
+  const { height } = getComputedStyle(el)
+  el.style.height = height
+  getComputedStyle(el).height
+  requestAnimationFrame(() => {
+    el.style.height = '0'
+  })
+}
 </script>
 
 <style scoped>
@@ -59,8 +51,7 @@ export default {
   transition: height 0.25s ease-in-out;
   overflow: hidden;
 }
-
-.expand-enter,
+.expand-enter-from,
 .expand-leave-to {
   height: 0;
 }

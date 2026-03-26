@@ -13,11 +13,8 @@
 <path d="m6.21 11.743-.008.021v.002a.75.75 0 0 1-.965.436c-.598-.224-.438-.969-.436-.974l.006-.015a2.496 2.496 0 0 1 .087-.2c.06-.129.148-.306.27-.516a7.573 7.573 0 0 1 1.18-1.527C7.466 7.85 9.275 6.75 12 6.75c2.726 0 4.535 1.1 5.655 2.22a7.573 7.573 0 0 1 1.18 1.527 6.294 6.294 0 0 1 .358.716l.006.015.002.005v.002l.001.002a.75.75 0 0 1-.439.965.758.758 0 0 1-.965-.438l-.008-.02s-.023-.055-.044-.1a4.776 4.776 0 0 0-.206-.391 6.073 6.073 0 0 0-.945-1.223c-.88-.88-2.32-1.78-4.595-1.78-2.274 0-3.715.9-4.595 1.78a6.072 6.072 0 0 0-.945 1.223 4.784 4.784 0 0 0-.25.49Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledEyeTrackingOn',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

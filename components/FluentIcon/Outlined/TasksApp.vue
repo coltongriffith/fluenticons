@@ -13,11 +13,8 @@
 <path d="M16.288 21.999a.692.692 0 0 1-.076 0 .75.75 0 0 1-.493-.219l-2.5-2.502a.75.75 0 0 1 1.062-1.06l1.969 1.971 4.47-4.47a.75.75 0 1 1 1.06 1.061l-5 5a.75.75 0 0 1-.492.219ZM13.841 16.5a2.316 2.316 0 0 0-.182 0h-2.413a.75.75 0 0 1 0-1.5h5.004a.75.75 0 1 1 0 1.5H13.84ZM9 7.752a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM10.496 7.75a.75.75 0 0 1 .75-.75h5.004a.75.75 0 1 1 0 1.5h-5.004a.75.75 0 0 1-.75-.75ZM11.246 11a.75.75 0 0 0 0 1.5h5.004a.75.75 0 1 0 0-1.5h-5.004ZM8 12.75a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM9 15.748a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTasksApp',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

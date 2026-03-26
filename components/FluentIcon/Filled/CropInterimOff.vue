@@ -13,11 +13,8 @@
 <path d="m20.253 17.071 1.154 1.155a6.502 6.502 0 0 0-4.736-9.121l.247 1.598a5.002 5.002 0 0 1 3.335 6.368Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledCropInterimOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -11,11 +11,8 @@
 <path d="M21 5.75a.75.75 0 0 0-.75-.75h-9.5a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 .75-.75ZM8 5.75A.75.75 0 0 0 7.25 5h-3.5a.75.75 0 0 0 0 1.5h3.5A.75.75 0 0 0 8 5.75ZM21 9.75a.75.75 0 0 0-.75-.75h-9.5a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 .75-.75ZM8 9.75A.75.75 0 0 0 7.25 9h-3.5a.75.75 0 0 0 0 1.5h3.5A.75.75 0 0 0 8 9.75ZM21 13.75a.75.75 0 0 0-.75-.75h-9.5a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 .75-.75ZM8 13.75a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 .75-.75ZM21 17.75a.75.75 0 0 0-.75-.75h-9.5a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 .75-.75ZM8 17.75a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 .75-.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTextColumnTwoLeft',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

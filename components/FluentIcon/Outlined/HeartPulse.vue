@@ -13,11 +13,8 @@
 <path d="M9.42 8.414a.75.75 0 0 0-1.348.015l-1.69 3.57H2.75a.75.75 0 0 0 0 1.5h4.107a.75.75 0 0 0 .678-.429l1.234-2.606 2.56 5.12a.75.75 0 0 0 1.279.105l2.698-3.736 1.13 1.29A.75.75 0 0 0 17 13.5h4.25a.75.75 0 0 0 0-1.5h-3.91l-1.526-1.743a.75.75 0 0 0-1.172.054l-2.525 3.496-2.696-5.392Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedHeartPulse',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

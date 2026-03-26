@@ -13,11 +13,8 @@
 <path d="M3.476 9.103a4 4 0 1 1 5.627-5.627A8.989 8.989 0 0 1 12 3a8.99 8.99 0 0 1 2.897.476 4 4 0 1 1 5.627 5.627c.308.91.476 1.884.476 2.897 0 2.215-.8 4.244-2.128 5.812l1.908 1.908a.75.75 0 1 1-1.06 1.06l-1.908-1.908A8.964 8.964 0 0 1 12 21c-2.215 0-4.244-.8-5.812-2.128L4.28 20.78a.75.75 0 0 1-1.06-1.06l1.908-1.908A8.964 8.964 0 0 1 3 12c0-1.013.167-1.988.476-2.897ZM3.5 6c0 .631.234 1.208.62 1.648A9.042 9.042 0 0 1 7.648 4.12 2.5 2.5 0 0 0 3.5 6Zm16.38 1.648a2.5 2.5 0 0 0-3.528-3.528 9.042 9.042 0 0 1 3.528 3.528ZM4.5 12a7.5 7.5 0 1 0 15 0 7.5 7.5 0 0 0-15 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedClockAlarm',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

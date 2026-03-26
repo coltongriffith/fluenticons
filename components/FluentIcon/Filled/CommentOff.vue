@@ -11,11 +11,8 @@
 <path d="M3.28 2.22a.75.75 0 1 0-1.06 1.06l.702.702A3.24 3.24 0 0 0 2 6.25v8.5A3.25 3.25 0 0 0 5.25 18H6v3.002a1 1 0 0 0 1.578.815L12.965 18h3.974l3.78 3.78a.75.75 0 0 0 1.061-1.06L3.28 2.22ZM22 14.75a3.246 3.246 0 0 1-1.398 2.67L6.182 3H18.75A3.25 3.25 0 0 1 22 6.25v8.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledCommentOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

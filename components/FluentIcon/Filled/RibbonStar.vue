@@ -20,11 +20,8 @@
 <path d="M19 9A7 7 0 1 0 5 9a7 7 0 0 0 14 0Zm-6.771-3.358.912 1.853 2.044.295c.21.03.293.288.142.435l-1.479 1.44.35 2.036a.255.255 0 0 1-.37.269L12 11.008l-1.827.962a.255.255 0 0 1-.37-.269l.35-2.035-1.48-1.44a.255.255 0 0 1 .142-.436l2.044-.295.912-1.853a.255.255 0 0 1 .458 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledRibbonStar',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

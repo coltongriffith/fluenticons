@@ -1,6 +1,5 @@
 const iconsFolder = "./static/icons/";
 const fs = require("fs");
-const axios = require("axios");
 let filledIcons = [];
 let outlinedIcons = [];
 
@@ -27,11 +26,11 @@ fs.readdirSync(iconsFolder).forEach(file => {
     ${readFile(`./static/icons/${file}`, "utf8")}
   </template>
 
-  <script>
-    export default {
-      name: 'FluentIcon${capitalizeString(type)}${IconName}',
-  };
-  </script>`;
+  <script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  <\/script>`;
   if (type === "filled") {
     createFile(
       `../components/FluentIcon/Filled/${ComponentName}`,
@@ -58,20 +57,10 @@ createFile(
   JSON.stringify(outlinedIcons, null, 2)
 );
 
-// function to capitalize a string
 function capitalizeString(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// function to get synonyms of a given word from datamuse.com
-async function getSynonyms(word) {
-  const { data } = await axios.get(
-    `https://api.datamuse.com/words?rel_syn=${word}`
-  );
-  return data.map(item => item.word);
-}
-
-// function to create and save a file on given path
 function createFile(filePath, fileName, content) {
   fs.writeFile(filePath, content, function(err) {
     if (err) {
@@ -81,7 +70,6 @@ function createFile(filePath, fileName, content) {
   });
 }
 
-// function to read a file and return its contents as a string
 function readFile(file) {
   return fs.readFileSync(file, "utf8");
 }

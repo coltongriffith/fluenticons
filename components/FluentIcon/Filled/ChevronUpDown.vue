@@ -11,11 +11,8 @@
 <path d="M18.79 8.387a1 1 0 0 1-1.497 1.32L12 4.414 6.707 9.707l-.094.083a1 1 0 0 1-1.32-1.497l6-6 .094-.083a1 1 0 0 1 1.32.083l6 6 .083.094ZM5.21 15.613a1 1 0 0 1 1.497-1.32L12 19.586l5.293-5.293.094-.083a1 1 0 0 1 1.32 1.497l-6 6-.094.083a1 1 0 0 1-1.32-.083l-6-6-.083-.094Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledChevronUpDown',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

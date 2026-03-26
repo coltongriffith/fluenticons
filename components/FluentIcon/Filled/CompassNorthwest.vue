@@ -11,11 +11,8 @@
 <path d="M3.25 11h-1.2A10.003 10.003 0 0 1 11 2.05v1.2a.75.75 0 0 0 1.5 0V2.013c4.957.244 8.965 4.097 9.451 8.987h-1.2a.75.75 0 0 0 0 1.5h1.237a10 10 0 0 1-9.488 9.488V20.75a.75.75 0 0 0-1.5 0v1.201c-4.89-.486-8.743-4.494-8.987-9.45H3.25a.75.75 0 0 0 0-1.5Zm11.404.526a4 4 0 0 0-2.196-2.14L8.43 7.781a.5.5 0 0 0-.65.65l1.606 4.028a4 4 0 0 0 2.14 2.195l4.325 1.854a.5.5 0 0 0 .657-.656l-1.854-4.326Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledCompassNorthwest',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

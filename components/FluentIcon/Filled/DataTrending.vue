@@ -11,11 +11,8 @@
 <path d="M5.25 4.25a1 1 0 0 0-2 0v14a2.5 2.5 0 0 0 2.5 2.5h14a1 1 0 1 0 0-2h-14a.5.5 0 0 1-.5-.5v-14ZM14 7a1 1 0 0 1 1-1h4.502a1 1 0 0 1 1 1l-.002 4.5a1 1 0 1 1-2 0V9.414l-4.543 4.543a1 1 0 0 1-1.414 0l-1.793-1.793-2.543 2.543a1 1 0 0 1-1.414-1.414l3.25-3.25a1 1 0 0 1 1.414 0l1.793 1.793L17.086 8H15a1 1 0 0 1-1-1Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDataTrending',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

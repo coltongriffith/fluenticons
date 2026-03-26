@@ -15,11 +15,8 @@
 <path d="M23 17.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-4.945-3.08a.577.577 0 0 0-1.11 0l-.557 1.788h-1.803c-.566 0-.8.754-.343 1.1l1.458 1.105-.557 1.787c-.175.561.441 1.028.899.681l1.458-1.104 1.458 1.104c.458.347 1.074-.12.899-.68l-.557-1.788 1.458-1.104c.458-.347.223-1.101-.343-1.101h-1.803l-.557-1.787Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledVideoPersonStar',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

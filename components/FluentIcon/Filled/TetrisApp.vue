@@ -11,11 +11,8 @@
 <path d="M8 3a1 1 0 0 1 1-1h4v5H8V3ZM3 8a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h4V8H3Zm10 0H8v5h4a1 1 0 0 0 1-1V8Zm5-6h-4v5h4a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1ZM4 17a1 1 0 0 1 1-1h4v5H5a1 1 0 0 1-1-1v-3Zm11-1h-5v5h5v-5Zm1 0h5v4a1 1 0 0 1-1 1h-4v-5Zm1-6a1 1 0 0 0-1 1v4h5v-4a1 1 0 0 0-1-1h-3Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTetrisApp',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -13,11 +13,8 @@
 <path d="M3 6.25A3.25 3.25 0 0 1 6.25 3h11.5A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25ZM6.25 4.5A1.75 1.75 0 0 0 4.5 6.25V7.5H11v-3H6.25Zm13.25 12h-7v3h5.25a1.75 1.75 0 0 0 1.75-1.75V16.5Zm0-10.25a1.75 1.75 0 0 0-1.75-1.75H12.5v3h7V6.25ZM4.5 16.5v1.25c0 .966.784 1.75 1.75 1.75H11v-3H4.5Zm0-1.5h15V9h-15v6Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTableCellsSplit',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

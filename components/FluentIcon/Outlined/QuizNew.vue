@@ -13,11 +13,8 @@
 <path d="M6.75 13.5h5.626c-.356.455-.652.96-.878 1.5H6.75a.75.75 0 0 1 0-1.5ZM10.25 18.5h-3.5a.75.75 0 0 1 0-1.5h3.5a.75.75 0 0 1 0 1.5ZM10 4.997a.75.75 0 0 1 .694.467l2.248 5.502a.75.75 0 0 1-1.389.568l-.423-1.036H8.868l-.424 1.036a.75.75 0 0 1-1.388-.568l2.25-5.502A.75.75 0 0 1 10 4.997Zm-.519 4h1.037L10 7.73 9.48 8.998ZM15.75 4.997a.75.75 0 0 1 .75.75v1.25h1.25a.75.75 0 0 1 0 1.5H16.5v1.25a.75.75 0 0 1-1.5 0v-1.25h-1.25a.75.75 0 0 1 0-1.5H15v-1.25a.75.75 0 0 1 .75-.75ZM23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-5 .5.001 2.503a.5.5 0 1 1-1 0V18h-2.505a.5.5 0 1 1 0-1H17v-2.5a.5.5 0 1 1 1 0V17h2.503a.5.5 0 1 1 0 1h-2.502Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedQuizNew',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

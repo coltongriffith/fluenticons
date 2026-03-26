@@ -13,11 +13,8 @@
 <path d="M9.19 14.752a.75.75 0 0 1 1.058-.063l1.002.89V12.75a.75.75 0 0 1 1.5 0v2.83l1.002-.89a.75.75 0 0 1 .996 1.12l-2.25 2a.75.75 0 0 1-.996 0l-2.25-2a.75.75 0 0 1-.063-1.058Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTableMoveBelow',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

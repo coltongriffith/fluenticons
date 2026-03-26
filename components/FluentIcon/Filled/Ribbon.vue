@@ -11,11 +11,8 @@
 <path d="M17.002 15.244 17 21.245a.75.75 0 0 1-1.182.613l-3.818-2.687-3.817 2.687a.75.75 0 0 1-1.181-.613l-.002-6A7.966 7.966 0 0 0 12 17a7.966 7.966 0 0 0 5.002-1.756ZM12 2a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledRibbon',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -13,11 +13,8 @@
 <path d="M17.5 23a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Zm-.404-9h1.433a.5.5 0 0 1 .468.676L18.5 16h.634a.47.47 0 0 1 .394.726l-2.625 4.038a.518.518 0 0 1-.926-.446L16.75 18h-.778a.5.5 0 0 1-.469-.676l1.125-3a.5.5 0 0 1 .468-.324Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedCalendarAssistant',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

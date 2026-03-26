@@ -11,11 +11,8 @@
 <path d="M7.25 16a1.25 1.25 0 1 1 0 2.499 1.25 1.25 0 0 1 0-2.499Zm3.5.5h10.5a.75.75 0 0 1 .102 1.493L21.25 18h-10.5a.75.75 0 0 1-.102-1.493l.102-.007ZM3.25 11a1.25 1.25 0 1 1 0 2.499 1.25 1.25 0 0 1 0-2.499Zm3.5.5h14.5a.75.75 0 0 1 .102 1.493L21.25 13H6.75a.75.75 0 0 1-.102-1.493l.102-.007ZM3.25 6a1.25 1.25 0 1 1 0 2.499A1.25 1.25 0 0 1 3.25 6Zm3.5.5h14.5a.75.75 0 0 1 .102 1.493L21.25 8H6.75a.75.75 0 0 1-.102-1.493L6.75 6.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTextBulletListTree',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

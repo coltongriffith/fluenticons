@@ -11,11 +11,8 @@
 <path d="M18.25 3A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75A2.75 2.75 0 0 1 5.75 3h12.5ZM7 7.484l-.136.007c-.488.05-.864.364-.864.743 0 .415.448.75 1 .75h10l.136-.006c.488-.05.864-.364.864-.744 0-.414-.448-.75-1-.75H7Zm10 3H7l-.136.007c-.488.05-.864.364-.864.743 0 .415.448.75 1 .75h10l.136-.007c.488-.05.864-.363.864-.743 0-.414-.448-.75-1-.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTextboxAlignTop',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

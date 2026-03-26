@@ -13,11 +13,8 @@
 <path d="M20.5 12c0 1.53-.404 2.966-1.112 4.206l1.094 1.094A9.953 9.953 0 0 0 22 12c0-5.523-4.477-10-10-10a9.953 9.953 0 0 0-5.3 1.518l1.094 1.094A8.5 8.5 0 0 1 20.5 12Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedChatOff',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

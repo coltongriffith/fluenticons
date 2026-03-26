@@ -12,11 +12,8 @@
 <path d="M14.498 22h4.252a1.75 1.75 0 0 0 1.75-1.75v-7a1.75 1.75 0 0 0-1.75-1.75h-2.5a1.75 1.75 0 0 0-1.75 1.75v7.5h-.002V22ZM9.5 20.75h-.002V22H5.25a1.75 1.75 0 0 1-1.75-1.75v-7.96c0-.59.297-1.14.79-1.463l2.5-1.641c1.163-.765 2.71.07 2.71 1.462V20.75Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledCity',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -11,11 +11,8 @@
 <path d="M6.75 6a1 1 0 0 1 1 1v11.585l1.293-1.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094-3 3a1 1 0 0 1-1.32.083l-.094-.083-3-3a1 1 0 0 1 1.32-1.497l.094.083 1.293 1.292V7a1 1 0 0 1 1-1Zm10.498 0a1 1 0 0 1 1 1v11.584l1.293-1.291a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094-3 3a1 1 0 0 1-1.32.083l-.094-.083-3-3a1 1 0 0 1 1.32-1.497l.094.083 1.293 1.293V7a1 1 0 0 1 1-1ZM6.75 2a4.75 4.75 0 0 1 2 9.06l.001-1.749a3.25 3.25 0 1 0-4.001 0v1.749a4.75 4.75 0 0 1 2-9.06Zm10.498 0a4.75 4.75 0 0 1 2 9.06V9.31a3.25 3.25 0 1 0-4.001 0l.001 1.749a4.75 4.75 0 0 1 2-9.06Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledDoubleSwipeDown',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

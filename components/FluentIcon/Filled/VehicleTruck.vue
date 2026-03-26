@@ -13,11 +13,8 @@
 <path d="M8.453 6a2.25 2.25 0 0 0-2.196 1.762l-.74 3.325a.75.75 0 0 0-.017.163v9c0 .966.784 1.75 1.75 1.75h1.5a1.75 1.75 0 0 0 1.75-1.75v-.75h3v.75c0 .966.784 1.75 1.75 1.75h1.5a1.75 1.75 0 0 0 1.75-1.75v-9a.748.748 0 0 0-.018-.163l-.739-3.325A2.25 2.25 0 0 0 15.547 6H8.453Zm-.732 2.087a.75.75 0 0 1 .732-.587h7.094a.75.75 0 0 1 .732.587l.536 2.413h-9.63l.536-2.413ZM7 20.25v-.75h2v.75a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25Zm10-.75v.75a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.75h2Zm-6.25-3h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1 0-1.5Zm-.745-2.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM15 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledVehicleTruck',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

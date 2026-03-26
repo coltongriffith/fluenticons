@@ -11,11 +11,8 @@
 <path d="M9.5 15a.75.75 0 0 0 0-1.5H9c-2.485 0-4.5-1.567-4.5-3.5 0-1.874 1.894-3.405 4.275-3.496L9 6.5h6.939l-1.72 1.72a.75.75 0 0 0 .977 1.133l.084-.073 3-3a.75.75 0 0 0 0-1.06l-3-3-.084-.073a.75.75 0 0 0-.976 1.133L15.938 5H9c-3.314 0-6 2.239-6 5s2.686 5 6 5h.5ZM20.5 10.367a.5.5 0 0 1 .5.5V20a1 1 0 0 1-1 1H3.862a.5.5 0 0 1-.251-.933l16.638-9.633a.5.5 0 0 1 .251-.067Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledRotateRight',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

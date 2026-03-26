@@ -13,11 +13,8 @@
 <path d="M7.628 19.5A2.25 2.25 0 0 0 9.75 21h6A4.25 4.25 0 0 0 20 16.75v-4.5a2.25 2.25 0 0 0-1.5-2.122v6.622a2.75 2.75 0 0 1-2.75 2.75H7.628Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledLockMultiple',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

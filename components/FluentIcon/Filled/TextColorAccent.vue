@@ -11,11 +11,8 @@
 <path d="M3.501 17a2 2 0 0 1 2-2H17.5a2 2 0 0 1 2 2v2.5a2 2 0 0 1-2 2H5.501a2 2 0 0 1-2-2V17Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTextColorAccent',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

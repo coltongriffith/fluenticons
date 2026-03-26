@@ -11,11 +11,8 @@
 <path d="M19 12.83V13a2.006 2.006 0 0 1-2 2H7a2.006 2.006 0 0 1-2-2v-.17a2.006 2.006 0 0 1 .59-1.42l1.82-1.82A2.006 2.006 0 0 1 8.83 9h6.34a2.006 2.006 0 0 1 1.42.59l1.82 1.82a2.008 2.008 0 0 1 .59 1.42Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledPortMicroUsb',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

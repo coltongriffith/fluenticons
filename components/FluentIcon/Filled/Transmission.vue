@@ -11,11 +11,8 @@
 <path d="M12 2a2.75 2.75 0 0 0-.75 5.396v3.854a.75.75 0 0 0 1.5 0V7.396A2.751 2.751 0 0 0 12 2ZM5.5 4A2.5 2.5 0 0 0 3 6.5v12a2.5 2.5 0 0 0 5 0V15h1.5v3.5a2.5 2.5 0 0 0 5 0V15H19a2 2 0 0 0 2-2V6.5a2.5 2.5 0 0 0-5 0V10h-2.25v1.5h3.75v-5a1 1 0 1 1 2 0V13a.5.5 0 0 1-.5.5h-6v5a1 1 0 1 1-2 0v-5H6.5v5a1 1 0 1 1-2 0v-12a1 1 0 0 1 2 0v5h3.75V10H8V6.5A2.5 2.5 0 0 0 5.5 4Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledTransmission',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

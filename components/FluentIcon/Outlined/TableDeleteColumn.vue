@@ -13,11 +13,8 @@
 <path d="M11.25 8.727c.026.023.051.047.076.072l.674.674.674-.674c.025-.025.05-.049.076-.072V2.75a.75.75 0 0 0-1.5 0v5.977ZM11.25 15.523v5.727a.75.75 0 0 0 1.5 0v-5.727a1.826 1.826 0 0 1-.076-.072L12 14.777l-.674.674-.076.072Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedTableDeleteColumn',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

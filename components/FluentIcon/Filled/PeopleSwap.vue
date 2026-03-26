@@ -15,11 +15,8 @@
 <path d="M20.988 16.016 22 17.03V15.5l-.007-.145A1.5 1.5 0 0 0 20.5 14h-5.012l.113.162c.25.387.399.844.399 1.338v2l-.007.28a5.52 5.52 0 0 1-.015.223h2.19a1.75 1.75 0 0 1 2.82-1.987ZM8.5 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM17.5 5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledPeopleSwap',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

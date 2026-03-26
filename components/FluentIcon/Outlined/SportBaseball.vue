@@ -13,11 +13,8 @@
 <path d="M12 22a9.969 9.969 0 0 0 7.094-2.952A9.955 9.955 0 0 0 22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10ZM5.074 7.071a7.916 7.916 0 0 0 1.939.966.75.75 0 1 0 .474-1.423 6.364 6.364 0 0 1-1.43-.691A8.472 8.472 0 0 1 12 3.5c2.313 0 4.41.924 5.943 2.423-.412.264-.89.51-1.43.69a.75.75 0 1 0 .474 1.424 7.916 7.916 0 0 0 1.939-.966A8.462 8.462 0 0 1 20.5 12a8.462 8.462 0 0 1-1.597 4.961 7.907 7.907 0 0 0-1.916-.95.75.75 0 1 0-.474 1.423c.527.175.996.414 1.4.672A8.472 8.472 0 0 1 12 20.5a8.472 8.472 0 0 1-5.913-2.394 6.35 6.35 0 0 1 1.4-.672.75.75 0 1 0-.474-1.423 7.91 7.91 0 0 0-1.916.95A8.461 8.461 0 0 1 3.5 12c0-1.838.583-3.539 1.574-4.929Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedSportBaseball',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

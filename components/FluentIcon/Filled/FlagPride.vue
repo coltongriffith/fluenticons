@@ -25,11 +25,8 @@
 <path d="M3.75 3a.75.75 0 0 0-.75.75v17.5a.75.75 0 0 0 1.5 0V16.5h15.75a.75.75 0 0 0 .75-.75v-12a.75.75 0 0 0-.75-.75H3.75Zm.75 1.5h15V15h-15V4.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledFlagPride',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

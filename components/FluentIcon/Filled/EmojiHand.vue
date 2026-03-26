@@ -13,11 +13,8 @@
 <path d="M15 22a7.003 7.003 0 0 1-6.734-5.083 3.75 3.75 0 0 0 2.25-1.464l1.35-1.86 1.53-1.746 1.781-1.113c.512-.32.823-.88.823-1.484 0-.531-.233-.904-.32-1.034a2.076 2.076 0 0 0-.15-.196A7 7 0 0 1 15 22Zm3-8a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-5.863 2.712a.75.75 0 0 0-.02 1.06A3.99 3.99 0 0 0 15 19a3.99 3.99 0 0 0 2.883-1.227.75.75 0 1 0-1.081-1.04A2.49 2.49 0 0 1 15 17.5a2.49 2.49 0 0 1-1.802-.767.75.75 0 0 0-1.06-.02ZM14 14a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledEmojiHand',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

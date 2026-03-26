@@ -15,11 +15,8 @@
 <path d="M16 14.5c0-1.254 1-2.5 2.5-2.5s2.5 1.254 2.5 2.5V17c0 1.246-1 2.5-2.5 2.5S16 18.252 16 17v-2.5Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledSlideMicrophone',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

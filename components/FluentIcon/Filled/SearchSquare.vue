@@ -11,11 +11,8 @@
 <path d="M17.75 3A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25A3.25 3.25 0 0 1 6.25 3h11.5ZM11 7a4 4 0 1 0 2.031 7.447l2.262 2.26.094.083a1 1 0 0 0 1.32-1.497l-2.26-2.262A4 4 0 0 0 11 7Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconFilledSearchSquare',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>

@@ -11,11 +11,8 @@
 <path d="M12 22.002c5.524 0 10.002-4.478 10.002-10.001 0-5.524-4.478-10.002-10.002-10.002-5.524 0-10.002 4.478-10.002 10.002 0 5.523 4.478 10.001 10.002 10.001Zm0-1.5A8.501 8.501 0 1 1 12 3.5a8.501 8.501 0 0 1 0 17.003Z" :fill="fill" :fill-opacity="opacity" /></svg>
 </template>
 
-<script>
-import icon from "../../../mixins/icon.js"
-
-export default {
-    name: 'FluentIconOutlinedRadioButton',
-    mixins: [icon]
-};
-</script>
+<script setup>
+  import { useIcon } from "../../../composables/useIcon.js"
+  const props = defineProps(['type', 'gradient'])
+  const { fill, opacity, angle, start, end } = useIcon(props)
+  </script>
