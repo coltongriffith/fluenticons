@@ -15,7 +15,7 @@
       >
         <div class="absolute inset-0">
           <div class="flex flex-row justify-center items-center h-full">
-            <component :is="icon.componentName" class="h-10 w-10" />
+            <img :src="`/icons/${icon.svgFileName}`" class="h-10 w-10 dark:invert" :alt="icon.name" loading="lazy" />
           </div>
         </div>
         <div class="p-4 absolute inset-x-0 bottom-0">
