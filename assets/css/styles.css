@@ -141,6 +141,9 @@ html.dark {
 
 .editor-sidebar {
   @apply h-screen sticky top-0 border-l w-80 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto flex-shrink-0;
+  @media (max-width: 1024px) {
+    @apply w-60;
+  }
 }
 .toasted.toasted-primary {
   @apply rounded-lg font-medium text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 !important;
@@ -151,8 +154,32 @@ html.dark {
 .sponsor-btn {
   @apply border dark:border-gray-700 rounded-lg px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm focus:outline-none;
 }
+
+.navbar-container {
+  @apply border-t border-b sticky top-0 z-50 py-2.5 dark:border-gray-700 flex items-center px-8 navbar-frosted;
+}
+
+.navbar-heading {
+  position: absolute;
+  left: 2rem;
+  top: 1.4rem;
+  z-index: 0;
+}
+
+.nav-heading-spacer {
+  @apply w-48 h-10;
+}
+
+.navbar-controls {
+  @apply flex w-full justify-end z-10 flex-wrap;
+}
+
+.navbar-search-input {
+  @apply relative flex my-1.5 items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800;
+}
+
 .navbar-btn {
-  @apply h-10 px-4 rounded-full flex items-center justify-center space-x-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200;
+  @apply h-10 px-4 ml-4 my-1.5 rounded-full flex items-center justify-center space-x-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 whitespace-nowrap;
 }
 
 .expand-enter-active,
