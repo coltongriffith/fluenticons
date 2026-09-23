@@ -38,7 +38,7 @@ You can still find the old version [here](https://github.com/fayazara/fluenticon
 
 ### To run the project locally
 
-Requires Node 22 (see `.nvmrc`).
+Requires Node 22.19+ (see `.nvmrc`).
 
 ```bash
 # install dependencies
@@ -60,7 +60,7 @@ The SVGs in `public/icons/` are the source of truth. `data/filled.json` and `dat
 
 - Build command: `yarn generate`
 - Build output directory: `dist`
-- Node version: from `.nvmrc`
+- Environment variables: `NODE_VERSION=22.22.2`, `YARN_VERSION=1.22.22`
 
 `public/_redirects` and `public/_headers` are deployed as-is. `public/sw.js` removes the service worker installed by the old version of the site.
 

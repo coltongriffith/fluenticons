@@ -6,7 +6,7 @@
     "icons": "node scripts/build-icon-data.mjs",
     "dev": "yarn icons && nuxt dev",
     "build": "yarn icons && nuxt build",
-    "generate": "yarn icons && nuxt generate",
+    "generate": "yarn icons && node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && nuxt generate",
     "preview": "npx serve .output/public",
     "postinstall": "nuxt prepare"
   },
@@ -20,5 +20,9 @@
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16"
+  },
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=22.19.0"
   }
 }
