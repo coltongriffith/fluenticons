@@ -32,11 +32,13 @@ You can still find the old version [here](https://github.com/fayazara/fluenticon
 
 
 ### Tech stack
-1. Nuxt.js
-2. Tailwind Css.
-3. Hosted on cloudflare pages.
+1. Nuxt 4 (fully static, prerendered)
+2. Tailwind CSS
+3. Hosted on Cloudflare Pages
 
 ### To run the project locally
+
+Requires Node 22 (see `.nvmrc`).
 
 ```bash
 # install dependencies
@@ -45,15 +47,22 @@ $ yarn install
 # serve with hot reload at localhost:3000
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
+# generate the static site into dist/
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### How icons are served
+
+The SVGs in `public/icons/` are the source of truth. `data/filled.json` and `data/outlined.json` list which icons appear on each page.
+`yarn icons` (run automatically by `dev`/`generate`) builds `app/generated/*.json`, which the site renders from — there are no per-icon components.
+
+### Cloudflare Pages settings
+
+- Build command: `yarn generate`
+- Build output directory: `dist`
+- Node version: from `.nvmrc`
+
+`public/_redirects` and `public/_headers` are deployed as-is. `public/sw.js` removes the service worker installed by the old version of the site.
 
 ### SVG and File Cleanup
 

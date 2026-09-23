@@ -1,0 +1,8 @@
+# Old icon folder (duplicate of /icons) — keep hotlinks working
+/icons/fluent/* /icons/:splat 301
+# Removed features: account login and the API-backed blog
+/blog / 302
+/blog/* / 302
+/blog-post / 302
+/blog-post/ / 302
+/callback/* / 302

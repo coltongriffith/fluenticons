@@ -29,10 +29,7 @@ module.exports = {
     require("@tailwindcss/typography")
   ],
   content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
+    "./app/**/*.{js,vue,ts}",
     "./nuxt.config.{js,ts}",
   ],
 };

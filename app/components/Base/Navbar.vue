@@ -1,0 +1,106 @@
+<template>
+  <div
+    class="h-[75px] border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-8 flex-wrap navbar-frosted"
+  >
+    <p>
+      <span class="text-lg font-medium">{{ page.title }} Icons</span>
+      <span class="text-gray-600" v-if="page.subtitle"
+        >&nbsp;({{ page.subtitle }})</span
+      >
+    </p>
+    <div class="flex-space-x-4">
+      <div
+        class="relative flex items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800"
+      >
+        <input
+          type="text"
+          class="focus:outline-none bg-transparent z-10 h-full rounded-l-full px-6 text-sm"
+          placeholder="Search (Press / to focus)"
+          aria-label="Search icons"
+          ref="search"
+          :value="searchQuery"
+          @input="onSearch"
+          autocomplete="off"
+        />
+        <button
+          class="h-10 w-10 flex-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 z-20 focus:outline-none focus:bg-gray-200"
+          @click="search.focus()"
+          aria-label="Search"
+        >
+          <FluentSvg ui="search_24_filled" class="text-gray-500 h-5 w-5" />
+        </button>
+      </div>
+      <NuxtLink
+        :to="altIcons.path"
+        class="navbar-btn"
+        :aria-label="`${altIcons.name} Icons`"
+      >
+        <FluentSvg ui="position_backward_24_filled" class="h-5 w-5" />
+        <p class="text-sm">{{ altIcons.name }} Icons</p>
+      </NuxtLink>
+      <button @click="toggleDarkMode" class="navbar-btn" aria-label="Dark Mode">
+        <ColorScheme>
+          <template #placeholder>
+            <FluentSvg ui="weather_moon_24_regular" class="h-5 w-5" />
+          </template>
+          <FluentSvg
+            v-if="colorMode.value === 'dark'"
+            ui="weather_sunny_24_regular"
+            class="h-5 w-5"
+          />
+          <FluentSvg v-else ui="weather_moon_24_regular" class="h-5 w-5" />
+        </ColorScheme>
+        <p class="text-sm">
+          <ColorScheme placeholder="Dark">{{
+            colorMode.value === "dark" ? "Light" : "Dark"
+          }}</ColorScheme>
+          Mode
+        </p>
+      </button>
+      <NuxtLink to="/favorites" class="navbar-btn" aria-label="Favorites">
+        <FluentSvg ui="heart_24_regular" class="h-5 w-5" />
+        <p class="text-sm">Favorites</p>
+      </NuxtLink>
+    </div>
+  </div>
+</template>
+
+<script setup>
+const route = useRoute();
+const colorMode = useColorMode();
+const searchQuery = useSearchQuery();
+const search = ref(null);
+
+const altIcons = computed(() =>
+  route.path.startsWith("/outlined")
+    ? { name: "Filled", path: "/" }
+    : { name: "Outlined", path: "/outlined" }
+);
+
+const page = computed(() => {
+  if (route.path.startsWith("/outlined"))
+    return { title: "Outlined", subtitle: "2 px stroked" };
+  if (route.path.startsWith("/favorites")) return { title: "Favorites" };
+  return { title: "Filled", subtitle: "2 px filled" };
+});
+
+let debounce;
+function onSearch(e) {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => {
+    searchQuery.value = e.target.value;
+  }, 600);
+}
+
+function toggleDarkMode() {
+  colorMode.preference = colorMode.value === "light" ? "dark" : "light";
+}
+
+function focusSearch(e) {
+  if (e.key === "/" && document.activeElement?.tagName !== "INPUT") {
+    search.value.focus();
+  }
+}
+onMounted(() => window.addEventListener("keyup", focusSearch));
+onBeforeUnmount(() => window.removeEventListener("keyup", focusSearch));
+</script>

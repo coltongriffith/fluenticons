@@ -1,0 +1,71 @@
+html,
+body {
+  @apply antialiased text-gray-700 dark:text-white dark:bg-gray-900;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+.dots-pattern-background {
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23edf2f7' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+.dark .dots-pattern-background {
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23374151' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-space-x-2 {
+  @apply flex items-center space-x-2;
+}
+.flex-space-x-4 {
+  @apply flex items-center space-x-4;
+}
+
+.icon-editor-panel {
+  @apply m-4 h-full rounded-lg border dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center;
+}
+
+.editor-sidebar {
+  @apply h-screen sticky top-0 border-l w-80 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto flex-shrink-0;
+}
+.show-more-btn {
+  @apply block border dark:border-gray-700 rounded-lg mx-auto px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm focus:outline-none;
+}
+.navbar-btn {
+  @apply h-10 px-4 rounded-full flex items-center justify-center space-x-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200;
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition-property: opacity, height;
+}
+.expand-enter-from,
+.expand-leave-to {
+  opacity: 0;
+}
+
+.bg-squares {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+.bg-squares-dark {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+.navbar-frosted {
+  backdrop-filter: blur(10px);
+}
+
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: height 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  overflow: hidden;
+}
