@@ -1,8 +1,9 @@
-// SVG markup for a file in /icons, or for a full URL (e.g. another size from
-// the @fluentui/svg-icons CDN). Package files have no fill; they get the same
-// #212121 default as the site's own files so recoloring works the same way.
+// SVG markup for a file in /icons (a bare file name), a site path such as
+// "/icons/home.svg", or a full URL (e.g. another size from the CDN). Package
+// files have no fill; they get the same #212121 default as the site's own
+// files so recoloring works the same way.
 export async function getSvg(icon, color) {
-  const res = await fetch(icon.includes("://") ? icon : `/icons/${icon}`);
+  const res = await fetch(icon.includes("://") || icon.startsWith("/") ? icon : `/icons/${icon}`);
   if (!res.ok) throw new Error(`Could not load ${icon}`);
   let data = (await res.text()).trim();
   if (!/\bfill=/.test(data)) data = data.replace(/<path/g, '<path fill="#212121"');
