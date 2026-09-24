@@ -21,6 +21,8 @@
 </template>
 
 <script setup>
+import site from "~/site.js";
+
 const route = useRoute();
 const slug = String(route.params.slug);
 
@@ -54,7 +56,7 @@ useJsonLd({
   datePublished: guide.value.date,
   dateModified: guide.value.date,
   author: { "@type": "Person", name: "Colton Griffith" },
-  publisher: { "@type": "Organization", name: "Fluenticons", url: `${SITE_URL}/` },
+  publisher: { "@type": "Organization", name: site.name, url: `${SITE_URL}/` },
   mainEntityOfPage: `${SITE_URL}/guides/${slug}/`,
 });
 </script>

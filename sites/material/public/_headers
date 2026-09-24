@@ -1,0 +1,14 @@
+/_nuxt/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/icons/*
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+
+# Keep the Cloudflare Pages copies of the site (*.pages.dev and preview URLs)
+# out of search results; materialicons.co is the canonical domain.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex

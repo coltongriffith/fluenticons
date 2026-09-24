@@ -68,26 +68,30 @@
 </template>
 
 <script setup>
-import { track } from "~/utils/analytics";
+import { track } from "../../utils/analytics";
+import site from "~/site.js";
 
 const route = useRoute();
 const colorMode = useColorMode();
 const searchQuery = useSearchQuery();
 const search = ref(null);
 
-const altIcons = computed(() => {
-  const filled = { name: "Filled", path: "/" };
-  const outlined = { name: "Outlined", path: "/outlined/" };
-  if (route.path.startsWith("/outlined")) return [filled];
-  if (route.path.startsWith("/favorites")) return [filled, outlined];
-  return [outlined];
-});
+// The grid pages from site.js; the first one is the homepage.
+const favoritesPage = computed(() => route.path.startsWith("/favorites"));
+const currentGrid = computed(
+  () =>
+    site.grids.find((g) => g.path !== "/" && route.path.startsWith(g.path.replace(/\/$/, ""))) ||
+    site.grids[0]
+);
+const altIcons = computed(() =>
+  site.grids
+    .filter((g) => favoritesPage.value || g !== currentGrid.value)
+    .map((g) => ({ name: g.title, path: g.path }))
+);
 
 const page = computed(() => {
-  if (route.path.startsWith("/outlined"))
-    return { title: "Outlined", subtitle: "2 px stroked" };
-  if (route.path.startsWith("/favorites")) return { title: "Favorites" };
-  return { title: "Filled", subtitle: "2 px filled" };
+  if (favoritesPage.value) return { title: "Favorites" };
+  return { title: currentGrid.value.title, subtitle: currentGrid.value.subtitle };
 });
 
 let debounce;

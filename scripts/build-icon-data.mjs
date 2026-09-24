@@ -2,6 +2,10 @@
 // public/icons/*.svg and content/guides/*.md. Run automatically by
 // `yarn dev` / `yarn generate`.
 //
+// `node scripts/build-icon-data.mjs` builds fluenticons.co (the repo root);
+// `node scripts/build-icon-data.mjs sites/material` builds another site from
+// its own data, icons and guides, with the settings in its build.config.mjs.
+//
 // app/generated/
 //   index.json        client search index: [slug, name, styles, keywords (comma-separated), filledFile?, regularFile?, previewFile?][]
 //                     styles: 1 = filled, 2 = regular, 3 = both; file names only when non-standard;
@@ -20,14 +24,51 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { marked } from "marked";
 
-const root = new URL("../", import.meta.url);
+// Settings for fluenticons.co; other sites export the same shape.
+const FLUENT = {
+  root: new URL("../", import.meta.url),
+  url: "https://fluenticons.co",
+  defaultFile: (slug, style) => `ic_fluent_${slug}_24_${style}.svg`,
+  // Grid pages besides the homepage, and other data pages.
+  extraRoutes: ["/outlined", "/color"],
+  dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
+  tagMin: 10,
+  uiIcons: Object.fromEntries(
+    [
+      "search_24_filled",
+      "position_backward_24_filled",
+      "weather_sunny_24_regular",
+      "weather_moon_24_regular",
+      "heart_24_regular",
+      "heart_24_filled",
+      "copy_24_regular",
+      "arrow_download_24_regular",
+      "folder_24_regular",
+      "chevron_down_24_regular",
+      "balloon_24_regular",
+      "sticker_24_regular",
+      "dismiss_24_regular",
+      "open_24_regular",
+    ].map((key) => [key, `ic_fluent_${key}.svg`])
+  ),
+  feed: {
+    title: "New Fluent icons | Fluenticons",
+    item: (n) => `${n} new Fluent icon${n === 1 ? "" : "s"}`,
+    description: "New icons in Microsoft's Fluent UI System Icons, as they're added to Fluenticons.",
+  },
+};
+const config = process.argv[2]
+  ? (await import(new URL(`../${process.argv[2].replace(/\/$/, "")}/build.config.mjs`, import.meta.url))).default
+  : FLUENT;
+
+const root = config.root;
 const read = (path) => readFileSync(new URL(path, root), "utf8");
 const outDir = new URL("app/generated/", root);
 mkdirSync(new URL("public/", outDir), { recursive: true });
 const write = (name, data) =>
   writeFileSync(new URL(name, outDir), typeof data === "string" ? data : JSON.stringify(data));
 
-const SITE = "https://fluenticons.co";
+const SITE = config.url;
 
 function readSvg(file, { body = true } = {}) {
   const svg = read(`public/icons/${file}`);
@@ -43,7 +84,7 @@ function readSvg(file, { body = true } = {}) {
 // ---- Icons ---------------------------------------------------------------
 const icons = JSON.parse(read("data/icons.json"));
 const meta = JSON.parse(read("data/meta.json"));
-const defaultFile = (slug, style) => `ic_fluent_${slug}_24_${style}.svg`;
+const defaultFile = config.defaultFile;
 
 const index = icons.map((icon) => {
   const styles = (icon.filled ? 1 : 0) + (icon.regular ? 2 : 0);
@@ -100,13 +141,15 @@ icons.forEach((icon, i) => {
     // Color icons are shown as images; only the file and size are needed.
     ...(icon.color && { color: readSvg(icon.color, { body: false }) }),
     ...(icon.light && { light: readSvg(icon.light) }),
+    // Extra per-icon fields a site's pages use (see its build.config.mjs).
+    ...Object.fromEntries((config.detailFields || []).filter((f) => icon[f] != null).map((f) => [f, icon[f]])),
   };
 });
 
 const colorIcons = icons.filter((i) => i.color).map((i) => [i.slug, i.name, i.color]);
 
 // Tag pages: keywords that at least TAG_MIN listed icons share.
-const TAG_MIN = 10;
+const TAG_MIN = config.tagMin;
 const tagSlug = (keyword) => keyword.replace(/\s+/g, "-");
 const tagMembers = {};
 icons.forEach((icon, i) => {
@@ -115,9 +158,14 @@ icons.forEach((icon, i) => {
     if (/^[a-z0-9]+(?: [a-z0-9]+)*$/.test(k) && k.length <= 30) (tagMembers[k] ||= []).push(icon.slug);
   }
 });
+// A site can drop generic keywords and cap the number of topic pages
+// (keeping the ones shared by the most icons).
+const tagEntries = Object.entries(tagMembers)
+  .filter(([name, slugs]) => slugs.length >= TAG_MIN && !config.tagStop?.has(name))
+  .sort(([, a], [, b]) => b.length - a.length)
+  .slice(0, config.tagMax || Infinity);
 const tags = Object.fromEntries(
-  Object.entries(tagMembers)
-    .filter(([, slugs]) => slugs.length >= TAG_MIN)
+  tagEntries
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([name, slugs]) => [tagSlug(name), { name, slugs }])
 );
@@ -135,6 +183,7 @@ const stats = {
   tags: Object.keys(tags).length,
   svgIcons: meta.svgIcons,
   upstreamCommit: meta.upstreamCommit,
+  version: meta.version,
   updated: meta.updated,
 };
 
@@ -161,25 +210,11 @@ write("stats.json", stats);
 console.log(`icons: ${icons.length}, color: ${colorIcons.length}, tags: ${stats.tags}, variants: ${stats.variants}`);
 
 // ---- UI icons ------------------------------------------------------------
-const uiIcons = [
-  "search_24_filled",
-  "position_backward_24_filled",
-  "weather_sunny_24_regular",
-  "weather_moon_24_regular",
-  "heart_24_regular",
-  "heart_24_filled",
-  "copy_24_regular",
-  "arrow_download_24_regular",
-  "folder_24_regular",
-  "chevron_down_24_regular",
-  "balloon_24_regular",
-  "sticker_24_regular",
-  "dismiss_24_regular",
-  "open_24_regular",
-];
+// Keys are the same on every site (components refer to them); each site maps
+// them to one of its own icon files.
 write(
   "ui-icons.json",
-  Object.fromEntries(uiIcons.map((key) => [key, readSvg(`ic_fluent_${key}.svg`).body]))
+  Object.fromEntries(Object.entries(config.uiIcons).map(([key, file]) => [key, readSvg(file).body]))
 );
 
 // ---- Guides --------------------------------------------------------------
@@ -224,8 +259,7 @@ const letters = [...new Set(icons.map((i) => letterOf(i.name)))].sort();
 
 const indexable = [
   "/",
-  "/outlined",
-  "/color",
+  ...config.extraRoutes,
   "/browse",
   ...letters.map((l) => `/browse/${l}`),
   "/tag",
@@ -240,7 +274,9 @@ const indexable = [
   "/terms",
   "/privacy-policy",
 ];
-write("routes.json", [...indexable, "/favorites"]);
+// /new is always prerendered (it shows an empty state until an update adds
+// icons) but only listed in the sitemap once it has icons.
+write("routes.json", [...indexable, ...(newIcons.length ? [] : ["/new"]), "/favorites"]);
 
 const url = (path) => `${SITE}${path === "/" ? "/" : `${path}/`}`;
 
@@ -257,7 +293,7 @@ const feedItems = newIcons.map(({ date, icons: added }) => {
     .join("");
   const more = added.length > 100 ? `<p>…and ${added.length - 100} more.</p>` : "";
   return `    <item>
-      <title>${added.length} new Fluent icon${added.length === 1 ? "" : "s"} (${longDate(date)})</title>
+      <title>${config.feed.item(added.length)} (${longDate(date)})</title>
       <link>${link}</link>
       <guid isPermaLink="true">${link}</guid>
       <pubDate>${new Date(`${date}T12:00:00Z`).toUTCString()}</pubDate>
@@ -269,10 +305,10 @@ write(
   `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>New Fluent icons | Fluenticons</title>
+    <title>${config.feed.title}</title>
     <link>${SITE}/new/</link>
     <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>New icons in Microsoft's Fluent UI System Icons, as they're added to Fluenticons.</description>
+    <description>${config.feed.description}</description>
     <language>en</language>
 ${feedItems.join("\n")}
   </channel>
@@ -281,7 +317,7 @@ ${feedItems.join("\n")}
 );
 // Pages built from the icon data change when it's re-imported; guides carry
 // their own date. Other pages (about, legal) have no reliable date.
-const dataPage = /^\/(?:$|outlined|color|browse|tag|icon\/)/;
+const dataPage = config.dataPage;
 const lastmod = (path) => {
   const guide = guides.find((g) => path === `/guides/${g.slug}`);
   if (guide) return guide.date;

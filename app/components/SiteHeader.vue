@@ -1,7 +1,7 @@
 <template>
   <header class="border-b dark:border-gray-700">
     <div class="container mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
-      <NuxtLink to="/" class="text-lg font-bold">Fluent Icons</NuxtLink>
+      <NuxtLink to="/" class="text-lg font-bold">{{ site.brand }}</NuxtLink>
       <nav class="flex items-center gap-1 sm:gap-2 text-sm" aria-label="Main">
         <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="rounded-full px-2 sm:px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
           {{ link.label }}
@@ -27,11 +27,8 @@
 </template>
 
 <script setup>
+import site from "~/site.js";
+
 const colorMode = useColorMode();
-const links = [
-  { to: "/", label: "Icons" },
-  { to: "/browse/", label: "Browse" },
-  { to: "/guides/", label: "Guides" },
-  { to: "/about/", label: "About" },
-];
+const links = site.headerLinks;
 </script>

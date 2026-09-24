@@ -1,17 +1,16 @@
 import { stats, roughCount } from "./icons";
+import site from "~/site.js";
 
-const SITE_NAME = "Fluenticons";
-const ADSENSE_CLIENT = "ca-pub-9128081695641229";
+const SITE_NAME = site.name;
+const ADSENSE_CLIENT = site.adsenseClient;
 
-export const SITE_DESCRIPTION = `Search, customize and download ${roughCount(
-  stats.filled + stats.regular
-)} free Microsoft Fluent UI System Icons in filled, regular and color styles as SVG, PNG, WEBP, React and Vue.`;
+export const SITE_DESCRIPTION = site.description(stats, roughCount);
 
 // Title, description, canonical URL and social tags for a page.
 // `path` is the route path without a trailing slash ("/" for the homepage).
 export function useSeo({ title, description = SITE_DESCRIPTION, path, noindex = false, type = "website", image = "/social.png" }) {
   const url = `${SITE_URL}${path === "/" ? "/" : `${path}/`}`;
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME}: Free Microsoft Fluent UI System Icons`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : site.defaultTitle;
   useHead({
     title: fullTitle,
     link: noindex ? [] : [{ rel: "canonical", href: url }],

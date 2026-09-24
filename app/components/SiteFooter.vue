@@ -7,29 +7,18 @@
         </NuxtLink>
       </nav>
       <p class="mb-2">
-        Fluent UI System Icons are © Microsoft Corporation and released under the
-        <NuxtLink to="/license/" class="underline">MIT License</NuxtLink>.
-        Fluenticons is an independent project and is not affiliated with or endorsed by Microsoft.
+        {{ site.footerCopyright }}
+        <NuxtLink to="/license/" class="underline">{{ site.footerLicense }}</NuxtLink>.
+        {{ site.footerDisclaimer }}
       </p>
-      <p>© {{ year }} Fluenticons</p>
+      <p>© {{ year }} {{ site.name }}</p>
     </div>
   </footer>
 </template>
 
 <script setup>
+import site from "~/site.js";
+
 const year = new Date().getFullYear();
-const links = [
-  { to: "/", label: "Filled icons" },
-  { to: "/outlined/", label: "Outlined icons" },
-  { to: "/color/", label: "Color icons" },
-  { to: "/browse/", label: "Browse A–Z" },
-  { to: "/tag/", label: "Topics" },
-  { to: "/new/", label: "New icons" },
-  { to: "/guides/", label: "Guides" },
-  { to: "/about/", label: "About" },
-  { to: "/contact/", label: "Contact" },
-  { to: "/license/", label: "License" },
-  { to: "/terms/", label: "Terms" },
-  { to: "/privacy-policy/", label: "Privacy" },
-];
+const links = site.footerLinks;
 </script>

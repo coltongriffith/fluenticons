@@ -1,0 +1,11 @@
+{
+  "name": "Materialicons",
+  "short_name": "Materialicons",
+  "description": "Search, customize and download Google's Material Symbols as SVG, PNG and code.",
+  "lang": "en",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [{ "src": "/icon.png", "sizes": "512x512", "type": "image/png" }]
+}

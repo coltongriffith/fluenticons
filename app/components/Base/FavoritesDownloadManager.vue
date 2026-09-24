@@ -12,9 +12,9 @@
 </template>
 
 <script setup>
-import { downloadAsZip } from "~/utils/downloadManager";
-import { getIconSnippet, getSvg, svgToImage } from "~/utils/iconManager";
-import { track } from "~/utils/analytics";
+import { downloadAsZip } from "../../utils/downloadManager";
+import { getIconSnippet, getSvg, svgToImage } from "../../utils/iconManager";
+import { track } from "../../utils/analytics";
 
 const { favorites } = useFavorites();
 const toast = useToast();

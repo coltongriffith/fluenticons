@@ -1,8 +1,9 @@
 import uiIcons from "~/generated/ui-icons.json";
 import siteStats from "~/generated/stats.json";
+import site from "~/site.js";
 
 export const PAGE_SIZE = 48;
-export const SITE_URL = "https://fluenticons.co";
+export const SITE_URL = site.url;
 export const stats = siteStats;
 
 // "3,000+" style counts for page copy, rounded down so they stay true.
@@ -32,8 +33,8 @@ export function loadIndex() {
       slug,
       name,
       keywords: keywords ? keywords.split(",") : [],
-      filled: styles & 1 ? f || `ic_fluent_${slug}_24_filled.svg` : null,
-      regular: styles & 2 ? r || `ic_fluent_${slug}_24_regular.svg` : null,
+      filled: styles & 1 ? f || site.defaultFile(slug, "filled") : null,
+      regular: styles & 2 ? r || site.defaultFile(slug, "regular") : null,
       preview: preview || null,
       search: `${name}|${slug}|${keywords}`.toLowerCase().replace(/[\s_]+/g, ""),
     }))
@@ -118,10 +119,10 @@ export function uiIcon(key) {
 
 export const defaultIcon = {
   id: "placeholder",
-  slug: "sticker",
+  slug: site.placeholder.slug,
   name: "Select and preview icons here",
   variant: "outlined",
-  svgFileName: "ic_fluent_sticker_24_regular.svg",
+  svgFileName: site.placeholder.file,
   body: uiIcons.sticker_24_regular,
   size: 24,
 };
@@ -154,5 +155,6 @@ export function reactName(slug, size, style) {
 
 // React component for a grid icon (UI variant "filled" | "outlined").
 export function componentName(slug, variant, size = 24) {
+  if (site.componentName) return site.componentName(slug, variant, size);
   return reactName(slug, size, fileStyle(variant));
 }

@@ -1,0 +1,124 @@
+# Builds the Material Icons site (sites/material) and uploads it to its own
+# Cloudflare Pages project. fluenticons.co is deployed separately by
+# deploy.yml and isn't affected by this workflow.
+#
+# Turned off until you set these repository variables (Settings → Secrets and
+# variables → Actions → Variables):
+#   MATERIAL_PAGES_PROJECT  Cloudflare Pages project name, e.g. "materialicons".
+#                           If the project doesn't exist yet, the first run
+#                           creates it as a direct-upload project.
+#   MATERIAL_SITE_URL       https://materialicons.co, once the custom domain is
+#                           attached to that project. Production runs then
+#                           check that the site serves the new build.
+#
+# Uses the same CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets as
+# deploy.yml.
+#
+# - Every push to main deploys to production when it can change the site.
+# - Run it manually from the Actions tab for a preview (the default branch
+#   "preview") or to redeploy production (branch "main").
+name: Deploy Material Icons to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "data/**"
+      - "public/**"
+      - "content/**"
+      - ".github/workflows/deploy.yml"
+      - ".github/workflows/update-icons.yml"
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: >-
+          Deployment branch. "preview" (or any other name) creates a preview URL
+          only; "main" deploys to production.
+        required: true
+        default: preview
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-deploy-material-${{ github.event_name == 'push' && 'main' || inputs.branch }}
+  cancel-in-progress: false
+
+env:
+  PROJECT: ${{ vars.MATERIAL_PAGES_PROJECT }}
+  SITE_URL: ${{ vars.MATERIAL_SITE_URL }}
+  BRANCH: ${{ github.event_name == 'push' && 'main' || inputs.branch }}
+
+jobs:
+  deploy:
+    if: github.repository == 'coltongriffith/fluenticons' && vars.MATERIAL_PAGES_PROJECT != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn material:generate
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Check build output
+        run: |
+          for f in index.html filled/index.html icon/home/index.html guides/index.html license/index.html ads.txt sitemap.xml _headers icons/home.svg; do
+            test -s "sites/material/dist/$f" || { echo "Missing sites/material/dist/$f"; exit 1; }
+          done
+          files=$(find sites/material/dist -type f | wc -l)
+          echo "Files: $files"
+          test "$files" -lt 20000
+          grep -q "pub-9128081695641229" sites/material/dist/ads.txt
+          grep -q "<title>Materialicons" sites/material/dist/index.html
+          build_id=$(grep -o 'buildId:"[^"]*"' sites/material/dist/index.html | head -1)
+          test -n "$build_id" || { echo "No buildId in index.html"; exit 1; }
+          echo "BUILD_ID=$build_id" >> "$GITHUB_ENV"
+          echo "Deploying $build_id to $PROJECT ($BRANCH)"
+
+      - name: Create the Pages project if needed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if npx --yes wrangler@4 pages project list | grep -qw -- "$PROJECT"; then
+            echo "Project $PROJECT exists."
+          else
+            npx --yes wrangler@4 pages project create "$PROJECT" --production-branch main
+          fi
+
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >-
+          npx --yes wrangler@4 pages deploy sites/material/dist
+          --project-name "$PROJECT"
+          --branch "$BRANCH"
+          --commit-hash "$GITHUB_SHA"
+          --commit-dirty=true
+
+      - name: Check the site serves the new build
+        if: env.BRANCH == 'main' && env.SITE_URL != ''
+        run: |
+          for _ in $(seq 1 18); do
+            if curl -fsS "$SITE_URL/" | grep -qF "$BUILD_ID" \
+              && curl -fsS "$SITE_URL/ads.txt" | grep -q "pub-9128081695641229" \
+              && curl -fsS -o /dev/null "$SITE_URL/icon/home/"; then
+              echo "$SITE_URL is serving $BUILD_ID"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::$SITE_URL is not serving $BUILD_ID. Check the site; roll back in Cloudflare > $PROJECT > Deployments if needed."
+          exit 1

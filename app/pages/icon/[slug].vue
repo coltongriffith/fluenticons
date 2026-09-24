@@ -264,8 +264,8 @@
 </template>
 
 <script setup>
-import { getSvg, svgToImage, svgToPowerApps } from "~/utils/iconManager";
-import { track } from "~/utils/analytics";
+import { getSvg, svgToImage, svgToPowerApps } from "../../utils/iconManager";
+import { track } from "../../utils/analytics";
 import { saveAs } from "file-saver";
 
 const STYLE_INFO = {

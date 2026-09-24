@@ -145,8 +145,8 @@ import {
   svgToHtml,
   svgToCss,
   svgToPowerApps,
-} from "~/utils/iconManager";
-import { track } from "~/utils/analytics";
+} from "../../utils/iconManager";
+import { track } from "../../utils/analytics";
 
 const icon = useSelectedIcon();
 const colorMode = useColorMode();
