@@ -11,6 +11,7 @@
         By Colton Griffith · Updated <time :datetime="guide.date">{{ formattedDate }}</time>
       </p>
       <div v-html="guide.html"></div>
+      <SponsorSlot variant="inline" placement="guide" class="not-prose my-10" />
       <hr />
       <p>
         Find the icons mentioned here with the <NuxtLink to="/">icon search</NuxtLink>, or

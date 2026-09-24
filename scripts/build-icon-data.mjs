@@ -33,7 +33,7 @@ const FLUENT = {
   url: "https://fluenticons.co",
   defaultFile: (slug, style) => `ic_fluent_${slug}_24_${style}.svg`,
   // Grid pages besides the homepage, and other data pages.
-  extraRoutes: ["/outlined", "/color", "/ai"],
+  extraRoutes: ["/outlined", "/color", "/ai", "/sponsor"],
   // Writes app/generated/api-catalog.json for the agent API (agent/, functions/).
   apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
@@ -54,6 +54,8 @@ const FLUENT = {
       "sticker_24_regular",
       "dismiss_24_regular",
       "open_24_regular",
+      "checkmark_24_regular",
+      "megaphone_loud_24_regular",
     ].map((key) => [key, `ic_fluent_${key}.svg`])
   ),
   feed: {

@@ -139,6 +139,7 @@
     >
       Building with AI? Give your coding agent Fluent Icons →
     </NuxtLink>
+    <SponsorSlot v-if="icon.id !== 'placeholder'" variant="compact" placement="editor" class="px-4 pt-4" />
     <BuyMeCoffee />
   </aside>
 </template>
@@ -302,7 +303,7 @@ async function snippet(type) {
 async function copy() {
   try {
     await navigator.clipboard.writeText(await snippet(selectedCopyType.value));
-    toast.show(`Copied ${selectedCopyType.value} snippet`);
+    toast.show(`Copied ${selectedCopyType.value} snippet`, "info", { promo: true });
     track("copy_icon", eventParams(selectedCopyType.value));
   } catch (err) {
     toast.error(err.message);

@@ -69,6 +69,8 @@
       </div>
     </div>
 
+    <SponsorSlot variant="inline" placement="icon_page" class="mb-12 max-w-3xl" />
+
     <section v-if="variantStyles.length" id="sizes" class="mb-12 max-w-5xl">
       <h2 class="text-2xl font-bold mb-2">Every size and style</h2>
       <p class="text-gray-600 dark:text-gray-300 mb-4 max-w-3xl">
@@ -459,7 +461,7 @@ const inlineCode = computed(() => {
 async function copyText(text, label, platform) {
   try {
     await navigator.clipboard.writeText(text);
-    toast.show(`Copied ${label} code`);
+    toast.show(`Copied ${label} code`, "info", { promo: true });
     track("copy_code", { icon: slug, platform });
   } catch (err) {
     toast.error(err.message);
@@ -469,7 +471,7 @@ async function copyText(text, label, platform) {
 async function copySvg(file) {
   try {
     await navigator.clipboard.writeText(await getSvg(file));
-    toast.show("Copied SVG");
+    toast.show("Copied SVG", "info", { promo: true });
     trackFile("copy_icon", "svg", file);
   } catch (err) {
     toast.error(err.message);
@@ -481,7 +483,7 @@ async function copySvg(file) {
 async function copyPowerApps(file, fromTab = false) {
   try {
     await navigator.clipboard.writeText(svgToPowerApps(await getSvg(file)));
-    toast.show("Copied Power Apps formula");
+    toast.show("Copied Power Apps formula", "info", { promo: true });
     if (fromTab) track("copy_code", { icon: slug, platform: "powerapps" });
     else trackFile("copy_icon", "powerapps", file);
   } catch (err) {
