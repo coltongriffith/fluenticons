@@ -165,7 +165,7 @@
               <pre class="rounded-lg bg-gray-900 text-gray-100 text-sm p-4 overflow-x-auto"><code>{{ tab.code }}</code></pre>
               <button
                 class="absolute top-2 right-2 rounded-md bg-gray-700 hover:bg-gray-600 text-white text-xs px-2 py-1"
-                @click="tab.key === 'powerapps' ? copyPowerApps(activeSrc) : copyText(tab.code, tab.label)"
+                @click="tab.key === 'powerapps' ? copyPowerApps(activeSrc) : copyText(tab.code, tab.label, tab.key)"
               >
                 Copy
               </button>
@@ -566,11 +566,11 @@ const inlineCode = computed(() => {
   return `<svg width="${s.size}" height="${s.size}" viewBox="0 0 ${s.size} ${s.size}" fill="none" xmlns="http://www.w3.org/2000/svg">${s.body}</svg>`;
 });
 
-async function copyText(text, label) {
+async function copyText(text, label, platform) {
   try {
     await navigator.clipboard.writeText(text);
     toast.show(`Copied ${label} code`);
-    track("copy_code", { icon: slug, platform: label });
+    track("copy_code", { icon: slug, platform });
   } catch (err) {
     toast.error(err.message);
   }
