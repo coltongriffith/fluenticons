@@ -1,0 +1,119 @@
+# Checks every week for a new release of Microsoft's Fluent UI System Icons
+# and, when there is one, opens a pull request that imports it.
+#
+# - Compares the latest @fluentui/svg-icons version on npm with
+#   data/meta.json. Nothing happens when they match.
+# - Imports the matching release (git tag) of microsoft/fluentui-system-icons
+#   with scripts/import-upstream.mjs, builds the site to check it still
+#   builds (and stays under Cloudflare Pages' 20,000-file limit), then pushes
+#   the branch icons/<version> and opens a pull request.
+# - Nothing goes live until that pull request is merged; merging deploys it
+#   like any other change.
+#
+# Run it by hand from the Actions tab (Run workflow) to check right away.
+# If GitHub Actions isn't allowed to open pull requests in this repository,
+# the run still pushes the branch and links to it in the run summary.
+name: Update icons from Microsoft
+
+on:
+  schedule:
+    - cron: "17 14 * * 1" # Mondays 14:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-icons
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.repository == 'coltongriffith/fluenticons'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Check for a new release
+        id: check
+        run: |
+          latest=$(npm view @fluentui/svg-icons version)
+          current=$(node -p "require('./data/meta.json').svgIcons")
+          echo "version=$latest" >> "$GITHUB_OUTPUT"
+          if [ "$latest" = "$current" ]; then
+            echo "Up to date: @fluentui/svg-icons $current" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          elif git ls-remote --exit-code --heads origin "icons/$latest" > /dev/null; then
+            echo "Branch icons/$latest already exists; review or merge its pull request." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "New release: $current -> $latest" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.check.outputs.update == 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Import the release
+        if: steps.check.outputs.update == 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.version }}
+        run: |
+          repo=https://github.com/microsoft/fluentui-system-icons.git
+          # Use the release's tag when Microsoft published one, else the latest commit.
+          ref=()
+          if git ls-remote --exit-code --tags "$repo" "refs/tags/$VERSION" > /dev/null; then ref=(--branch "$VERSION"); fi
+          git clone --depth 1 --filter=blob:none --sparse "${ref[@]}" "$repo" "$RUNNER_TEMP/upstream"
+          git -C "$RUNNER_TEMP/upstream" sparse-checkout set --no-cone '/assets/*/metadata.json' \
+            '/assets/*/SVG/*_24_filled.svg' '/assets/*/SVG/*_24_regular.svg' \
+            '/fonts/*.json' '/flutter/lib/src/fluent_icons.dart'
+          node scripts/import-upstream.mjs "$RUNNER_TEMP/upstream" "$VERSION" | tee "$RUNNER_TEMP/import.log"
+
+      - name: Build the site
+        if: steps.check.outputs.update == 'true'
+        run: |
+          yarn generate
+          files=$(find dist -type f | wc -l)
+          echo "Files: $files"
+          test "$files" -lt 20000
+
+      - name: Open a pull request
+        if: steps.check.outputs.update == 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.version }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="icons/$VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add data public/icons
+          if git diff --cached --quiet; then
+            echo "No changes to the icon data." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -q -m "Update icons to @fluentui/svg-icons $VERSION"
+          git push origin "$branch"
+          {
+            echo "Imports Microsoft's Fluent UI System Icons **$VERSION** (\`@fluentui/svg-icons@$VERSION\`)."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/import.log"
+            echo '```'
+            echo
+            echo "The site builds with these changes. New designs appear on /new/ and in the RSS feed once this is merged; merging deploys it."
+          } > "$RUNNER_TEMP/body.md"
+          if gh pr create --base main --head "$branch" --title "Update icons to $VERSION" --body-file "$RUNNER_TEMP/body.md"; then
+            echo "Opened a pull request for $branch." >> "$GITHUB_STEP_SUMMARY"
+          else
+            url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1"
+            echo "::warning::Pushed $branch but couldn't open a pull request. Open it here: $url"
+            echo "Pushed \`$branch\`. [Open a pull request]($url)" >> "$GITHUB_STEP_SUMMARY"
+          fi

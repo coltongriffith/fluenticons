@@ -50,7 +50,12 @@
         <div class="p-4 border-t dark:border-gray-700">
           <p class="font-medium mb-3">{{ style.label }}</p>
           <div class="flex flex-wrap gap-2 text-sm">
-            <a :href="`/icons/${style.svg.file}`" :download="style.svg.file" class="navbar-btn">
+            <a
+              :href="`/icons/${style.svg.file}`"
+              :download="style.svg.file"
+              class="navbar-btn"
+              @click="trackFile('download_icon', 'svg', style.svg.file)"
+            >
               <FluentSvg ui="arrow_download_24_regular" class="h-4 w-4" /><span>SVG</span>
             </a>
             <button class="navbar-btn" @click="downloadPng(style.svg.file)">
@@ -91,7 +96,7 @@
           class="min-w-[3rem] rounded-lg border dark:border-gray-700 px-3 py-1.5 text-sm"
           :class="v[0] === activeSize ? 'bg-gray-100 dark:bg-gray-800 font-semibold' : 'hover:bg-gray-100 dark:hover:bg-gray-800'"
           :aria-pressed="v[0] === activeSize"
-          @click="activeSize = v[0]"
+          @click="pickSize(v[0])"
         >
           {{ v[0] }} px
         </button>
@@ -148,7 +153,7 @@
               class="px-3 py-2 text-sm -mb-px border-b-2"
               :class="tab.key === activeTab.key ? 'border-blue-600 font-semibold' : 'border-transparent text-gray-500 hover:text-gray-900 dark:hover:text-white'"
               :aria-selected="tab.key === activeTab.key"
-              @click="codeTab = tab.key"
+              @click="pickTab(tab.key)"
             >
               {{ tab.label }}
             </button>
@@ -260,6 +265,7 @@
 
 <script setup>
 import { getSvg, svgToImage, svgToPowerApps } from "~/utils/iconManager";
+import { track } from "~/utils/analytics";
 import { saveAs } from "file-saver";
 
 const STYLE_INFO = {
@@ -348,6 +354,23 @@ function pickStyle(style) {
   if (!details.value.variants[style].some((v) => v[0] === activeSize.value)) {
     activeSize.value = defaultSize(style);
   }
+  track("select_variant", { icon: slug, style, size: activeSize.value });
+}
+
+function pickSize(size) {
+  activeSize.value = size;
+  track("select_variant", { icon: slug, style: activeStyle.value, size });
+}
+
+function pickTab(key) {
+  codeTab.value = key;
+  track("code_tab", { icon: slug, platform: key });
+}
+
+// Analytics for copies and downloads; style and size come from the file name.
+function trackFile(name, format, file) {
+  const m = String(file).match(/_(\d+)_([a-z]+)\.svg$/);
+  track(name, { icon: slug, format, source: "icon_page", size: m ? Number(m[1]) : undefined, style: m?.[2] });
 }
 
 const activeVariant = computed(
@@ -547,6 +570,7 @@ async function copyText(text, label) {
   try {
     await navigator.clipboard.writeText(text);
     toast.show(`Copied ${label} code`);
+    track("copy_code", { icon: slug, platform: label });
   } catch (err) {
     toast.error(err.message);
   }
@@ -556,6 +580,7 @@ async function copySvg(file) {
   try {
     await navigator.clipboard.writeText(await getSvg(file));
     toast.show("Copied SVG");
+    trackFile("copy_icon", "svg", file);
   } catch (err) {
     toast.error(err.message);
   }
@@ -565,6 +590,7 @@ async function copyPowerApps(file) {
   try {
     await navigator.clipboard.writeText(svgToPowerApps(await getSvg(file)));
     toast.show("Copied Power Apps formula");
+    trackFile("copy_icon", "powerapps", file);
   } catch (err) {
     toast.error(err.message);
   }
@@ -574,6 +600,7 @@ async function downloadSvg(file, name) {
   try {
     const blob = new Blob([await getSvg(file)], { type: "image/svg+xml;charset=utf-8" });
     saveAs(blob, name);
+    trackFile("download_icon", "svg", name);
   } catch (err) {
     toast.error(err.message);
   }
@@ -588,6 +615,7 @@ async function downloadPng(file, name = file) {
       outputFormat: "blob",
     });
     saveAs(blob, name.replace(/^.*\//, "").replace(".svg", ".png"));
+    trackFile("download_icon", "png", name);
   } catch (err) {
     toast.error(err.message);
   }

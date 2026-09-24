@@ -30,6 +30,13 @@ if (!upstream || !svgIconsVersion) {
 const root = new URL("../", import.meta.url).pathname;
 const iconsDir = join(root, "public/icons");
 const STYLES = ["filled", "regular", "color", "light"];
+const today = new Date().toISOString().slice(0, 10);
+
+// The data from the last import: keeps retired designs' slugs and each
+// design's "added" date (when it first appeared on the site).
+const previousList = existsSync(join(root, "data/icons.json"))
+  ? JSON.parse(readFileSync(join(root, "data/icons.json"), "utf8"))
+  : [];
 
 // Some upstream metadata is UTF-8 that was decoded as Latin-1 ("â ï¸" for "⚠️").
 // Repair it, then drop the warning sign, which only prefixes internal notes.
@@ -181,10 +188,8 @@ for (const stem of packageVariants.keys()) {
 // ic_fluent_x_20_filled.svg can be design "x"), so retired designs keep their
 // slug, name and keywords.
 const previous = new Map();
-if (existsSync(join(root, "data/icons.json"))) {
-  for (const entry of JSON.parse(readFileSync(join(root, "data/icons.json"), "utf8"))) {
-    for (const style of ["filled", "regular", "color", "light"]) if (entry[style]) previous.set(entry[style], entry);
-  }
+for (const entry of previousList) {
+  for (const style of ["filled", "regular", "color", "light"]) if (entry[style]) previous.set(entry[style], entry);
 }
 const used = new Set([...icons.values()].flatMap((i) => [i.filled, i.regular, i.color, i.light]));
 for (const f of readdirSync(iconsDir)) {
@@ -205,6 +210,14 @@ for (const f of readdirSync(iconsDir)) {
   icons.set(stem, entry);
 }
 
+// "added": the import a design first appeared in (shown on /new/).
+const previousBySlug = new Map(previousList.map((e) => [e.slug, e]));
+for (const entry of icons.values()) {
+  const prev = previousBySlug.get(entry.slug);
+  if (prev?.added) entry.added = prev.added;
+  else if (!prev && previousList.length) entry.added = today;
+}
+
 const list = [...icons.values()].sort((a, b) => a.slug.localeCompare(b.slug));
 // One design per line keeps diffs readable.
 writeFileSync(join(root, "data/icons.json"), `[\n${list.map((i) => JSON.stringify(i)).join(",\n")}\n]\n`);
@@ -213,7 +226,7 @@ const upstreamCommit = execFileSync("git", ["-C", upstream, "rev-parse", "HEAD"]
 writeFileSync(
   join(root, "data/meta.json"),
   JSON.stringify(
-    { svgIcons: svgIconsVersion, upstreamCommit, updated: new Date().toISOString().slice(0, 10) },
+    { svgIcons: svgIconsVersion, upstreamCommit, updated: today },
     null,
     2
   ) + "\n"
@@ -223,4 +236,9 @@ const variantCount = list.reduce(
   (n, i) => n + Object.values(i.variants || {}).reduce((m, v) => m + v.length, 0),
   0
 );
+const added = list.filter((i) => i.added === today).map((i) => i.slug);
+const removed = previousList.filter((e) => !icons.has(e.slug)).map((e) => e.slug);
 console.log(`data/icons.json: ${list.length} designs, ${variantCount} variants`);
+const sample = added.slice(0, 50).join(", ") + (added.length > 50 ? ", …" : "");
+console.log(`new designs: ${added.length}${added.length ? ` (${sample})` : ""}`);
+if (removed.length) console.log(`no longer in the data: ${removed.join(", ")}`);

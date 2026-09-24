@@ -11,6 +11,8 @@
 //   color.json        [slug, name, file][] for designs with a Color style
 //   tags.json         { [tag]: { name, slugs } } for keywords shared by enough icons
 //   stats.json        counts used in page copy, and the @fluentui/svg-icons version
+//   new.json          [{ date, icons: [slug, name, file][] }] newest first, for /new/
+//   public/feed.xml   RSS feed of those updates
 //   ui-icons.json     inner SVG markup for the site's own UI icons
 //   guides.json       [{ slug, title, description, date, html }]
 //   routes.json       every prerendered page path
@@ -136,8 +138,23 @@ const stats = {
   updated: meta.updated,
 };
 
+// New icons, grouped by the import that added them (newest first).
+const NEW_UPDATES = 12;
+const byDate = {};
+for (const icon of icons) {
+  if (!icon.added) continue;
+  const file = icon.regular || icon.filled || icon.color || icon.light;
+  (byDate[icon.added] ||= []).push([icon.slug, icon.name, file || 0]);
+}
+const newIcons = Object.keys(byDate)
+  .sort()
+  .reverse()
+  .slice(0, NEW_UPDATES)
+  .map((date) => ({ date, icons: byDate[date] }));
+
 write("index.json", index);
 write("details.json", details);
+write("new.json", newIcons);
 write("color.json", colorIcons);
 write("tags.json", tags);
 write("stats.json", stats);
@@ -213,6 +230,7 @@ const indexable = [
   ...letters.map((l) => `/browse/${l}`),
   "/tag",
   ...Object.keys(tags).map((t) => `/tag/${t}`),
+  ...(newIcons.length ? ["/new"] : []),
   ...icons.map((i) => `/icon/${i.slug.replace(/_/g, "-")}`),
   "/guides",
   ...guides.map((g) => `/guides/${g.slug}`),
@@ -225,6 +243,42 @@ const indexable = [
 write("routes.json", [...indexable, "/favorites"]);
 
 const url = (path) => `${SITE}${path === "/" ? "/" : `${path}/`}`;
+
+// ---- RSS feed of new icons ---------------------------------------------------
+const escapeXml = (s) =>
+  String(s).replace(/[<>&"']/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&apos;" })[c]);
+const longDate = (date) =>
+  new Date(`${date}T00:00:00Z`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+const feedItems = newIcons.map(({ date, icons: added }) => {
+  const link = `${SITE}/new/#${date}`;
+  const list = added
+    .slice(0, 100)
+    .map(([slug, name]) => `<li><a href="${url(`/icon/${slug.replace(/_/g, "-")}`)}">${escapeXml(name)}</a></li>`)
+    .join("");
+  const more = added.length > 100 ? `<p>…and ${added.length - 100} more.</p>` : "";
+  return `    <item>
+      <title>${added.length} new Fluent icon${added.length === 1 ? "" : "s"} (${longDate(date)})</title>
+      <link>${link}</link>
+      <guid isPermaLink="true">${link}</guid>
+      <pubDate>${new Date(`${date}T12:00:00Z`).toUTCString()}</pubDate>
+      <description>${escapeXml(`<ul>${list}</ul>${more}`)}</description>
+    </item>`;
+});
+write(
+  "public/feed.xml",
+  `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>New Fluent icons | Fluenticons</title>
+    <link>${SITE}/new/</link>
+    <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>New icons in Microsoft's Fluent UI System Icons, as they're added to Fluenticons.</description>
+    <language>en</language>
+${feedItems.join("\n")}
+  </channel>
+</rss>
+`
+);
 // Pages built from the icon data change when it's re-imported; guides carry
 // their own date. Other pages (about, legal) have no reliable date.
 const dataPage = /^\/(?:$|outlined|color|browse|tag|icon\/)/;
@@ -232,6 +286,7 @@ const lastmod = (path) => {
   const guide = guides.find((g) => path === `/guides/${g.slug}`);
   if (guide) return guide.date;
   if (path === "/guides") return guides.map((g) => g.date).sort().pop();
+  if (path === "/new") return newIcons[0]?.date || null;
   return dataPage.test(path) ? meta.updated : null;
 };
 write(
