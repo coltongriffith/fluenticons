@@ -20,7 +20,7 @@ const toast = useToast();
 
 async function toContent(type, icon) {
   if (type !== "png")
-    return getIconSnippet(type, icon.svgFileName, componentName(icon.slug, icon.variant));
+    return getIconSnippet(type, icon.svgFileName, componentName(icon.slug, icon.variant, fileSize(icon.svgFileName)));
   return svgToImage({
     svg: await getSvg(icon.svgFileName, "#000000"),
     width: 512,

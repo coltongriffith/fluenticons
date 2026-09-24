@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
       <NuxtLink to="/" class="text-lg font-bold">Fluent Icons</NuxtLink>
       <nav class="flex items-center gap-1 sm:gap-2 text-sm" aria-label="Main">
-        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="rounded-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="rounded-full px-2 sm:px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
           {{ link.label }}
         </NuxtLink>
         <button
@@ -30,8 +30,8 @@
 const colorMode = useColorMode();
 const links = [
   { to: "/", label: "Icons" },
-  { to: "/browse", label: "Browse" },
-  { to: "/guides", label: "Guides" },
-  { to: "/about", label: "About" },
+  { to: "/browse/", label: "Browse" },
+  { to: "/guides/", label: "Guides" },
+  { to: "/about/", label: "About" },
 ];
 </script>

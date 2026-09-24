@@ -24,8 +24,9 @@
 <script setup>
 useSeo({
   title: "Outlined (Regular) Fluent Icons",
-  description:
-    "Browse 2,500+ outlined Fluent UI System Icons (Microsoft's Regular style). Search by keyword, recolor, and copy as SVG, React or Vue, or download PNG.",
+  description: `Browse ${roughCount(
+    stats.regular
+  )} outlined Fluent UI System Icons (Microsoft's Regular style). Search by keyword, recolor, and copy as SVG, React or Vue, or download PNG.`,
   path: "/outlined",
 });
 useAdsense();

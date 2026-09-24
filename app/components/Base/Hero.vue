@@ -10,7 +10,14 @@
       <div class="container mx-auto slate-gray-800 dark:text-white">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
           <div>
-            <h1 class="text-5xl font-bold mb-6">Fluent Icons</h1>
+            <NuxtLink
+              to="/#whats-new"
+              class="inline-flex items-center gap-2 rounded-full bg-white/70 dark:bg-slate-800/70 ring-1 ring-gray-900/10 dark:ring-gray-200/20 px-3 py-1 text-sm mb-4 hover:bg-white dark:hover:bg-slate-800"
+            >
+              <span class="rounded-full bg-blue-600 text-white text-xs font-semibold px-2 py-0.5">New</span>
+              <span>Every size, Color &amp; Light styles, code for 8 platforms</span>
+            </NuxtLink>
+            <h1 class="text-5xl font-bold mb-6">{{ heading }}</h1>
             <p class="text-lg mb-2">
               Open source icons by Microsoft. Viewer by
               <a
@@ -48,6 +55,16 @@
     </div>
   </header>
 </template>
+
+<script setup>
+// Each grid page gets its own heading.
+const route = useRoute();
+const heading = computed(() => {
+  if (route.path.startsWith("/outlined")) return "Outlined Fluent Icons";
+  if (route.path.startsWith("/favorites")) return "Favorite Fluent Icons";
+  return "Fluent Icons";
+});
+</script>
 
 <style scoped>
 .index_beams {

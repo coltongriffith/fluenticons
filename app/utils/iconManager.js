@@ -1,11 +1,21 @@
+// SVG markup for a file in /icons, or for a full URL (e.g. another size from
+// the @fluentui/svg-icons CDN). Package files have no fill; they get the same
+// #212121 default as the site's own files so recoloring works the same way.
 export async function getSvg(icon, color) {
-  const res = await fetch(`/icons/${icon}`);
+  const res = await fetch(icon.includes("://") ? icon : `/icons/${icon}`);
   if (!res.ok) throw new Error(`Could not load ${icon}`);
-  const data = await res.text();
+  let data = (await res.text()).trim();
+  if (!/\bfill=/.test(data)) data = data.replace(/<path/g, '<path fill="#212121"');
   if (color) {
     return data.replace(/#212121/g, color);
   }
   return data;
+}
+
+// A Power Fx formula for an Image control's Image property.
+export function svgToPowerApps(svgString) {
+  const svg = svgString.replace(/\s*\n\s*/g, " ").replace(/"/g, "'");
+  return `"data:image/svg+xml;utf8, " & EncodeUrl("${svg}")`;
 }
 
 export function svgToVue(svgString, componentName) {
@@ -58,6 +68,8 @@ export async function getIconSnippet(type, icon, componentName, color = "#000000
       return svgToHtml(await getSvg(icon, color), componentName);
     case "css":
       return svgToCss(await getSvg(icon, color));
+    case "powerapps":
+      return svgToPowerApps(await getSvg(icon, color));
   }
 }
 

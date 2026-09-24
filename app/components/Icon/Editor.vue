@@ -137,7 +137,15 @@
 
 <script setup>
 import { saveAs } from "file-saver";
-import { getSvg, svgToImage, svgToVue, svgToReact, svgToHtml, svgToCss } from "~/utils/iconManager";
+import {
+  getSvg,
+  svgToImage,
+  svgToVue,
+  svgToReact,
+  svgToHtml,
+  svgToCss,
+  svgToPowerApps,
+} from "~/utils/iconManager";
 
 const icon = useSelectedIcon();
 const colorMode = useColorMode();
@@ -162,6 +170,7 @@ const copyTypes = [
   { name: "Vue Component", value: "vue" },
   { name: "React Component", value: "react" },
   { name: "CSS Background", value: "css" },
+  { name: "Power Apps (Power Fx)", value: "powerapps" },
 ];
 const exportTypes = [
   { name: "SVG", value: "svg" },
@@ -172,7 +181,9 @@ const exportTypes = [
 ];
 
 const baseName = computed(() => icon.value.svgFileName.replace(".svg", ""));
-const component = computed(() => componentName(icon.value.slug, icon.value.variant));
+const component = computed(() =>
+  componentName(icon.value.slug, icon.value.variant, fileSize(icon.value.svgFileName))
+);
 
 // Inner SVG markup of the selected icon, fetched from /icons when needed.
 const svg = ref({ size: defaultIcon.size, body: defaultIcon.body });
@@ -255,6 +266,8 @@ async function snippet(type) {
       return svgToHtml(markup, icon.value.name);
     case "css":
       return svgToCss(markup);
+    case "powerapps":
+      return svgToPowerApps(markup);
     default:
       return markup;
   }

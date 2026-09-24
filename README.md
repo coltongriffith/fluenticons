@@ -1,6 +1,6 @@
 # Fluenticons Viewer
 
-4000+ pixel perfect open source icons from [Microsoft](https://github.com/microsoft/fluentui-system-icons).
+3,000+ open source icon designs from [Microsoft](https://github.com/microsoft/fluentui-system-icons), in every size (10–48 px) and style (Regular, Filled, Color, Light), with copy-ready code for React, Blazor, Flutter, WinUI/WPF, Android, iOS and Power Apps.
 ![Fluent Icons](https://fluenticons.co/social.png)
 
 This site is not affiliated or connected to Microsoft in any way, this is just a viewer for the open-source icons from them.
@@ -53,17 +53,21 @@ $ yarn generate
 
 ### How the site is built
 
-- `data/icons.json` lists every icon (name, Microsoft's keywords and description, file names). The SVGs live in `public/icons/`.
+- `data/icons.json` lists every icon design (name, Microsoft's keywords and description, local file names, and every size and style Microsoft publishes, with icon-font code points). `data/meta.json` records which `@fluentui/svg-icons` version and upstream commit the data matches.
+- `public/icons/` holds one SVG per design and style (Filled, Regular, Color) — 24 px, or the nearest size Microsoft draws. The grids, editor and downloads only use these.
+- Other sizes and the Light style load on icon pages from the pinned `@fluentui/svg-icons` package on jsDelivr (all ~20,000 variants would exceed Cloudflare Pages' 20,000-file limit). If the CDN is unreachable only those extra previews fail; everything else keeps working.
 - `content/guides/*.md` are the guide articles.
-- `yarn icons` (run automatically by `dev`/`generate`) turns those into `app/generated/`: a small search index for the browser, build-time icon details, the sitemap and the list of pages to prerender.
-- `yarn generate` prerenders every page — the icon grids, one page per icon (`/icon/<name>/`), the A–Z browse pages, guides and site pages.
+- `yarn icons` (run automatically by `dev`/`generate`) turns those into `app/generated/`: a small search index for the browser, build-time icon details, topic (tag) and color lists, site counts, the sitemap and the list of pages to prerender.
+- `yarn generate` prerenders every page — the icon grids, one page per icon design (`/icon/<name>/`, with every size and style), `/color/`, topic pages (`/tag/<keyword>/`), the A–Z browse pages, guides and site pages.
 
-To pull the latest icons from Microsoft:
+To pull the latest icons from Microsoft (pass the matching `@fluentui/svg-icons` version):
 
 ```bash
 git clone --depth 1 --filter=blob:none --sparse https://github.com/microsoft/fluentui-system-icons.git upstream
-git -C upstream sparse-checkout set --no-cone '/assets/*/metadata.json' '/assets/*/SVG/*_24_filled.svg' '/assets/*/SVG/*_24_regular.svg'
-node scripts/import-upstream.mjs upstream
+git -C upstream sparse-checkout set --no-cone '/assets/*/metadata.json' \
+  '/assets/*/SVG/*_24_filled.svg' '/assets/*/SVG/*_24_regular.svg' \
+  '/fonts/*.json' '/flutter/lib/src/fluent_icons.dart'
+node scripts/import-upstream.mjs upstream 1.1.341
 ```
 
 Icons Microsoft has retired stay on the site (marked `legacy`) so existing links keep working.
