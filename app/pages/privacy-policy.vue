@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 sm:px-8 py-8">
     <div class="prose dark:prose-invert max-w-3xl">
       <h1>Privacy Policy</h1>
-      <p class="text-sm">Last updated: 23 September 2026</p>
+      <p class="text-sm">Last updated: 24 September 2026</p>
       <p>
         This policy explains what information is collected when you use fluenticons.co (the
         "Site"), why, and the choices you have. The Site is operated by Colton Griffith
@@ -68,6 +68,19 @@
           in that message.
         </li>
       </ul>
+
+      <h2>Agent API and MCP server</h2>
+      <p>
+        When a coding agent, script or the command-line tool uses our
+        <NuxtLink to="/ai/">API or MCP server</NuxtLink>, we record the search words (first 100
+        characters), the icons returned or requested, the platform, style and size asked for,
+        and the kind of client (from its User-Agent) in Google Analytics, to see what people
+        look for and improve results. We don't record the descriptions sent to
+        <code>recommend</code> or any other request content. Your IP address is used only to
+        apply rate limits and, combined with the User-Agent, to make a one-way hash that changes
+        every month, so repeat use can be counted without identifying you; the address itself
+        is not stored or sent to Google.
+      </p>
 
       <h2>Information you send us</h2>
       <p>

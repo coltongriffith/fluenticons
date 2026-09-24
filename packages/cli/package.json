@@ -1,0 +1,22 @@
+{
+  "name": "fluenticons-cli",
+  "version": "0.1.0",
+  "description": "Search Microsoft's Fluent UI System Icons from the terminal and get real @fluentui/react-icons component names.",
+  "type": "module",
+  "bin": {
+    "fluenticons": "bin.mjs"
+  },
+  "files": [
+    "bin.mjs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "homepage": "https://fluenticons.co/ai/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coltongriffith/fluenticons.git",
+    "directory": "packages/cli"
+  },
+  "license": "MIT"
+}

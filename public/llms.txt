@@ -1,0 +1,23 @@
+# Fluenticons
+
+> Free search, preview and code for Microsoft's Fluent UI System Icons, with an MCP server and JSON API that coding agents can use to find icons by meaning and get real @fluentui/react-icons component names.
+
+Fluenticons (https://fluenticons.co) is an independent site, not affiliated with Microsoft. Icons are Microsoft's Fluent UI System Icons (MIT License).
+
+## For AI agents
+
+- [Fluent Icons for AI agents](https://fluenticons.co/ai/): setup for Claude Code, Cursor, Codex, VS Code and other MCP clients, API reference and agent instructions.
+- MCP server (Streamable HTTP, no auth): https://fluenticons.co/mcp — tools: search_icons, recommend_icons, get_icon, get_icon_code, find_similar_icons.
+- [API index](https://fluenticons.co/api/v1): JSON description of every endpoint.
+- Search: `GET https://fluenticons.co/api/v1/icons/search?q=user+permissions` (optional style, size, platform, limit, exact, category)
+- One icon: `GET https://fluenticons.co/api/v1/icons/PersonLock`
+- Code: `GET https://fluenticons.co/api/v1/icons/PersonLock/code?platform=react&style=regular&size=24`
+- Recommend a set: `POST https://fluenticons.co/api/v1/icons/recommend` with `{"items": [{"label": "Billing", "description": "invoices"}], "style": "regular", "size": 24}`
+- [Claude Code skill](https://fluenticons.co/ai/SKILL.md)
+
+## Website
+
+- [All icons](https://fluenticons.co/): filled; [outlined](https://fluenticons.co/outlined/); [color](https://fluenticons.co/color/)
+- [Browse A–Z](https://fluenticons.co/browse/) and [topics](https://fluenticons.co/tag/)
+- Icon pages: https://fluenticons.co/icon/{name}/ (e.g. /icon/person-lock/) with every size, style and platform code
+- [Guides](https://fluenticons.co/guides/)

@@ -131,6 +131,14 @@
         </NuxtLink>
       </li>
     </ul>
+    <NuxtLink
+      v-if="site.aiPage"
+      :to="site.aiPage"
+      class="block px-4 pt-3 text-xs text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:underline"
+      @click="track('ai_promo_click', { source: 'editor' })"
+    >
+      Building with AI? Give your coding agent Fluent Icons →
+    </NuxtLink>
     <BuyMeCoffee />
   </aside>
 </template>
@@ -147,6 +155,7 @@ import {
   svgToPowerApps,
 } from "../../utils/iconManager";
 import { track } from "../../utils/analytics";
+import site from "~/site.js";
 
 const icon = useSelectedIcon();
 const colorMode = useColorMode();

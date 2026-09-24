@@ -1,6 +1,7 @@
 import uiIcons from "~/generated/ui-icons.json";
 import siteStats from "~/generated/stats.json";
 import site from "~/site.js";
+import { cdnUrl, reactName } from "../utils/iconCode";
 
 export const PAGE_SIZE = 48;
 export const SITE_URL = site.url;
@@ -14,8 +15,7 @@ export function roughCount(n, step = n >= 10000 ? 1000 : 100) {
 // Every size and style of an icon, from Microsoft's @fluentui/svg-icons package
 // (pinned version) on jsDelivr. The site's own copy of each icon stays in /icons.
 export const variantFile = (slug, size, style) => `ic_fluent_${slug}_${size}_${style}.svg`;
-export const variantUrl = (slug, size, style) =>
-  `https://cdn.jsdelivr.net/npm/@fluentui/svg-icons@${stats.svgIcons}/icons/${slug}_${size}_${style}.svg`;
+export const variantUrl = (slug, size, style) => cdnUrl(stats.svgIcons, slug, size, style);
 // Pixel size from a file name like ic_fluent_add_20_filled.svg.
 export const fileSize = (file) => Number(file?.match(/_(\d+)_[a-z]+\.svg$/)?.[1] || 24);
 
@@ -136,21 +136,6 @@ export function matchesQuery(entry, query) {
   const search =
     entry.search ?? `${entry.name}|${entry.slug}`.toLowerCase().replace(/[\s_]+/g, "");
   return search.includes(q);
-}
-
-// PascalCase name as used by @fluentui/react-icons and the Blazor/iOS packages (e.g. AddCircle).
-export function pascalName(slug) {
-  return slug
-    .split("_")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join("")
-    .replace(/(\d)([a-z])/g, (_, d, l) => d + l.toUpperCase());
-}
-
-// React component for a size and style ("filled" | "regular" | "color" | "light"),
-// e.g. AddCircle24Filled.
-export function reactName(slug, size, style) {
-  return `${pascalName(slug)}${size}${style.charAt(0).toUpperCase()}${style.slice(1)}`;
 }
 
 // React component for a grid icon (UI variant "filled" | "outlined").

@@ -76,7 +76,7 @@
 </template>
 
 <script setup>
-import { track } from "../../utils/analytics";
+import { setSearchTerm, track } from "../../utils/analytics";
 import site from "~/site.js";
 
 const route = useRoute();
@@ -108,6 +108,7 @@ function onSearch(e) {
   debounce = setTimeout(() => {
     searchQuery.value = e.target.value;
     const term = e.target.value.trim();
+    setSearchTerm(term.length >= 2 ? term.toLowerCase() : "");
     if (term.length >= 2) track("search", { search_term: term.toLowerCase() });
   }, 600);
 }

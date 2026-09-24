@@ -21,6 +21,11 @@
       <h2 id="whats-new">What's new</h2>
       <ul>
         <li>
+          <strong>Fluent Icons for AI agents.</strong> Claude Code, Cursor, Codex and other coding
+          agents can now search every icon by meaning and get real React component names through
+          a free <NuxtLink to="/ai/">MCP server and API</NuxtLink>.
+        </li>
+        <li>
           <strong>Every size and style.</strong> Each icon page now has all of Microsoft's
           hand-tuned sizes (10 to 48&nbsp;px) plus the <NuxtLink to="/color/">Color</NuxtLink>
           and Light styles where they exist, each ready to download as SVG or PNG.
