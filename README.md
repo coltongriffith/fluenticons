@@ -110,10 +110,10 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
   Locally: `npx wrangler pages dev dist` serves the site with the API and MCP server.
 - **Limits**: 120 requests per minute per IP (per worker), 200-character queries, 25 items per
   recommendation, 16 KB bodies. Errors are JSON: `{ "error": { "code", "message" } }`.
-- **Analytics** go to the site's GA4 property from the server as `api_*`, `mcp_*`,
-  `agent_result_selected` and `mcp_initialize` events. Set `AGENT_GA_ID` on the Pages project
-  to send them to a GA4 property of their own (otherwise they go to the website's property), and
-  `GA_API_SECRET` (a Measurement Protocol secret of that property's stream) to use the Measurement
+- **Analytics** are sent from the server as `api_*`, `mcp_*`,
+  `agent_result_selected` and `mcp_initialize` events, in their own GA4 property
+  ("Fluenticons API", G-LNV7W169XW; an `AGENT_GA_ID` variable on the Pages project overrides it), and
+  set `GA_API_SECRET` (a Measurement Protocol secret of that property's stream) to use the Measurement
   Protocol; without it they're sent to the same endpoint gtag uses. Requests with an
   `x-fluenticons-no-track` header (deploy checks, tests, the /ai demo) aren't counted. Website searches are joined to the
   icon people pick: `select_content`, `copy_icon`, `download_icon`, `favorite_add` and
