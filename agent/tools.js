@@ -15,6 +15,7 @@ import {
   versions,
 } from "./icons.js";
 import { rememberResults, track, trackSelection } from "./track.js";
+import { getSvg, svgToPowerApps } from "../app/utils/iconManager.js";
 
 export const LIMITS = { query: 200, results: 50, items: 25, label: 100, description: 300 };
 const SIZES = [10, 12, 16, 20, 24, 28, 32, 48];
@@ -73,6 +74,16 @@ function notFound(name) {
   };
 }
 
+// Code for a result in a list. Power Apps formulas embed the icon's SVG, so
+// lists link to the code endpoint for them instead of fetching every icon.
+function listCode(icon, p, opts) {
+  if (p === "powerapps") {
+    return { code: null, codeUrl: `https://fluenticons.co/api/v1/icons/${icon.pascal}/code?${new URLSearchParams({ platform: p, ...(opts.style && { style: opts.style }), ...(opts.size && { size: opts.size }) })}` };
+  }
+  const c = code(icon, { platform: p, style: opts.style, size: opts.size });
+  return { code: c.error ? null : c.code };
+}
+
 // ---- Operations -------------------------------------------------------------------
 
 export async function searchIcons(args, context, channel) {
@@ -88,10 +99,7 @@ export async function searchIcons(args, context, channel) {
   const hits = search(q, opts);
   const results = hits.map(({ icon, score }) => {
     const r = summary(icon, opts, score);
-    if (p && p !== "react") {
-      const c = code(icon, { platform: p, style: opts.style, size: opts.size });
-      r.code = c.error ? null : c.code;
-    }
+    if (p && p !== "react") Object.assign(r, listCode(icon, p, opts));
     return r;
   });
   track(context, channel === "mcp" ? "mcp_search_icons" : "api_icon_search", {
@@ -156,6 +164,14 @@ export async function iconCode(args, context, channel) {
     return { status: 404, body: { error: { code: result.error, message: result.message, available: result.available } } };
   }
   await trackSelection(context, found.icon.slug, channel);
+  if (p === "powerapps") {
+    // The full formula with this variant's SVG, as the website's Copy button makes it.
+    try {
+      result.code = svgToPowerApps(await getSvg(result.svgUrl));
+    } catch {
+      return { status: 502, body: { error: { code: "upstream_unavailable", message: "Couldn't load the icon's SVG. Try again, or use svgUrl." } } };
+    }
+  }
   return { status: 200, body: result };
 }
 
@@ -176,9 +192,7 @@ export async function recommendIcons(args, context, channel) {
   const recommendations = recommend(items, opts);
   if (p !== "react") {
     for (const r of recommendations) {
-      if (!r.slug) continue;
-      const c = code(findIcon(r.slug).icon, { platform: p, ...opts });
-      r.code = c.error ? null : c.code;
+      if (r.slug) Object.assign(r, listCode(findIcon(r.slug).icon, p, opts));
     }
   }
   track(context, channel === "mcp" ? "mcp_recommend_icons" : "api_recommend", {
