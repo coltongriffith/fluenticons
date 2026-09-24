@@ -7,3 +7,12 @@
 
 /sw.js
   Cache-Control: no-cache
+
+# Keep the Cloudflare Pages copies of the site (fluenticons-3.pages.dev,
+# fluenticons-alt.pages.dev and their preview URLs) out of search results;
+# fluenticons.co is the canonical domain and is unaffected.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
