@@ -2,8 +2,9 @@
 # fluenticons.co (fluenticons-3, a direct-upload project).
 #
 # - Every push to main deploys to production automatically, then checks that
-#   fluenticons.co serves the new build. Pushes that only touch Markdown or
-#   .github/ don't deploy, since they can't change the site.
+#   fluenticons.co serves the new build. Pushes that only touch README.md or
+#   .github/ don't deploy, since they can't change the site. (Guides in
+#   content/guides/*.md are site content and do deploy.)
 # - Run it manually from the Actions tab to deploy a preview (the default) or
 #   to redeploy production (branch "main").
 #
@@ -19,7 +20,7 @@ on:
   push:
     branches: [main]
     paths-ignore:
-      - "**.md"
+      - "README.md"
       - ".github/**"
   workflow_dispatch:
     inputs:
@@ -37,9 +38,11 @@ on:
 permissions:
   contents: read
 
-# One deploy at a time; a newer push waits for the running deploy to finish.
+# One deploy at a time per project and branch. A newer run waits for the
+# running one; GitHub keeps only the newest waiting run in each group, so a
+# manual preview can never replace a pending production deploy.
 concurrency:
-  group: cloudflare-deploy
+  group: cloudflare-deploy-${{ inputs.project || 'fluenticons-3' }}-${{ github.event_name == 'push' && 'main' || inputs.branch }}
   cancel-in-progress: false
 
 env:
@@ -53,9 +56,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: yarn

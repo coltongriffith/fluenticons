@@ -72,7 +72,7 @@ Icons Microsoft has retired stay on the site (marked `legacy`) so existing links
 
 fluenticons.co is served by the Cloudflare Pages project **fluenticons-3**, a direct-upload project with no Git connection. The **Deploy to Cloudflare Pages** GitHub Action deploys it:
 
-- **Every push to `main` goes live automatically.** The workflow builds the site, checks the output, uploads it, then confirms that fluenticons.co serves the new build. The run fails, and GitHub notifies you, if the live site isn't serving it. Pushes that only change Markdown files or `.github/` don't deploy.
+- **Every push to `main` goes live automatically.** The workflow builds the site, checks the output, uploads it, then confirms that fluenticons.co serves the new build. The run fails, and GitHub notifies you, if the live site isn't serving it. Pushes that only change `README.md` or `.github/` don't deploy; guide edits in `content/guides/` do deploy.
 - **Previews are manual.** Go to Actions → Run workflow, keep the default branch `preview`, and you get a preview URL on fluenticons-3 without touching the live site. Running it with branch `main` redeploys production.
 
 Cloudflare switches deployments atomically, and older deployments can be restored with **Rollback** in the dashboard (fluenticons-3 → Deployments). The workflow needs the repository secrets `CLOUDFLARE_API_TOKEN` (with the "Cloudflare Pages: Edit" permission) and `CLOUDFLARE_ACCOUNT_ID`.
