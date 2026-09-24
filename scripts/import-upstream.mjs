@@ -17,6 +17,17 @@ const root = new URL("../", import.meta.url).pathname;
 const iconsDir = join(root, "public/icons");
 const dataFile = join(root, "data/icons.json");
 
+// Some upstream metadata is UTF-8 that was decoded as Latin-1 ("â ï¸" for "⚠️").
+// Repair it, then drop the warning sign, which only prefixes internal notes.
+function cleanText(text) {
+  let fixed = text;
+  if (/[\u00c2-\u00f4][\u0080-\u00bf]/.test(text)) {
+    const decoded = Buffer.from(text, "latin1").toString("utf8");
+    if (!decoded.includes("\ufffd")) fixed = decoded;
+  }
+  return fixed.replace(/\u26a0\ufe0f?/g, " ").replace(/\s+/g, " ").trim();
+}
+
 const toStem = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
 const titleCase = (stem) =>
   stem.split("_").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
@@ -40,9 +51,9 @@ for (const folder of readdirSync(assetsDir)) {
   }
   icons.set(stem, {
     slug: stem,
-    name: meta.name || folder,
-    description: meta.description || "",
-    keywords: [...new Set((meta.metaphor || []).map((k) => k.toLowerCase().trim()).filter(Boolean))],
+    name: cleanText(meta.name || folder),
+    description: cleanText(meta.description || ""),
+    keywords: [...new Set((meta.metaphor || []).map((k) => cleanText(k).toLowerCase()).filter(Boolean))],
     filled: has("filled") ? file("filled") : null,
     regular: has("regular") ? file("regular") : null,
   });

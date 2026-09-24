@@ -68,13 +68,18 @@ node scripts/import-upstream.mjs upstream
 
 Icons Microsoft has retired stay on the site (marked `legacy`) so existing links keep working.
 
-### Cloudflare Pages settings
+### Deploying
 
-- Build command: `yarn generate`
-- Build output directory: `dist`
-- Environment variables: `NODE_VERSION=22.22.2`, `YARN_VERSION=1.22.22`
+fluenticons.co is served by the Cloudflare Pages project **fluenticons-3**, a direct-upload project with no Git connection. Deploy it with the **Deploy to Cloudflare Pages** GitHub Action (Actions tab → Run workflow):
 
-`public/_redirects` and `public/_headers` are deployed as-is. `public/sw.js` removes the service worker installed by the old version of the site.
+1. Run it with the default branch `preview`. You get a preview URL on fluenticons-3 without touching the live site.
+2. Check the preview, then run it again with the project's production branch (usually `main`) to go live.
+
+Cloudflare switches deployments atomically, and older deployments can be restored with **Rollback** in the dashboard. The workflow needs the repository secrets `CLOUDFLARE_API_TOKEN` (with the "Cloudflare Pages: Edit" permission) and `CLOUDFLARE_ACCOUNT_ID`.
+
+The Git-connected Pages project **fluenticons** (fluenticons-alt.pages.dev) builds every push for previews. It has no custom domain.
+
+Build settings: `yarn generate`, output `dist`, Node from `.nvmrc`. `public/_redirects` and `public/_headers` are deployed as-is. `public/sw.js` removes the service worker installed by the old version of the site.
 
 ### SVG and File Cleanup
 

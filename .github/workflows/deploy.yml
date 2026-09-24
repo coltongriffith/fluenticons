@@ -1,0 +1,68 @@
+# Builds the site and uploads it to the Cloudflare Pages project that serves
+# fluenticons.co (fluenticons-3, a direct-upload project). Run it manually from
+# the Actions tab. Cloudflare swaps deployments atomically, and any previous
+# deployment can be restored with "Rollback" in the Cloudflare dashboard.
+#
+# Required repository secrets:
+#   CLOUDFLARE_API_TOKEN   token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  the Cloudflare account ID
+name: Deploy to Cloudflare Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: >-
+          Deployment branch. Use the project's production branch (usually "main")
+          to go live; any other name creates a preview URL only.
+        required: true
+        default: preview
+      project:
+        description: Cloudflare Pages project
+        required: true
+        default: fluenticons-3
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn generate
+
+      - name: Check build output
+        run: |
+          for f in index.html outlined/index.html icon/fire/index.html guides/index.html ads.txt sitemap.xml _redirects _headers icons/ic_fluent_add_24_filled.svg; do
+            test -s "dist/$f" || { echo "Missing dist/$f"; exit 1; }
+          done
+          files=$(find dist -type f | wc -l)
+          echo "Files: $files"
+          test "$files" -lt 20000
+
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT: ${{ inputs.project }}
+          BRANCH: ${{ inputs.branch }}
+        run: >-
+          npx --yes wrangler@4 pages deploy dist
+          --project-name "$PROJECT"
+          --branch "$BRANCH"
+          --commit-hash "$GITHUB_SHA"
+          --commit-dirty=true
