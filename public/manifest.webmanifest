@@ -1,0 +1,11 @@
+{
+  "name": "Fluenticons",
+  "short_name": "Fluenticons",
+  "description": "Beautiful and Open source icons from Microsoft, a collection of over 4000 filled and outlined icons.",
+  "lang": "en",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [{ "src": "/icon.png", "sizes": "512x512", "type": "image/png" }]
+}

@@ -32,11 +32,13 @@ You can still find the old version [here](https://github.com/fayazara/fluenticon
 
 
 ### Tech stack
-1. Nuxt.js
-2. Tailwind Css.
-3. Hosted on cloudflare pages.
+1. Nuxt 4 (fully static, prerendered)
+2. Tailwind CSS
+3. Hosted on Cloudflare Pages
 
 ### To run the project locally
+
+Requires Node 22.19+ (see `.nvmrc`).
 
 ```bash
 # install dependencies
@@ -45,15 +47,34 @@ $ yarn install
 # serve with hot reload at localhost:3000
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
+# generate the static site into dist/
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### How the site is built
+
+- `data/icons.json` lists every icon (name, Microsoft's keywords and description, file names). The SVGs live in `public/icons/`.
+- `content/guides/*.md` are the guide articles.
+- `yarn icons` (run automatically by `dev`/`generate`) turns those into `app/generated/`: a small search index for the browser, build-time icon details, the sitemap and the list of pages to prerender.
+- `yarn generate` prerenders every page — the icon grids, one page per icon (`/icon/<name>/`), the A–Z browse pages, guides and site pages.
+
+To pull the latest icons from Microsoft:
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse https://github.com/microsoft/fluentui-system-icons.git upstream
+git -C upstream sparse-checkout set --no-cone '/assets/*/metadata.json' '/assets/*/SVG/*_24_filled.svg' '/assets/*/SVG/*_24_regular.svg'
+node scripts/import-upstream.mjs upstream
+```
+
+Icons Microsoft has retired stay on the site (marked `legacy`) so existing links keep working.
+
+### Cloudflare Pages settings
+
+- Build command: `yarn generate`
+- Build output directory: `dist`
+- Environment variables: `NODE_VERSION=22.22.2`, `YARN_VERSION=1.22.22`
+
+`public/_redirects` and `public/_headers` are deployed as-is. `public/sw.js` removes the service worker installed by the old version of the site.
 
 ### SVG and File Cleanup
 
