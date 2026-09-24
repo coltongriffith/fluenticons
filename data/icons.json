@@ -73,7 +73,7 @@
  {
   "slug": "add",
   "name": "Add",
-  "description": "Used for adding actions.â ï¸ Note - because of the way strokes blur in between 2 pixels, we have made Add work for low density screens for 16, 20px sizes.",
+  "description": "Used for adding actions. Note - because of the way strokes blur in between 2 pixels, we have made Add work for low density screens for 16, 20px sizes.",
   "keywords": [
    "plus",
    "addition",
@@ -694,7 +694,7 @@
  {
   "slug": "arrow_autofit_content",
   "name": "Arrow Autofit Content",
-  "description": "â ï¸ Duplicate metaphor. Use Arrow Autofit instead.",
+  "description": "Duplicate metaphor. Use Arrow Autofit instead.",
   "keywords": [
    "width",
    "height",
@@ -1586,7 +1586,7 @@
  {
   "slug": "arrow_redo",
   "name": "Arrow Redo",
-  "description": "Used for redoing scenarios. â ï¸ Old metaphor & really unbalanced icon - use Arrow Hook instead if you can.",
+  "description": "Used for redoing scenarios. Old metaphor & really unbalanced icon - use Arrow Hook instead if you can.",
   "keywords": [
    "arrow",
    "forward"
@@ -1661,7 +1661,7 @@
  {
   "slug": "arrow_reply_down",
   "name": "Arrow Reply Down",
-  "description": "Used to reply only in Teams scenarios.â ï¸ Use Arrow Reply as default.",
+  "description": "Used to reply only in Teams scenarios. Use Arrow Reply as default.",
   "keywords": [
    "arrow",
    "direction",
@@ -2135,7 +2135,7 @@
  {
   "slug": "arrow_undo",
   "name": "Arrow Undo",
-  "description": "Used for undoing scenarios. â ï¸ Old metaphor & really unbalanced icon - use Arrow Hook instead if you can.",
+  "description": "Used for undoing scenarios. Old metaphor & really unbalanced icon - use Arrow Hook instead if you can.",
   "keywords": [
    "arrow",
    "forward"
@@ -4373,7 +4373,7 @@
  {
   "slug": "calendar_date",
   "name": "Calendar Date",
-  "description": "â ï¸ Not in repo. Used only for examples that need a mock date.",
+  "description": "Not in repo. Used only for examples that need a mock date.",
   "keywords": [
    "time",
    "date",
@@ -8002,7 +8002,7 @@
   "keywords": [
    "browser",
    "site",
-   "data.\n\nused to represent website cookies. also makes me hungry."
+   "data. used to represent website cookies. also makes me hungry."
   ],
   "filled": "ic_fluent_cookies_24_filled.svg",
   "regular": "ic_fluent_cookies_24_regular.svg"
@@ -8014,7 +8014,7 @@
   "keywords": [
    "share",
    "paste",
-   "clipboard.\n\nused for all copy + paste scenarios."
+   "clipboard. used for all copy + paste scenarios."
   ],
   "filled": "ic_fluent_copy_24_filled.svg",
   "regular": "ic_fluent_copy_24_regular.svg"
@@ -8026,7 +8026,7 @@
   "keywords": [
    "share",
    "paste",
-   "clipboard.\n\nused for all copy + paste scenarios."
+   "clipboard. used for all copy + paste scenarios."
   ],
   "filled": "ic_fluent_copy_add_24_filled.svg",
   "regular": "ic_fluent_copy_add_24_regular.svg"
@@ -8038,7 +8038,7 @@
   "keywords": [
    "share",
    "paste",
-   "clipboard.\n\nused for all copy + paste scenarios."
+   "clipboard. used for all copy + paste scenarios."
   ],
   "filled": "ic_fluent_copy_arrow_right_24_filled.svg",
   "regular": "ic_fluent_copy_arrow_right_24_regular.svg"
@@ -8050,7 +8050,7 @@
   "keywords": [
    "share",
    "paste",
-   "clipboard.\n\nused for all copy + paste scenarios."
+   "clipboard. used for all copy + paste scenarios."
   ],
   "filled": "ic_fluent_copy_select_24_filled.svg",
   "regular": "ic_fluent_copy_select_24_regular.svg"
@@ -8061,7 +8061,7 @@
   "description": "",
   "keywords": [
    "weekend",
-   "relax.\n\nused to represent the weekend."
+   "relax. used to represent the weekend."
   ],
   "filled": "ic_fluent_couch_24_filled.svg",
   "regular": "ic_fluent_couch_24_regular.svg"
@@ -8107,7 +8107,7 @@
   "keywords": [
    "payment",
    "transaction",
-   "purchase.\n\nused in scenarios involving payments."
+   "purchase. used in scenarios involving payments."
   ],
   "filled": "ic_fluent_credit_card_person_24_filled.svg",
   "regular": "ic_fluent_credit_card_person_24_regular.svg"
@@ -8119,7 +8119,7 @@
   "keywords": [
    "payment",
    "transaction",
-   "purchase.\n\nused in scenarios involving payments."
+   "purchase. used in scenarios involving payments."
   ],
   "filled": "ic_fluent_credit_card_toolbox_24_filled.svg",
   "regular": "ic_fluent_credit_card_toolbox_24_regular.svg"
@@ -8284,7 +8284,7 @@
   "keywords": [
    "money",
    "transaction",
-   "bank.\n\nused to represent currency values. contains currency variants."
+   "bank. used to represent currency values. contains currency variants."
   ],
   "filled": "ic_fluent_currency_dollar_euro_24_filled.svg",
   "regular": "ic_fluent_currency_dollar_euro_24_regular.svg"
@@ -8296,7 +8296,7 @@
   "keywords": [
    "money",
    "transaction",
-   "bank.\n\nused to represent currency values. contains currency variants."
+   "bank. used to represent currency values. contains currency variants."
   ],
   "filled": "ic_fluent_currency_dollar_rupee_24_filled.svg",
   "regular": "ic_fluent_currency_dollar_rupee_24_regular.svg"
@@ -8308,7 +8308,7 @@
   "keywords": [
    "arrow",
    "interact",
-   "click.\n\nused in user cursor scenarios."
+   "click. used in user cursor scenarios."
   ],
   "filled": "ic_fluent_cursor_24_filled.svg",
   "regular": "ic_fluent_cursor_24_regular.svg"
@@ -8320,7 +8320,7 @@
   "keywords": [
    "arrow",
    "interact",
-   "click.\n\nused in user cursor scenarios."
+   "click. used in user cursor scenarios."
   ],
   "filled": "ic_fluent_cursor_click_24_filled.svg",
   "regular": "ic_fluent_cursor_click_24_regular.svg"
@@ -8332,7 +8332,7 @@
   "keywords": [
    "arrow",
    "interact",
-   "click.\n\nused in user cursor scenarios."
+   "click. used in user cursor scenarios."
   ],
   "filled": "ic_fluent_cursor_hover_24_filled.svg",
   "regular": "ic_fluent_cursor_hover_24_regular.svg"
@@ -8344,7 +8344,7 @@
   "keywords": [
    "arrow",
    "interact",
-   "click.\n\nused in user cursor scenarios."
+   "click. used in user cursor scenarios."
   ],
   "filled": "ic_fluent_cursor_hover_off_24_filled.svg",
   "regular": "ic_fluent_cursor_hover_off_24_regular.svg"
@@ -8357,7 +8357,7 @@
    "copy",
    "paste",
    "share",
-   "move.\n\nused to cut content from experience."
+   "move. used to cut content from experience."
   ],
   "filled": "ic_fluent_cut_24_filled.svg",
   "regular": "ic_fluent_cut_24_regular.svg"
@@ -8370,7 +8370,7 @@
    "dark mode",
    "light",
    "dark",
-   "ui.\n\nused to represent dark mode ui."
+   "ui. used to represent dark mode ui."
   ],
   "filled": "ic_fluent_dark_theme_24_filled.svg",
   "regular": "ic_fluent_dark_theme_24_regular.svg"
@@ -8385,7 +8385,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_area_24_filled.svg",
   "regular": "ic_fluent_data_area_24_regular.svg"
@@ -8400,7 +8400,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_bar_horizontal_24_filled.svg",
   "regular": "ic_fluent_data_bar_horizontal_24_regular.svg"
@@ -8416,7 +8416,7 @@
    "map",
    "trending",
    "graph",
-   "report.\n\n\nused in data viz scenarios."
+   "report. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_bar_vertical_24_filled.svg",
   "regular": "ic_fluent_data_bar_vertical_24_regular.svg"
@@ -8431,7 +8431,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_bar_vertical_add_24_filled.svg",
   "regular": "ic_fluent_data_bar_vertical_add_24_regular.svg"
@@ -8503,7 +8503,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_funnel_24_filled.svg",
   "regular": "ic_fluent_data_funnel_24_regular.svg"
@@ -8518,7 +8518,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_histogram_24_filled.svg",
   "regular": "ic_fluent_data_histogram_24_regular.svg"
@@ -8533,7 +8533,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_line_24_filled.svg",
   "regular": "ic_fluent_data_line_24_regular.svg"
@@ -8548,7 +8548,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_pie_24_filled.svg",
   "regular": "ic_fluent_data_pie_24_regular.svg"
@@ -8563,7 +8563,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_scatter_24_filled.svg",
   "regular": "ic_fluent_data_scatter_24_regular.svg"
@@ -8578,7 +8578,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_sunburst_24_filled.svg",
   "regular": "ic_fluent_data_sunburst_24_regular.svg"
@@ -8593,7 +8593,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_treemap_24_filled.svg",
   "regular": "ic_fluent_data_treemap_24_regular.svg"
@@ -8608,7 +8608,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_trending_24_filled.svg",
   "regular": "ic_fluent_data_trending_24_regular.svg"
@@ -8623,7 +8623,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data usage scenarios."
+   "graph. used in data usage scenarios."
   ],
   "filled": "ic_fluent_data_usage_24_filled.svg",
   "regular": "ic_fluent_data_usage_24_regular.svg"
@@ -8638,7 +8638,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\n\nused in data usage scenarios."
+   "graph. used in data usage scenarios."
   ],
   "filled": "ic_fluent_data_usage_checkmark_24_filled.svg",
   "regular": "ic_fluent_data_usage_checkmark_24_regular.svg"
@@ -8653,7 +8653,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data usage scenarios."
+   "graph. used in data usage scenarios."
   ],
   "filled": "ic_fluent_data_usage_edit_24_filled.svg",
   "regular": "ic_fluent_data_usage_edit_24_regular.svg"
@@ -8684,7 +8684,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data usage scenarios."
+   "graph. used in data usage scenarios."
   ],
   "filled": "ic_fluent_data_usage_toolbox_24_filled.svg",
   "regular": "ic_fluent_data_usage_toolbox_24_regular.svg"
@@ -8699,7 +8699,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_waterfall_24_filled.svg",
   "regular": "ic_fluent_data_waterfall_24_regular.svg"
@@ -8714,7 +8714,7 @@
    "chart",
    "map",
    "trending",
-   "graph.\n\nused in data viz scenarios."
+   "graph. used in data viz scenarios."
   ],
   "filled": "ic_fluent_data_whisker_24_filled.svg",
   "regular": "ic_fluent_data_whisker_24_regular.svg"
@@ -8809,7 +8809,7 @@
   "keywords": [
    "currency",
    "number",
-   "math.\n\n\nused to change decimal placement."
+   "math. used to change decimal placement."
   ],
   "filled": "ic_fluent_decimal_arrow_left_24_filled.svg",
   "regular": "ic_fluent_decimal_arrow_left_24_regular.svg"
@@ -8821,7 +8821,7 @@
   "keywords": [
    "currency",
    "number",
-   "math.\n\n\nused to change decimal placement."
+   "math. used to change decimal placement."
   ],
   "filled": "ic_fluent_decimal_arrow_right_24_filled.svg",
   "regular": "ic_fluent_decimal_arrow_right_24_regular.svg"
@@ -11871,7 +11871,7 @@
  {
   "slug": "emoji",
   "name": "Emoji",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11883,7 +11883,7 @@
  {
   "slug": "emoji_add",
   "name": "Emoji Add",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11896,7 +11896,7 @@
  {
   "slug": "emoji_angry",
   "name": "Emoji Angry",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11909,7 +11909,7 @@
  {
   "slug": "emoji_edit",
   "name": "Emoji Edit",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11922,7 +11922,7 @@
  {
   "slug": "emoji_hand",
   "name": "Emoji Hand",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11935,7 +11935,7 @@
  {
   "slug": "emoji_hint",
   "name": "Emoji Hint",
-  "description": "Used in emoji picker for custom emoji.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker for custom emoji. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11947,7 +11947,7 @@
  {
   "slug": "emoji_laugh",
   "name": "Emoji Laugh",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11960,7 +11960,7 @@
  {
   "slug": "emoji_meh",
   "name": "Emoji Meh",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11973,7 +11973,7 @@
  {
   "slug": "emoji_meme",
   "name": "Emoji Meme",
-  "description": "Used to represent funny / humorous internet topics.â ï¸ Should not be used as emoji.",
+  "description": "Used to represent funny / humorous internet topics. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -11988,7 +11988,7 @@
  {
   "slug": "emoji_multiple",
   "name": "Emoji Multiple",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -12001,7 +12001,7 @@
  {
   "slug": "emoji_sad",
   "name": "Emoji Sad",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -12014,7 +12014,7 @@
  {
   "slug": "emoji_sad_slight",
   "name": "Emoji Sad Slight",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -12027,7 +12027,7 @@
  {
   "slug": "emoji_smile_slight",
   "name": "Emoji Smile Slight",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -12040,7 +12040,7 @@
  {
   "slug": "emoji_sparkle",
   "name": "Emoji Sparkle",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -12053,7 +12053,7 @@
  {
   "slug": "emoji_surprise",
   "name": "Emoji Surprise",
-  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "description": "Used in emoji picker & some simple voting scenarios. Should not be used as emoji.",
   "keywords": [
    "face",
    "emote",
@@ -13574,7 +13574,7 @@
    "rules",
    "decide",
    "doink doink",
-   "court.\n\nused to represent court",
+   "court. used to represent court",
    "warnings",
    "or rules."
   ],
@@ -14974,7 +14974,7 @@
  {
   "slug": "image_border",
   "name": "Image Border",
-  "description": "Used to represent adding decoration to imagesâincluding borders and other decorations.",
+  "description": "Used to represent adding decoration to images—including borders and other decorations.",
   "keywords": [
    "image",
    "picture",
@@ -15521,7 +15521,7 @@
  {
   "slug": "keyboard_layout_one_handed_left",
   "name": "Keyboard Layout One Handed Left",
-  "description": "Used to represent one handed  keyboard scenarios.",
+  "description": "Used to represent one handed keyboard scenarios.",
   "keywords": [
    "keyboard",
    "type",
@@ -16478,7 +16478,7 @@
  },
  {
   "slug": "layout_row_two_split_top_focus_top_left",
-  "name": "Layout Row Two Split Top Focus  Top Left",
+  "name": "Layout Row Two Split Top Focus Top Left",
   "description": "Used to represent UI layouts.",
   "keywords": [
    "ui",
@@ -16633,7 +16633,7 @@
  {
   "slug": "lightbulb_person",
   "name": "Lightbulb Person",
-  "description": "Used to represent the Educational Insights app in Teams.â ï¸ Should not be used for other scenarios.",
+  "description": "Used to represent the Educational Insights app in Teams. Should not be used for other scenarios.",
   "keywords": [
    "school",
    "travel",
@@ -18316,7 +18316,7 @@
  {
   "slug": "more_vertical",
   "name": "More Vertical",
-  "description": "â ï¸ Used only for Android overflow menus.",
+  "description": "Used only for Android overflow menus.",
   "keywords": [
    "overflow",
    "menu",
@@ -18615,7 +18615,7 @@
  {
   "slug": "new",
   "name": "New",
-  "description": "â ï¸Old metaphor - represented new files in list. Now use Sparkle instead.",
+  "description": "Old metaphor - represented new files in list. Now use Sparkle instead.",
   "keywords": [
    "spark"
   ],
@@ -21037,7 +21037,7 @@
    "audio",
    "talk",
    "meeting",
-   "sound.\n\nused in a wide range of scenarios - representing a general person",
+   "sound. used in a wide range of scenarios - representing a general person",
    "a contact",
    "contact lists",
    "sharing",
@@ -22104,7 +22104,7 @@
  {
   "slug": "presence_available",
   "name": "Presence Available",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22123,7 +22123,7 @@
  {
   "slug": "presence_away",
   "name": "Presence Away",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22142,7 +22142,7 @@
  {
   "slug": "presence_blocked",
   "name": "Presence Blocked",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22161,7 +22161,7 @@
  {
   "slug": "presence_busy",
   "name": "Presence Busy",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22180,7 +22180,7 @@
  {
   "slug": "presence_dnd",
   "name": "Presence DND",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22199,7 +22199,7 @@
  {
   "slug": "presence_offline",
   "name": "Presence Offline",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22218,7 +22218,7 @@
  {
   "slug": "presence_oof",
   "name": "Presence OOF",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22237,7 +22237,7 @@
  {
   "slug": "presence_tentative",
   "name": "Presence Tentative",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -22256,7 +22256,7 @@
  {
   "slug": "presence_unknown",
   "name": "Presence Unknown",
-  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "description": "These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
   "keywords": [
    "avatar",
    "status",
@@ -23437,7 +23437,7 @@
  {
   "slug": "save",
   "name": "Save",
-  "description": "Used to represent saving content.â ï¸ Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
+  "description": "Used to represent saving content. Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
   "keywords": [
    "floppy disk",
    "device",
@@ -23449,7 +23449,7 @@
  {
   "slug": "save_arrow_right",
   "name": "Save Arrow Right",
-  "description": "Used to represent saving content.â ï¸ Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
+  "description": "Used to represent saving content. Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
   "keywords": [
    "floppy disk",
    "device",
@@ -23461,7 +23461,7 @@
  {
   "slug": "save_copy",
   "name": "Save Copy",
-  "description": "Used to represent saving content.â ï¸ Needs rename - Add Square Multiple (has 16 & 20 if needed).",
+  "description": "Used to represent saving content. Needs rename - Add Square Multiple (has 16 & 20 if needed).",
   "keywords": [
    "plus",
    "add",
@@ -23474,7 +23474,7 @@
  {
   "slug": "save_edit",
   "name": "Save Edit",
-  "description": "Used to represent saving content.â ï¸ Old metaphor - use checkmark circle instead.",
+  "description": "Used to represent saving content. Old metaphor - use checkmark circle instead.",
   "keywords": [
    "floppy disk",
    "device",
@@ -23487,7 +23487,7 @@
  {
   "slug": "save_multiple",
   "name": "Save Multiple",
-  "description": "Used to represent saving content.â ï¸ Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
+  "description": "Used to represent saving content. Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
   "keywords": [
    "floppy disk",
    "device",
@@ -23499,7 +23499,7 @@
  {
   "slug": "save_sync",
   "name": "Save Sync",
-  "description": "Used to represent saving content.â ï¸ Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
+  "description": "Used to represent saving content. Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
   "keywords": [
    "floppy disk",
    "device",
@@ -23835,7 +23835,7 @@
  {
   "slug": "search",
   "name": "Search",
-  "description": "Used in general search scenarios.â ï¸ Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
+  "description": "Used in general search scenarios. Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
   "keywords": [
    "magnifying glass",
    "zoom",
@@ -23848,7 +23848,7 @@
  {
   "slug": "search_info",
   "name": "Search Info",
-  "description": "Used in general search scenarios.â ï¸ Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
+  "description": "Used in general search scenarios. Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
   "keywords": [
    "magnifying glass",
    "zoom",
@@ -23874,7 +23874,7 @@
  {
   "slug": "search_square",
   "name": "Search Square",
-  "description": "Used in general search scenarios.â ï¸ Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
+  "description": "Used in general search scenarios. Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
   "keywords": [
    "magnifying glass",
    "zoom",
@@ -24935,7 +24935,7 @@
  {
   "slug": "sign_out",
   "name": "Sign Out",
-  "description": "â ï¸ Old metaphor. Use Door Arrow Right or Person Arrow Right instead.",
+  "description": "Old metaphor. Use Door Arrow Right or Person Arrow Right instead.",
   "keywords": [
    "door",
    "arrow",
@@ -27692,7 +27692,7 @@
  {
   "slug": "table_simple_checkmark",
   "name": "Table Simple Checkmark",
-  "description": "Used to represent the Educational Grades app in Teams.â ï¸ Should not be used for other scenarios.",
+  "description": "Used to represent the Educational Grades app in Teams. Should not be used for other scenarios.",
   "keywords": [
    "school",
    "travel",
@@ -28125,7 +28125,7 @@
  {
   "slug": "target_arrow",
   "name": "Target Arrow",
-  "description": "Used in targeting & hitting goal scenarios. â ï¸ Global readiness warns an arrow can be viewed as a weapon, and should be regulated carefully where it is used.",
+  "description": "Used in targeting & hitting goal scenarios. Global readiness warns an arrow can be viewed as a weapon, and should be regulated carefully where it is used.",
   "keywords": [
    "physical",
    "goal",
@@ -31512,7 +31512,7 @@
  {
   "slug": "toggle_left",
   "name": "Toggle Left",
-  "description": "Used to represent options, settings, etc. â ï¸ Should not be used as toggle UI.",
+  "description": "Used to represent options, settings, etc. Should not be used as toggle UI.",
   "keywords": [
    "on",
    "off",
@@ -31524,7 +31524,7 @@
  {
   "slug": "toggle_multiple",
   "name": "Toggle Multiple",
-  "description": "Used to represent options, settings, etc. â ï¸ Should not be used as toggle UI.",
+  "description": "Used to represent options, settings, etc. Should not be used as toggle UI.",
   "keywords": [
    "on",
    "off",
@@ -31536,7 +31536,7 @@
  {
   "slug": "toggle_right",
   "name": "Toggle Right",
-  "description": "Used to represent options, settings, etc. â ï¸ Should not be used as toggle UI.",
+  "description": "Used to represent options, settings, etc. Should not be used as toggle UI.",
   "keywords": [
    "on",
    "off",
@@ -32930,7 +32930,7 @@
  {
   "slug": "wallet",
   "name": "Wallet",
-  "description": "Used to represent a physical collection of payment options, money balance, or other purchase  scenarios.",
+  "description": "Used to represent a physical collection of payment options, money balance, or other purchase scenarios.",
   "keywords": [
    "physical",
    "analog",
@@ -32946,7 +32946,7 @@
  {
   "slug": "wallet_credit_card",
   "name": "Wallet Credit Card",
-  "description": "Used to represent a physical collection of payment options, money balance, or other purchase  scenarios.",
+  "description": "Used to represent a physical collection of payment options, money balance, or other purchase scenarios.",
   "keywords": [
    "physical",
    "analog",
