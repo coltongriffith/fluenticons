@@ -1,22 +1,22 @@
 <template>
   <div class="text-gray-500">
-    <p class="text-sm text-center mb-2">
-      <a class="underline" href="mailto:colton@fluenticons.co"
-        >Showcase your brand here</a
-      >
-    </p>
+    <p class="text-sm text-center mb-2">Featured project</p>
     <div
       class="flex items-center justify-center flex-wrap -mx-3 overflow-hidden"
     >
       <a
-        href="https://freelancedaily.co/subscribe"
+        href="https://explorationmaps.com"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
+        aria-label="Open Exploration Maps"
       >
         <img
-          src="/sponsors/freelance-daily.png"
-          alt="Freelance Daily"
+          src="/exploration-maps-banner.jpg"
+          alt="Exploration Maps — Mining Maps. No GIS."
+          width="2033"
+          height="773"
           class="h-16 w-auto rounded-lg border"
+          decoding="async"
         />
       </a>
     </div>
