@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { track } from "~/utils/analytics";
+import { track } from "../../utils/analytics";
 
 const props = defineProps({
   icon: { type: Object, required: true },

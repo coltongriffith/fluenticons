@@ -8,7 +8,10 @@
     "build": "yarn icons && nuxt build",
     "generate": "yarn icons && node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && nuxt generate",
     "preview": "npx serve .output/public",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "material:icons": "node scripts/build-icon-data.mjs sites/material",
+    "material:dev": "yarn material:icons && nuxt dev sites/material",
+    "material:generate": "yarn material:icons && node -e \"require('fs').rmSync('sites/material/dist',{recursive:true,force:true})\" && nuxt generate sites/material"
   },
   "dependencies": {
     "file-saver": "^2.0.5",

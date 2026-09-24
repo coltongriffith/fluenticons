@@ -1,4 +1,6 @@
-const STORAGE_KEY = "fluenticons:favorites";
+import site from "~/site.js";
+
+const STORAGE_KEY = site.storageKey;
 
 export function useFavorites() {
   const favorites = useState("favorites", () => []);

@@ -72,6 +72,22 @@ node scripts/import-upstream.mjs upstream 1.1.341
 
 Icons Microsoft has retired stay on the site (marked `legacy`) so existing links keep working.
 
+### The Material Icons site (materialicons.co)
+
+`sites/material/` is a second site built from the same code: Google's Material Symbols with the same grid, editor, favorites, icon pages, topics, guides and analytics. The repo root is its base [Nuxt layer](https://nuxt.com/docs/getting-started/layers); `sites/material/` adds its own data, icons, guides, pages and settings.
+
+- `app/site.js` (and `sites/material/app/site.js`) holds each site's name, URL, grid pages, file naming and footer. Shared code imports `~/site.js` and `~/generated/…`, which resolve to the site being built.
+- `node scripts/import-material.mjs <version>` imports `@material-symbols/svg-400` (Outlined, fill 0 and 1, redrawn on a 24×24 viewBox) with Google Fonts' names, categories and keywords, plus Flutter names from `material_symbols_icons`. Rounded, Sharp and other weights load from jsDelivr on icon pages.
+- `yarn material:dev` / `yarn material:generate` build it into `sites/material/dist` (about 16,000 files).
+- The weekly icon update also checks for new Material Symbols releases and opens a pull request.
+
+**Deploying it** (`.github/workflows/deploy-material.yml`) is off until you set two repository variables (Settings → Secrets and variables → Actions → Variables):
+
+1. `MATERIAL_PAGES_PROJECT`: the Cloudflare Pages project name, e.g. `materialicons`. The next push to `main` (or a manual run) builds the site and creates the project if it doesn't exist.
+2. Attach `materialicons.co` to that project in Cloudflare (Pages → the project → Custom domains), then set `MATERIAL_SITE_URL` to `https://materialicons.co` so production runs check the live site.
+
+It uses the same Cloudflare secrets as fluenticons.co. Pushes that only change `sites/material/` don't redeploy fluenticons.co.
+
 ### Deploying
 
 fluenticons.co is served by the Cloudflare Pages project **fluenticons-3**, a direct-upload project with no Git connection. The **Deploy to Cloudflare Pages** GitHub Action deploys it:

@@ -2,9 +2,10 @@
 # fluenticons.co (fluenticons-3, a direct-upload project).
 #
 # - Every push to main deploys to production automatically, then checks that
-#   fluenticons.co serves the new build. Pushes that only touch README.md or
-#   .github/ don't deploy, since they can't change the site. (Guides in
-#   content/guides/*.md are site content and do deploy.)
+#   fluenticons.co serves the new build. Pushes that only touch README.md,
+#   .github/ or the Material Icons site (sites/material) don't deploy, since
+#   they can't change fluenticons.co. (Guides in content/guides/*.md are site
+#   content and do deploy.)
 # - Run it manually from the Actions tab to deploy a preview (the default) or
 #   to redeploy production (branch "main").
 #
@@ -22,6 +23,9 @@ on:
     paths-ignore:
       - "README.md"
       - ".github/**"
+      # The Material Icons site (deployed by deploy-material.yml)
+      - "sites/material/**"
+      - "scripts/import-material.mjs"
   workflow_dispatch:
     inputs:
       branch:
