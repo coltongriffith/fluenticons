@@ -4,6 +4,7 @@
 # - Compares the latest @fluentui/svg-icons version on npm with
 #   data/meta.json. Nothing happens when they match.
 # - Imports the matching release (git tag) of microsoft/fluentui-system-icons
+#   (it waits for the next run if the tag isn't published yet)
 #   with scripts/import-upstream.mjs, builds the site to check it still
 #   builds (and stays under Cloudflare Pages' 20,000-file limit), then pushes
 #   the branch icons/<version> and opens a pull request.
@@ -53,6 +54,10 @@ jobs:
           elif git ls-remote --exit-code --heads origin "icons/$latest" > /dev/null; then
             echo "Branch icons/$latest already exists; review or merge its pull request." | tee -a "$GITHUB_STEP_SUMMARY"
             echo "update=false" >> "$GITHUB_OUTPUT"
+          elif ! git ls-remote --exit-code --tags https://github.com/microsoft/fluentui-system-icons.git "refs/tags/$latest" > /dev/null; then
+            # The metadata, fonts and Flutter names must come from the same release.
+            echo "@fluentui/svg-icons $latest is out, but the $latest tag isn't on GitHub yet. Trying again next run." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=false" >> "$GITHUB_OUTPUT"
           else
             echo "New release: $current -> $latest" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "update=true" >> "$GITHUB_OUTPUT"
@@ -66,11 +71,8 @@ jobs:
         env:
           VERSION: ${{ steps.check.outputs.version }}
         run: |
-          repo=https://github.com/microsoft/fluentui-system-icons.git
-          # Use the release's tag when Microsoft published one, else the latest commit.
-          ref=()
-          if git ls-remote --exit-code --tags "$repo" "refs/tags/$VERSION" > /dev/null; then ref=(--branch "$VERSION"); fi
-          git clone --depth 1 --filter=blob:none --sparse "${ref[@]}" "$repo" "$RUNNER_TEMP/upstream"
+          git clone --depth 1 --filter=blob:none --sparse --branch "$VERSION" \
+            https://github.com/microsoft/fluentui-system-icons.git "$RUNNER_TEMP/upstream"
           git -C "$RUNNER_TEMP/upstream" sparse-checkout set --no-cone '/assets/*/metadata.json' \
             '/assets/*/SVG/*_24_filled.svg' '/assets/*/SVG/*_24_regular.svg' \
             '/fonts/*.json' '/flutter/lib/src/fluent_icons.dart'

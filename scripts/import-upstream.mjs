@@ -237,8 +237,14 @@ const variantCount = list.reduce(
   0
 );
 const added = list.filter((i) => i.added === today).map((i) => i.slug);
+// Designs Microsoft retired in this release: kept (as legacy) when the site
+// still has their files, otherwise gone from the data.
+const retired = previousList
+  .filter((e) => !e.legacy && (!icons.has(e.slug) || icons.get(e.slug).legacy))
+  .map((e) => e.slug);
 const removed = previousList.filter((e) => !icons.has(e.slug)).map((e) => e.slug);
 console.log(`data/icons.json: ${list.length} designs, ${variantCount} variants`);
 const sample = added.slice(0, 50).join(", ") + (added.length > 50 ? ", …" : "");
 console.log(`new designs: ${added.length}${added.length ? ` (${sample})` : ""}`);
+if (retired.length) console.log(`retired upstream (kept as legacy unless listed below): ${retired.join(", ")}`);
 if (removed.length) console.log(`no longer in the data: ${removed.join(", ")}`);

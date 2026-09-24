@@ -50,6 +50,6 @@ function select(e) {
   if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   e.preventDefault();
   selectedIcon.value = props.icon;
-  track("select_content", { content_type: "icon", item_id: props.icon.slug, style: props.icon.variant });
+  track("select_content", { content_type: "icon", item_id: props.icon.slug, style: fileStyle(props.icon.variant) });
 }
 </script>

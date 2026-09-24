@@ -248,17 +248,22 @@ function onColorPicked() {
 function favoriteToggle() {
   const added = toggle(icon.value);
   toast.show(added ? "Added to favorites" : "Removed from favorites");
-  if (added) track("favorite_add", { icon: icon.value.slug, style: icon.value.variant });
+  if (added) track("favorite_add", { icon: icon.value.slug, style: fileStyle(icon.value.variant) });
 }
 
-// Analytics details shared by the editor's copy and download events.
-const eventParams = (format) => ({
-  icon: icon.value.slug,
-  style: icon.value.variant,
-  format,
-  source: "editor",
-  color_mode: mode.value,
-});
+// Analytics details shared by the editor's copy and download events; style
+// and size come from the file name, as on icon pages.
+const eventParams = (format) => {
+  const m = icon.value.svgFileName.match(/_(\d+)_([a-z]+)\.svg$/);
+  return {
+    icon: icon.value.slug,
+    style: m?.[2] || fileStyle(icon.value.variant),
+    size: m ? Number(m[1]) : undefined,
+    format,
+    source: "editor",
+    color_mode: mode.value,
+  };
+};
 
 // The SVG markup for the current icon with the chosen color or gradient applied.
 async function currentSvg() {
