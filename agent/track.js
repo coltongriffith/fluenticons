@@ -1,7 +1,5 @@
-// Usage analytics for the agent API and MCP server, sent to the site's GA4
-// property from the server (agents don't run gtag). Agent events have their
-// own names (api_* and mcp_*), so they never mix with the website's search,
-// select_content and copy events.
+// Usage analytics for the agent API and MCP server, sent to GA4 from the
+// server (agents don't run gtag), to a property of their own (below).
 //
 // Sent with the GA4 Measurement Protocol when the Pages project has a
 // GA_API_SECRET environment variable (a Measurement Protocol API secret of that
@@ -15,10 +13,10 @@
 // recommend, or anything else from the request. The client ID is a hash of
 // IP + User-Agent that changes every month, so repeat use can be counted
 // without identifying anyone.
-// Agent events go to the GA4 property in the AGENT_GA_ID environment variable
-// (a property of their own keeps them out of the website's reports), else to
-// the website's property.
-const SITE_GA_ID = "G-VGSV4M0LY9";
+// Agent events go to their own GA4 property, "Fluenticons API", so they stay
+// out of the website's reports (G-VGSV4M0LY9). An AGENT_GA_ID environment
+// variable on the Pages project overrides it.
+const AGENT_GA_ID = "G-LNV7W169XW";
 
 const CLIENTS = [
   [/claude/i, "claude"],
@@ -68,7 +66,7 @@ export function track(context, name, params = {}) {
 }
 
 async function send(request, env, name, params) {
-  const GA_ID = env?.AGENT_GA_ID || SITE_GA_ID;
+  const GA_ID = env?.AGENT_GA_ID || AGENT_GA_ID;
   const cid = await clientId(request);
   // One GA session per client per day.
   const sid = String(Math.floor(Date.now() / 86400000));
