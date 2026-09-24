@@ -7,6 +7,14 @@
       <span class="text-gray-600" v-if="page.subtitle"
         >&nbsp;({{ page.subtitle }})</span
       >
+      <a
+        v-if="site.sister"
+        :href="site.sister.url"
+        class="ml-3 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:underline whitespace-nowrap"
+        @click="track('sister_site_click', { site: site.sister.label, source: 'toolbar' })"
+      >
+        {{ site.sister.label }}<FluentSvg ui="open_24_regular" class="h-3.5 w-3.5" />
+      </a>
     </p>
     <div class="flex items-center flex-wrap gap-3 lg:gap-4">
       <div

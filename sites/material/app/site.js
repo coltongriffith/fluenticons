@@ -56,4 +56,5 @@ export default {
   footerDisclaimer:
     "Materialicons is an independent project and is not affiliated with or endorsed by Google.",
   errorBack: "Back to Material Icons",
+  sister: { label: "Fluent Icons", url: "https://fluenticons.co/" },
 };
