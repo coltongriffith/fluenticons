@@ -42,6 +42,12 @@
           <NuxtLink to="/new/">new icons</NuxtLink> from each Microsoft release (with an
           <a href="/feed.xml">RSS feed</a>).
         </li>
+        <li>
+          <strong>Material Icons.</strong> Our new sister site,
+          <a href="https://materialicons.co/">Materialicons</a>, does the same for Google's
+          Material Symbols: every style, fill and weight, with code for HTML, React, Flutter and
+          Android.
+        </li>
       </ul>
 
       <h2>How to use Fluenticons</h2>

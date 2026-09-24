@@ -26,6 +26,10 @@
         keeps it free for everyone. The source code is public on
         <a href="https://github.com/coltongriffith/fluenticons" target="_blank" rel="noopener">GitHub</a>.
       </p>
+      <p>
+        The same team runs <a href="https://materialicons.co/">Materialicons</a>, which does the
+        same for Google's Material Symbols.
+      </p>
 
       <h2>Where the icons come from</h2>
       <p>

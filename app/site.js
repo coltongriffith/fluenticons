@@ -47,6 +47,7 @@ export default {
     { to: "/license/", label: "License" },
     { to: "/terms/", label: "Terms" },
     { to: "/privacy-policy/", label: "Privacy" },
+    { to: "https://materialicons.co/", label: "Material Icons" },
   ],
   // Footer notice: "{copyright} <license link>. {disclaimer}"
   footerCopyright: "Fluent UI System Icons are © Microsoft Corporation and released under the",
