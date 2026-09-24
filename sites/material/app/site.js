@@ -12,7 +12,7 @@ export default {
   name: "Materialicons",
   brand: "Material Icons",
   url: "https://materialicons.co",
-  gaId: "G-VGSV4M0LY9",
+  gaId: "G-EN85Z8G3Z6",
   adsenseClient: "ca-pub-9128081695641229",
   defaultTitle: "Materialicons: Free Google Material Symbols & Icons",
   description: (stats, roughCount) =>
