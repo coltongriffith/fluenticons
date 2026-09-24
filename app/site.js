@@ -55,4 +55,6 @@ export default {
   footerDisclaimer:
     "Fluenticons is an independent project and is not affiliated with or endorsed by Microsoft.",
   errorBack: "Back to Fluent Icons",
+  // Our other site, linked from the toolbar above the icon grid.
+  sister: { label: "Material Icons", url: "https://materialicons.co/" },
 };
