@@ -146,6 +146,7 @@ import {
   svgToCss,
   svgToPowerApps,
 } from "~/utils/iconManager";
+import { track } from "~/utils/analytics";
 
 const icon = useSelectedIcon();
 const colorMode = useColorMode();
@@ -245,8 +246,24 @@ function onColorPicked() {
 }
 
 function favoriteToggle() {
-  toast.show(toggle(icon.value) ? "Added to favorites" : "Removed from favorites");
+  const added = toggle(icon.value);
+  toast.show(added ? "Added to favorites" : "Removed from favorites");
+  if (added) track("favorite_add", { icon: icon.value.slug, style: fileStyle(icon.value.variant) });
 }
+
+// Analytics details shared by the editor's copy and download events; style
+// and size come from the file name, as on icon pages.
+const eventParams = (format) => {
+  const m = icon.value.svgFileName.match(/_(\d+)_([a-z]+)\.svg$/);
+  return {
+    icon: icon.value.slug,
+    style: m?.[2] || fileStyle(icon.value.variant),
+    size: m ? Number(m[1]) : undefined,
+    format,
+    source: "editor",
+    color_mode: mode.value,
+  };
+};
 
 // The SVG markup for the current icon with the chosen color or gradient applied.
 async function currentSvg() {
@@ -277,6 +294,7 @@ async function copy() {
   try {
     await navigator.clipboard.writeText(await snippet(selectedCopyType.value));
     toast.show(`Copied ${selectedCopyType.value} snippet`);
+    track("copy_icon", eventParams(selectedCopyType.value));
   } catch (err) {
     toast.error(err.message);
   }
@@ -299,6 +317,7 @@ async function exportIcon() {
       const blob = new Blob([await snippet(type)], { type: "text/plain;charset=utf-8" });
       saveAs(blob, `${baseName.value}.${ext}`);
     }
+    track("download_icon", eventParams(type));
   } catch (err) {
     toast.error(err.message);
   }

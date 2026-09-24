@@ -24,6 +24,7 @@ const links = [
   { to: "/color/", label: "Color icons" },
   { to: "/browse/", label: "Browse A–Z" },
   { to: "/tag/", label: "Topics" },
+  { to: "/new/", label: "New icons" },
   { to: "/guides/", label: "Guides" },
   { to: "/about/", label: "About" },
   { to: "/contact/", label: "Contact" },

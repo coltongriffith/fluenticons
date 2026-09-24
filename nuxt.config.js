@@ -31,6 +31,7 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "apple-touch-icon", href: "/icon.png" },
         { rel: "manifest", href: "/manifest.webmanifest" },
+        { rel: "alternate", type: "application/rss+xml", title: "New Fluent icons", href: "/feed.xml" },
       ],
       script: [
         { src: `https://www.googletagmanager.com/gtag/js?id=${gaId}`, async: true },

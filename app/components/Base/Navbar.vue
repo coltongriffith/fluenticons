@@ -68,6 +68,8 @@
 </template>
 
 <script setup>
+import { track } from "~/utils/analytics";
+
 const route = useRoute();
 const colorMode = useColorMode();
 const searchQuery = useSearchQuery();
@@ -93,6 +95,8 @@ function onSearch(e) {
   clearTimeout(debounce);
   debounce = setTimeout(() => {
     searchQuery.value = e.target.value;
+    const term = e.target.value.trim();
+    if (term.length >= 2) track("search", { search_term: term.toLowerCase() });
   }, 600);
 }
 

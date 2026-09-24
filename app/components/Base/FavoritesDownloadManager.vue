@@ -14,6 +14,7 @@
 <script setup>
 import { downloadAsZip } from "~/utils/downloadManager";
 import { getIconSnippet, getSvg, svgToImage } from "~/utils/iconManager";
+import { track } from "~/utils/analytics";
 
 const { favorites } = useFavorites();
 const toast = useToast();
@@ -43,6 +44,7 @@ async function downloadIcons(type, format) {
       }))
     );
     await downloadAsZip(files);
+    track("download_favorites", { format, count: files.length });
   } catch (err) {
     toast.error(err.message);
   }

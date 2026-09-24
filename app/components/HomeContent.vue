@@ -38,8 +38,9 @@
           <strong>Browse by topic.</strong> <NuxtLink to="/tag/">{{ stats.tags }} topics</NuxtLink>
           such as <NuxtLink to="/tag/arrow/">arrows</NuxtLink>,
           <NuxtLink to="/tag/chart/">charts</NuxtLink> and
-          <NuxtLink to="/tag/security/">security</NuxtLink>, and the newest icons from
-          Microsoft's latest release.
+          <NuxtLink to="/tag/security/">security</NuxtLink>, and a page of
+          <NuxtLink to="/new/">new icons</NuxtLink> from each Microsoft release (with an
+          <a href="/feed.xml">RSS feed</a>).
         </li>
       </ul>
 
