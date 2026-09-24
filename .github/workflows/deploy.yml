@@ -1,7 +1,14 @@
 # Builds the site and uploads it to the Cloudflare Pages project that serves
-# fluenticons.co (fluenticons-3, a direct-upload project). Run it manually from
-# the Actions tab. Cloudflare swaps deployments atomically, and any previous
-# deployment can be restored with "Rollback" in the Cloudflare dashboard.
+# fluenticons.co (fluenticons-3, a direct-upload project).
+#
+# - Every push to main deploys to production automatically, then checks that
+#   fluenticons.co serves the new build. Pushes that only touch Markdown or
+#   .github/ don't deploy, since they can't change the site.
+# - Run it manually from the Actions tab to deploy a preview (the default) or
+#   to redeploy production (branch "main").
+#
+# Cloudflare swaps deployments atomically, and any previous deployment can be
+# restored with "Rollback" in the Cloudflare dashboard.
 #
 # Required repository secrets:
 #   CLOUDFLARE_API_TOKEN   token with the "Cloudflare Pages: Edit" permission
@@ -9,12 +16,17 @@
 name: Deploy to Cloudflare Pages
 
 on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - ".github/**"
   workflow_dispatch:
     inputs:
       branch:
         description: >-
-          Deployment branch. Use the project's production branch (usually "main")
-          to go live; any other name creates a preview URL only.
+          Deployment branch. "preview" (or any other name) creates a preview URL
+          only; "main" deploys to production.
         required: true
         default: preview
       project:
@@ -25,12 +37,19 @@ on:
 permissions:
   contents: read
 
+# One deploy at a time; a newer push waits for the running deploy to finish.
 concurrency:
   group: cloudflare-deploy
   cancel-in-progress: false
 
+env:
+  PRODUCTION_URL: https://fluenticons.co
+  PROJECT: ${{ inputs.project || 'fluenticons-3' }}
+  BRANCH: ${{ github.event_name == 'push' && 'main' || inputs.branch }}
+
 jobs:
   deploy:
+    if: github.repository == 'coltongriffith/fluenticons'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -53,16 +72,34 @@ jobs:
           files=$(find dist -type f | wc -l)
           echo "Files: $files"
           test "$files" -lt 20000
+          grep -q "pub-9128081695641229" dist/ads.txt
+          build_id=$(grep -o 'buildId:"[^"]*"' dist/index.html | head -1)
+          test -n "$build_id" || { echo "No buildId in dist/index.html"; exit 1; }
+          echo "BUILD_ID=$build_id" >> "$GITHUB_ENV"
+          echo "Deploying $build_id to $PROJECT ($BRANCH)"
 
       - name: Deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT: ${{ inputs.project }}
-          BRANCH: ${{ inputs.branch }}
         run: >-
           npx --yes wrangler@4 pages deploy dist
           --project-name "$PROJECT"
           --branch "$BRANCH"
           --commit-hash "$GITHUB_SHA"
           --commit-dirty=true
+
+      - name: Check fluenticons.co serves the new build
+        if: env.PROJECT == 'fluenticons-3' && env.BRANCH == 'main'
+        run: |
+          for _ in $(seq 1 18); do
+            if curl -fsS "$PRODUCTION_URL/" | grep -qF "$BUILD_ID" \
+              && curl -fsS "$PRODUCTION_URL/ads.txt" | grep -q "pub-9128081695641229" \
+              && curl -fsS -o /dev/null "$PRODUCTION_URL/icon/fire/"; then
+              echo "$PRODUCTION_URL is serving $BUILD_ID"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::$PRODUCTION_URL is not serving $BUILD_ID. Check the site; roll back in Cloudflare > fluenticons-3 > Deployments if needed."
+          exit 1
