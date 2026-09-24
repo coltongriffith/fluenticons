@@ -183,6 +183,11 @@
           component. Icons inherit the current text color, and you can size them with CSS.
         </p>
         <pre><code>{{ reactCode }}</code></pre>
+        <p class="text-sm">
+          Using a coding agent?
+          <NuxtLink to="/ai/" @click="track('ai_promo_click', { source: 'icon_page' })">Connect it to Fluent Icons</NuxtLink>
+          so it looks up real component names instead of guessing them.
+        </p>
       </template>
       <p v-else>
         This icon was retired from Microsoft's official packages. It's kept here so existing
@@ -267,14 +272,7 @@
 import { getSvg, svgToImage, svgToPowerApps } from "../../utils/iconManager";
 import { track } from "../../utils/analytics";
 import { saveAs } from "file-saver";
-
-const STYLE_INFO = {
-  regular: { label: "Regular (outlined)", short: "Regular", font: "Regular", variant: "outlined" },
-  filled: { label: "Filled", short: "Filled", font: "Filled", variant: "filled" },
-  color: { label: "Color", short: "Color" },
-  light: { label: "Light", short: "Light", font: "Light" },
-};
-const STYLE_ORDER = ["regular", "filled", "color", "light"];
+import { STYLE_INFO, STYLE_ORDER, codeTabs as iconCodeTabs } from "../../utils/iconCode";
 
 const route = useRoute();
 const slug = pathToSlug(route.params.slug);
@@ -400,123 +398,15 @@ if (import.meta.client) {
   );
 }
 
-const codeTabs = computed(() => {
-  const style = activeStyle.value;
-  const size = activeSize.value;
-  const [, codepoint, flutter] = activeVariant.value;
-  const name = icon.value.name;
-  const stem = `${slug}_${size}_${style}`;
-  const react = reactName(slug, size, style);
-  const Style = STYLE_INFO[style].short;
-  const mono = style === "filled" || style === "regular";
-  const tabs = [
-    {
-      key: "react",
-      label: "React",
-      code: `npm install @fluentui/react-icons
-
-import { ${react} } from "@fluentui/react-icons";
-
-export function Example() {
-  return <${react} aria-label="${name}" />;
-}`,
-    },
-    {
-      key: "svg",
-      label: "SVG",
-      code: `npm install @fluentui/svg-icons
-
-import icon from "@fluentui/svg-icons/icons/${stem}.svg";
-
-<!-- or load it from a CDN -->
-<img src="${variantUrl(slug, size, style)}" width="${size}" height="${size}" alt="${name}">`,
-    },
-  ];
-  if (mono) {
-    tabs.push({
-      key: "blazor",
-      label: "Blazor",
-      note: "Microsoft's Fluent UI Blazor icons package:",
-      code: `dotnet add package Microsoft.FluentUI.AspNetCore.Components.Icons
-
-<FluentIcon Value="@(new Icons.${Style}.Size${size}.${pascalName(slug)}())" />`,
-    });
-  }
-  if (flutter) {
-    tabs.push({
-      key: "flutter",
-      label: "Flutter",
-      code: `flutter pub add fluentui_system_icons
-
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-
-Icon(FluentIcons.${stem})`,
-    });
-  }
-  if (codepoint) {
-    const font = `FluentSystemIcons-${STYLE_INFO[style].font}`;
-    const hex = codepoint.toString(16).toUpperCase();
-    tabs.push(
-      {
-        key: "xaml",
-        label: "WinUI / WPF",
-        note: `Add ${font}.ttf from Microsoft's repository to your app, then use the glyph:`,
-        code: `<!-- WinUI 3 (font in Assets/Fonts) -->
-<FontIcon FontFamily="ms-appx:///Assets/Fonts/${font}.ttf#${font}" Glyph="&#x${hex};" FontSize="${size}" />
-
-<!-- WPF (font in Fonts/, Build Action: Resource) -->
-<TextBlock FontFamily="pack://application:,,,/Fonts/#${font}" Text="&#x${hex};" FontSize="${size}" />`,
-      },
-      {
-        key: "font",
-        label: "Icon font",
-        code: `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/microsoft/fluentui-system-icons@${stats.upstreamCommit}/fonts/${font}.css">
-
-<i class="icon-ic_fluent_${stem}"></i>
-
-/* or use the code point in your own CSS */
-.icon::before {
-  font-family: "${font}";
-  content: "\\${hex.toLowerCase()}";
-  font-size: ${size}px;
-}`,
-      }
-    );
-  }
-  if (mono) {
-    tabs.push(
-      {
-        key: "android",
-        label: "Android",
-        code: `// build.gradle
-implementation("com.microsoft.design:fluent-system-icons:${stats.svgIcons}@aar")
-
-<!-- layout XML -->
-<ImageView android:src="@drawable/ic_fluent_${stem}" />
-
-// Kotlin
-R.drawable.ic_fluent_${stem}`,
-      },
-      {
-        key: "ios",
-        label: "iOS",
-        code: `# Podfile
-pod "FluentIcons", "${stats.svgIcons}"
-
-import FluentIcons
-
-UIImage(fluent: .${react.charAt(0).toLowerCase()}${react.slice(1)})`,
-      }
-    );
-  }
-  tabs.push({
-    key: "powerapps",
-    label: "Power Apps",
-    note: "Paste into an Image control's Image property. The Copy button copies the full formula with this icon's SVG.",
-    code: `"data:image/svg+xml;utf8, " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 ${size} ${size}'>…</svg>")`,
-  });
-  return tabs;
-});
+const codeTabs = computed(() =>
+  iconCodeTabs({
+    slug,
+    name: icon.value.name,
+    style: activeStyle.value,
+    variant: [activeSize.value, activeVariant.value[1], activeVariant.value[2]],
+    versions: stats,
+  })
+);
 const activeTab = computed(
   () => codeTabs.value.find((t) => t.key === codeTab.value) || codeTabs.value[0]
 );

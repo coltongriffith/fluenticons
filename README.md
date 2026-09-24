@@ -88,6 +88,39 @@ Icons Microsoft has retired stay on the site (marked `legacy`) so existing links
 
 It uses the same Cloudflare secrets as fluenticons.co. Pushes that only change `sites/material/` don't redeploy fluenticons.co.
 
+### Agent API, MCP server and CLI (fluenticons.co/ai)
+
+Coding agents can search the icons by meaning and get real `@fluentui/react-icons` names.
+Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/ai/).
+
+- **HTTP API** `/api/v1/…` and **MCP server** `/mcp` (Streamable HTTP, stateless, no auth) run as
+  Cloudflare Pages Functions (`functions/`), deployed with the site. `public/_routes.json` limits
+  them to `/api/*` and `/mcp`; every other URL is still a static file.
+- **Code** is in `agent/`: `icons.js` (lookup, search, recommendations, code), `tools.js` (the
+  operations both the API and MCP call: validation + analytics), `http.js`, `mcp.js`, `track.js`,
+  `synonyms.js`. Code snippets come from `app/utils/iconCode.js`, which the icon pages use too.
+- **Data**: `app/generated/api-catalog.json`, built from `data/icons.json` by
+  `scripts/build-icon-data.mjs`. React names are only built from sizes/styles listed for an icon
+  in `@fluentui/svg-icons`, which `@fluentui/react-icons` is generated from.
+- **Search** is deterministic (no AI model): names, Microsoft's keywords and descriptions, plus
+  `agent/synonyms.js` for words Microsoft doesn't use ("billing" → payment, receipt, wallet).
+  `data/search-boosts.json` can nudge results from real usage:
+  `{ "billing": { "receipt_money": 0.2 } }` adds 0.2 to that icon's score for that exact query.
+- **Checks**: `node scripts/test-agent.mjs` after `yarn generate` (runs before every deploy).
+  Locally: `npx wrangler pages dev dist` serves the site with the API and MCP server.
+- **Limits**: 120 requests per minute per IP (per worker), 200-character queries, 25 items per
+  recommendation, 16 KB bodies. Errors are JSON: `{ "error": { "code", "message" } }`.
+- **Analytics** go to the site's GA4 property from the server as `api_*`, `mcp_*`,
+  `agent_result_selected` and `mcp_initialize` events (separate from website events). Set a
+  `GA_API_SECRET` environment variable on the Pages project to use the Measurement Protocol;
+  without it they're sent to the same endpoint gtag uses. Website searches are joined to the
+  icon people pick: `select_content`, `copy_icon`, `download_icon`, `favorite_add` and
+  `copy_code` carry the `search_term` that was in the search box.
+- **CLI**: `packages/cli`, packed into the site as `/cli.tgz` by the build:
+  `npx -y https://fluenticons.co/cli.tgz search "user security"`. It can be published to npm
+  as `fluenticons-cli` later (the name `fluenticons` is taken).
+- Agent instructions: `public/ai/SKILL.md` (Claude Code skill) and `public/llms.txt`.
+
 ### Deploying
 
 fluenticons.co is served by the Cloudflare Pages project **fluenticons-3**, a direct-upload project with no Git connection. The **Deploy to Cloudflare Pages** GitHub Action deploys it:

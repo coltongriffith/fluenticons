@@ -6,6 +6,10 @@
 #   .github/ or the Material Icons site (sites/material) don't deploy, since
 #   they can't change fluenticons.co. (Guides in content/guides/*.md are site
 #   content and do deploy.)
+# - functions/ (the agent API at /api/v1 and MCP server at /mcp, code in
+#   agent/) is deployed with the site as Cloudflare Pages Functions. Only
+#   /api/* and /mcp run code (public/_routes.json); every other URL stays a
+#   static file.
 # - Run it manually from the Actions tab to deploy a preview (the default) or
 #   to redeploy production (branch "main").
 #
@@ -73,9 +77,12 @@ jobs:
 
       - run: yarn generate
 
+      - name: Check the agent API
+        run: node scripts/test-agent.mjs
+
       - name: Check build output
         run: |
-          for f in index.html outlined/index.html color/index.html tag/index.html icon/fire/index.html guides/index.html ads.txt sitemap.xml _redirects _headers icons/ic_fluent_add_24_filled.svg; do
+          for f in index.html outlined/index.html color/index.html tag/index.html icon/fire/index.html guides/index.html ai/index.html ai/SKILL.md llms.txt cli.tgz ads.txt sitemap.xml _redirects _headers _routes.json icons/ic_fluent_add_24_filled.svg; do
             test -s "dist/$f" || { echo "Missing dist/$f"; exit 1; }
           done
           files=$(find dist -type f | wc -l)
@@ -104,7 +111,8 @@ jobs:
           for _ in $(seq 1 18); do
             if curl -fsS "$PRODUCTION_URL/" | grep -qF "$BUILD_ID" \
               && curl -fsS "$PRODUCTION_URL/ads.txt" | grep -q "pub-9128081695641229" \
-              && curl -fsS -o /dev/null "$PRODUCTION_URL/icon/fire/"; then
+              && curl -fsS -o /dev/null "$PRODUCTION_URL/icon/fire/" \
+              && curl -fsS "$PRODUCTION_URL/api/v1/icons/search?q=home&limit=1" | grep -q "Home24Regular"; then
               echo "$PRODUCTION_URL is serving $BUILD_ID"
               exit 0
             fi

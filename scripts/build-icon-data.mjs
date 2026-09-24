@@ -18,11 +18,14 @@
 //   new.json          [{ date, icons: [slug, name, file][] }] newest first, for /new/
 //   public/feed.xml   RSS feed of those updates
 //   ui-icons.json     inner SVG markup for the site's own UI icons
+//   api-catalog.json  fluenticons.co only: the agent API's catalogue (see agent/catalog.js)
 //   guides.json       [{ slug, title, description, date, html }]
 //   routes.json       every prerendered page path
 //   public/sitemap.xml
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { marked } from "marked";
+import { execFileSync } from "node:child_process";
+import { renameSync } from "node:fs";
 
 // Settings for fluenticons.co; other sites export the same shape.
 const FLUENT = {
@@ -30,7 +33,9 @@ const FLUENT = {
   url: "https://fluenticons.co",
   defaultFile: (slug, style) => `ic_fluent_${slug}_24_${style}.svg`,
   // Grid pages besides the homepage, and other data pages.
-  extraRoutes: ["/outlined", "/color"],
+  extraRoutes: ["/outlined", "/color", "/ai"],
+  // Writes app/generated/api-catalog.json for the agent API (agent/, functions/).
+  apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
   tagMin: 10,
   uiIcons: Object.fromEntries(
@@ -207,6 +212,29 @@ write("new.json", newIcons);
 write("color.json", colorIcons);
 write("tags.json", tags);
 write("stats.json", stats);
+// The agent API (agent/catalog.js): every design with its sizes per style,
+// related icons and the keywords that have topic pages.
+if (config.apiCatalog) {
+  write("api-catalog.json", {
+    versions: { svgIcons: meta.svgIcons, upstreamCommit: meta.upstreamCommit, updated: meta.updated },
+    topics: Object.values(tags).map((t) => t.name),
+    icons: icons.map((icon) => [
+      icon.slug,
+      icon.name,
+      icon.description || "",
+      icon.keywords.join(","),
+      icon.variants || {},
+      details[icon.slug].related.slice(0, 8),
+      icon.legacy ? 1 : 0,
+    ]),
+  });
+  // The CLI (packages/cli) as /cli.tgz, for `npx -y https://fluenticons.co/cli.tgz`.
+  const packed = execFileSync("npm", ["pack", "./packages/cli", "--pack-destination", "app/generated/public", "--silent"], {
+    cwd: new URL(".", root),
+    encoding: "utf8",
+  }).trim();
+  renameSync(new URL(`public/${packed.split("\n").pop()}`, outDir), new URL("public/cli.tgz", outDir));
+}
 console.log(`icons: ${icons.length}, color: ${colorIcons.length}, tags: ${stats.tags}, variants: ${stats.variants}`);
 
 // ---- UI icons ------------------------------------------------------------

@@ -42,6 +42,7 @@ export default {
     { to: "/tag/", label: "Topics" },
     { to: "/new/", label: "New icons" },
     { to: "/guides/", label: "Guides" },
+    { to: "/ai/", label: "For AI agents" },
     { to: "/about/", label: "About" },
     { to: "/contact/", label: "Contact" },
     { to: "/license/", label: "License" },
@@ -57,4 +58,6 @@ export default {
   errorBack: "Back to Fluent Icons",
   // Our other site, linked from the toolbar above the icon grid.
   sister: { label: "Material Icons", url: "https://materialicons.co/" },
+  // The page about the agent API and MCP server, promoted in the editor.
+  aiPage: "/ai/",
 };
