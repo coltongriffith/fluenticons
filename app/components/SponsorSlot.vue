@@ -67,7 +67,7 @@
           <span class="text-[11px] text-emerald-600 dark:text-emerald-400 flex-shrink-0">Spot open</span>
         </span>
         <span class="block text-sm text-gray-600 dark:text-gray-300 leading-snug mt-0.5">
-          Reach {{ site.sponsorKit?.users }} developers a month building with Microsoft's Fluent icons.
+          {{ pitch }}
         </span>
         <span class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2">
           Become a sponsor
@@ -93,6 +93,10 @@ const props = defineProps({
 });
 
 const { sponsor, href, click, impression } = useSponsor();
+const kit = site.sponsorKit || {};
+const pitch = kit.users
+  ? `Reach ${kit.users} developers a month building with ${kit.iconSet}.`
+  : `Reach developers building with ${kit.iconSet}.`;
 const s = computed(() => props.preview || sponsor);
 const link = computed(() => (props.preview ? props.preview.url || "#" : href(props.placement)));
 

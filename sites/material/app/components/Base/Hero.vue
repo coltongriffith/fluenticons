@@ -49,7 +49,7 @@
               >
             </div>
           </div>
-          <BaseHeroSponsors />
+          <SponsorSlot variant="hero" placement="hero" class="md:flex md:flex-col md:items-end md:justify-center" />
         </div>
       </div>
     </div>

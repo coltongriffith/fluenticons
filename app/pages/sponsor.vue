@@ -1,29 +1,32 @@
 <template>
   <div class="container mx-auto px-4 sm:px-8 py-8">
     <div class="max-w-3xl">
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">Sponsor Fluenticons</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">Sponsor {{ site.name }}</h1>
       <p class="text-lg text-gray-600 dark:text-gray-300 mb-10">
-        Developers come here to find a Microsoft Fluent UI icon and copy the code. One sponsor at a
+        Developers come here to find {{ kit.iconName }} and copy the code. One sponsor at a
         time gets a clearly labeled spot across the site, in front of people who are building
         something right now.
       </p>
 
+      <template v-if="kit.users">
       <dl class="grid grid-cols-3 border-y dark:border-gray-700 divide-x dark:divide-gray-700 mb-3">
-        <div v-for="stat in stats" :key="stat.label" class="py-5 px-4 first:pl-0">
+        <div v-for="stat in figures" :key="stat.label" class="py-5 px-4 first:pl-0">
           <dt class="text-sm text-gray-500 dark:text-gray-400">{{ stat.label }}</dt>
           <dd class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-1">{{ stat.value }}</dd>
         </div>
       </dl>
       <p class="text-xs text-gray-500 mb-12">Monthly averages from Google Analytics, updated {{ kit.updated }}.</p>
+      </template>
 
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-3">Who visits</h2>
         <p class="text-gray-600 dark:text-gray-300">
-          Front-end and .NET developers and product designers working in Microsoft's Fluent design
-          system: React with <code class="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-sm">@fluentui/react-icons</code>,
-          Blazor, WinUI and WPF, Power Apps, Flutter and Figma. Most arrive from search looking for a
-          specific icon and leave with code in their clipboard. Coding agents also query the
-          <NuxtLink to="/ai/" class="underline">Fluent Icons MCP server</NuxtLink>.
+          {{ kit.audience }} Most arrive from search looking for a specific icon and leave with code
+          in their clipboard.
+          <template v-if="site.aiPage">
+            Coding agents also query the
+            <NuxtLink :to="site.aiPage" class="underline">{{ site.brand }} MCP server</NuxtLink>.
+          </template>
         </p>
       </section>
 
@@ -80,15 +83,18 @@ import { track } from "../utils/analytics";
 
 const kit = site.sponsorKit;
 
-const stats = [
+// Icon page count from the catalogue unless the kit gives one.
+const iconPages = kit.iconPages || roughCount(stats.designs);
+
+const figures = [
   { label: "Users", value: kit.users },
   { label: "Sessions", value: kit.sessions },
-  { label: "Icon pages", value: kit.iconPages },
+  { label: "Icon pages", value: iconPages },
 ];
 
 const placements = [
   { title: "Homepage,", detail: "beside the search and icon grid." },
-  { title: "Every icon page,", detail: `${kit.iconPages} pages that rank for icon searches.` },
+  { title: "Every icon page,", detail: `${iconPages} pages that rank for icon searches.` },
   { title: "The icon editor,", detail: "open while people pick and copy icons." },
   { title: "Copy confirmations,", detail: "a one-line credit on the first copy of each visit and every few after." },
   { title: "Guides,", detail: "after each article." },
@@ -100,11 +106,11 @@ const example = {
   cta: "Your call to action",
 };
 
-const mailto = `mailto:${kit.email}?subject=${encodeURIComponent("Sponsoring Fluenticons")}`;
+const mailto = `mailto:${kit.email}?subject=${encodeURIComponent(`Sponsoring ${site.name}`)}`;
 
 useSeo({
   title: "Sponsor",
-  description: `Reach about ${kit.users} developers a month building with Microsoft's Fluent UI icons. One labeled sponsor at a time, $${kit.price} per month.`,
+  description: `${kit.users ? `Reach about ${kit.users} developers a month` : "Reach developers"} building with ${kit.iconSet}. One labeled sponsor at a time, $${kit.price} per month.`,
   path: "/sponsor",
 });
 </script>

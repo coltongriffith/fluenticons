@@ -76,6 +76,11 @@ export default {
   sponsorPage: "/sponsor/",
   // Figures and terms on the sponsor page. Refresh monthly from GA4.
   sponsorKit: {
+    // Sponsor page and "your product here" copy.
+    iconSet: "Microsoft's Fluent icons",
+    iconName: "a Microsoft Fluent UI icon",
+    audience:
+      "Front-end and .NET developers and product designers working in Microsoft's Fluent design system: React with @fluentui/react-icons, Blazor, WinUI and WPF, Power Apps, Flutter and Figma.",
     users: "5,800",
     sessions: "10,000",
     iconPages: "3,000+",
