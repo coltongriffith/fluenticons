@@ -41,6 +41,7 @@ Choosing an icon set early saves a lot of rework later. Changing icons halfway t
 - Huge coverage, and the default choice for Android and Material Design apps.
 - Delivered as a **variable font**, so you can adjust weight, fill and optical size continuously.
 - Three distinct styles (Outlined, Rounded, Sharp) let you match different brand personalities.
+- You can browse and download every Material Symbol, in every style, fill and weight, on our sister site [Materialicons](https://materialicons.co/).
 
 **Trade-offs**
 
