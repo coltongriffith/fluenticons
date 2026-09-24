@@ -144,13 +144,23 @@ jobs:
         run: |
           latest=$(npm view @material-symbols/svg-400 version)
           current=$(node -p "require('./sites/material/data/meta.json').version")
+          # Symbols imported before Google's metadata described them.
+          missing=$(node -p "require('./sites/material/data/meta.json').missingMetadata || 0")
+          branch="material-icons/$latest"
+          if [ "$latest" = "$current" ] && [ "$missing" != "0" ]; then
+            branch="material-icons/$latest-metadata-$(date -u +%Y%m%d)"
+          fi
           echo "version=$latest" >> "$GITHUB_OUTPUT"
-          if [ "$latest" = "$current" ]; then
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          if [ "$latest" = "$current" ] && [ "$missing" = "0" ]; then
             echo "Up to date: @material-symbols/svg-400 $current" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "update=false" >> "$GITHUB_OUTPUT"
-          elif git ls-remote --exit-code --heads origin "material-icons/$latest" > /dev/null; then
-            echo "Branch material-icons/$latest already exists; review or merge its pull request." | tee -a "$GITHUB_STEP_SUMMARY"
+          elif git ls-remote --exit-code --heads origin "$branch" > /dev/null; then
+            echo "Branch $branch already exists; review or merge its pull request." | tee -a "$GITHUB_STEP_SUMMARY"
             echo "update=false" >> "$GITHUB_OUTPUT"
+          elif [ "$latest" = "$current" ]; then
+            echo "$missing symbols in $current had no Google metadata; importing again." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=true" >> "$GITHUB_OUTPUT"
           else
             echo "New Material Symbols release: $current -> $latest" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "update=true" >> "$GITHUB_OUTPUT"
@@ -179,9 +189,10 @@ jobs:
         if: steps.check.outputs.update == 'true'
         env:
           VERSION: ${{ steps.check.outputs.version }}
+          BRANCH: ${{ steps.check.outputs.branch }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          branch="material-icons/$VERSION"
+          branch="$BRANCH"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"

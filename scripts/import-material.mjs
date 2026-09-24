@@ -41,9 +41,20 @@ const svgDir = join(packDir, "package/outlined");
 const res = await fetch("https://fonts.google.com/metadata/icons?incomplete=1&key=material_symbols");
 if (!res.ok) throw new Error(`Google Fonts metadata: HTTP ${res.status}`);
 const metadata = JSON.parse((await res.text()).replace(/^\)\]\}'/, ""));
-const symbols = metadata.icons.filter(
+const described = metadata.icons.filter(
   (i) => !i.unsupported_families.includes("Material Symbols Outlined") && existsSync(join(svgDir, `${i.name}.svg`))
 );
+// Every symbol in the package is imported. If Google's metadata hasn't caught
+// up with a new release yet, a symbol gets its name from the file and no
+// keywords; meta.json records how many, and the weekly job re-imports the
+// same version until the metadata covers them.
+const describedNames = new Set(described.map((i) => i.name));
+const undescribed = readdirSync(svgDir)
+  .filter((f) => f.endsWith(".svg") && !f.endsWith("-fill.svg"))
+  .map((f) => f.slice(0, -4))
+  .filter((name) => !describedNames.has(name))
+  .map((name) => ({ name, popularity: 0, codepoint: 0, categories: [], tags: [] }));
+const symbols = [...described, ...undescribed];
 
 // Flutter: Symbols.<name> in the material_symbols_icons package.
 const flutterNames = new Map();
@@ -238,10 +249,22 @@ for (const f of readdirSync(iconsDir)) if (!keep.has(f)) rmSync(join(iconsDir, f
 writeFileSync(dataFile, `[\n${list.map((i) => JSON.stringify(i)).join(",\n")}\n]\n`);
 writeFileSync(
   join(site, "data/meta.json"),
-  JSON.stringify({ svgPackage: "@material-symbols/svg-400", version, updated: today }, null, 2) + "\n"
+  JSON.stringify(
+    {
+      svgPackage: "@material-symbols/svg-400",
+      version,
+      updated: today,
+      ...(undescribed.length && { missingMetadata: undescribed.length }),
+    },
+    null,
+    2
+  ) + "\n"
 );
 
 const added = list.filter((i) => i.added === today).map((i) => i.slug);
 console.log(`data/icons.json: ${list.length} symbols (${keep.size} SVG files)`);
+if (undescribed.length) {
+  console.log(`not in Google's metadata yet (named from their files): ${undescribed.map((s) => s.name).join(", ")}`);
+}
 console.log(`new symbols: ${added.length}${added.length ? ` (${added.slice(0, 50).join(", ")}${added.length > 50 ? ", …" : ""})` : ""}`);
 if (removed.length) console.log(`removed upstream: ${removed.join(", ")}`);
