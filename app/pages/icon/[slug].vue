@@ -165,7 +165,7 @@
               <pre class="rounded-lg bg-gray-900 text-gray-100 text-sm p-4 overflow-x-auto"><code>{{ tab.code }}</code></pre>
               <button
                 class="absolute top-2 right-2 rounded-md bg-gray-700 hover:bg-gray-600 text-white text-xs px-2 py-1"
-                @click="tab.key === 'powerapps' ? copyPowerApps(activeSrc) : copyText(tab.code, tab.label, tab.key)"
+                @click="tab.key === 'powerapps' ? copyPowerApps(activeSrc, true) : copyText(tab.code, tab.label, tab.key)"
               >
                 Copy
               </button>
@@ -586,11 +586,14 @@ async function copySvg(file) {
   }
 }
 
-async function copyPowerApps(file) {
+// fromTab: the Power Apps code tab's Copy button (a code copy), rather than
+// the Power Apps button next to the preview (an icon copy).
+async function copyPowerApps(file, fromTab = false) {
   try {
     await navigator.clipboard.writeText(svgToPowerApps(await getSvg(file)));
     toast.show("Copied Power Apps formula");
-    trackFile("copy_icon", "powerapps", file);
+    if (fromTab) track("copy_code", { icon: slug, platform: "powerapps" });
+    else trackFile("copy_icon", "powerapps", file);
   } catch (err) {
     toast.error(err.message);
   }
