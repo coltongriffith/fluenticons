@@ -274,7 +274,9 @@ const indexable = [
   "/terms",
   "/privacy-policy",
 ];
-write("routes.json", [...indexable, "/favorites"]);
+// /new is always prerendered (it shows an empty state until an update adds
+// icons) but only listed in the sitemap once it has icons.
+write("routes.json", [...indexable, ...(newIcons.length ? [] : ["/new"]), "/favorites"]);
 
 const url = (path) => `${SITE}${path === "/" ? "/" : `${path}/`}`;
 
