@@ -43,6 +43,12 @@ export default defineNuxtConfig({
   experimental: {
     appManifest: false,
   },
+  // Every page is prerendered. Without the app manifest, this rule is how the
+  // client knows to load a page's prerendered data (_payload.json) when
+  // navigating within the site.
+  routeRules: {
+    "/**": { prerender: true },
+  },
   nitro: {
     // Plain static output; public/_headers and public/_redirects are the
     // only Cloudflare Pages rules (no auto-generated catch-all fallback).

@@ -1,11 +1,16 @@
-// Builds everything the site renders from data/icons.json, public/icons/*.svg
-// and content/guides/*.md. Run automatically by `yarn dev` / `yarn generate`.
+// Builds everything the site renders from data/icons.json, data/meta.json,
+// public/icons/*.svg and content/guides/*.md. Run automatically by
+// `yarn dev` / `yarn generate`.
 //
 // app/generated/
-//   index.json        client search index: [slug, name, styles, keywords, filledFile?, regularFile?][]
-//                     styles: 1 = filled, 2 = regular, 3 = both; file names only when non-standard
-//   details.json      build-time only: { [slug]: { description, legacy, related, filled?, regular? } }
-//                     where filled/regular = { file, size, body }
+//   index.json        client search index: [slug, name, styles, keywords, filledFile?, regularFile?, previewFile?][]
+//                     styles: 1 = filled, 2 = regular, 3 = both; file names only when non-standard;
+//                     previewFile only for designs with neither (a Color file)
+//   details.json      build-time only: { [slug]: { description, legacy, related, variants,
+//                     filled?, regular?, color? } } where filled/regular/color = { file, size, body? }
+//   color.json        [slug, name, file][] for designs with a Color style
+//   tags.json         { [tag]: { name, slugs } } for keywords shared by enough icons
+//   stats.json        counts used in page copy, and the @fluentui/svg-icons version
 //   ui-icons.json     inner SVG markup for the site's own UI icons
 //   guides.json       [{ slug, title, description, date, html }]
 //   routes.json       every prerendered page path
@@ -22,19 +27,20 @@ const write = (name, data) =>
 
 const SITE = "https://fluenticons.co";
 
-function readSvg(file) {
+function readSvg(file, { body = true } = {}) {
   const svg = read(`public/icons/${file}`);
   const match = svg.match(/^<svg[^>]*\bwidth="(\d+)"[^>]*>([\s\S]*)<\/svg>\s*$/);
   if (!match) throw new Error(`Unexpected SVG format: ${file}`);
   return {
     file,
     size: Number(match[1]),
-    body: match[2].trim().replace(/fill="#212121"/g, 'fill="currentColor"'),
+    ...(body && { body: match[2].trim().replace(/fill="#212121"/g, 'fill="currentColor"') }),
   };
 }
 
 // ---- Icons ---------------------------------------------------------------
 const icons = JSON.parse(read("data/icons.json"));
+const meta = JSON.parse(read("data/meta.json"));
 const defaultFile = (slug, style) => `ic_fluent_${slug}_24_${style}.svg`;
 
 const index = icons.map((icon) => {
@@ -43,25 +49,41 @@ const index = icons.map((icon) => {
   const f = icon.filled && icon.filled !== defaultFile(icon.slug, "filled") ? icon.filled : 0;
   const r = icon.regular && icon.regular !== defaultFile(icon.slug, "regular") ? icon.regular : 0;
   if (f || r) row.push(f, r);
+  // Designs with only Color or Light styles: a file to show in A–Z lists.
+  if (!styles && icon.color) row.push(0, 0, icon.color);
   return row;
 });
 
-// Related icons: shared name words and keywords.
+// Related icons: shared name words (and name words used as keywords) count
+// most, then shared keywords. Icons next to each other alphabetically fill
+// any remaining places so every page links to 12 others.
+const RELATED = 12;
 const nameTokens = icons.map((i) => new Set(i.name.toLowerCase().split(/\s+/)));
 const keywordSets = icons.map((i) => new Set(i.keywords));
+const listed = icons.map((i) => Boolean(i.filled || i.regular));
 function related(i) {
   const scores = [];
   icons.forEach((other, j) => {
-    if (i === j) return;
+    if (i === j || !listed[j]) return;
     let score = 0;
-    for (const t of nameTokens[i]) if (nameTokens[j].has(t)) score += 3;
+    for (const t of nameTokens[i]) {
+      if (nameTokens[j].has(t)) score += 3;
+      else if (keywordSets[j].has(t)) score += 1;
+    }
     for (const k of keywordSets[i]) if (keywordSets[j].has(k)) score += 1;
-    if (score) scores.push([score, other.slug]);
+    if (icons[j].legacy) score -= 0.5;
+    if (score > 0) scores.push([score, other.slug]);
   });
-  return scores
+  const slugs = scores
     .sort((a, b) => b[0] - a[0] || a[1].localeCompare(b[1]))
-    .slice(0, 12)
+    .slice(0, RELATED)
     .map(([, slug]) => slug);
+  for (let d = 1; slugs.length < RELATED && d < icons.length; d++) {
+    for (const j of [i - d, i + d]) {
+      if (slugs.length < RELATED && listed[j] && !slugs.includes(icons[j].slug)) slugs.push(icons[j].slug);
+    }
+  }
+  return slugs;
 }
 
 const details = {};
@@ -70,14 +92,55 @@ icons.forEach((icon, i) => {
     description: icon.description,
     legacy: Boolean(icon.legacy),
     related: related(i),
+    variants: icon.variants || {},
     ...(icon.filled && { filled: readSvg(icon.filled) }),
     ...(icon.regular && { regular: readSvg(icon.regular) }),
+    // Color icons are shown as images; only the file and size are needed.
+    ...(icon.color && { color: readSvg(icon.color, { body: false }) }),
   };
 });
 
+const colorIcons = icons.filter((i) => i.color).map((i) => [i.slug, i.name, i.color]);
+
+// Tag pages: keywords that at least TAG_MIN listed icons share.
+const TAG_MIN = 10;
+const tagSlug = (keyword) => keyword.replace(/\s+/g, "-");
+const tagMembers = {};
+icons.forEach((icon, i) => {
+  if (!listed[i]) return;
+  for (const k of icon.keywords) {
+    if (/^[a-z0-9]+(?: [a-z0-9]+)*$/.test(k) && k.length <= 30) (tagMembers[k] ||= []).push(icon.slug);
+  }
+});
+const tags = Object.fromEntries(
+  Object.entries(tagMembers)
+    .filter(([, slugs]) => slugs.length >= TAG_MIN)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([name, slugs]) => [tagSlug(name), { name, slugs }])
+);
+
+const stats = {
+  designs: icons.length,
+  listed: listed.filter(Boolean).length,
+  filled: icons.filter((i) => i.filled).length,
+  regular: icons.filter((i) => i.regular).length,
+  color: colorIcons.length,
+  variants: icons.reduce(
+    (n, i) => n + Object.values(i.variants || {}).reduce((m, v) => m + v.length, 0),
+    0
+  ),
+  tags: Object.keys(tags).length,
+  svgIcons: meta.svgIcons,
+  upstreamCommit: meta.upstreamCommit,
+  updated: meta.updated,
+};
+
 write("index.json", index);
 write("details.json", details);
-console.log(`icons: ${icons.length}`);
+write("color.json", colorIcons);
+write("tags.json", tags);
+write("stats.json", stats);
+console.log(`icons: ${icons.length}, color: ${colorIcons.length}, tags: ${stats.tags}, variants: ${stats.variants}`);
 
 // ---- UI icons ------------------------------------------------------------
 const uiIcons = [
@@ -144,8 +207,11 @@ const letters = [...new Set(icons.map((i) => letterOf(i.name)))].sort();
 const indexable = [
   "/",
   "/outlined",
+  "/color",
   "/browse",
   ...letters.map((l) => `/browse/${l}`),
+  "/tag",
+  ...Object.keys(tags).map((t) => `/tag/${t}`),
   ...icons.map((i) => `/icon/${i.slug.replace(/_/g, "-")}`),
   "/guides",
   ...guides.map((g) => `/guides/${g.slug}`),
@@ -158,10 +224,22 @@ const indexable = [
 write("routes.json", [...indexable, "/favorites"]);
 
 const url = (path) => `${SITE}${path === "/" ? "/" : `${path}/`}`;
+// Pages built from the icon data change when it's re-imported; guides carry
+// their own date. Other pages (about, legal) have no reliable date.
+const dataPage = /^\/(?:$|outlined|color|browse|tag|icon\/)/;
+const lastmod = (path) => {
+  const guide = guides.find((g) => path === `/guides/${g.slug}`);
+  if (guide) return guide.date;
+  if (path === "/guides") return guides.map((g) => g.date).sort().pop();
+  return dataPage.test(path) ? meta.updated : null;
+};
 write(
   "public/sitemap.xml",
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable
-    .map((p) => `  <url><loc>${url(p)}</loc></url>`)
+    .map((p) => {
+      const date = lastmod(p);
+      return `  <url><loc>${url(p)}</loc>${date ? `<lastmod>${date}</lastmod>` : ""}</url>`;
+    })
     .join("\n")}\n</urlset>\n`
 );
 console.log(`routes: ${indexable.length + 1}`);

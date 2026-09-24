@@ -21,7 +21,8 @@
           :to="slugToPath(icon.slug)"
           class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <IconMask :file="icon.file" class="h-6 w-6 flex-shrink-0" />
+          <IconMask v-if="icon.file" :file="icon.file" class="h-6 w-6 flex-shrink-0" />
+          <span v-else class="h-6 w-6 flex-shrink-0"></span>
           <span class="text-sm truncate">{{ icon.name }}</span>
         </NuxtLink>
       </li>
@@ -39,7 +40,7 @@ const { data } = await useAsyncData(`browse-${letter}`, async () => {
     letters: await loadLetters(),
     icons: index
       .filter((e) => letterOf(e.name) === letter)
-      .map((e) => ({ slug: e.slug, name: e.name, file: e.regular || e.filled })),
+      .map((e) => ({ slug: e.slug, name: e.name, file: e.regular || e.filled || e.preview })),
   };
 });
 if (!data.value?.icons.length) {
@@ -48,10 +49,17 @@ if (!data.value?.icons.length) {
 const icons = computed(() => data.value.icons);
 const label = letter === "0-9" ? "a number" : `“${letter.toUpperCase()}”`;
 
+const description = `All ${data.value.icons.length} Microsoft Fluent UI System Icons whose names start with ${label}. Free SVG, PNG and React code for each icon.`;
 useSeo({
   title: `Fluent icons starting with ${letter.toUpperCase()}`,
-  description: `All ${data.value.icons.length} Microsoft Fluent UI System Icons whose names start with ${label}. Free SVG, PNG and React code for each icon.`,
+  description,
   path: `/browse/${letter}`,
 });
 useAdsense();
+useCollectionJsonLd({
+  name: `Fluent icons starting with ${letter.toUpperCase()}`,
+  description,
+  path: `/browse/${letter}`,
+  items: icons.value.map((i) => ({ name: `${i.name} icon`, path: slugToPath(i.slug) })),
+});
 </script>

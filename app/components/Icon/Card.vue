@@ -7,8 +7,9 @@
       v-if="isFavorite(icon)"
     ></div>
     <div class="absolute inset-0">
-      <button
-        @click="selectedIcon = icon"
+      <a
+        :href="slugToPath(icon.slug)"
+        @click="select"
         class="block w-full h-full focus:outline-none group relative hover:bg-gray-100 dark:hover:bg-gray-700 focus:bg-gray-100 dark:focus:bg-gray-700"
         :class="{ 'bg-gray-100 dark:bg-gray-700': selected }"
         :aria-label="icon.name"
@@ -27,7 +28,7 @@
             </p>
           </div>
         </div>
-      </button>
+      </a>
     </div>
   </article>
 </template>
@@ -40,4 +41,12 @@ const props = defineProps({
 const selectedIcon = useSelectedIcon();
 const { isFavorite } = useFavorites();
 const selected = computed(() => selectedIcon.value.id === props.icon.id);
+
+// A click opens the icon in the editor. The tile is also a real link to the
+// icon's page, for search engines and for opening it in a new tab.
+function select(e) {
+  if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault();
+  selectedIcon.value = props.icon;
+}
 </script>

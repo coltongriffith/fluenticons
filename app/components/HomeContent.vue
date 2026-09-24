@@ -5,9 +5,11 @@
       <p>
         Fluent UI System Icons are the icons Microsoft designed for its Fluent design system —
         the same family you see across Windows 11, Microsoft 365 and Teams. Microsoft publishes
-        them as open source under the MIT License. Fluenticons puts the whole 24&nbsp;px set in one
-        searchable place: more than 2,500 designs, most of them in both a <strong>filled</strong>
-        and a <strong>regular</strong> (outlined) style, for over 5,000 icons in total.
+        them as open source under the MIT License. Fluenticons puts the whole set in one
+        searchable place: more than {{ roughCount(stats.designs) }} designs, most of them in both a
+        <strong>filled</strong> and a <strong>regular</strong> (outlined) style, for over
+        {{ roughCount(stats.filled + stats.regular) }} icons in the grid — and
+        {{ roughCount(stats.variants) }} size and style variants on the icon pages.
       </p>
       <p>
         Microsoft ships the icons as a large repository, a Figma file and several code packages.
@@ -15,6 +17,31 @@
         calendar with a check mark" it's slow. This site is built for that: type what you're
         looking for, see every match at once, and copy the exact code you need.
       </p>
+
+      <h2 id="whats-new">What's new</h2>
+      <ul>
+        <li>
+          <strong>Every size and style.</strong> Each icon page now has all of Microsoft's
+          hand-tuned sizes (10 to 48&nbsp;px) plus the <NuxtLink to="/color/">Color</NuxtLink>
+          and Light styles where they exist, each ready to download as SVG or PNG.
+        </li>
+        <li>
+          <strong>Code for your platform.</strong> Copy-ready snippets for React, Blazor, Flutter,
+          WinUI and WPF, Android, iOS, the icon font and the SVG package — with the exact name
+          for the size you picked.
+        </li>
+        <li>
+          <strong>Power Apps.</strong> Copy any icon as a Power Fx formula for an Image control,
+          from the editor or an icon page.
+        </li>
+        <li>
+          <strong>Browse by topic.</strong> <NuxtLink to="/tag/">{{ stats.tags }} topics</NuxtLink>
+          such as <NuxtLink to="/tag/arrow/">arrows</NuxtLink>,
+          <NuxtLink to="/tag/chart/">charts</NuxtLink> and
+          <NuxtLink to="/tag/security/">security</NuxtLink>, and the newest icons from
+          Microsoft's latest release.
+        </li>
+      </ul>
 
       <h2>How to use Fluenticons</h2>
       <ol>
@@ -94,8 +121,8 @@ const faq = [
   },
   {
     q: "What size are the icons?",
-    a: "This site shows the 24 px versions, the size most apps use for toolbar and navigation icons. SVGs scale cleanly to any size, and PNG downloads are rendered at 512 px. Microsoft also publishes some icons in other sizes (such as 16, 20, 28, 32 and 48 px) that are tuned for those sizes.",
-    html: "This site shows the 24&nbsp;px versions, the size most apps use for toolbar and navigation icons. SVGs scale cleanly to any size, and PNG downloads are rendered at 512&nbsp;px. Microsoft also publishes some icons in other sizes (such as 16, 20, 28, 32 and 48&nbsp;px) that are tuned for those sizes.",
+    a: "The grid shows the 24 px versions, the size most apps use for toolbar and navigation icons. Microsoft also draws many icons at other sizes (such as 16, 20, 28, 32 and 48 px), tuned so they stay crisp at that size. Each icon page lists every size and lets you download any of them. SVGs scale cleanly, and PNG downloads are rendered at 512 px.",
+    html: "The grid shows the 24&nbsp;px versions, the size most apps use for toolbar and navigation icons. Microsoft also draws many icons at other sizes (such as 16, 20, 28, 32 and 48&nbsp;px), tuned so they stay crisp at that size. Each icon page lists every size and lets you download any of them. SVGs scale cleanly, and PNG downloads are rendered at 512&nbsp;px.",
   },
   {
     q: "How do I change an icon's color?",

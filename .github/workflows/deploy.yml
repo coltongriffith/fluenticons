@@ -71,7 +71,7 @@ jobs:
 
       - name: Check build output
         run: |
-          for f in index.html outlined/index.html icon/fire/index.html guides/index.html ads.txt sitemap.xml _redirects _headers icons/ic_fluent_add_24_filled.svg; do
+          for f in index.html outlined/index.html color/index.html tag/index.html icon/fire/index.html guides/index.html ads.txt sitemap.xml _redirects _headers icons/ic_fluent_add_24_filled.svg; do
             test -s "dist/$f" || { echo "Missing dist/$f"; exit 1; }
           done
           files=$(find dist -type f | wc -l)

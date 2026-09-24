@@ -59,7 +59,7 @@
           Mode
         </p>
       </button>
-      <NuxtLink to="/favorites" class="navbar-btn" aria-label="Favorites">
+      <NuxtLink to="/favorites/" class="navbar-btn" aria-label="Favorites">
         <FluentSvg ui="heart_24_regular" class="h-5 w-5" />
         <p class="text-sm hidden md:block">Favorites</p>
       </NuxtLink>
@@ -75,7 +75,7 @@ const search = ref(null);
 
 const altIcons = computed(() => {
   const filled = { name: "Filled", path: "/" };
-  const outlined = { name: "Outlined", path: "/outlined" };
+  const outlined = { name: "Outlined", path: "/outlined/" };
   if (route.path.startsWith("/outlined")) return [filled];
   if (route.path.startsWith("/favorites")) return [filled, outlined];
   return [outlined];

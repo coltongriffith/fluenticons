@@ -31,8 +31,9 @@ const total = computed(() => letters.value.reduce((sum, l) => sum + l.count, 0))
 
 useSeo({
   title: "Browse all Fluent UI System Icons A–Z",
-  description:
-    "Alphabetical index of 2,500+ Microsoft Fluent UI System Icons. Open any icon for SVG and PNG downloads, React code and related icons.",
+  description: `Alphabetical index of ${roughCount(
+    stats.designs
+  )} Microsoft Fluent UI System Icons. Open any icon for SVG and PNG downloads in every size, code and related icons.`,
   path: "/browse",
 });
 useAdsense();

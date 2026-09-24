@@ -1,8 +1,11 @@
+import { stats, roughCount } from "./icons";
+
 const SITE_NAME = "Fluenticons";
 const ADSENSE_CLIENT = "ca-pub-9128081695641229";
 
-export const SITE_DESCRIPTION =
-  "Search, customize and download 5,000+ free Microsoft Fluent UI System Icons in filled and regular styles as SVG, PNG, WEBP, React and Vue.";
+export const SITE_DESCRIPTION = `Search, customize and download ${roughCount(
+  stats.filled + stats.regular
+)} free Microsoft Fluent UI System Icons in filled, regular and color styles as SVG, PNG, WEBP, React and Vue.`;
 
 // Title, description, canonical URL and social tags for a page.
 // `path` is the route path without a trailing slash ("/" for the homepage).
@@ -45,5 +48,26 @@ export function useAdsense() {
         crossorigin: "anonymous",
       },
     ],
+  });
+}
+
+// CollectionPage with an ItemList of the icons a listing page links to.
+export function useCollectionJsonLd({ name, description, path, items }) {
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: `${SITE_URL}${path}/`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.name,
+        url: `${SITE_URL}${item.path}`,
+      })),
+    },
   });
 }

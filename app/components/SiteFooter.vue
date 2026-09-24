@@ -8,7 +8,7 @@
       </nav>
       <p class="mb-2">
         Fluent UI System Icons are © Microsoft Corporation and released under the
-        <NuxtLink to="/license" class="underline">MIT License</NuxtLink>.
+        <NuxtLink to="/license/" class="underline">MIT License</NuxtLink>.
         Fluenticons is an independent project and is not affiliated with or endorsed by Microsoft.
       </p>
       <p>© {{ year }} Fluenticons</p>
@@ -20,13 +20,15 @@
 const year = new Date().getFullYear();
 const links = [
   { to: "/", label: "Filled icons" },
-  { to: "/outlined", label: "Outlined icons" },
-  { to: "/browse", label: "Browse A–Z" },
-  { to: "/guides", label: "Guides" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-  { to: "/license", label: "License" },
-  { to: "/terms", label: "Terms" },
-  { to: "/privacy-policy", label: "Privacy" },
+  { to: "/outlined/", label: "Outlined icons" },
+  { to: "/color/", label: "Color icons" },
+  { to: "/browse/", label: "Browse A–Z" },
+  { to: "/tag/", label: "Topics" },
+  { to: "/guides/", label: "Guides" },
+  { to: "/about/", label: "About" },
+  { to: "/contact/", label: "Contact" },
+  { to: "/license/", label: "License" },
+  { to: "/terms/", label: "Terms" },
+  { to: "/privacy-policy/", label: "Privacy" },
 ];
 </script>

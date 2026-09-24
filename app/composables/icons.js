@@ -1,7 +1,22 @@
 import uiIcons from "~/generated/ui-icons.json";
+import siteStats from "~/generated/stats.json";
 
 export const PAGE_SIZE = 48;
 export const SITE_URL = "https://fluenticons.co";
+export const stats = siteStats;
+
+// "3,000+" style counts for page copy, rounded down so they stay true.
+export function roughCount(n, step = n >= 10000 ? 1000 : 100) {
+  return `${(Math.floor(n / step) * step).toLocaleString("en-US")}+`;
+}
+
+// Every size and style of an icon, from Microsoft's @fluentui/svg-icons package
+// (pinned version) on jsDelivr. The site's own copy of each icon stays in /icons.
+export const variantFile = (slug, size, style) => `ic_fluent_${slug}_${size}_${style}.svg`;
+export const variantUrl = (slug, size, style) =>
+  `https://cdn.jsdelivr.net/npm/@fluentui/svg-icons@${stats.svgIcons}/icons/${slug}_${size}_${style}.svg`;
+// Pixel size from a file name like ic_fluent_add_20_filled.svg.
+export const fileSize = (file) => Number(file?.match(/_(\d+)_[a-z]+\.svg$/)?.[1] || 24);
 
 // UI variant ("filled" | "outlined") -> file style ("filled" | "regular")
 export const fileStyle = (variant) => (variant === "outlined" ? "regular" : "filled");
@@ -13,12 +28,13 @@ let indexPromise;
 // The icon catalogue (names, keywords, file names). Small enough to load on the client.
 export function loadIndex() {
   indexPromise ||= import("~/generated/index.json").then(({ default: rows }) =>
-    rows.map(([slug, name, styles, keywords, f, r]) => ({
+    rows.map(([slug, name, styles, keywords, f, r, preview]) => ({
       slug,
       name,
       keywords: keywords ? keywords.split(" ") : [],
       filled: styles & 1 ? f || `ic_fluent_${slug}_24_filled.svg` : null,
       regular: styles & 2 ? r || `ic_fluent_${slug}_24_regular.svg` : null,
+      preview: preview || null,
       search: `${name}|${slug}|${keywords}`.toLowerCase().replace(/[\s_]+/g, ""),
     }))
   );
@@ -53,7 +69,20 @@ export async function loadIconDetails(slug) {
   if (!entry) return null;
   const load = async (file) => file && { file, ...(await fetchIconSvg(file)) };
   const [filled, regular] = await Promise.all([load(entry.filled), load(entry.regular)]);
-  return { description: "", related: [], ...(filled && { filled }), ...(regular && { regular }) };
+  return {
+    description: "",
+    related: [],
+    variants: {},
+    ...(filled && { filled }),
+    ...(regular && { regular }),
+  };
+}
+
+let tagsPromise;
+// { [tag]: { name, slugs } } for topic pages (see scripts/build-icon-data.mjs).
+export function loadTags() {
+  tagsPromise ||= import("~/generated/tags.json").then((m) => m.default);
+  return tagsPromise;
 }
 
 const svgCache = new Map();
@@ -108,12 +137,22 @@ export function matchesQuery(entry, query) {
   return search.includes(q);
 }
 
-// PascalCase component name, matching @fluentui/react-icons (e.g. AddCircle24Filled).
-export function componentName(slug, variant) {
-  const base = slug
+// PascalCase name as used by @fluentui/react-icons and the Blazor/iOS packages (e.g. AddCircle).
+export function pascalName(slug) {
+  return slug
     .split("_")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join("")
     .replace(/(\d)([a-z])/g, (_, d, l) => d + l.toUpperCase());
-  return `${base}24${variant === "outlined" ? "Regular" : "Filled"}`;
+}
+
+// React component for a size and style ("filled" | "regular" | "color" | "light"),
+// e.g. AddCircle24Filled.
+export function reactName(slug, size, style) {
+  return `${pascalName(slug)}${size}${style.charAt(0).toUpperCase()}${style.slice(1)}`;
+}
+
+// React component for a grid icon (UI variant "filled" | "outlined").
+export function componentName(slug, variant, size = 24) {
+  return reactName(slug, size, fileStyle(variant));
 }
