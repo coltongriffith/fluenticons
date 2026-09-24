@@ -145,7 +145,8 @@
             <div class="relative">
               <pre class="rounded-lg bg-gray-900 text-gray-100 text-sm p-4 overflow-x-auto"><code>{{ tab.code }}</code></pre>
               <button
-                class="absolute top-2 right-2 rounded-md bg-gray-700 hover:bg-gray-600 text-white text-xs px-2 py-1"
+                class="absolute top-2 right-2 rounded-md bg-gray-700 hover:bg-gray-600 text-white text-xs px-2 py-1 disabled:opacity-40"
+                :disabled="tab.disabled"
                 @click="tab.key === 'powerapps' ? copyPowerApps(activeSrc, true) : copyText(tab.code, tab.label, tab.key)"
               >
                 Copy
@@ -330,6 +331,8 @@ const activeSvgText = ref(details.value.regular ? localSvg(details.value.regular
 if (import.meta.client) {
   watch(activeSrc, async (src) => {
     previewFailed.value = false;
+    // Never show (or copy) the previous variant's code while this one loads.
+    activeSvgText.value = "";
     const probe = new Image();
     probe.onerror = () => {
       if (activeSrc.value === src) previewFailed.value = true;
@@ -453,7 +456,12 @@ Icon(Symbols.${name}, fill: ${fill}, weight: ${weight})`,
       key: "android",
       label: "Android",
       note: "A vector drawable of the selected style, fill and weight:",
-      code: activeSvgText.value ? vectorDrawable(activeSvgText.value) : "",
+      code: activeSvgText.value
+        ? vectorDrawable(activeSvgText.value)
+        : previewFailed.value
+          ? "This variant couldn't be loaded right now."
+          : "Loading the selected variant…",
+      disabled: !activeSvgText.value,
     },
     {
       key: "svg",
