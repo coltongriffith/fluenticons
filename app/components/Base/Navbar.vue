@@ -28,6 +28,7 @@
           ref="search"
           :value="searchQuery"
           @input="onSearch"
+          @keydown.enter="onEnter"
           autocomplete="off"
         />
         <button
@@ -103,14 +104,35 @@ const page = computed(() => {
 });
 
 let debounce;
+let trackTimer;
+let lastTracked = "";
+function applySearch(value) {
+  searchQuery.value = value;
+  const term = value.trim().toLowerCase();
+  setSearchTerm(term.length >= 2 ? term : "");
+}
+
 function onSearch(e) {
+  const value = e.target.value;
   clearTimeout(debounce);
-  debounce = setTimeout(() => {
-    searchQuery.value = e.target.value;
-    const term = e.target.value.trim();
-    setSearchTerm(term.length >= 2 ? term.toLowerCase() : "");
-    if (term.length >= 2) track("search", { search_term: term.toLowerCase() });
-  }, 600);
+  clearTimeout(trackTimer);
+  debounce = setTimeout(() => applySearch(value), 600);
+  // Log the search once typing has settled (or on Enter), not at every pause.
+  trackTimer = setTimeout(() => trackSearch(value), 1500);
+}
+
+function onEnter(e) {
+  clearTimeout(debounce);
+  applySearch(e.target.value);
+  trackSearch(e.target.value);
+}
+
+function trackSearch(value) {
+  clearTimeout(trackTimer);
+  const term = value.trim().toLowerCase();
+  if (term.length < 2 || term === lastTracked) return;
+  lastTracked = term;
+  track("search", { search_term: term });
 }
 
 function toggleDarkMode() {

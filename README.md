@@ -111,9 +111,11 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
 - **Limits**: 120 requests per minute per IP (per worker), 200-character queries, 25 items per
   recommendation, 16 KB bodies. Errors are JSON: `{ "error": { "code", "message" } }`.
 - **Analytics** go to the site's GA4 property from the server as `api_*`, `mcp_*`,
-  `agent_result_selected` and `mcp_initialize` events (separate from website events). Set a
-  `GA_API_SECRET` environment variable on the Pages project to use the Measurement Protocol;
-  without it they're sent to the same endpoint gtag uses. Website searches are joined to the
+  `agent_result_selected` and `mcp_initialize` events. Set `AGENT_GA_ID` on the Pages project
+  to send them to a GA4 property of their own (otherwise they go to the website's property), and
+  `GA_API_SECRET` (a Measurement Protocol secret of that property's stream) to use the Measurement
+  Protocol; without it they're sent to the same endpoint gtag uses. Requests with an
+  `x-fluenticons-no-track` header (deploy checks, tests, the /ai demo) aren't counted. Website searches are joined to the
   icon people pick: `select_content`, `copy_icon`, `download_icon`, `favorite_add` and
   `copy_code` carry the `search_term` that was in the search box.
 - **CLI**: `packages/cli`, packed into the site as `/cli.tgz` by the build:

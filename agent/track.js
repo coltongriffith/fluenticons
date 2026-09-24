@@ -4,8 +4,8 @@
 // select_content and copy events.
 //
 // Sent with the GA4 Measurement Protocol when the Pages project has a
-// GA_API_SECRET environment variable (GA4 > Admin > Data streams > Measurement
-// Protocol API secrets), otherwise with the same endpoint gtag uses. Nothing
+// GA_API_SECRET environment variable (a Measurement Protocol API secret of that
+// property's data stream), otherwise with the same endpoint gtag uses. Nothing
 // is sent from local development or preview deployments (only requests to
 // fluenticons.co count); tracking never delays or breaks a response.
 //
@@ -15,7 +15,10 @@
 // recommend, or anything else from the request. The client ID is a hash of
 // IP + User-Agent that changes every month, so repeat use can be counted
 // without identifying anyone.
-const GA_ID = "G-VGSV4M0LY9";
+// Agent events go to the GA4 property in the AGENT_GA_ID environment variable
+// (a property of their own keeps them out of the website's reports), else to
+// the website's property.
+const SITE_GA_ID = "G-VGSV4M0LY9";
 
 const CLIENTS = [
   [/claude/i, "claude"],
@@ -45,7 +48,11 @@ async function clientId(request) {
   return `${n(0)}.${n(4)}`;
 }
 
-const live = (request) => new URL(request.url).hostname === "fluenticons.co";
+// Only real traffic to fluenticons.co counts: not previews, local development,
+// or requests marked x-fluenticons-no-track (deploy checks, tests, and the /ai
+// page's demo, which the page tracks itself as ai_demo_search).
+const live = (request) =>
+  new URL(request.url).hostname === "fluenticons.co" && !request.headers.has("x-fluenticons-no-track");
 const clip = (v) => (typeof v === "string" ? v.slice(0, 100) : v);
 
 // Sends one event. `context` is the Pages Functions context (for waitUntil).
@@ -61,6 +68,7 @@ export function track(context, name, params = {}) {
 }
 
 async function send(request, env, name, params) {
+  const GA_ID = env?.AGENT_GA_ID || SITE_GA_ID;
   const cid = await clientId(request);
   // One GA session per client per day.
   const sid = String(Math.floor(Date.now() / 86400000));

@@ -112,7 +112,7 @@ jobs:
             if curl -fsS "$PRODUCTION_URL/" | grep -qF "$BUILD_ID" \
               && curl -fsS "$PRODUCTION_URL/ads.txt" | grep -q "pub-9128081695641229" \
               && curl -fsS -o /dev/null "$PRODUCTION_URL/icon/fire/" \
-              && curl -fsS "$PRODUCTION_URL/api/v1/icons/search?q=home&limit=1" | grep -q "Home24Regular"; then
+              && curl -fsS -H "x-fluenticons-no-track: 1" "$PRODUCTION_URL/api/v1/icons/search?q=home&limit=1" | grep -q "Home24Regular"; then
               echo "$PRODUCTION_URL is serving $BUILD_ID"
               exit 0
             fi

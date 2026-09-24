@@ -389,7 +389,10 @@ async function tryIt() {
   if (!q) return;
   demo.error = "";
   try {
-    const res = await fetch(`/api/v1/icons/search?q=${encodeURIComponent(q)}&limit=6`);
+    // Counted here as ai_demo_search, so the API doesn't count it again.
+    const res = await fetch(`/api/v1/icons/search?q=${encodeURIComponent(q)}&limit=6`, {
+      headers: { "x-fluenticons-no-track": "1" },
+    });
     const body = await res.json();
     if (!res.ok) throw new Error(body.error?.message || `HTTP ${res.status}`);
     demo.results = body.results;

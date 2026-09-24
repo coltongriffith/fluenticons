@@ -6,7 +6,7 @@ import { InputError, LIMITS, about, getIcon, iconCode, recommendIcons, searchIco
 export const CORS = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, OPTIONS",
-  "access-control-allow-headers": "content-type, accept, mcp-protocol-version, mcp-session-id, last-event-id",
+  "access-control-allow-headers": "content-type, accept, mcp-protocol-version, mcp-session-id, last-event-id, x-fluenticons-no-track",
   "access-control-expose-headers": "retry-after, x-ratelimit-limit, x-ratelimit-remaining",
   "access-control-max-age": "86400",
 };
