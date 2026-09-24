@@ -306,7 +306,7 @@ const letter = computed(() => {
 
 // The site's own copy of each style (24 px, or the nearest size Microsoft draws).
 const styles = computed(() =>
-  ["regular", "filled", "color"]
+  STYLE_ORDER
     .filter((key) => details.value[key])
     .map((key) => ({
       key,
@@ -326,10 +326,12 @@ const allSizes = computed(() =>
     (a, b) => a - b
   )
 );
+// Every style this icon has: in Microsoft's package or as a file on this site.
+const availableStyles = computed(() =>
+  STYLE_ORDER.filter((s) => variantStyles.value.includes(s) || details.value[s])
+);
 const allStyleLabels = computed(() =>
-  (variantStyles.value.length ? variantStyles.value : styles.value.map((s) => s.key))
-    .map((s) => STYLE_INFO[s].label)
-    .join(", ")
+  availableStyles.value.map((s) => STYLE_INFO[s].label).join(", ")
 );
 
 function defaultSize(style) {
@@ -358,9 +360,22 @@ const activeSrc = computed(() => {
   if (local && local.file === activeFile.value) return `/icons/${local.file}`;
   return variantUrl(slug, activeSize.value, activeStyle.value);
 });
-watch(activeSrc, () => {
-  previewFailed.value = false;
-});
+// CSS masks give no load error, so check the file with an Image to show
+// "Preview unavailable" when the CDN can't be reached.
+if (import.meta.client) {
+  watch(
+    activeSrc,
+    (src) => {
+      previewFailed.value = false;
+      const probe = new Image();
+      probe.onerror = () => {
+        if (activeSrc.value === src) previewFailed.value = true;
+      };
+      probe.src = src;
+    },
+    { immediate: true }
+  );
+}
 
 const codeTabs = computed(() => {
   const style = activeStyle.value;
@@ -486,9 +501,7 @@ const activeTab = computed(
 // ---- Copy and download ------------------------------------------------------
 const intro = computed(() => {
   const name = icon.value.name;
-  const labels = (variantStyles.value.length ? variantStyles.value : styles.value.map((s) => s.key)).map(
-    (s) => STYLE_INFO[s].short.toLowerCase()
-  );
+  const labels = availableStyles.value.map((s) => STYLE_INFO[s].short.toLowerCase());
   const styleText =
     labels.length === 1 ? `the ${labels[0]} style` : `${labels.slice(0, -1).join(", ")} and ${labels.at(-1)} styles`;
   const sizes = allSizes.value;
@@ -585,7 +598,7 @@ const name = icon.value.name;
 const primary = styles.value[0]?.svg;
 // "Filled & Regular", "Filled, Regular & Color", "Light"… from the styles this icon has.
 const titleStyles = ["filled", "regular", "color", "light"]
-  .filter((s) => (variantStyles.value.length ? variantStyles.value.includes(s) : details.value[s]))
+  .filter((s) => availableStyles.value.includes(s))
   .map((s) => STYLE_INFO[s].short);
 const titleStyleText =
   titleStyles.length > 1 ? `${titleStyles.slice(0, -1).join(", ")} & ${titleStyles.at(-1)}` : titleStyles[0];

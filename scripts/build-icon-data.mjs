@@ -5,9 +5,9 @@
 // app/generated/
 //   index.json        client search index: [slug, name, styles, keywords (comma-separated), filledFile?, regularFile?, previewFile?][]
 //                     styles: 1 = filled, 2 = regular, 3 = both; file names only when non-standard;
-//                     previewFile only for designs with neither (a Color file)
+//                     previewFile only for designs with neither (a Color or Light file)
 //   details.json      build-time only: { [slug]: { description, legacy, related, variants,
-//                     filled?, regular?, color? } } where filled/regular/color = { file, size, body? }
+//                     filled?, regular?, color?, light? } } where each style = { file, size, body? }
 //   color.json        [slug, name, file][] for designs with a Color style
 //   tags.json         { [tag]: { name, slugs } } for keywords shared by enough icons
 //   stats.json        counts used in page copy, and the @fluentui/svg-icons version
@@ -50,7 +50,7 @@ const index = icons.map((icon) => {
   const r = icon.regular && icon.regular !== defaultFile(icon.slug, "regular") ? icon.regular : 0;
   if (f || r) row.push(f, r);
   // Designs with only Color or Light styles: a file to show in A–Z lists.
-  if (!styles && icon.color) row.push(0, 0, icon.color);
+  if (!styles && (icon.color || icon.light)) row.push(0, 0, icon.color || icon.light);
   return row;
 });
 
@@ -97,6 +97,7 @@ icons.forEach((icon, i) => {
     ...(icon.regular && { regular: readSvg(icon.regular) }),
     // Color icons are shown as images; only the file and size are needed.
     ...(icon.color && { color: readSvg(icon.color, { body: false }) }),
+    ...(icon.light && { light: readSvg(icon.light) }),
   };
 });
 

@@ -5,9 +5,10 @@
 //   in the @fluentui/svg-icons npm package (served on the site from jsDelivr),
 //   with its icon-font codepoint and whether Flutter ships it.
 // - data/meta.json: the package version and upstream commit the data matches.
-// - public/icons: one file per design and style (filled, regular, color), 24px
-//   when Microsoft draws it, otherwise the nearest size. Other sizes and the
-//   Light style load from jsDelivr on icon pages only.
+// - public/icons: one file per design and style (filled, regular, color; light
+//   only for Light-only designs), 24px when Microsoft draws it, otherwise the
+//   nearest size. Other sizes and the Light style load from jsDelivr on icon
+//   pages only.
 // Designs retired upstream stay (marked legacy) so existing links keep working.
 //
 // Usage (a sparse checkout is enough):
@@ -136,15 +137,20 @@ for (const folder of readdirSync(assetsDir)) {
   for (const style of ["filled", "regular"]) {
     if (has(style)) copyFileSync(join(svgDir, file(style)), join(iconsDir, file(style)));
   }
+  const filled = has("filled") ? file("filled") : copyFromPackage(stem, "filled", variants);
+  const regular = has("regular") ? file("regular") : copyFromPackage(stem, "regular", variants);
   const color = copyFromPackage(stem, "color", variants);
+  // Light-only designs keep a Light file so every design has something to show.
+  const light = !filled && !regular && !color && copyFromPackage(stem, "light", variants);
   icons.set(stem, {
     slug: stem,
     name: cleanText(meta.name || folder),
     description: cleanText(meta.description || ""),
     keywords: [...new Set((meta.metaphor || []).map((k) => cleanText(k).toLowerCase()).filter(Boolean))],
-    filled: has("filled") ? file("filled") : copyFromPackage(stem, "filled", variants),
-    regular: has("regular") ? file("regular") : copyFromPackage(stem, "regular", variants),
+    filled,
+    regular,
     ...(color && { color }),
+    ...(light && { light }),
     ...(variants && { variants }),
   });
 }
@@ -153,15 +159,19 @@ for (const folder of readdirSync(assetsDir)) {
 for (const stem of packageVariants.keys()) {
   if (icons.has(stem)) continue;
   const variants = variantsFor(stem);
+  const filled = copyFromPackage(stem, "filled", variants);
+  const regular = copyFromPackage(stem, "regular", variants);
   const color = copyFromPackage(stem, "color", variants);
+  const light = !filled && !regular && !color && copyFromPackage(stem, "light", variants);
   icons.set(stem, {
     slug: stem,
     name: titleCase(stem),
     description: "",
     keywords: [],
-    filled: copyFromPackage(stem, "filled", variants),
-    regular: copyFromPackage(stem, "regular", variants),
+    filled,
+    regular,
     ...(color && { color }),
+    ...(light && { light }),
     variants,
   });
 }
@@ -173,12 +183,12 @@ for (const stem of packageVariants.keys()) {
 const previous = new Map();
 if (existsSync(join(root, "data/icons.json"))) {
   for (const entry of JSON.parse(readFileSync(join(root, "data/icons.json"), "utf8"))) {
-    for (const style of ["filled", "regular", "color"]) if (entry[style]) previous.set(entry[style], entry);
+    for (const style of ["filled", "regular", "color", "light"]) if (entry[style]) previous.set(entry[style], entry);
   }
 }
-const used = new Set([...icons.values()].flatMap((i) => [i.filled, i.regular, i.color]));
+const used = new Set([...icons.values()].flatMap((i) => [i.filled, i.regular, i.color, i.light]));
 for (const f of readdirSync(iconsDir)) {
-  const m = f.match(/^ic_fluent_(.+)_(\d+)_(filled|regular|color)\.svg$/);
+  const m = f.match(/^ic_fluent_(.+)_(\d+)_(filled|regular|color|light)\.svg$/);
   if (!m || used.has(f)) continue;
   const prev = previous.get(f);
   const stem = prev?.slug || (m[2] === "24" ? m[1] : `${m[1]}_${m[2]}`);
