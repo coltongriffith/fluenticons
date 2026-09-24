@@ -33,8 +33,13 @@ html.dark {
   @apply m-4 h-full rounded-lg border dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center;
 }
 
+/* Bottom sheet on small screens, sticky sidebar from lg up. */
 .editor-sidebar {
-  @apply h-screen sticky top-0 border-l w-80 bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto flex-shrink-0;
+  @apply fixed inset-x-0 bottom-0 z-[60] max-h-[80vh] border-t shadow-2xl translate-y-full transition-transform bg-gray-50 dark:bg-gray-900 dark:border-gray-700 overflow-y-auto;
+  @apply lg:inset-auto lg:top-0 lg:z-auto lg:max-h-none lg:h-screen lg:sticky lg:border-t-0 lg:border-l lg:shadow-none lg:translate-y-0 lg:transition-none lg:w-80 lg:flex-shrink-0;
+}
+.editor-sidebar.editor-open {
+  @apply translate-y-0;
 }
 .show-more-btn {
   @apply block border dark:border-gray-700 rounded-lg mx-auto px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm focus:outline-none;
@@ -68,4 +73,20 @@ html.dark {
 .expand-leave-active {
   transition: height 0.25s ease-in-out, opacity 0.25s ease-in-out;
   overflow: hidden;
+}
+
+.icon-mask {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* Inline code in articles: a subtle chip instead of Tailwind Typography's literal backticks. */
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+  content: none;
+}
+.prose :where(code):not(:where(pre *)) {
+  @apply rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 font-medium;
 }

@@ -4,7 +4,12 @@
       <BaseHero />
       <BaseNavbar />
       <NuxtPage />
+      <SiteFooter />
     </section>
     <IconEditor />
   </main>
 </template>
+
+<script setup>
+definePageMeta({ layout: "bare" });
+</script>

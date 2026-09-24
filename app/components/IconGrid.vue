@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto p-8">
-    <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+  <div class="container mx-auto p-4 sm:p-8">
+    <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-6">
       <IconCard
         v-for="icon in filteredIcons.slice(0, elementsToShow)"
         :key="icon.id"
@@ -19,12 +19,6 @@
       >
         Show More Icons
       </button>
-
-      <div class="flex-center flex-col">
-        <small class="mt-8"
-          ><NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink></small
-        >
-      </div>
     </div>
   </div>
 </template>
@@ -44,7 +38,10 @@ const { data: firstPage } = await useAsyncData(
   async () => (await loadIcons(props.variant)).slice(0, PAGE_SIZE)
 );
 const allIcons = shallowRef(null);
+const route = useRoute();
 onMounted(async () => {
+  // Links like /?q=flame (from icon keyword tags) prefill the search.
+  if (route.query.q) searchQuery.value = String(route.query.q);
   allIcons.value = await loadIcons(props.variant);
 });
 

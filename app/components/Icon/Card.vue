@@ -15,7 +15,7 @@
       >
         <div class="absolute inset-0">
           <div class="flex flex-row justify-center items-center h-full">
-            <FluentSvg :icon="icon" class="h-10 w-10" />
+            <IconMask :file="icon.svgFileName" class="h-10 w-10" />
           </div>
         </div>
         <div class="p-4 absolute inset-x-0 bottom-0">
@@ -23,7 +23,7 @@
             <p
               class="subpixel-antialiased px-2 py-1 tracking-wide leading-tight text-cool-gray-600 dark:text-cool-gray-400 cursor-text select-text text-xs truncate"
             >
-              {{ icon.name.replace(/([A-Z])/g, " $1") }}
+              {{ icon.name }}
             </p>
           </div>
         </div>

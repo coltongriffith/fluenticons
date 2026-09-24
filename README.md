@@ -51,10 +51,22 @@ $ yarn dev
 $ yarn generate
 ```
 
-### How icons are served
+### How the site is built
 
-The SVGs in `public/icons/` are the source of truth. `data/filled.json` and `data/outlined.json` list which icons appear on each page.
-`yarn icons` (run automatically by `dev`/`generate`) builds `app/generated/*.json`, which the site renders from — there are no per-icon components.
+- `data/icons.json` lists every icon (name, Microsoft's keywords and description, file names). The SVGs live in `public/icons/`.
+- `content/guides/*.md` are the guide articles.
+- `yarn icons` (run automatically by `dev`/`generate`) turns those into `app/generated/`: a small search index for the browser, build-time icon details, the sitemap and the list of pages to prerender.
+- `yarn generate` prerenders every page — the icon grids, one page per icon (`/icon/<name>/`), the A–Z browse pages, guides and site pages.
+
+To pull the latest icons from Microsoft:
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse https://github.com/microsoft/fluentui-system-icons.git upstream
+git -C upstream sparse-checkout set --no-cone '/assets/*/metadata.json' '/assets/*/SVG/*_24_filled.svg' '/assets/*/SVG/*_24_regular.svg'
+node scripts/import-upstream.mjs upstream
+```
+
+Icons Microsoft has retired stay on the site (marked `legacy`) so existing links keep working.
 
 ### Cloudflare Pages settings
 

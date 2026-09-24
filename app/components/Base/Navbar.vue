@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-[75px] border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-8 flex-wrap navbar-frosted"
+    class="min-h-[75px] lg:h-[75px] py-3 lg:py-0 gap-3 border-t border-b sticky top-0 z-50 dark:border-gray-700 flex items-center justify-between px-4 sm:px-8 flex-wrap navbar-frosted"
   >
     <p>
       <span class="text-lg font-medium">{{ page.title }} Icons</span>
@@ -8,7 +8,7 @@
         >&nbsp;({{ page.subtitle }})</span
       >
     </p>
-    <div class="flex-space-x-4">
+    <div class="flex items-center flex-wrap gap-3 lg:gap-4">
       <div
         class="relative flex items-center overflow-hidden rounded-full bg-gray-50 dark:bg-gray-700 focus-within:bg-gray-100 dark:focus-within:bg-gray-800"
       >
@@ -31,12 +31,14 @@
         </button>
       </div>
       <NuxtLink
-        :to="altIcons.path"
+        v-for="link in altIcons"
+        :key="link.path"
+        :to="link.path"
         class="navbar-btn"
-        :aria-label="`${altIcons.name} Icons`"
+        :aria-label="`${link.name} Icons`"
       >
         <FluentSvg ui="position_backward_24_filled" class="h-5 w-5" />
-        <p class="text-sm">{{ altIcons.name }} Icons</p>
+        <p class="text-sm hidden md:block">{{ link.name }} Icons</p>
       </NuxtLink>
       <button @click="toggleDarkMode" class="navbar-btn" aria-label="Dark Mode">
         <ColorScheme>
@@ -50,7 +52,7 @@
           />
           <FluentSvg v-else ui="weather_moon_24_regular" class="h-5 w-5" />
         </ColorScheme>
-        <p class="text-sm">
+        <p class="text-sm hidden md:block">
           <ColorScheme placeholder="Dark">{{
             colorMode.value === "dark" ? "Light" : "Dark"
           }}</ColorScheme>
@@ -59,7 +61,7 @@
       </button>
       <NuxtLink to="/favorites" class="navbar-btn" aria-label="Favorites">
         <FluentSvg ui="heart_24_regular" class="h-5 w-5" />
-        <p class="text-sm">Favorites</p>
+        <p class="text-sm hidden md:block">Favorites</p>
       </NuxtLink>
     </div>
   </div>
@@ -71,11 +73,13 @@ const colorMode = useColorMode();
 const searchQuery = useSearchQuery();
 const search = ref(null);
 
-const altIcons = computed(() =>
-  route.path.startsWith("/outlined")
-    ? { name: "Filled", path: "/" }
-    : { name: "Outlined", path: "/outlined" }
-);
+const altIcons = computed(() => {
+  const filled = { name: "Filled", path: "/" };
+  const outlined = { name: "Outlined", path: "/outlined" };
+  if (route.path.startsWith("/outlined")) return [filled];
+  if (route.path.startsWith("/favorites")) return [filled, outlined];
+  return [outlined];
+});
 
 const page = computed(() => {
   if (route.path.startsWith("/outlined"))

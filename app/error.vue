@@ -10,4 +10,5 @@
 
 <script setup>
 defineProps({ error: { type: Object, default: null } });
+useHead({ title: "Page not found | Fluenticons", meta: [{ name: "robots", content: "noindex" }] });
 </script>

@@ -1,27 +1,36 @@
 <template>
-  <aside class="editor-sidebar">
+  <aside class="editor-sidebar" :class="{ 'editor-open': mobileOpen }">
     <div class="h-[75px] border-b dark:border-gray-700 flex-between px-4">
       <div class="text-sm font-medium">
-        {{ icon.name.replace(/([A-Z])/g, " $1") }}
+        {{ icon.name }}
       </div>
-      <button
-        class="focus:outline-none p-2 rounded-full focus:bg-gray-100 hover:bg-gray-100 dark:focus:bg-gray-700 dark:hover:bg-gray-700"
-        @click="favoriteToggle"
-        aria-label="Favorite"
-      >
-        <FluentSvg
-          :ui="isFavorite(icon) ? 'heart_24_filled' : 'heart_24_regular'"
-          class="text-gray-500 h-5 w-5"
-        />
-      </button>
+      <div class="flex items-center">
+        <button
+          class="focus:outline-none p-2 rounded-full focus:bg-gray-100 hover:bg-gray-100 dark:focus:bg-gray-700 dark:hover:bg-gray-700"
+          @click="favoriteToggle"
+          aria-label="Favorite"
+        >
+          <FluentSvg
+            :ui="isFavorite(icon) ? 'heart_24_filled' : 'heart_24_regular'"
+            class="text-gray-500 h-5 w-5"
+          />
+        </button>
+        <button
+          class="lg:hidden focus:outline-none p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+          @click="mobileOpen = false"
+          aria-label="Close preview"
+        >
+          <FluentSvg ui="dismiss_24_regular" class="text-gray-500 h-5 w-5" />
+        </button>
+      </div>
     </div>
     <div class="h-64">
       <div class="icon-editor-panel dots-pattern-background relative">
         <svg
           ref="preview"
-          :width="icon.size"
-          :height="icon.size"
-          :viewBox="`0 0 ${icon.size} ${icon.size}`"
+          :width="svg.size"
+          :height="svg.size"
+          :viewBox="`0 0 ${svg.size} ${svg.size}`"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           class="h-32 w-32"
@@ -113,6 +122,14 @@
           <BaseFavoritesDownloadManager v-if="showFavoritesDownloadManager" />
         </Transition>
       </li>
+      <li v-if="icon.id !== 'placeholder'">
+        <NuxtLink :to="slugToPath(icon.slug)" class="flex-between px-4 py-2 w-full">
+          <div class="flex-space-x-2">
+            <FluentSvg ui="open_24_regular" class="text-gray-500 h-4 w-4" />
+            <p>Icon details &amp; code</p>
+          </div>
+        </NuxtLink>
+      </li>
     </ul>
     <BuyMeCoffee />
   </aside>
@@ -120,7 +137,7 @@
 
 <script setup>
 import { saveAs } from "file-saver";
-import { getSvg, svgToImage, svgToVue, svgToReact, svgToHtml } from "~/utils/iconManager";
+import { getSvg, svgToImage, svgToVue, svgToReact, svgToHtml, svgToCss } from "~/utils/iconManager";
 
 const icon = useSelectedIcon();
 const colorMode = useColorMode();
@@ -135,7 +152,8 @@ const openPicker = ref(false);
 const mode = ref("single"); // "single" | "gradient"
 const gradient = ref({ type: "linear", angle: 0, start: "#000000", end: "#ff0000" });
 const selectedCopyType = ref("svg");
-const selectedExportType = ref("png");
+const selectedExportType = ref("svg");
+const mobileOpen = ref(false);
 const showFavoritesDownloadManager = ref(false);
 
 const copyTypes = [
@@ -143,26 +161,55 @@ const copyTypes = [
   { name: "HTML Image", value: "html" },
   { name: "Vue Component", value: "vue" },
   { name: "React Component", value: "react" },
+  { name: "CSS Background", value: "css" },
 ];
 const exportTypes = [
-  { name: "PNG", value: "png" },
   { name: "SVG", value: "svg" },
+  { name: "PNG", value: "png" },
   { name: "WEBP", value: "webp" },
   { name: "Vue Component", value: "vue" },
   { name: "React Component", value: "react" },
 ];
 
 const baseName = computed(() => icon.value.svgFileName.replace(".svg", ""));
+const component = computed(() => componentName(icon.value.slug, icon.value.variant));
+
+// Inner SVG markup of the selected icon, fetched from /icons when needed.
+const svg = ref({ size: defaultIcon.size, body: defaultIcon.body });
+watch(
+  () => icon.value.svgFileName,
+  async (file) => {
+    if (icon.value.body) {
+      svg.value = { size: icon.value.size || 24, body: icon.value.body };
+      return;
+    }
+    try {
+      const loaded = await fetchIconSvg(file);
+      if (icon.value.svgFileName === file) svg.value = loaded;
+    } catch (err) {
+      toast.error(err.message);
+    }
+  },
+  { immediate: true }
+);
+
+// On small screens the editor is a bottom sheet that opens when an icon is picked.
+watch(
+  () => icon.value.id,
+  (id) => {
+    mobileOpen.value = id !== "placeholder";
+  }
+);
 
 const previewBody = computed(() => {
-  if (mode.value !== "gradient") return icon.value.body;
+  if (mode.value !== "gradient") return svg.value.body;
   const { type, angle, start, end } = gradient.value;
   const stops = `<stop offset="0%" stop-color="${start}"/><stop offset="100%" stop-color="${end}"/>`;
   const defs =
     type === "linear"
       ? `<linearGradient id="fi-grad" gradientTransform="rotate(${angle})">${stops}</linearGradient>`
       : `<radialGradient id="fi-grad" cx="50%" cy="50%" r="50%">${stops}</radialGradient>`;
-  return defs + icon.value.body.replace(/fill="currentColor"/g, 'fill="url(#fi-grad)"');
+  return defs + svg.value.body.replace(/fill="currentColor"/g, 'fill="url(#fi-grad)"');
 });
 
 // Default preview color follows the theme until the user picks one.
@@ -193,21 +240,23 @@ function favoriteToggle() {
 // The SVG markup for the current icon with the chosen color or gradient applied.
 async function currentSvg() {
   if (mode.value !== "gradient") return getSvg(icon.value.svgFileName, color.value);
-  const size = icon.value.size;
+  const size = svg.value.size;
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none" xmlns="http://www.w3.org/2000/svg">${previewBody.value}</svg>`;
 }
 
 async function snippet(type) {
-  const svg = await currentSvg();
+  const markup = await currentSvg();
   switch (type) {
     case "vue":
-      return svgToVue(svg, icon.value.svgFileName);
+      return svgToVue(markup, component.value);
     case "react":
-      return svgToReact(svg, icon.value.svgFileName);
+      return svgToReact(markup, component.value);
     case "html":
-      return svgToHtml(svg, icon.value.svgFileName);
+      return svgToHtml(markup, icon.value.name);
+    case "css":
+      return svgToCss(markup);
     default:
-      return svg;
+      return markup;
   }
 }
 

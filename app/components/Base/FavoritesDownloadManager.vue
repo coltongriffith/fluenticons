@@ -19,7 +19,8 @@ const { favorites } = useFavorites();
 const toast = useToast();
 
 async function toContent(type, icon) {
-  if (type !== "png") return getIconSnippet(type, icon.svgFileName);
+  if (type !== "png")
+    return getIconSnippet(type, icon.svgFileName, componentName(icon.slug, icon.variant));
   return svgToImage({
     svg: await getSvg(icon.svgFileName, "#000000"),
     width: 512,
@@ -37,7 +38,7 @@ async function downloadIcons(type, format) {
   try {
     const files = await Promise.all(
       favorites.value.map(async (icon) => ({
-        name: `${icon.name}${icon.variant === "outlined" ? "Outlined" : ""}.${format}`,
+        name: `${icon.svgFileName.replace(".svg", "")}.${format}`,
         content: await toContent(type, icon),
       }))
     );

@@ -8,46 +8,56 @@ export async function getSvg(icon, color) {
   return data;
 }
 
-export function svgToVue(svgString, iconName) {
+export function svgToVue(svgString, componentName) {
   return `<template>
   ${svgString}
 </template>
 <script>
 export default {
-  name: '${iconName.replace(".svg", "")}'
+  name: '${componentName}'
 }
 </script>`;
 }
 
-export function svgToReact(svgString, iconName) {
-  return `export function ${iconName.replace(".svg", "")}(props) {
+// JSX needs camelCased attributes, and the component should forward props.
+export function svgToReact(svgString, componentName) {
+  const jsx = svgString
+    .replace(/\s(fill|clip|stroke)-(rule|opacity|width|linecap|linejoin)=/g, (_, a, b) => ` ${a}${b[0].toUpperCase()}${b.slice(1)}=`)
+    .replace("<svg ", "<svg {...props} ");
+  return `export function ${componentName}(props) {
   return (
-  ${svgString}
+  ${jsx}
   )
 }`;
 }
 
-export async function svgToHtml(svgString, iconName) {
+export async function svgToHtml(svgString, alt) {
   const outputData = await svgToImage({
     svg: svgString,
     mimetype: "image/png",
     width: 500,
     height: 500,
   });
-  return `<img src="${outputData}" alt=" ${iconName.replace(".svg", "")}" />`;
+  return `<img src="${outputData}" alt="${alt}" />`;
 }
 
-export async function getIconSnippet(type, icon, color = "#000000") {
+export function svgToCss(svgString) {
+  return `background-image: url("data:image/svg+xml,${encodeURIComponent(svgString)}");`;
+}
+
+export async function getIconSnippet(type, icon, componentName, color = "#000000") {
   if (!icon) return;
   switch (type) {
     case "svg":
       return await getSvg(icon, color);
     case "vue":
-      return svgToVue(await getSvg(icon, color), icon);
+      return svgToVue(await getSvg(icon, color), componentName);
     case "react":
-      return svgToReact(await getSvg(icon, color), icon);
+      return svgToReact(await getSvg(icon, color), componentName);
     case "html":
-      return svgToHtml(await getSvg(icon, color), icon);
+      return svgToHtml(await getSvg(icon, color), componentName);
+    case "css":
+      return svgToCss(await getSvg(icon, color));
   }
 }
 
