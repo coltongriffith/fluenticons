@@ -406,9 +406,9 @@ export function ${component}() {
   );
 }
 
-// Or as an SVG component (Vite + vite-plugin-svgr):
-// npm install @material-symbols/svg-${weight}
-import ${component} from "${packagePath}?react";`,
+// Or as an SVG component (Vite + vite-plugin-svgr) instead:
+//   npm install @material-symbols/svg-${weight}
+//   import ${component} from "${packagePath}?react";`,
     },
     {
       key: "vue",

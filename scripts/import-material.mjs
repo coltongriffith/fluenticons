@@ -47,6 +47,7 @@ const symbols = metadata.icons.filter(
 
 // Flutter: Symbols.<name> in the material_symbols_icons package.
 const flutterNames = new Map();
+let flutterLoaded = false;
 try {
   const pub = await (await fetch("https://pub.dev/api/packages/material_symbols_icons")).json();
   const archive = join(packDir, "flutter.tgz");
@@ -62,9 +63,10 @@ try {
     const name = renames[s.name] || s.name;
     if (declared.has(name)) flutterNames.set(s.name, name);
   }
+  flutterLoaded = true;
   console.log(`Flutter: material_symbols_icons ${pub.latest.version}, ${flutterNames.size} names`);
 } catch (err) {
-  console.warn(`Flutter names skipped: ${err.message}`);
+  console.warn(`Flutter names not updated (keeping the previous ones): ${err.message}`);
 }
 
 // ---- 960-unit paths → 24×24 ----------------------------------------------------
@@ -217,7 +219,9 @@ const list = symbols
       category: s.categories[0] || "",
       popularity: s.popularity,
       codepoint: s.codepoint,
-      ...(flutterNames.has(s.name) && { flutter: flutterNames.get(s.name) }),
+      ...(flutterLoaded
+        ? flutterNames.has(s.name) && { flutter: flutterNames.get(s.name) }
+        : previousBySlug.get(s.name)?.flutter && { flutter: previousBySlug.get(s.name).flutter }),
       filled: `${s.name}-fill.svg`,
       regular: `${s.name}.svg`,
     };
