@@ -90,17 +90,19 @@ export async function handleApi(context) {
       result = { status: 200, body: about };
     } else if (parts[0] !== "icons") {
       result = null;
-    } else if (parts.length === 2 && parts[1] === "search") {
+    } else if (parts.length === 2 && parts[1] === "search" && (q.q || q.query)) {
       if (method !== "GET") return error(405, "method_not_allowed", "Use GET.");
       result = await searchIcons(q, context, "api");
     } else if (parts.length === 2 && parts[1] === "recommend") {
       if (method === "POST") result = await recommendIcons(await readJson(request), context, "api");
       else if (method === "GET") result = await recommendIcons(q, context, "api");
       else return error(405, "method_not_allowed", "Use POST (or GET with ?items=Home,Projects).");
-    } else if (parts.length === 2 && parts[1] === "code") {
+    } else if (parts.length === 2 && parts[1] === "code" && (q.icon || q.icon_name || q.name)) {
       if (method !== "GET") return error(405, "method_not_allowed", "Use GET.");
       result = await iconCode(q, context, "api");
     } else if (parts.length === 2) {
+      // Also /icons/search and /icons/code without their parameters: Fluent
+      // has icons named "search" and "code".
       if (method !== "GET") return error(405, "method_not_allowed", "Use GET.");
       result = await getIcon({ ...q, icon_name: parts[1] }, context, "api");
     } else if (parts.length === 3 && parts[2] === "code") {

@@ -91,6 +91,15 @@ async function main() {
       body: JSON.stringify({ items, style: flags.style, size: flags.size ? Number(flags.size) : undefined, platform: flags.platform }),
     });
     if (flags.json) return out(JSON.stringify(body, null, 2));
+    if (body.platform !== "react") {
+      // Code for the requested platform under each item.
+      for (const r of body.recommendations) {
+        out(`// ${r.label}: ${r.displayName || "(no match)"}`);
+        out(r.code || (r.codeUrl ? `See ${r.codeUrl}` : r.slug ? `(no ${body.platform} code for this icon)` : ""));
+        out("");
+      }
+      return;
+    }
     const width = Math.max(...body.recommendations.map((r) => r.label.length));
     for (const r of body.recommendations) out(`${r.label.padEnd(width)}  ${r.component || "(no match)"}`);
     if (body.import) out(`\n${body.import}`);
