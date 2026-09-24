@@ -31,7 +31,7 @@ export function loadIndex() {
     rows.map(([slug, name, styles, keywords, f, r, preview]) => ({
       slug,
       name,
-      keywords: keywords ? keywords.split(" ") : [],
+      keywords: keywords ? keywords.split(",") : [],
       filled: styles & 1 ? f || `ic_fluent_${slug}_24_filled.svg` : null,
       regular: styles & 2 ? r || `ic_fluent_${slug}_24_regular.svg` : null,
       preview: preview || null,

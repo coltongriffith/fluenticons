@@ -167,16 +167,26 @@ for (const stem of packageVariants.keys()) {
 }
 
 // Keep icons (and styles) the site already had that are no longer published upstream.
+// The previous data says which design each file belonged to (a file like
+// ic_fluent_x_20_filled.svg can be design "x"), so retired designs keep their
+// slug, name and keywords.
+const previous = new Map();
+if (existsSync(join(root, "data/icons.json"))) {
+  for (const entry of JSON.parse(readFileSync(join(root, "data/icons.json"), "utf8"))) {
+    for (const style of ["filled", "regular", "color"]) if (entry[style]) previous.set(entry[style], entry);
+  }
+}
 const used = new Set([...icons.values()].flatMap((i) => [i.filled, i.regular, i.color]));
 for (const f of readdirSync(iconsDir)) {
-  const m = f.match(/^ic_fluent_(.+)_(\d+)_(filled|regular)\.svg$/);
+  const m = f.match(/^ic_fluent_(.+)_(\d+)_(filled|regular|color)\.svg$/);
   if (!m || used.has(f)) continue;
-  const stem = m[2] === "24" ? m[1] : `${m[1]}_${m[2]}`;
+  const prev = previous.get(f);
+  const stem = prev?.slug || (m[2] === "24" ? m[1] : `${m[1]}_${m[2]}`);
   const entry = icons.get(stem) || {
     slug: stem,
-    name: titleCase(stem),
-    description: "",
-    keywords: [],
+    name: prev?.name || titleCase(stem),
+    description: prev?.description || "",
+    keywords: prev?.keywords || [],
     filled: null,
     regular: null,
     legacy: true, // retired upstream; not in Microsoft's packages anymore

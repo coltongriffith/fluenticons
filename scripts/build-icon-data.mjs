@@ -3,7 +3,7 @@
 // `yarn dev` / `yarn generate`.
 //
 // app/generated/
-//   index.json        client search index: [slug, name, styles, keywords, filledFile?, regularFile?, previewFile?][]
+//   index.json        client search index: [slug, name, styles, keywords (comma-separated), filledFile?, regularFile?, previewFile?][]
 //                     styles: 1 = filled, 2 = regular, 3 = both; file names only when non-standard;
 //                     previewFile only for designs with neither (a Color file)
 //   details.json      build-time only: { [slug]: { description, legacy, related, variants,
@@ -45,7 +45,7 @@ const defaultFile = (slug, style) => `ic_fluent_${slug}_24_${style}.svg`;
 
 const index = icons.map((icon) => {
   const styles = (icon.filled ? 1 : 0) + (icon.regular ? 2 : 0);
-  const row = [icon.slug, icon.name, styles, icon.keywords.join(" ")];
+  const row = [icon.slug, icon.name, styles, icon.keywords.join(",")];
   const f = icon.filled && icon.filled !== defaultFile(icon.slug, "filled") ? icon.filled : 0;
   const r = icon.regular && icon.regular !== defaultFile(icon.slug, "regular") ? icon.regular : 0;
   if (f || r) row.push(f, r);

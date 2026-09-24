@@ -583,8 +583,14 @@ async function downloadPng(file, name = file) {
 // ---- SEO ---------------------------------------------------------------------
 const name = icon.value.name;
 const primary = styles.value[0]?.svg;
+// "Filled & Regular", "Filled, Regular & Color", "Light"… from the styles this icon has.
+const titleStyles = ["filled", "regular", "color", "light"]
+  .filter((s) => (variantStyles.value.length ? variantStyles.value.includes(s) : details.value[s]))
+  .map((s) => STYLE_INFO[s].short);
+const titleStyleText =
+  titleStyles.length > 1 ? `${titleStyles.slice(0, -1).join(", ")} & ${titleStyles.at(-1)}` : titleStyles[0];
 useSeo({
-  title: `${name} icon (${variantStyles.value.length > 2 ? "All Sizes & Styles" : "Filled & Regular"})`,
+  title: `${name} icon${titleStyleText ? ` (${titleStyleText})` : ""}`,
   description: details.value.description
     ? `${name} icon from Microsoft's Fluent UI System Icons. ${details.value.description} Free SVG, PNG and code for React, Flutter, Blazor and more.`
     : `Free ${name} icon from Microsoft's Fluent UI System Icons in every size and style. Download SVG or PNG, or copy React, Flutter, Blazor, WinUI and HTML code.`,
