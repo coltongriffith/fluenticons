@@ -9,7 +9,7 @@
       <NuxtLink
         v-for="guide in guides"
         :key="guide.slug"
-        :to="`/guides/${guide.slug}/`"
+        :to="`${guide.path}/`"
         class="rounded-lg border dark:border-gray-700 p-6 hover:bg-gray-50 dark:hover:bg-gray-800"
       >
         <h2 class="text-xl font-semibold mb-2">{{ guide.title }}</h2>
@@ -22,7 +22,7 @@
 <script setup>
 const { data: guides } = await useAsyncData("guides", async () => {
   const { default: all } = await import("~/generated/guides.json");
-  return all.map(({ slug, title, description }) => ({ slug, title, description }));
+  return all.map(({ slug, path, title, description }) => ({ slug, path, title, description }));
 });
 
 useSeo({

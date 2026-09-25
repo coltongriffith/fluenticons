@@ -123,7 +123,7 @@ import Icon from "@mui/material/Icon";
 <Icon baseClassName="material-symbols-outlined">home</Icon>
 ```
 
-or import SVGs as shown above. See [Material Symbols vs. Material Icons](/guides/material-symbols-vs-material-icons/) for the differences between the two sets.
+or import SVGs as shown above. See [Material Symbols vs. Material Icons](/material-icons-vs-material-symbols/) for the differences between the two sets.
 
 ## Tips
 

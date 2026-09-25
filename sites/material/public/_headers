@@ -1,9 +1,13 @@
 /_nuxt/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Icon files and social images only change when a Symbols release is imported.
 /icons/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
   Access-Control-Allow-Origin: *
+
+/og/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 # Keep the Cloudflare Pages copies of the site (*.pages.dev and preview URLs)
 # out of search results; materialicons.co is the canonical domain.

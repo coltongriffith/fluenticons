@@ -14,11 +14,12 @@ export default {
   url: "https://materialicons.co",
   gaId: "G-EN85Z8G3Z6",
   adsenseClient: "ca-pub-9128081695641229",
-  defaultTitle: "Materialicons: Free Google Material Symbols & Icons",
+  defaultTitle: "Material Icons & Symbols — Search, Copy SVG, JSX, Font Code",
+  // Homepage and default meta description: at most 155 characters.
   description: (stats, roughCount) =>
-    `Search, customize and download ${roughCount(
+    `Search ${roughCount(
       stats.designs
-    )} free Google Material Symbols in outlined, rounded and sharp styles, filled or not, as SVG, PNG, WEBP, React and Vue.`,
+    )} free Material Icons and Material Symbols. Copy SVG, JSX, MUI, Flutter or font code, or download PNG in outlined, rounded and sharp.`,
   storageKey: "materialicons:favorites",
   zipName: "material-icons",
 
@@ -42,7 +43,11 @@ export default {
     { to: "/", label: "Outlined icons" },
     { to: "/filled/", label: "Filled icons" },
     { to: "/browse/", label: "Browse A–Z" },
+    { to: "/category/", label: "Categories" },
     { to: "/tag/", label: "Topics" },
+    { to: "/material-symbols/", label: "Material Symbols" },
+    { to: "/mui-material-icons/", label: "MUI icons" },
+    { to: "/angular-material-icons/", label: "Angular icons" },
     { to: "/guides/", label: "Guides" },
     { to: "/about/", label: "About" },
     { to: "/contact/", label: "Contact" },

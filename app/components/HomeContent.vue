@@ -108,7 +108,7 @@
       <h2>Guides</h2>
       <ul>
         <li v-for="guide in guides" :key="guide.slug">
-          <NuxtLink :to="`/guides/${guide.slug}/`">{{ guide.title }}</NuxtLink>
+          <NuxtLink :to="`${guide.path}/`">{{ guide.title }}</NuxtLink>
         </li>
       </ul>
     </div>
@@ -118,7 +118,7 @@
 <script setup>
 import guideList from "~/generated/guides.json";
 
-const guides = guideList.map(({ slug, title }) => ({ slug, title }));
+const guides = guideList.map(({ slug, path, title }) => ({ slug, path, title }));
 
 const faq = [
   {

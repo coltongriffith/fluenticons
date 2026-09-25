@@ -13,7 +13,7 @@
       <ul>
         <li>You don't need an account, and we don't ask for your name or email to use the Site.</li>
         <li>Your favorites and theme choice are stored only in your own browser.</li>
-        <li>We use Google Analytics to understand how the Site is used, and Google AdSense to show ads. Both use cookies or similar technologies and collect usage data.</li>
+        <li>We use Google Analytics and Ahrefs Web Analytics to understand how the Site is used, and Google AdSense to show ads. Google Analytics and AdSense use cookies or similar technologies and collect usage data.</li>
         <li>We don't sell your personal information.</li>
       </ul>
 
@@ -42,6 +42,11 @@
         your IP address) and referring websites. We use this only in aggregate to improve the
         Site. You can opt out with the
         <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.
+      </p>
+      <p>
+        We also use Ahrefs Web Analytics, which counts page views without cookies and doesn't
+        store your IP address, to see which pages people find through search. See
+        <a href="https://ahrefs.com/web-analytics" target="_blank" rel="noopener">Ahrefs Web Analytics</a>.
       </p>
 
       <h3>Advertising</h3>
