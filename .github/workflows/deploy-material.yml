@@ -77,7 +77,7 @@ jobs:
 
       - name: Check build output
         run: |
-          for f in index.html filled/index.html icon/home/index.html guides/index.html license/index.html ads.txt sitemap.xml _headers icons/home.svg; do
+          for f in index.html filled/index.html icon/home/index.html guides/index.html license/index.html material-symbols/index.html category/index.html material-icons-vs-material-symbols/index.html og/home.png ads.txt sitemap.xml _headers _redirects icons/home.svg; do
             test -s "sites/material/dist/$f" || { echo "Missing sites/material/dist/$f"; exit 1; }
           done
           files=$(find sites/material/dist -type f | wc -l)

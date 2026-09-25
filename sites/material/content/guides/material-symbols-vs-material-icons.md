@@ -1,7 +1,8 @@
 ---
-title: "Material Symbols vs. Material Icons: what's the difference?"
+title: "Material Icons vs. Material Symbols: what's the difference?"
 description: How Google's current Material Symbols differ from the older Material Icons — styles, variable axes, icon count, naming — and how to migrate a project from one to the other.
-date: 2026-09-24
+date: 2026-09-25
+path: /material-icons-vs-material-symbols
 order: 3
 ---
 

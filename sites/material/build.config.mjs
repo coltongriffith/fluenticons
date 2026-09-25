@@ -4,14 +4,18 @@ export default {
   root: new URL("./", import.meta.url),
   url: "https://materialicons.co",
   defaultFile: (slug, style) => (style === "filled" ? `${slug}-fill.svg` : `${slug}.svg`),
-  extraRoutes: ["/filled", "/sponsor"],
-  dataPage: /^\/(?:$|filled|browse|tag|icon\/)/,
+  extraRoutes: ["/filled", "/sponsor", "/material-symbols", "/mui-material-icons", "/angular-material-icons"],
+  dataPage: /^\/(?:$|filled|browse|tag|category|icon\/)/,
+  // /category/<name> pages from each icon's Google category (see build-icon-data.mjs).
+  categoryPages: true,
+  // Social preview images for icon pages (public/og/<slug>.png).
+  ogImages: true,
   // Google tags icons generously; topic pages need at least 15 icons, and
   // the 250 largest topics are kept.
   tagMin: 15,
   tagMax: 250,
   tagStop: new Set(["other", "outlined", "rounded", "sharp", "google", "material"]),
-  detailFields: ["category", "popularity", "codepoint", "flutter"],
+  detailFields: ["category", "popularity", "codepoint", "flutter", "mui", "flutterIcon"],
   uiIcons: {
     search_24_filled: "search.svg",
     position_backward_24_filled: "swap_horiz.svg",

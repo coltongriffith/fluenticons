@@ -19,13 +19,20 @@
 //   public/feed.xml   RSS feed of those updates
 //   ui-icons.json     inner SVG markup for the site's own UI icons
 //   api-catalog.json  fluenticons.co only: the agent API's catalogue (see agent/catalog.js)
-//   guides.json       [{ slug, title, description, date, html }]
+//   guides.json       [{ slug, path, title, description, date, html }]
+//   categories.json   sites with categoryPages: { [slug]: { name, slugs } } from each icon's category
+//   category-names.json  { [slug]: name } of those
+//   mui.json          sites whose icons have MUI names: [slug, name, mui][]
+//   public/og/*.png   sites with ogImages: social preview images for the most used icons
+//                     (as many as the Cloudflare Pages file limit leaves room for)
+//   public/_redirects sites with categoryPages: 301s for guides with their own path and
+//                     topic pages replaced by category pages
 //   routes.json       every prerendered page path
 //   public/sitemap.xml
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { marked } from "marked";
 import { execFileSync } from "node:child_process";
-import { renameSync } from "node:fs";
+import { renameSync, rmSync } from "node:fs";
 
 // Settings for fluenticons.co; other sites export the same shape.
 const FLUENT = {
@@ -171,9 +178,29 @@ const tagEntries = Object.entries(tagMembers)
   .filter(([name, slugs]) => slugs.length >= TAG_MIN && !config.tagStop?.has(name))
   .sort(([, a], [, b]) => b.length - a.length)
   .slice(0, config.tagMax || Infinity);
+// Category pages (/category/<slug>), from the category each icon has. A topic
+// page for the same word would duplicate one, so it's dropped and redirected.
+const categorySlug = (name) =>
+  name.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const categories = {};
+if (config.categoryPages) {
+  icons.forEach((icon, i) => {
+    if (!listed[i] || !icon.category) return;
+    (categories[categorySlug(icon.category)] ||= { name: icon.category, slugs: [] }).slugs.push(icon.slug);
+  });
+  // Too few icons for a useful page (Google's "Brand" has two).
+  for (const [slug, c] of Object.entries(categories)) if (c.slugs.length < TAG_MIN) delete categories[slug];
+}
+const redirects = [];
 const tags = Object.fromEntries(
   tagEntries
     .sort(([a], [b]) => a.localeCompare(b))
+    .filter(([name]) => {
+      const cat = categorySlug(name);
+      if (!categories[cat]) return true;
+      redirects.push([`/tag/${tagSlug(name)}`, `/category/${cat}`]);
+      return false;
+    })
     .map(([name, slugs]) => [tagSlug(name), { name, slugs }])
 );
 
@@ -213,6 +240,13 @@ write("details.json", details);
 write("new.json", newIcons);
 write("color.json", colorIcons);
 write("tags.json", tags);
+if (config.categoryPages) {
+  write("categories.json", categories);
+  // Just the names, for icon pages (the full lists are only needed on category pages).
+  write("category-names.json", Object.fromEntries(Object.entries(categories).map(([slug, c]) => [slug, c.name])));
+}
+// [slug, name, MUI component] for icons @mui/icons-material also has (popularity order).
+if (icons.some((i) => i.mui)) write("mui.json", icons.filter((i) => i.mui).map((i) => [i.slug, i.name, i.mui]));
 write("stats.json", stats);
 // The agent API (agent/catalog.js): every design with its sizes per style,
 // related icons and the keywords that have topic pages.
@@ -268,6 +302,8 @@ const guides = existsSync(guidesDir)
         const { meta, body } = parseFrontMatter(readFileSync(new URL(f, guidesDir), "utf8"));
         return {
           slug: f.replace(/\.md$/, ""),
+          // A guide can live at its own URL (front matter `path`) instead of /guides/<slug>.
+          path: meta.path || `/guides/${f.replace(/\.md$/, "")}`,
           title: meta.title,
           description: meta.description,
           date: meta.date,
@@ -294,10 +330,11 @@ const indexable = [
   ...letters.map((l) => `/browse/${l}`),
   "/tag",
   ...Object.keys(tags).map((t) => `/tag/${t}`),
+  ...(config.categoryPages ? ["/category", ...Object.keys(categories).map((c) => `/category/${c}`)] : []),
   ...(newIcons.length ? ["/new"] : []),
   ...icons.map((i) => `/icon/${i.slug.replace(/_/g, "-")}`),
   "/guides",
-  ...guides.map((g) => `/guides/${g.slug}`),
+  ...guides.map((g) => g.path),
   "/about",
   "/contact",
   "/license",
@@ -307,6 +344,37 @@ const indexable = [
 // /new is always prerendered (it shows an empty state until an update adds
 // icons) but only listed in the sitemap once it has icons.
 write("routes.json", [...indexable, ...(newIcons.length ? [] : ["/new"]), "/favorites"]);
+
+// Social preview images for icon pages. Cloudflare Pages allows 20,000 files
+// per deployment; each page is two files (HTML + payload) and each icon two
+// SVGs, so images go to the most used icons (the data is in popularity order)
+// while the total stays under 19,000. Icons without one use /social.png.
+if (config.ogImages) {
+  const { renderOgImages } = await import("./og/render.mjs");
+  const ogDir = new URL("public/og/", outDir);
+  rmSync(ogDir, { recursive: true, force: true });
+  mkdirSync(ogDir, { recursive: true });
+  const expected = 2 * (indexable.length + 2) + icons.filter((i) => i.filled).length + icons.filter((i) => i.regular).length + 150;
+  const chosen = icons.filter((i) => i.regular && listed[icons.indexOf(i)]).slice(0, Math.max(0, 19000 - expected));
+  renderOgImages(
+    chosen.map((i) => ({ slug: i.slug, name: i.name, category: i.category, body: details[i.slug].regular.body })),
+    ogDir,
+    new URL(SITE).hostname
+  );
+  for (const i of chosen) details[i.slug].og = true;
+  write("details.json", details);
+  console.log(`og images: ${chosen.length} (expected site files: ${expected + chosen.length})`);
+}
+
+// Cloudflare Pages redirects for URLs that moved (sites with categoryPages;
+// fluenticons.co keeps its own public/_redirects).
+if (config.categoryPages) {
+  for (const g of guides) if (g.path !== `/guides/${g.slug}`) redirects.push([`/guides/${g.slug}`, g.path]);
+  write(
+    "public/_redirects",
+    redirects.map(([from, to]) => `${from} ${to}/ 301\n${from}/ ${to}/ 301`).join("\n") + "\n"
+  );
+}
 
 const url = (path) => `${SITE}${path === "/" ? "/" : `${path}/`}`;
 
@@ -349,7 +417,7 @@ ${feedItems.join("\n")}
 // their own date. Other pages (about, legal) have no reliable date.
 const dataPage = config.dataPage;
 const lastmod = (path) => {
-  const guide = guides.find((g) => path === `/guides/${g.slug}`);
+  const guide = guides.find((g) => path === g.path);
   if (guide) return guide.date;
   if (path === "/guides") return guides.map((g) => g.date).sort().pop();
   if (path === "/new") return newIcons[0]?.date || null;

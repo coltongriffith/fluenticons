@@ -47,6 +47,8 @@ export default defineNuxtConfig({
           innerHTML: `if(location.hostname==="www.materialicons.co")location.replace("https://materialicons.co"+location.pathname+location.search+location.hash);`,
         },
         { src: `https://www.googletagmanager.com/gtag/js?id=${gaId}`, async: true },
+        // Ahrefs Web Analytics (cookieless page views).
+        { src: "https://analytics.ahrefs.com/analytics.js", "data-key": "SJ+o9J2+xeqnWvLXnjhKOg", async: true },
         {
           innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${gaId}');`,
         },

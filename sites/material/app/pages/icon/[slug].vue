@@ -1,12 +1,10 @@
 <template>
   <div v-if="icon" class="container mx-auto px-4 sm:px-8 py-8">
     <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-      <NuxtLink to="/" class="hover:underline">Icons</NuxtLink>
-      <span class="mx-2">/</span>
-      <NuxtLink to="/browse/" class="hover:underline">Browse</NuxtLink>
-      <span class="mx-2">/</span>
-      <NuxtLink :to="`/browse/${letter}/`" class="hover:underline uppercase">{{ letter }}</NuxtLink>
-      <span class="mx-2">/</span>
+      <template v-for="crumb in crumbs.slice(0, -1)" :key="crumb.path">
+        <NuxtLink :to="crumb.path" class="hover:underline">{{ crumb.name }}</NuxtLink>
+        <span class="mx-2">/</span>
+      </template>
       <span>{{ icon.name }}</span>
     </nav>
 
@@ -97,6 +95,30 @@
           {{ w }}
         </button>
       </div>
+      <div class="flex flex-wrap items-center gap-2 mb-6 text-sm" role="group" aria-label="Grade and optical size">
+        <span class="text-gray-500 mr-1">Grade</span>
+        <button
+          v-for="g in GRADES"
+          :key="g"
+          class="min-w-[3rem] rounded-lg border dark:border-gray-700 px-3 py-1.5"
+          :class="g === activeGrade ? 'bg-gray-100 dark:bg-gray-800 font-semibold' : 'hover:bg-gray-100 dark:hover:bg-gray-800'"
+          :aria-pressed="g === activeGrade"
+          @click="pick({ grade: g })"
+        >
+          {{ g }}
+        </button>
+        <span class="text-gray-500 ml-3 mr-1">Optical size</span>
+        <button
+          v-for="o in OPTICAL_SIZES"
+          :key="o"
+          class="min-w-[3rem] rounded-lg border dark:border-gray-700 px-3 py-1.5"
+          :class="o === activeOpsz ? 'bg-gray-100 dark:bg-gray-800 font-semibold' : 'hover:bg-gray-100 dark:hover:bg-gray-800'"
+          :aria-pressed="o === activeOpsz"
+          @click="pick({ opsz: o })"
+        >
+          {{ o }}
+        </button>
+      </div>
 
       <div class="grid md:grid-cols-[16rem_1fr] gap-6">
         <div class="rounded-lg border dark:border-gray-700 overflow-hidden self-start">
@@ -106,9 +128,19 @@
               <IconMask :src="activeSrc" style="width: 24px; height: 24px" />
               <IconMask :src="activeSrc" class="h-24 w-24" />
             </template>
+            <span
+              v-if="fontReady"
+              :class="`material-symbols-${activeStyle}`"
+              class="select-none"
+              :style="{ fontSize: '96px', fontVariationSettings: fontSettings }"
+              :title="`Variable font: ${fontSettings}`"
+              aria-hidden="true"
+              >{{ slug }}</span
+            >
           </div>
           <div class="p-4 border-t dark:border-gray-700">
             <p class="font-medium mb-1">{{ activeLabel }}</p>
+            <p v-if="fontReady" class="text-xs text-gray-500 mb-1">Right: the variable font, with grade {{ activeGrade }} and optical size {{ activeOpsz }}.</p>
             <p class="text-xs text-gray-500 mb-3 break-all"><code>{{ activeFile }}</code></p>
             <div class="flex flex-wrap gap-2 text-sm">
               <button class="navbar-btn" @click="downloadSvg(activeSrc, activeFile)">
@@ -169,7 +201,7 @@
           <tr v-if="details.category">
             <th>Category</th>
             <td>
-              <NuxtLink v-if="categoryTag" :to="`/tag/${categoryTag}/`">{{ details.category }}</NuxtLink>
+              <NuxtLink v-if="category" :to="category.path">{{ details.category }}</NuxtLink>
               <span v-else>{{ details.category }}</span>
             </td>
           </tr>
@@ -179,7 +211,8 @@
             <th>Files</th>
             <td><code>@material-symbols/svg-400/outlined/{{ slug }}.svg</code>, <code>{{ slug }}-fill.svg</code></td>
           </tr>
-          <tr v-if="details.flutter"><th>Flutter</th><td><code>Symbols.{{ details.flutter }}</code></td></tr>
+          <tr v-if="details.flutter"><th>Flutter</th><td><code>Symbols.{{ details.flutter }}</code><template v-if="details.flutterIcon"> (Material Icons: <code>Icons.{{ details.flutterIcon }}</code>)</template></td></tr>
+          <tr v-if="details.mui"><th>MUI</th><td><code>@mui/icons-material/{{ details.mui }}</code></td></tr>
           <tr><th>License</th><td><NuxtLink to="/license/">Apache License 2.0</NuxtLink> (© Google LLC)</td></tr>
         </tbody>
       </table>
@@ -189,8 +222,8 @@
         <p class="not-prose flex flex-wrap gap-2">
           <template v-for="keyword in keywords" :key="keyword.name">
             <NuxtLink
-              v-if="keyword.tag"
-              :to="`/tag/${keyword.tag}/`"
+              v-if="keyword.path"
+              :to="keyword.path"
               class="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               {{ keyword.name }}
@@ -227,6 +260,7 @@
 
 <script setup>
 import { saveAs } from "file-saver";
+import categoryNames from "~/generated/category-names.json";
 
 const STYLES = [
   { key: "outlined", label: "Outlined", font: "Outlined" },
@@ -234,6 +268,12 @@ const STYLES = [
   { key: "sharp", label: "Sharp", font: "Sharp" },
 ];
 const WEIGHTS = [100, 200, 300, 400, 500, 600, 700];
+// Two more axes of the variable font (no SVG files exist for them).
+const GRADES = [-25, 0, 200];
+const OPTICAL_SIZES = [20, 24, 40, 48];
+// Same slugs as scripts/build-icon-data.mjs.
+const categorySlug = (name) =>
+  name.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const route = useRoute();
 const slug = pathToSlug(route.params.slug);
@@ -249,12 +289,14 @@ const { data } = await useAsyncData(`icon-${slug}`, async () => {
     .map((s) => index.find((e) => e.slug === s))
     .filter(Boolean)
     .map((e) => ({ slug: e.slug, name: e.name, file: e.regular || e.filled }));
-  const tagOf = (name) => {
+  // Keywords link to their category or topic page, if there is one.
+  const pathOf = (name) => {
+    if (categoryNames[categorySlug(name)]) return `/category/${categorySlug(name)}/`;
     const tag = name.replace(/\s+/g, "-");
-    return tags[tag] ? tag : null;
+    return tags[tag] ? `/tag/${tag}/` : null;
   };
-  const keywords = entry.keywords.map((name) => ({ name, tag: tagOf(name) }));
-  const category = details.category?.toLowerCase().replace(/&/g, " and ").replace(/\s+/g, " ");
+  const keywords = entry.keywords.map((name) => ({ name, path: pathOf(name) }));
+  const cat = details.category && categoryNames[categorySlug(details.category)] && { name: categoryNames[categorySlug(details.category)] };
   const { search, ...icon } = entry;
   return {
     icon,
@@ -262,7 +304,7 @@ const { data } = await useAsyncData(`icon-${slug}`, async () => {
     details,
     related,
     keywords,
-    categoryTag: category ? tagOf(category) : null,
+    category: cat ? { name: cat.name, path: `/category/${categorySlug(details.category)}/` } : null,
   };
 });
 
@@ -274,8 +316,19 @@ const icon = computed(() => data.value.icon);
 const details = computed(() => data.value.details);
 const related = computed(() => data.value.related);
 const keywords = computed(() => data.value.keywords || []);
-const categoryTag = computed(() => data.value.categoryTag);
+const category = computed(() => data.value.category);
 const letter = computed(() => letterOf(icon.value.name));
+// Icons / <category> / this icon, or Icons / Browse / <letter> without a category page.
+const crumbs = computed(() => [
+  { name: "Icons", path: "/" },
+  ...(category.value
+    ? [{ name: category.value.name, path: category.value.path }]
+    : [
+        { name: "Browse", path: "/browse/" },
+        { name: letter.value.toUpperCase(), path: `/browse/${letter.value}/` },
+      ]),
+  { name: `${icon.value.name} icon` },
+]);
 
 const cards = computed(() =>
   [
@@ -290,6 +343,8 @@ const cards = computed(() =>
 const activeStyle = ref("outlined");
 const activeFill = ref(0);
 const activeWeight = ref(400);
+const activeGrade = ref(0);
+const activeOpsz = ref(24);
 const codeTab = ref("html");
 const previewFailed = ref(false);
 
@@ -314,8 +369,53 @@ function pick(change) {
   if (change.style) activeStyle.value = change.style;
   if (change.fill !== undefined) activeFill.value = change.fill;
   if (change.weight) activeWeight.value = change.weight;
-  track("select_variant", { icon: slug, style: activeStyle.value, fill: activeFill.value, weight: activeWeight.value });
+  if (change.grade !== undefined) activeGrade.value = change.grade;
+  if (change.opsz) activeOpsz.value = change.opsz;
+  if (change.grade !== undefined || change.opsz) loadFont();
+  track("select_variant", {
+    icon: slug,
+    style: activeStyle.value,
+    fill: activeFill.value,
+    weight: activeWeight.value,
+    grade: activeGrade.value,
+    opsz: activeOpsz.value,
+  });
 }
+
+// ---- Variable font preview ----------------------------------------------------
+// Grade and optical size only exist in the font, so the preview adds the icon
+// drawn with the font (Google Fonts, just this icon: about 2 KB per style),
+// loaded once the explorer scrolls into view.
+const fontSettings = computed(
+  () => `"FILL" ${activeFill.value}, "wght" ${activeWeight.value}, "GRAD" ${activeGrade.value}, "opsz" ${activeOpsz.value}`
+);
+const fontReady = ref(false);
+let fontRequested = false;
+function loadFont() {
+  if (fontRequested || !import.meta.client) return;
+  fontRequested = true;
+  const axes = "opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = `https://fonts.googleapis.com/css2?${STYLES.map((s) => `family=Material+Symbols+${s.font}:${axes}`).join("&")}&icon_names=${slug}&display=block`;
+  link.onload = () =>
+    Promise.all(STYLES.map((s) => document.fonts.load(`24px "Material Symbols ${s.font}"`, slug)))
+      .then(() => (fontReady.value = true))
+      .catch(() => {});
+  document.head.appendChild(link);
+}
+onMounted(() => {
+  const section = document.getElementById("styles");
+  if (!section || !("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      loadFont();
+      observer.disconnect();
+    }
+  });
+  observer.observe(section);
+  onBeforeUnmount(() => observer.disconnect());
+});
 
 function pickTab(key) {
   codeTab.value = key;
@@ -347,6 +447,30 @@ if (import.meta.client) {
   });
 }
 
+// Android resource names can't start with a digit (e.g. 10k).
+const androidName = `ic_${slug}`;
+
+// MUI and Flutter's Icons use the older Material Icons set: Outlined is the
+// unfilled style, and the plain, Rounded and Sharp versions are filled.
+function legacyName(base, style, fill, sep = "") {
+  if (style === "outlined") return fill ? base : `${base}${sep}${sep ? "outlined" : "Outlined"}`;
+  return `${base}${sep}${sep ? style : style.charAt(0).toUpperCase() + style.slice(1)}`;
+}
+
+function muiTab(style, fill) {
+  const name = legacyName(details.value.mui, style, fill);
+  return {
+    key: "mui",
+    label: "MUI",
+    note: "The @mui/icons-material component (from the older Material Icons set, so no weight or grade):",
+    code: `npm install @mui/icons-material @mui/material @emotion/react @emotion/styled
+
+import ${name}Icon from "@mui/icons-material/${name}";
+
+<${name}Icon />`,
+  };
+}
+
 // Android VectorDrawable from an SVG with one or more paths.
 function vectorDrawable(svg) {
   const viewBox = svg.match(/viewBox="([^"]+)"/)?.[1].split(/[\s,]+/).map(Number) || [0, 0, 24, 24];
@@ -356,7 +480,7 @@ function vectorDrawable(svg) {
   );
   const translate = [minX && `android:translateX="${-minX}"`, minY && `android:translateY="${-minY}"`].filter(Boolean);
   const shift = translate.length ? `    <group ${translate.join(" ")}>\n` : "";
-  return `<!-- res/drawable/${slug}.xml -->
+  return `<!-- res/drawable/${androidName}.xml -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
@@ -372,8 +496,8 @@ const codeTabs = computed(() => {
   const fill = activeFill.value;
   const weight = activeWeight.value;
   const cls = `material-symbols-${style.key}`;
-  const custom = fill !== 0 || weight !== 400;
-  const settings = `"FILL" ${fill}, "wght" ${weight}, "GRAD" 0, "opsz" 24`;
+  const custom = fill !== 0 || weight !== 400 || activeGrade.value !== 0 || activeOpsz.value !== 24;
+  const settings = fontSettings.value;
   const font = `https://fonts.googleapis.com/css2?family=Material+Symbols+${style.font}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=${slug}`;
   const component = `${pascalName(slug)}Icon`.replace(/^(\d)/, "Icon$1");
   const packagePath = `@material-symbols/svg-${weight}/${style.key}/${fileFor(fill)}`;
@@ -412,6 +536,7 @@ export function ${component}() {
 //   npm install @material-symbols/svg-${weight}
 //   import ${component} from "${packagePath}?react";`,
     },
+    ...(details.value.mui ? [muiTab(style.key, fill)] : []),
     {
       key: "vue",
       label: "Vue",
@@ -440,6 +565,11 @@ export function ${component}() {
       }`,
     },
   ];
+  // Flutter's Icons: the filled version keeps Dart's trailing underscore (Icons.class_).
+  const fi = details.value.flutterIcon;
+  const builtIn = fi && (style.key === "outlined" && fill ? fi : legacyName(fi.replace(/_$/, ""), style.key, fill, "_"));
+  const flutterIcons = builtIn && `// Or Flutter's built-in Material Icons (the older designs, no fill or weight):
+Icon(Icons.${builtIn})`;
   if (details.value.flutter) {
     const name = `${details.value.flutter}${style.key === "outlined" ? "" : `_${style.key}`}`;
     tabs.push({
@@ -450,16 +580,23 @@ export function ${component}() {
 
 import 'package:material_symbols_icons/symbols.dart';
 
-Icon(Symbols.${name}, fill: ${fill}, weight: ${weight})`,
+Icon(Symbols.${name}, fill: ${fill}, weight: ${weight}, grade: ${activeGrade.value}, opticalSize: ${activeOpsz.value})${
+        flutterIcons ? `\n\n${flutterIcons}` : ""
+      }`,
     });
+  } else if (flutterIcons) {
+    tabs.push({ key: "flutter", label: "Flutter", code: flutterIcons.replace(/^\/\/ Or /, "// ") });
   }
   tabs.push(
     {
       key: "android",
       label: "Android",
-      note: "A vector drawable of the selected style, fill and weight:",
+      note: "A vector drawable of the selected style, fill and weight, for XML layouts and Jetpack Compose:",
       code: activeSvgText.value
-        ? vectorDrawable(activeSvgText.value)
+        ? `${vectorDrawable(activeSvgText.value)}
+
+// Jetpack Compose
+Icon(painterResource(R.drawable.${androidName}), contentDescription = "${icon.value.name}")`
         : previewFailed.value
           ? "This variant couldn't be loaded right now."
           : "Loading the selected variant…",
@@ -555,23 +692,37 @@ const intro = computed(() => {
 });
 
 const name = icon.value.name;
+// A unique description from the icon's name, category and first few keywords
+// (ones that don't repeat the name or category), kept under 160 characters.
+function describe() {
+  const cat = details.value.category;
+  const skip = new Set([...name.toLowerCase().split(" "), cat?.toLowerCase()]);
+  const tags = icon.value.keywords.filter((k) => !skip.has(k) && !k.split(" ").every((w) => skip.has(w)));
+  const head = `${name} icon${cat ? ` (${cat})` : ""} from Google's Material Symbols`;
+  for (const tail of [" Free SVG, PNG, JSX, MUI, Flutter and font code.", " Free SVG, PNG and code."]) {
+    for (let n = Math.min(4, tags.length); n >= 0; n--) {
+      const text = `${head}${n ? `: ${tags.slice(0, n).join(", ")}.` : "."}${tail}`;
+      if (text.length <= 160) return text;
+    }
+  }
+  return `${head}.`;
+}
 useSeo({
-  title: `${name} icon (Material Symbols)`,
-  description: `${name} Material Symbol${
-    details.value.category ? ` (${details.value.category})` : ""
-  } in outlined, rounded and sharp styles, filled or unfilled, at every weight. Free SVG, PNG and code for HTML, React, Flutter and Android.`,
+  fullTitle: `${name} Icon — Material Icons & Symbols (SVG, JSX, Font)`,
+  description: describe(),
   path: slugToPath(slug).replace(/\/$/, ""),
+  image: details.value.og ? `/og/${slug}.png` : undefined,
 });
 useAdsense();
 useJsonLd({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Icons", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Browse", item: `${SITE_URL}/browse/` },
-    { "@type": "ListItem", position: 3, name: letter.value.toUpperCase(), item: `${SITE_URL}/browse/${letter.value}/` },
-    { "@type": "ListItem", position: 4, name: `${name} icon` },
-  ],
+  itemListElement: crumbs.value.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    ...(c.path && { item: `${SITE_URL}${c.path}` }),
+  })),
 });
 if (details.value.regular) {
   useJsonLd({

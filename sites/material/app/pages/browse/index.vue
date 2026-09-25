@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 sm:px-8 py-8">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Browse all Material icons A–Z</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Material icons list A–Z</h1>
     <div class="prose dark:prose-invert max-w-3xl mb-8">
       <p>
         Every icon in the collection, listed alphabetically: {{ total.toLocaleString("en-US") }}
@@ -30,10 +30,10 @@ const { data: letters } = await useAsyncData("browse-letters", loadLetters);
 const total = computed(() => letters.value.reduce((sum, l) => sum + l.count, 0));
 
 useSeo({
-  title: "Browse all Material Symbols A–Z",
-  description: `Alphabetical index of ${roughCount(
+  title: "Material icons list A–Z",
+  description: `The full list of ${roughCount(
     stats.designs
-  )} Google Material Symbols. Open any icon for SVG and PNG downloads in every style and weight, code and related icons.`,
+  )} Google Material Icons and Symbols, A–Z. Open any icon for SVG and PNG in every style and weight, plus code.`,
   path: "/browse",
 });
 useAdsense();

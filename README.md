@@ -77,8 +77,10 @@ Icons Microsoft has retired stay on the site (marked `legacy`) so existing links
 `sites/material/` is a second site built from the same code: Google's Material Symbols with the same grid, editor, favorites, icon pages, topics, guides and analytics. The repo root is its base [Nuxt layer](https://nuxt.com/docs/getting-started/layers); `sites/material/` adds its own data, icons, guides, pages and settings.
 
 - `app/site.js` (and `sites/material/app/site.js`) holds each site's name, URL, grid pages, file naming and footer. Shared code imports `~/site.js` and `~/generated/…`, which resolve to the site being built.
-- `node scripts/import-material.mjs <version>` imports `@material-symbols/svg-400` (Outlined, fill 0 and 1, redrawn on a 24×24 viewBox) with Google Fonts' names, categories and keywords, plus Flutter names from `material_symbols_icons`. Rounded, Sharp and other weights load from jsDelivr on icon pages.
-- `yarn material:dev` / `yarn material:generate` build it into `sites/material/dist` (about 16,000 files).
+- `node scripts/import-material.mjs <version>` imports `@material-symbols/svg-400` (Outlined, fill 0 and 1, redrawn on a 24×24 viewBox) with Google Fonts' names, categories and keywords, plus Flutter names from `material_symbols_icons`. It also records each symbol's `@mui/icons-material` and Flutter `Icons` names, read from those libraries (`scripts/legacy-names.mjs`), so icon pages only show real imports. Rounded, Sharp and other weights load from jsDelivr on icon pages.
+- The build adds `/category/<name>` pages from Google's categories (topic pages for the same words redirect there), writes `public/_redirects` for moved URLs, and draws a social preview image (`/og/<icon>.png`, `scripts/og/`) for the most used icons: as many as fit under Cloudflare Pages' 20,000-file limit (about 2,500); the rest use `/social.png`.
+- A guide can live at its own URL with `path:` in its front matter (the old `/guides/<slug>/` redirects).
+- `yarn material:dev` / `yarn material:generate` build it into `sites/material/dist` (about 19,000 files, just under the limit).
 - The weekly icon update also checks for new Material Symbols releases and opens a pull request.
 
 **Deploying it** (`.github/workflows/deploy-material.yml`) is off until you set two repository variables (Settings → Secrets and variables → Actions → Variables):

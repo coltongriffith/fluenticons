@@ -47,9 +47,22 @@
         Material Symbols are the current version. The older Material Icons set (Filled, Outlined,
         Round, Sharp and Two-tone) is no longer updated and has fewer icons. Symbols replaced its
         five fixed styles with three styles plus variable fill, weight, grade and optical size, so
-        one set covers every look. If you're starting a project today, use Symbols. The
-        <NuxtLink to="/guides/material-symbols-vs-material-icons/">comparison guide</NuxtLink>
+        one set covers every look (try the settings on the
+        <NuxtLink to="/material-symbols/">Material Symbols page</NuxtLink>). If you're starting a
+        project today, use Symbols. The
+        <NuxtLink to="/material-icons-vs-material-symbols/">comparison guide</NuxtLink>
         explains the differences and how to migrate.
+      </p>
+
+      <h2>Material icons for your framework</h2>
+      <p>
+        Every icon page has copy-ready code for your stack. For setup, see
+        <NuxtLink to="/mui-material-icons/">MUI Material icons</NuxtLink> (every
+        <code>@mui/icons-material</code> name), <NuxtLink to="/angular-material-icons/">Angular
+        Material icons</NuxtLink> with <code>mat-icon</code>, and the
+        <NuxtLink to="/material-symbols/">Material Symbols font</NuxtLink> for plain HTML, React and
+        Flutter. The <NuxtLink to="/browse/">Material icons list</NuxtLink> has every icon A–Z, and
+        <NuxtLink to="/category/">categories</NuxtLink> group them the way Google does.
       </p>
 
       <h2>Frequently asked questions</h2>
@@ -61,7 +74,7 @@
       <h2>Guides</h2>
       <ul>
         <li v-for="guide in guides" :key="guide.slug">
-          <NuxtLink :to="`/guides/${guide.slug}/`">{{ guide.title }}</NuxtLink>
+          <NuxtLink :to="`${guide.path}/`">{{ guide.title }}</NuxtLink>
         </li>
       </ul>
 
@@ -77,7 +90,7 @@
 <script setup>
 import guideList from "~/generated/guides.json";
 
-const guides = guideList.map(({ slug, title }) => ({ slug, title }));
+const guides = guideList.map(({ slug, path, title }) => ({ slug, path, title }));
 
 const faq = [
   {

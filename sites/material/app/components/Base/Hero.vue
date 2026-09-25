@@ -19,7 +19,12 @@
             </a>
             <h1 class="text-5xl font-bold mb-6">{{ heading }}</h1>
             <p class="text-lg mb-2">
-              Open source Material Symbols by Google. Viewer by
+              Material Symbols are Google's current icons: the variable-font successor to the
+              classic Material Icons, with adjustable fill, weight, grade and size.
+              <NuxtLink to="/material-icons-vs-material-symbols/" class="underline">Icons vs Symbols</NuxtLink>
+            </p>
+            <p class="text-sm mb-2">
+              Open source by Google. Viewer by
               <a
                 href="https://twitter.com/coltongriffith"
                 target="_blank"
@@ -57,12 +62,16 @@
 </template>
 
 <script setup>
+// The hero background is the largest thing on screen (Lighthouse's LCP), but
+// as a CSS background it's found late: preload the light version.
+useHead({ link: [{ rel: "preload", as: "image", href: "/gradient-bg-white.jpg", fetchpriority: "high" }] });
+
 // Each grid page gets its own heading.
 const route = useRoute();
 const heading = computed(() => {
   if (route.path.startsWith("/filled")) return "Filled Material Icons";
   if (route.path.startsWith("/favorites")) return "Favorite Material Icons";
-  return "Material Icons";
+  return "Material Icons & Symbols";
 });
 </script>
 

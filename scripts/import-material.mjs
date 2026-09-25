@@ -8,6 +8,8 @@
 // - Names, categories, tags and popularity: Google Fonts' icon metadata.
 // - Flutter names: the material_symbols_icons package on pub.dev (its own
 //   renames, e.g. "10k" → Symbols.ten_k, "class" → Symbols.class_).
+// - MUI and Flutter Icons names (scripts/legacy-names.mjs): only symbols that
+//   @mui/icons-material and Flutter's Icons class actually export.
 // - data/icons.json keeps each design's "added" date across imports.
 //
 // Usage: node scripts/import-material.mjs <@material-symbols/svg-400 version>
@@ -15,6 +17,7 @@ import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync, existsSync
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { legacyNames } from "./legacy-names.mjs";
 
 const [version] = process.argv.slice(2);
 if (!version) throw new Error("Usage: node scripts/import-material.mjs <@material-symbols/svg-400 version>");
@@ -55,6 +58,10 @@ const undescribed = readdirSync(svgDir)
   .filter((name) => !describedNames.has(name))
   .map((name) => ({ name, popularity: 0, codepoint: 0, categories: [], tags: [] }));
 const symbols = [...described, ...undescribed];
+
+// MUI (@mui/icons-material) and Flutter's built-in Icons names, for symbols
+// that were in the older Material Icons set.
+const legacy = await legacyNames(symbols.map((s) => s.name));
 
 // Flutter: Symbols.<name> in the material_symbols_icons package.
 const flutterNames = new Map();
@@ -233,6 +240,7 @@ const list = symbols
       ...(flutterLoaded
         ? flutterNames.has(s.name) && { flutter: flutterNames.get(s.name) }
         : previousBySlug.get(s.name)?.flutter && { flutter: previousBySlug.get(s.name).flutter }),
+      ...legacyFields(s.name, prev),
       filled: `${s.name}-fill.svg`,
       regular: `${s.name}.svg`,
     };
@@ -240,6 +248,14 @@ const list = symbols
     else if (!prev && previous.length) entry.added = today;
     return entry;
   });
+
+// mui / flutterIcon for one symbol; a library that couldn't be fetched keeps
+// the previous names.
+function legacyFields(slug, prev) {
+  const mui = legacy.mui ? legacy.mui.get(slug) : prev?.mui;
+  const flutterIcon = legacy.flutter ? legacy.flutter.get(slug) : prev?.flutterIcon;
+  return { ...(mui && { mui }), ...(flutterIcon && { flutterIcon }) };
+}
 
 // Symbols Google removed: drop their files (Material Symbols are renamed or
 // merged upstream rather than retired, so there's nothing to keep).

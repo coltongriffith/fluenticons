@@ -8,9 +8,10 @@ export const SITE_DESCRIPTION = site.description(stats, roughCount);
 
 // Title, description, canonical URL and social tags for a page.
 // `path` is the route path without a trailing slash ("/" for the homepage).
-export function useSeo({ title, description = SITE_DESCRIPTION, path, noindex = false, type = "website", image = "/social.png" }) {
+// `fullTitle` replaces the "<title> | <site name>" pattern.
+export function useSeo({ title, fullTitle, description = SITE_DESCRIPTION, path, noindex = false, type = "website", image = "/social.png" }) {
   const url = `${SITE_URL}${path === "/" ? "/" : `${path}/`}`;
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : site.defaultTitle;
+  fullTitle ||= title ? `${title} | ${SITE_NAME}` : site.defaultTitle;
   useHead({
     title: fullTitle,
     link: noindex ? [] : [{ rel: "canonical", href: url }],
