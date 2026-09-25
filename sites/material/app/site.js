@@ -12,7 +12,7 @@ export default {
   name: "Materialicons",
   brand: "Material Icons",
   url: "https://materialicons.co",
-  gaId: "G-EN85Z8G3Z6",
+  gaId: "G-ZBG3E583P1",
   adsenseClient: "ca-pub-9128081695641229",
   defaultTitle: "Material Icons & Symbols — Search, Copy SVG, JSX, Font Code",
   // Homepage and default meta description: at most 155 characters.
