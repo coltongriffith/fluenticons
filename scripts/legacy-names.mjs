@@ -5,7 +5,40 @@
 //   flutterIcon  Flutter's built-in Icons.<name>, e.g. arrow_back
 // Symbols added after Material Icons have neither. Returns null for a library
 // that couldn't be fetched, so callers keep the previous names.
-const pascal = (slug) => slug.split("_").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join("");
+const cap = (w) => w.charAt(0).toUpperCase() + w.slice(1);
+
+// Names starting with digits are spelled out, inconsistently: 3d_rotation is
+// MUI ThreeDRotation and Flutter threed_rotation, 360 is ThreeSixty and
+// threesixty, 20mp is MUI TwentyZeroMp. So each slug gives several candidate
+// spellings (lists of words), and only ones the library exports are used.
+const ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
+const TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+function numberSpellings(digits) {
+  const n = Number(digits);
+  const out = [];
+  if (n < 20) out.push([ONES[n]]);
+  else if (n < 100) {
+    out.push([TENS[Math.floor(n / 10)], ...(n % 10 ? [ONES[n % 10]] : [])]);
+    out.push([TENS[Math.floor(n / 10)], ONES[n % 10]]);
+  }
+  if (digits.length === 3) out.push([ONES[digits[0]], ...numberSpellings(digits.slice(1))[0]]);
+  out.push([...digits].map((d) => ONES[d]));
+  return out;
+}
+// [number words, remaining words] candidates for a slug.
+function spellings(slug) {
+  const m = slug.match(/^(\d+)(.*)$/);
+  if (!m) return [[[], slug.split("_")]];
+  const rest = m[2].split("_").filter(Boolean);
+  return numberSpellings(m[1]).map((words) => [words, rest]);
+}
+const muiNames = (slug) => spellings(slug).map(([n, r]) => [...n, ...r].map(cap).join(""));
+const flutterNames = (slug) =>
+  spellings(slug).flatMap(([n, r]) =>
+    n.length
+      ? [[...n, ...r].join("_"), [n.join(""), ...r].join("_"), [n.join("") + (r[0] || ""), ...r.slice(1)].join("_")]
+      : [r.join("_"), `${r.join("_")}_`]
+  );
 
 async function text(url) {
   const res = await fetch(url);
@@ -22,8 +55,8 @@ export async function legacyNames(slugs) {
     );
     mui = new Map();
     for (const slug of slugs) {
-      const name = pascal(slug);
-      if (["", "Outlined", "Rounded", "Sharp"].every((s) => exported.has(name + s))) mui.set(slug, name);
+      const name = muiNames(slug).find((n) => ["", "Outlined", "Rounded", "Sharp"].every((s) => exported.has(n + s)));
+      if (name) mui.set(slug, name);
     }
     console.log(`MUI: @mui/icons-material ${version}, ${mui.size} names`);
   } catch (err) {
@@ -38,7 +71,7 @@ export async function legacyNames(slugs) {
     flutter = new Map();
     for (const slug of slugs) {
       // Dart keywords get a trailing underscore (Icons.class_).
-      const name = [slug, `${slug}_`].find(
+      const name = flutterNames(slug).find(
         (n) => declared.has(n) && ["outlined", "rounded", "sharp"].every((s) => declared.has(`${n.replace(/_$/, "")}_${s}`))
       );
       if (name) flutter.set(slug, name);

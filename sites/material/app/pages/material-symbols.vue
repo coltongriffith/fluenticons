@@ -218,7 +218,7 @@ ${css}
       label: "React",
       code: `export function HomeIcon() {
   return (
-    <span className="${cls}" style={{ fontVariationSettings: '${settings.value.replace(/"/g, "'")}' }}>
+    <span className="${cls}" style={{ fontVariationSettings: "${settings.value.replace(/"/g, "'")}" }}>
       home
     </span>
   );
