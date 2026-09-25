@@ -23,6 +23,7 @@ const props = defineProps({
 });
 const emit = defineEmits(["copy"]);
 
+const toast = useToast();
 const copied = ref(false);
 let timer;
 async function copy() {
@@ -32,6 +33,8 @@ async function copy() {
     clearTimeout(timer);
     timer = setTimeout(() => (copied.value = false), 1500);
     emit("copy");
-  } catch {}
+  } catch (err) {
+    toast.error(err.message);
+  }
 }
 </script>
