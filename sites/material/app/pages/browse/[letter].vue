@@ -15,7 +15,7 @@
       downloads and code.
     </p>
     <LetterNav :letters="data.letters" :current="letter" class="mb-8" />
-    <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+    <ul class="icon-list icon-list-rows grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
       <li v-for="icon in icons" :key="icon.slug">
         <NuxtLink
           :to="slugToPath(icon.slug)"

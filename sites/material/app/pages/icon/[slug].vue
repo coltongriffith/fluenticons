@@ -227,14 +227,14 @@
             >
               {{ keyword.name }}
             </NuxtLink>
-            <NuxtLink
+            <button
               v-else
-              :to="{ path: '/', query: { q: keyword.name } }"
+              type="button"
               class="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
-              rel="nofollow"
+              @click="navigateTo({ path: '/', query: { q: keyword.name } })"
             >
               {{ keyword.name }}
-            </NuxtLink>
+            </button>
           </template>
         </p>
       </template>

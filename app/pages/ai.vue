@@ -359,7 +359,7 @@ async function tryIt() {
 onMounted(() => track("ai_page_view"));
 
 const description =
-  "MCP server, HTTP API and CLI for Microsoft's Fluent UI icons. Claude Code, Cursor, Codex and Copilot search by meaning and get valid @fluentui/react-icons names.";
+  "MCP server, HTTP API and CLI for Microsoft's Fluent UI icons. Claude Code, Cursor, Codex and Copilot search by meaning and get valid React icon names.";
 useSeo({ title: "Fluent Icons for AI agents: MCP server & API", description, path: "/ai" });
 useJsonLd({
   "@context": "https://schema.org",

@@ -13,7 +13,7 @@
       icon to download it as SVG or PNG in every size, or copy code for React, Flutter, Blazor
       and more.
     </p>
-    <ul class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4">
+    <ul class="icon-list grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4">
       <li v-for="icon in icons" :key="icon.slug">
         <NuxtLink
           :to="slugToPath(icon.slug)"

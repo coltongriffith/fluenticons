@@ -1,6 +1,6 @@
 ---
-title: "Fluent icons vs. Material Symbols vs. Heroicons vs. Lucide"
-description: A practical comparison of four popular open-source icon sets — size of the set, styles, licenses, framework support — and how to choose one for your project.
+title: "Fluent vs. Material vs. Heroicons vs. Lucide"
+description: A practical comparison of four popular open-source icon sets: size, styles, licenses, framework support, and how to choose one for your project.
 date: 2026-09-23
 order: 8
 ---

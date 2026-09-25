@@ -1,5 +1,5 @@
 ---
-title: "Filled vs. regular icons: when to use each style"
+title: "Filled vs. regular icons: when to use which"
 description: How Fluent's filled and regular icon styles differ, the patterns Microsoft uses them for, and practical rules for mixing them in your own interface.
 date: 2026-09-23
 order: 5

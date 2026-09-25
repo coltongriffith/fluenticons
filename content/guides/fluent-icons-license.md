@@ -1,6 +1,6 @@
 ---
-title: "Fluent UI System Icons license: can you use them commercially?"
-description: A plain-English look at the MIT License that covers Microsoft's Fluent UI System Icons — what it allows, what it asks of you, and common questions about attribution and trademarks.
+title: Fluent icons license and commercial use
+description: A plain-English look at the MIT License for Microsoft's Fluent UI System Icons: what it allows, what it asks of you, attribution and trademarks.
 date: 2026-09-23
 order: 7
 ---

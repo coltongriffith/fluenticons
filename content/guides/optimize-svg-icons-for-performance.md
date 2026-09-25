@@ -1,6 +1,6 @@
 ---
 title: Optimizing SVG icons for web performance
-description: How to keep icons from slowing your site down — minifying SVGs, choosing between inline, sprite and external files, caching, and loading large icon sets efficiently.
+description: How to keep icons from slowing your site down: minifying SVGs, inline vs. sprite vs. external files, caching, and loading large icon sets efficiently.
 date: 2026-09-23
 order: 9
 ---

@@ -24,7 +24,7 @@
           {{ update.icons.length }} new icon{{ update.icons.length === 1 ? "" : "s" }}
         </span>
       </h2>
-      <ul class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4">
+      <ul class="icon-list grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4">
         <li v-for="icon in update.icons" :key="icon.slug">
           <NuxtLink
             :to="slugToPath(icon.slug)"
