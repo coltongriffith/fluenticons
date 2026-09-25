@@ -21,9 +21,9 @@
       <h2 id="whats-new">What's new</h2>
       <ul>
         <li>
-          <strong>Fluent Icons for AI agents.</strong> Claude Code, Cursor, Codex and other coding
-          agents can now search every icon by meaning and get real React component names through
-          a free <NuxtLink to="/ai/">MCP server and API</NuxtLink>.
+          <strong>MCP server and API.</strong> Coding agents such as Claude Code, Cursor and Codex
+          can search icons by meaning and get valid React component names.
+          <NuxtLink to="/ai/">Setup</NuxtLink>.
         </li>
         <li>
           <strong>Every size and style.</strong> Each icon page now has all of Microsoft's

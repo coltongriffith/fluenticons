@@ -137,7 +137,7 @@
       class="block px-4 pt-3 text-xs text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:underline"
       @click="track('ai_promo_click', { source: 'editor' })"
     >
-      Building with AI? Give your coding agent Fluent Icons →
+      MCP server &amp; API for coding agents
     </NuxtLink>
     <SponsorSlot v-if="icon.id !== 'placeholder'" variant="compact" placement="editor" class="px-4 pt-4" />
     <BuyMeCoffee />

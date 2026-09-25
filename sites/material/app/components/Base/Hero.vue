@@ -19,12 +19,7 @@
             </a>
             <h1 class="text-5xl font-bold mb-6">{{ heading }}</h1>
             <p class="text-lg mb-2">
-              Material Symbols are Google's current icons: the variable-font successor to the
-              classic Material Icons, with adjustable fill, weight, grade and size.
-              <NuxtLink to="/material-icons-vs-material-symbols/" class="underline">Icons vs Symbols</NuxtLink>
-            </p>
-            <p class="text-sm mb-2">
-              Open source by Google. Viewer by
+              Google's Material Symbols, the successor to Material Icons. Viewer by
               <a
                 href="https://twitter.com/coltongriffith"
                 target="_blank"
