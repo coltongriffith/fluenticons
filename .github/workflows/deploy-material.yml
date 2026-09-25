@@ -84,7 +84,7 @@ jobs:
           echo "Files: $files"
           test "$files" -lt 20000
           grep -q "pub-9128081695641229" sites/material/dist/ads.txt
-          grep -q "<title>Materialicons" sites/material/dist/index.html
+          grep -q "<title>Material Icons &amp; Symbols" sites/material/dist/index.html
           build_id=$(grep -o 'buildId:"[^"]*"' sites/material/dist/index.html | head -1)
           test -n "$build_id" || { echo "No buildId in index.html"; exit 1; }
           echo "BUILD_ID=$build_id" >> "$GITHUB_ENV"
