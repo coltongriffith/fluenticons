@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 text-center">
     <a
-      href="https://www.buymeacoffee.com/COLTONGRIFC"
+      href="https://buymeacoffee.com/coltongrifc"
       target="_blank"
       rel="noopener"
     >

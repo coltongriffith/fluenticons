@@ -1,5 +1,5 @@
 ---
-title: How to use Fluent UI System Icons in Vue and Nuxt
+title: Using Fluent UI System Icons in Vue and Nuxt
 description: Three ways to use Fluent icons in Vue 3 and Nuxt — copied SVG components, SVG files with vite-svg-loader, and on-demand icons with unplugin-icons and Iconify.
 date: 2026-09-23
 order: 2

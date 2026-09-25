@@ -76,7 +76,7 @@
 <script setup>
 useSeo({
   title: "Terms of Use",
-  description: "Terms for using fluenticons.co, a free viewer for Microsoft's open-source Fluent UI System Icons.",
+  description: "Terms for using fluenticons.co, a free and independent viewer for Microsoft's open-source Fluent UI System Icons and their code.",
   path: "/terms",
 });
 </script>

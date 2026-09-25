@@ -82,6 +82,16 @@ html.dark {
   mask: var(--icon) center / contain no-repeat;
 }
 
+/* Long icon lists: the browser skips rendering off-screen items, so their
+   icon files load as you scroll instead of all at once. */
+.icon-list > li {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 94px;
+}
+.icon-list-rows > li {
+  contain-intrinsic-size: auto 40px;
+}
+
 /* Inline code in articles: a subtle chip instead of Tailwind Typography's literal backticks. */
 .prose :where(code):not(:where(pre *))::before,
 .prose :where(code):not(:where(pre *))::after {

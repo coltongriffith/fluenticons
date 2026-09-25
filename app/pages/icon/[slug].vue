@@ -239,14 +239,14 @@
             >
               {{ keyword.name }}
             </NuxtLink>
-            <NuxtLink
+            <button
               v-else
-              :to="{ path: '/', query: { q: keyword.name } }"
+              type="button"
               class="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
-              rel="nofollow"
+              @click="navigateTo({ path: '/', query: { q: keyword.name } })"
             >
               {{ keyword.name }}
-            </NuxtLink>
+            </button>
           </template>
         </p>
       </template>
@@ -524,11 +524,32 @@ const titleStyles = ["filled", "regular", "color", "light"]
   .map((s) => STYLE_INFO[s].short);
 const titleStyleText =
   titleStyles.length > 1 ? `${titleStyles.slice(0, -1).join(", ")} & ${titleStyles.at(-1)}` : titleStyles[0];
+// Titles stay within 60 characters with " | Fluenticons": the style list goes
+// first, then the name is cut at a word boundary.
+const TITLE_MAX = 60 - " | Fluenticons".length;
+const fullName = `${name} icon${titleStyleText ? ` (${titleStyleText})` : ""}`;
+const title = fullName.length <= TITLE_MAX ? fullName : `${clip(name, TITLE_MAX - 5)} icon`;
+// Descriptions are 120–155 characters: a fixed sentence, plus a code line when
+// it fits, with the name cut at a word boundary for very long names.
+const styleWords = titleStyles.map((s) => s.toLowerCase());
+const styleText =
+  styleWords.length > 1
+    ? `${styleWords.slice(0, -1).join(", ")} and ${styleWords.at(-1)} styles`
+    : `${styleWords[0] || "regular"} style`;
+const sentence = (n) => `Download the ${n} icon from Microsoft Fluent UI — free SVG & PNG, ${styleText}.`;
+let description = sentence(name);
+if (description.length > 155) description = sentence(clip(name, name.length - (description.length - 155)));
+for (const extra of [" Copy code for React, Flutter, Blazor and more.", " Copy React and Flutter code.", " MIT licensed."]) {
+  if (description.length < 120 && description.length + extra.length <= 155) description += extra;
+}
+function clip(text, max) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max + 1).lastIndexOf(" ");
+  return cut > 0 ? text.slice(0, cut) : text.slice(0, max);
+}
 useSeo({
-  title: `${name} icon${titleStyleText ? ` (${titleStyleText})` : ""}`,
-  description: details.value.description
-    ? `${name} icon from Microsoft's Fluent UI System Icons. ${details.value.description} Free SVG, PNG and code for React, Flutter, Blazor and more.`
-    : `Free ${name} icon from Microsoft's Fluent UI System Icons in every size and style. Download SVG or PNG, or copy React, Flutter, Blazor, WinUI and HTML code.`,
+  title,
+  description,
   path: slugToPath(slug).replace(/\/$/, ""),
 });
 useAdsense();

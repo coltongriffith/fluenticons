@@ -40,7 +40,7 @@
 <script setup>
 useSeo({
   title: "Contact",
-  description: "How to report a bug, request an icon, or get in touch with Fluenticons about sponsorships and privacy.",
+  description: "How to report a bug, request an icon, or get in touch with Fluenticons about sponsorships, privacy requests or anything else.",
   path: "/contact",
 });
 </script>

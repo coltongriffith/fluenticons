@@ -39,6 +39,9 @@ const { data: firstPage } = await useAsyncData(
 );
 const allIcons = shallowRef(null);
 const route = useRoute();
+// Search results (?q=…) share this page's HTML and canonical URL; keep them
+// out of search indexes.
+useHead({ meta: computed(() => (route.query.q ? [{ name: "robots", content: "noindex, follow" }] : [])) });
 onMounted(async () => {
   // Links like /?q=flame (from icon keyword tags) prefill the search.
   if (route.query.q) searchQuery.value = String(route.query.q);
