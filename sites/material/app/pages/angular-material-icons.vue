@@ -6,16 +6,15 @@
       <span>Angular Material Icons</span>
     </nav>
     <div class="prose dark:prose-invert max-w-3xl">
-      <h1>Angular Material icons with mat-icon</h1>
-      <p class="lead">
-        Angular Material's <code>&lt;mat-icon&gt;</code> shows Google's Material icons by name. Here's
-        how to set it up with the current Material Symbols (or the classic Material Icons), change
-        styles and settings, and use SVG icons instead of a font.
+      <h1>Angular Material Icons</h1>
+      <p>
+        Using Google's Material Symbols and classic Material Icons with Angular Material's
+        <code>&lt;mat-icon&gt;</code>: font setup, styles, variable settings and SVG icons.
       </p>
 
       <h2>1. Add the font</h2>
       <p>Add the Material Symbols stylesheet to <code>src/index.html</code>:</p>
-      <pre><code>{{ font }}</code></pre>
+      <CodeBlock :code="font" label="src/index.html" />
       <p>
         Add <code>&amp;icon_names=home,search,…</code> (sorted A–Z) to load only the icons you
         use, which makes the font much smaller.
@@ -27,10 +26,10 @@
         Material Symbols for every icon, set the default font set class once, for example in your
         root component:
       </p>
-      <pre><code>{{ registry }}</code></pre>
+      <CodeBlock :code="registry" label="app.component.ts" />
 
       <h2>3. Use icons by name</h2>
-      <pre><code>{{ usage }}</code></pre>
+      <CodeBlock :code="usage" label="app.component.html" />
       <p>
         Names are the ones on each icon's page here (<code>arrow_back</code>,
         <code>shopping_cart</code>). The <code>fontSet</code> input switches one icon to another
@@ -40,7 +39,7 @@
 
       <h2>4. Fill, weight, grade and size</h2>
       <p>Material Symbols' variable settings are CSS, so set them globally or per class:</p>
-      <pre><code>{{ css }}</code></pre>
+      <CodeBlock :code="css" label="styles.css" />
 
       <h2>SVG icons instead of a font</h2>
       <p>
@@ -48,19 +47,19 @@
         <code>MatIconRegistry</code> and use <code>svgIcon</code>. Download the SVG from any icon's
         page here into <code>src/assets/icons/</code>:
       </p>
-      <pre><code>{{ svg }}</code></pre>
+      <CodeBlock :code="svg" label="app.component.ts" />
 
       <h2>Classic Material Icons</h2>
       <p>
         Projects still on the older set load <code>family=Material+Icons</code> (or
         <code>Material+Icons+Outlined</code>, <code>+Round</code>, <code>+Sharp</code>,
         <code>+Two+Tone</code>) and write <code>&lt;mat-icon&gt;home&lt;/mat-icon&gt;</code> with no other
-        setup. Most names are the same in Material Symbols, so switching is usually steps 1 and 2 —
-        see <NuxtLink to="/material-icons-vs-material-symbols/">Material Icons vs. Material Symbols</NuxtLink>.
+        setup. Most names are the same in Material Symbols, so switching is usually steps 1 and 2
+        (see <NuxtLink to="/material-icons-vs-material-symbols/">Material Icons vs. Material Symbols</NuxtLink>).
       </p>
 
       <h2>Most used icons</h2>
-      <p>Open any of them for the exact <code>mat-icon</code> code, SVG and PNG.</p>
+      <p>Each has its <code>mat-icon</code> code, SVG and PNG.</p>
     </div>
     <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 mt-4">
       <li v-for="icon in popular" :key="icon.slug">

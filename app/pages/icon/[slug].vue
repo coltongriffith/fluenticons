@@ -186,9 +186,8 @@
         </p>
         <pre><code>{{ reactCode }}</code></pre>
         <p class="text-sm">
-          Using a coding agent?
-          <NuxtLink to="/ai/" @click="track('ai_promo_click', { source: 'icon_page' })">Connect it to Fluent Icons</NuxtLink>
-          so it looks up real component names instead of guessing them.
+          Coding agents can look up this component through the
+          <NuxtLink to="/ai/" @click="track('ai_promo_click', { source: 'icon_page' })">Fluent Icons MCP server</NuxtLink>.
         </p>
       </template>
       <p v-else>

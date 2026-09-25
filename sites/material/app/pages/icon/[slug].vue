@@ -140,7 +140,6 @@
           </div>
           <div class="p-4 border-t dark:border-gray-700">
             <p class="font-medium mb-1">{{ activeLabel }}</p>
-            <p v-if="fontReady" class="text-xs text-gray-500 mb-1">Right: the variable font, with grade {{ activeGrade }} and optical size {{ activeOpsz }}.</p>
             <p class="text-xs text-gray-500 mb-3 break-all"><code>{{ activeFile }}</code></p>
             <div class="flex flex-wrap gap-2 text-sm">
               <button class="navbar-btn" @click="downloadSvg(activeSrc, activeFile)">

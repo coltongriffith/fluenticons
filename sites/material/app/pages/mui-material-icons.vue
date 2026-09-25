@@ -6,21 +6,19 @@
       <span>MUI Material Icons</span>
     </nav>
     <div class="prose dark:prose-invert max-w-3xl">
-      <h1>MUI Material Icons: find the component name</h1>
-      <p class="lead">
-        MUI's <code>@mui/icons-material</code> package has a React component for each of the
-        {{ list.length.toLocaleString("en-US") }} Google Material Icons listed below, in five
-        styles. Search by meaning on this site, then copy the exact import.
+      <h1>MUI Material Icons</h1>
+      <p>
+        <code>@mui/icons-material</code> component names for {{ list.length.toLocaleString("en-US") }}
+        Google Material Icons, in five styles. Each links to the icon's SVG, PNG and code.
       </p>
 
       <h2>Install and import</h2>
-      <pre><code>{{ install }}</code></pre>
+      <CodeBlock :code="install" label="App.jsx" />
       <p>
-        Every icon has five versions: the plain name is <strong>Filled</strong>, and the
-        <code>Outlined</code>, <code>Rounded</code>, <code>Sharp</code> and <code>TwoTone</code>
-        suffixes give the other styles:
+        The plain name is the Filled style; <code>Outlined</code>, <code>Rounded</code>,
+        <code>Sharp</code> and <code>TwoTone</code> suffixes give the others.
       </p>
-      <pre><code>{{ styles }}</code></pre>
+      <CodeBlock :code="styles" label="Styles" />
       <p>
         Import from the icon's own path (<code>@mui/icons-material/Home</code>) rather than the
         package root, so development builds stay fast. Size and color come from MUI's
@@ -29,16 +27,12 @@
 
       <h2>MUI icons vs. Material Symbols</h2>
       <p>
-        <code>@mui/icons-material</code> is built from the classic Material Icons, which Google no
-        longer adds to, so newer icons and the variable weight, grade and fill settings aren't in
-        it. For those, use Material Symbols with MUI's <code>Icon</code> component and the Google
-        Fonts stylesheet (see the <NuxtLink to="/material-symbols/">Material Symbols page</NuxtLink>):
+        <code>@mui/icons-material</code> follows the classic Material Icons, which no longer get new
+        icons, and has no weight, grade or fill settings. For those, use
+        <NuxtLink to="/material-symbols/">Material Symbols</NuxtLink> with MUI's <code>Icon</code>
+        component:
       </p>
-      <pre><code>{{ symbols }}</code></pre>
-      <p>
-        Each icon page here shows both: the MUI import (when MUI has the icon) and the Material
-        Symbols font code, SVG and PNG.
-      </p>
+      <CodeBlock :code="symbols" label="App.jsx" />
 
       <h2>Most used MUI Material icons</h2>
     </div>
@@ -59,7 +53,7 @@
 
     <div class="prose dark:prose-invert max-w-3xl mt-12">
       <h2>All MUI Material icon names</h2>
-      <p>The component name for every icon in <code>@mui/icons-material</code>, A–Z, each linking to the icon's page.</p>
+      <p>A–Z.</p>
     </div>
     <ul class="mt-4 columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-6 text-sm">
       <li v-for="[slug, , mui] in alphabetical" :key="slug" class="break-inside-avoid">
