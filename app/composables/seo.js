@@ -37,7 +37,9 @@ export function useJsonLd(data) {
 
 // Loads Google AdSense (Auto ads) on pages with real content. Utility pages
 // (favorites, 404, legal pages) don't call this, so no ads are shown there.
+// Off while a sponsor is booked: the sponsor slot is sold as the only ad.
 export function useAdsense() {
+  if (site.sponsor) return;
   useHead({
     script: [
       {

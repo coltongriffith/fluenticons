@@ -52,6 +52,8 @@
       </div>
     </div>
 
+    <SponsorSlot variant="inline" placement="icon_page" class="mb-12 max-w-3xl" />
+
     <section id="styles" class="mb-12 max-w-5xl">
       <h2 class="text-2xl font-bold mb-2">Every style, fill and weight</h2>
       <p class="text-gray-600 dark:text-gray-300 mb-4 max-w-3xl">
@@ -492,7 +494,7 @@ function trackVariant(name, format, style = activeStyle.value, fill = activeFill
 async function copyText(text, label, platform) {
   try {
     await navigator.clipboard.writeText(text);
-    toast.show(`Copied ${label} code`);
+    toast.show(`Copied ${label} code`, "info", { promo: true });
     track("copy_code", { icon: slug, platform });
   } catch (err) {
     toast.error(err.message);
@@ -502,7 +504,7 @@ async function copyText(text, label, platform) {
 async function copySvg(src, ...variant) {
   try {
     await navigator.clipboard.writeText(await getSvg(src));
-    toast.show("Copied SVG");
+    toast.show("Copied SVG", "info", { promo: true });
     trackVariant("copy_icon", "svg", ...variant);
   } catch (err) {
     toast.error(err.message);
@@ -512,7 +514,7 @@ async function copySvg(src, ...variant) {
 async function copyPowerApps(src, fromTab = false) {
   try {
     await navigator.clipboard.writeText(svgToPowerApps(await getSvg(src)));
-    toast.show("Copied Power Apps formula");
+    toast.show("Copied Power Apps formula", "info", { promo: true });
     if (fromTab) track("copy_code", { icon: slug, platform: "powerapps" });
     else trackVariant("copy_icon", "powerapps");
   } catch (err) {

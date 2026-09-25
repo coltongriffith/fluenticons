@@ -46,6 +46,7 @@ export default {
     { to: "/guides/", label: "Guides" },
     { to: "/about/", label: "About" },
     { to: "/contact/", label: "Contact" },
+    { to: "/sponsor/", label: "Sponsor" },
     { to: "/license/", label: "License" },
     { to: "/terms/", label: "Terms" },
     { to: "/privacy-policy/", label: "Privacy" },
@@ -57,4 +58,21 @@ export default {
     "Materialicons is an independent project and is not affiliated with or endorsed by Google.",
   errorBack: "Back to Material Icons",
   sister: { label: "Fluent Icons", url: "https://fluenticons.co/" },
+
+  // The sitewide sponsor, one at a time (same setup as fluenticons.co; see
+  // app/site.js there). null shows a "your product here" card in the hero.
+  sponsor: null,
+  sponsorPage: "/sponsor/",
+  // Figures and terms on the sponsor page. Traffic figures are left out until
+  // the site has a month of GA4 data (the stats row is hidden without them).
+  sponsorKit: {
+    iconSet: "Google's Material Symbols",
+    iconName: "a Google Material Symbols icon",
+    audience:
+      "Front-end, Android and Flutter developers and product designers working with Google's Material Design: React, Vue, Jetpack Compose, Android XML, Flutter, the icon font and Figma.",
+    price: 300,
+    foundingPrice: 175,
+    foundingMonths: 3,
+    email: "colton@fluenticons.co",
+  },
 };

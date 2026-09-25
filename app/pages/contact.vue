@@ -23,7 +23,8 @@
         address for privacy requests and questions about this site's
         <NuxtLink to="/privacy-policy/">privacy policy</NuxtLink> or
         <NuxtLink to="/terms/">terms</NuxtLink>. You'll usually get a reply within a few
-        business days.
+        business days. Sponsorship rates and placements are on the
+        <NuxtLink to="/sponsor/">sponsor page</NuxtLink>.
       </p>
 
       <h2>Questions about the icons' license</h2>

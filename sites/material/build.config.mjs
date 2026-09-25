@@ -4,7 +4,7 @@ export default {
   root: new URL("./", import.meta.url),
   url: "https://materialicons.co",
   defaultFile: (slug, style) => (style === "filled" ? `${slug}-fill.svg` : `${slug}.svg`),
-  extraRoutes: ["/filled"],
+  extraRoutes: ["/filled", "/sponsor"],
   dataPage: /^\/(?:$|filled|browse|tag|icon\/)/,
   // Google tags icons generously; topic pages need at least 15 icons, and
   // the 250 largest topics are kept.
@@ -27,6 +27,8 @@ export default {
     sticker_24_regular: "interests.svg",
     dismiss_24_regular: "close.svg",
     open_24_regular: "open_in_new.svg",
+    checkmark_24_regular: "check.svg",
+    megaphone_loud_24_regular: "campaign.svg",
   },
   feed: {
     title: "New Material icons | Materialicons",

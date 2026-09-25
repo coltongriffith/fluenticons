@@ -45,6 +45,7 @@ export default {
     { to: "/ai/", label: "For AI agents" },
     { to: "/about/", label: "About" },
     { to: "/contact/", label: "Contact" },
+    { to: "/sponsor/", label: "Sponsor" },
     { to: "/license/", label: "License" },
     { to: "/terms/", label: "Terms" },
     { to: "/privacy-policy/", label: "Privacy" },
@@ -60,4 +61,33 @@ export default {
   sister: { label: "Material Icons", url: "https://materialicons.co/" },
   // The page about the agent API and MCP server, promoted in the editor.
   aiPage: "/ai/",
+
+  // The sitewide sponsor, one at a time. null shows a "your product here"
+  // card in the hero (linking to sponsorPage) and hides the other placements.
+  sponsor: null,
+  // sponsor: {
+  //   id: "acme-ui",                 // analytics + utm_content; lowercase, no spaces
+  //   name: "Acme UI",
+  //   tagline: "Fluent-style Blazor components. 100+ controls, free trial.",
+  //   url: "https://acme.dev",
+  //   logo: "/sponsors/acme-ui.png", // square, 96x96 or larger, in public/sponsors/
+  //   cta: "Try Acme UI",
+  // },
+  sponsorPage: "/sponsor/",
+  // Figures and terms on the sponsor page. Refresh monthly from GA4.
+  sponsorKit: {
+    // Sponsor page and "your product here" copy.
+    iconSet: "Microsoft's Fluent icons",
+    iconName: "a Microsoft Fluent UI icon",
+    audience:
+      "Front-end and .NET developers and product designers working in Microsoft's Fluent design system: React with @fluentui/react-icons, Blazor, WinUI and WPF, Power Apps, Flutter and Figma.",
+    users: "5,800",
+    sessions: "10,000",
+    iconPages: "3,000+",
+    updated: "September 2026",
+    price: 300,
+    foundingPrice: 175,
+    foundingMonths: 3,
+    email: "colton@fluenticons.co",
+  },
 };
