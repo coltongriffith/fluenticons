@@ -19,6 +19,12 @@ const sizeProp = { type: "integer", description: "Size in px, e.g. 16, 20, 24, 2
 const platformProp = { type: "string", enum: PLATFORMS, description: "Code platform. Default: react." };
 const nameProp = { type: "string", description: 'Icon name in any form: "PersonLock", "person_lock" or a component like "PersonLock24Regular".', maxLength: LIMITS.label };
 const readOnly = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+// No sign-in for any tool (ChatGPT reads this per tool).
+const noAuth = [{ type: "noauth" }];
+// Output schemas name the top-level fields of each successful result; nested
+// objects are left open so they can gain fields without breaking clients.
+const out = (properties, required) => ({ type: "object", properties, required });
+const iconList = { type: "array", items: { type: "object" }, description: "Icons, best match first." };
 
 const TOOLS = [
   {
@@ -37,7 +43,9 @@ const TOOLS = [
       },
       required: ["query"],
     },
+    outputSchema: out({ query: { type: "string" }, count: { type: "integer" }, results: iconList, hint: { type: "string" } }, ["query", "count", "results"]),
     annotations: readOnly,
+    securitySchemes: noAuth,
     run: searchIcons,
   },
   {
@@ -46,7 +54,23 @@ const TOOLS = [
     description:
       "Details of one Fluent icon: every style and size, exact React component names, platforms with published code, SVG URLs and related icons. Use it to check that a size/style exists.",
     inputSchema: { type: "object", properties: { icon_name: nameProp, style: styleProp, size: sizeProp }, required: ["icon_name"] },
+    outputSchema: out(
+      {
+        name: { type: "string" },
+        slug: { type: "string" },
+        displayName: { type: "string" },
+        styles: { type: "array", items: { type: "string" } },
+        sizes: { type: "object" },
+        react: { type: "object", description: "package, components by style and size, and the default component and import." },
+        platforms: { type: "object" },
+        svgUrls: { type: "object" },
+        url: { type: "string" },
+        related: iconList,
+      },
+      ["name", "slug", "react"]
+    ),
     annotations: readOnly,
+    securitySchemes: noAuth,
     run: getIcon,
   },
   {
@@ -81,7 +105,18 @@ const TOOLS = [
       },
       required: ["items"],
     },
+    outputSchema: out(
+      {
+        style: { type: "string" },
+        size: { type: "integer" },
+        platform: { type: "string" },
+        recommendations: { type: "array", items: { type: "object" }, description: "One icon per item, in order." },
+        import: { type: "string", description: "One import line for every recommended React component." },
+      },
+      ["style", "size", "platform", "recommendations"]
+    ),
     annotations: readOnly,
+    securitySchemes: noAuth,
     run: recommendIcons,
   },
   {
@@ -93,7 +128,9 @@ const TOOLS = [
       properties: { icon_name: nameProp, platform: platformProp, style: styleProp, size: sizeProp },
       required: ["icon_name"],
     },
+    outputSchema: out({ name: { type: "string" }, platform: { type: "string" }, style: { type: "string" }, size: { type: "integer" }, code: { type: "string" }, url: { type: "string" } }, ["name", "platform", "code"]),
     annotations: readOnly,
+    securitySchemes: noAuth,
     run: iconCode,
   },
   {
@@ -105,7 +142,9 @@ const TOOLS = [
       properties: { icon_name: nameProp, limit: { type: "integer", minimum: 1, maximum: LIMITS.results } },
       required: ["icon_name"],
     },
+    outputSchema: out({ icon: { type: "string" }, count: { type: "integer" }, results: iconList }, ["icon", "count", "results"]),
     annotations: readOnly,
+    securitySchemes: noAuth,
     run: similarIcons,
   },
 ];
@@ -153,7 +192,8 @@ async function handleMessage(msg, context) {
           id,
           result: {
             content: [{ type: "text", text: JSON.stringify(body) }],
-            structuredContent: body,
+            // Only successful results follow the tool's outputSchema.
+            ...(status === 200 && { structuredContent: body }),
             isError: status !== 200,
           },
         };

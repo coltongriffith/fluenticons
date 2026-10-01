@@ -165,6 +165,7 @@ import { track } from "../utils/analytics";
 
 const MCP_URL = "https://fluenticons.co/mcp";
 const CLI = "npx -y https://fluenticons.co/cli.tgz";
+const PLUGIN_REPO = "coltongriffith/fluenticons";
 
 const instructions = `## Icons
 
@@ -174,19 +175,54 @@ This project uses Microsoft's Fluent UI icons (@fluentui/react-icons). Never gue
 - For several icons in one UI (navigation, menus, tabs), use recommend_icons so they share one style and size.
 - Before using another size or style, check it exists with get_icon; don't build names yourself.`;
 
+// The plugin marketplace is this site's GitHub repository; --sparse skips the site's files.
+const CLAUDE_PLUGIN = `claude plugin marketplace add ${PLUGIN_REPO} --sparse .claude-plugin plugins
+claude plugin install fluenticons@fluenticons`;
+const CODEX_PLUGIN = `codex plugin marketplace add ${PLUGIN_REPO} --sparse .agents --sparse plugins
+codex plugin add fluenticons@fluenticons`;
+
 const setupTabs = [
   {
     key: "claude-code",
     label: "Claude Code",
+    kind: "plugin",
+    steps: [
+      { text: "Install the plugin (MCP server and skill):" },
+      { code: CLAUDE_PLUGIN, label: "Terminal" },
+      { text: "Or add only the MCP server (--scope user enables it in every project):" },
+      { code: `claude mcp add --transport http fluent-icons ${MCP_URL}`, label: "Terminal", kind: "mcp" },
+    ],
+  },
+  {
+    key: "claude",
+    label: "Claude",
     kind: "mcp",
     steps: [
-      { code: `claude mcp add --transport http fluent-icons ${MCP_URL}`, label: "Terminal" },
-      { text: "Add --scope user to enable it in every project. Optional skill:" },
+      { text: "On claude.ai or Claude Desktop: Customize → Connectors → Add custom connector, then paste:" },
+      { code: MCP_URL, label: "Connector URL" },
+    ],
+  },
+  {
+    key: "chatgpt",
+    label: "ChatGPT",
+    kind: "mcp",
+    steps: [
       {
-        code: "mkdir -p .claude/skills/fluent-icons && curl -fsSL https://fluenticons.co/ai/SKILL.md -o .claude/skills/fluent-icons/SKILL.md",
-        label: "Terminal",
-        kind: "skill",
+        text: "Turn on Developer mode (Settings → Security and login). Then on chatgpt.com/plugins, press +, choose Public endpoint and paste:",
       },
+      { code: MCP_URL, label: "Server URL" },
+      { text: "Developer mode is on the web for Plus, Pro, Business, Enterprise and Edu plans." },
+    ],
+  },
+  {
+    key: "codex",
+    label: "Codex",
+    kind: "plugin",
+    steps: [
+      { text: "Install the plugin (MCP server and skill):" },
+      { code: CODEX_PLUGIN, label: "Terminal" },
+      { text: "Or add only the MCP server, shared by the Codex CLI, app and IDE extension:" },
+      { code: `[mcp_servers.fluent-icons]\nurl = "${MCP_URL}"`, label: "~/.codex/config.toml", kind: "mcp" },
     ],
   },
   {
@@ -202,17 +238,8 @@ const setupTabs = [
     ],
   },
   {
-    key: "codex",
-    label: "Codex",
-    kind: "mcp",
-    steps: [
-      { code: `[mcp_servers.fluent-icons]\nurl = "${MCP_URL}"`, label: "~/.codex/config.toml" },
-      { text: "Shared by the Codex CLI and IDE extension. Add the agent instructions below to AGENTS.md." },
-    ],
-  },
-  {
     key: "vscode",
-    label: "VS Code / Copilot",
+    label: "VS Code",
     kind: "mcp",
     steps: [
       {
@@ -224,11 +251,11 @@ const setupTabs = [
   },
   {
     key: "other",
-    label: "Other MCP clients",
+    label: "Other",
     kind: "mcp",
     steps: [
       { text: "Streamable HTTP, no authentication.", code: MCP_URL, label: "URL" },
-      { text: "Claude (web and desktop): Settings → Connectors → Add custom connector. OpenAI Responses API:" },
+      { text: "OpenAI Responses API:" },
       {
         code: JSON.stringify({ type: "mcp", server_label: "fluent-icons", server_url: MCP_URL, require_approval: "never" }, null, 2),
         label: "tools[]",

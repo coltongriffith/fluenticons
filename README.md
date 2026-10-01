@@ -123,6 +123,14 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
 - **CLI**: `packages/cli`, packed into the site as `/cli.tgz` by the build:
   `npx -y https://fluenticons.co/cli.tgz search "user security"`. It can be published to npm
   as `fluenticons-cli` later (the name `fluenticons` is taken).
+- **Plugins** for Claude Code and Codex: `plugins/fluenticons/` bundles the MCP server
+  (`mcp.json`) and the skill (`skills/fluent-icons/SKILL.md`, kept in step with
+  `public/ai/SKILL.md`). Claude Code reads `.claude-plugin/plugin.json`; Codex and other Agent
+  Plugins clients read `plugin.json`. This repository is the marketplace for both
+  (`.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`):
+  `claude plugin marketplace add coltongriffith/fluenticons --sparse .claude-plugin plugins`, or
+  `codex plugin marketplace add coltongriffith/fluenticons --sparse .agents --sparse plugins`, then
+  install `fluenticons@fluenticons`. Check with `claude plugin validate .` after editing.
 - Agent instructions: `public/ai/SKILL.md` (Claude Code skill) and `public/llms.txt`.
 
 ### Deploying
