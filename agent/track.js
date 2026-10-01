@@ -120,9 +120,14 @@ const RECENT_MS = 30 * 60 * 1000;
 export async function rememberResults(request, query, slugs) {
   if (!live(request)) return;
   const cid = await clientId(request);
+  const now = Date.now();
   recent.delete(cid);
-  recent.set(cid, { query, slugs, at: Date.now() });
-  if (recent.size > 2000) recent.delete(recent.keys().next().value);
+  recent.set(cid, { query, slugs, at: now });
+  // Oldest first (each set moves to the end): drop expired and excess entries.
+  for (const [key, entry] of recent) {
+    if (now - entry.at <= RECENT_MS && recent.size <= 2000) break;
+    recent.delete(key);
+  }
 }
 
 export async function trackSelection(context, slug, channel) {

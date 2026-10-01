@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 sm:px-8 py-8">
     <div class="prose dark:prose-invert max-w-3xl">
       <h1>Privacy Policy</h1>
-      <p class="text-sm">Last updated: 24 September 2026</p>
+      <p class="text-sm">Last updated: 1 October 2026</p>
       <p>
         This policy explains what information is collected when you use fluenticons.co (the
         "Site"), why, and the choices you have. The Site is operated by Colton Griffith
@@ -69,18 +69,53 @@
         </li>
       </ul>
 
-      <h2>Agent API and MCP server</h2>
+      <h2>Agent API, MCP server and plugins</h2>
       <p>
-        When a coding agent, script or the command-line tool uses our
-        <NuxtLink to="/ai/">API or MCP server</NuxtLink>, we record the search words (first 100
-        characters), the icons returned or requested, the platform, style and size asked for,
-        and the kind of client (from its User-Agent) in Google Analytics, to see what people
-        look for and improve results. We don't record the descriptions sent to
-        <code>recommend</code> or any other request content. Your IP address is used only to
-        apply rate limits and, combined with the User-Agent, to make a one-way hash that changes
-        every month, so repeat use can be counted without identifying you; the address itself
-        is not stored or sent to Google.
+        This section covers our <NuxtLink to="/ai/">API and MCP server</NuxtLink>
+        (<code>fluenticons.co/api/v1</code> and <code>fluenticons.co/mcp</code>), the Fluenticons
+        plugin for Claude Code and Codex, the command-line tool, and connectors added in apps such
+        as ChatGPT and Claude.
       </p>
+      <ul>
+        <li>
+          <strong>What we receive.</strong> Only what a tool call contains: search words, icon
+          names, the labels and descriptions sent to <code>recommend_icons</code>, and the style,
+          size and platform asked for. We also receive the client's name and version (such as
+          "claude-code" or "openai-mcp"), the MCP protocol version, and the User-Agent and IP
+          address. The AI app you use decides what goes into a tool call; our tools ask only
+          for icon search terms and names, and don't request your conversation, code, files or
+          account details, but anything an app puts in those fields reaches us. That app's own
+          privacy policy covers your conversation.
+        </li>
+        <li>
+          <strong>What we record.</strong> In Google Analytics: the search words (first 100
+          characters), recommended item labels, the icons returned or requested, the platform,
+          style and size, the kind of client, the client name and MCP protocol version it reports
+          when it connects, and whether it was set up through our plugin. We don't record the
+          descriptions sent to <code>recommend_icons</code> or any other request content.
+        </li>
+        <li>
+          <strong>IP addresses.</strong> Used only to apply rate limits and, combined with the
+          User-Agent, to make a one-way hash that changes every month, so repeat use can be
+          counted without identifying you. The address itself is not stored or sent to Google.
+        </li>
+        <li>
+          <strong>Retention.</strong> Rate-limit counters and recent searches (used to connect a
+          search with the icon then requested) live only in server memory and are never written
+          to storage. Counters are discarded after one minute and recent searches after 30
+          minutes, at the latest when the server handles its next request or restarts. Google
+          Analytics keeps event data for up to 14 months.
+        </li>
+        <li>
+          <strong>Sharing.</strong> We share this data only with Google (Analytics) and Cloudflare
+          (hosting), who process it for us. We don't sell it or use it for advertising.
+        </li>
+        <li>
+          <strong>Links in results.</strong> Links to icon pages carry <code>utm_source</code>
+          and <code>utm_medium</code> tags naming the kind of client, so visits from AI tools can be
+          counted. When you open one, the website's own analytics apply (see above).
+        </li>
+      </ul>
 
       <h2>Information you send us</h2>
       <p>
