@@ -2,9 +2,9 @@
 // https://fluenticons.co/mcp, served by functions/mcp.js. The tools call the
 // same operations as the HTTP API (agent/tools.js).
 import { InputError, LIMITS, about, getIcon, iconCode, recommendIcons, searchIcons, similarIcons } from "./tools.js";
-import { CORS, json, rateLimit, readJson } from "./http.js";
+import { CORS, MCP_RATE_LIMIT, json, rateLimit, readJson } from "./http.js";
 import { PLATFORMS, STYLES } from "./icons.js";
-import { track } from "./track.js";
+import { clientType, track } from "./track.js";
 
 const PROTOCOL_VERSIONS = ["2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05"];
 
@@ -150,6 +150,22 @@ const TOOLS = [
 ];
 const toolList = TOOLS.map(({ run, ...tool }) => tool);
 
+// Icon page links in results carry UTM tags, so visits from answers in AI
+// tools show up by client in the website's analytics.
+const ICON_PAGE = "https://fluenticons.co/icon/";
+// Returns a copy, so cached result objects are never changed.
+function tagLinks(value, source) {
+  if (Array.isArray(value)) return value.map((v) => tagLinks(v, source));
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(
+    Object.entries(value).map(([k, v]) =>
+      k === "url" && typeof v === "string" && v.startsWith(ICON_PAGE) && !v.includes("?")
+        ? [k, `${v}?utm_source=${source}&utm_medium=mcp`]
+        : [k, tagLinks(v, source)]
+    )
+  );
+}
+
 const rpcError = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });
 
 async function handleMessage(msg, context) {
@@ -186,7 +202,8 @@ async function handleMessage(msg, context) {
       const tool = TOOLS.find((t) => t.name === params.name);
       if (!tool) return rpcError(id, -32602, `Unknown tool: ${params.name}`);
       try {
-        const { status, body } = await tool.run(params.arguments || {}, context, "mcp");
+        const { status, body: raw } = await tool.run(params.arguments || {}, context, "mcp");
+        const body = tagLinks(raw, clientType(context.request.headers.get("user-agent")));
         return {
           jsonrpc: "2.0",
           id,
@@ -225,7 +242,7 @@ export async function handleMcp(context) {
       { allow: "POST, OPTIONS" }
     );
   }
-  const limit = rateLimit(request);
+  const limit = rateLimit(request, MCP_RATE_LIMIT);
   if (limit.response) return limit.response;
   let body;
   try {

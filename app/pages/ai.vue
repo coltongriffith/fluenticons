@@ -111,7 +111,7 @@
       <div class="prose dark:prose-invert max-w-none">
         <p>
           Errors: <code>{"error": {"code", "message"}}</code> with status 400, 404 or 429. Limit:
-          120 requests per minute per IP (<code>X-RateLimit-Remaining</code>).
+          120 requests per minute per IP, 1,200 for the MCP server (<code>X-RateLimit-Remaining</code>).
         </p>
 
         <h2 id="cli">CLI</h2>

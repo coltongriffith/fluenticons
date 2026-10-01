@@ -16,3 +16,7 @@ https://:project.pages.dev/*
 
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
+
+# OpenAI plugin domain verification: the token as plain text.
+/.well-known/openai-apps-challenge
+  Content-Type: text/plain; charset=utf-8

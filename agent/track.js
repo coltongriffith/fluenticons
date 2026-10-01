@@ -19,8 +19,10 @@
 const AGENT_GA_ID = "G-LNV7W169XW";
 
 const CLIENTS = [
+  [/claude-code/i, "claude-code"],
   [/claude/i, "claude"],
   [/cursor/i, "cursor"],
+  [/openai-mcp|chatgpt/i, "chatgpt"],
   [/codex|openai/i, "codex"],
   [/copilot|vscode|visual studio code/i, "vscode"],
   [/windsurf|codeium/i, "windsurf"],
@@ -51,6 +53,9 @@ async function clientId(request) {
 // page's demo, which the page tracks itself as ai_demo_search).
 const live = (request) =>
   new URL(request.url).hostname === "fluenticons.co" && !request.headers.has("x-fluenticons-no-track");
+// How the client was set up, from the endpoint URL: /mcp?via=plugin is the
+// Claude Code and Codex plugin.
+const via = (request) => new URL(request.url).searchParams.get("via")?.match(/^[a-z0-9-]{1,20}$/)?.[0];
 const clip = (v) => (typeof v === "string" ? v.slice(0, 100) : v);
 
 // Sends one event. `context` is the Pages Functions context (for waitUntil).
@@ -58,7 +63,7 @@ export function track(context, name, params = {}) {
   const { request, env } = context;
   if (!live(request)) return;
   const clean = Object.fromEntries(
-    Object.entries({ ...params, client_type: clientType(request.headers.get("user-agent")) })
+    Object.entries({ ...params, client_type: clientType(request.headers.get("user-agent")), via: via(request) })
       .filter(([, v]) => v !== undefined && v !== null && v !== "")
       .map(([k, v]) => [k, clip(v)])
   );
