@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "fluent-icons": {
+      "type": "streamable-http",
+      "url": "https://fluenticons.co/mcp"
+    }
+  }
+}

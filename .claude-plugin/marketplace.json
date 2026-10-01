@@ -1,0 +1,17 @@
+{
+  "name": "fluenticons",
+  "description": "Fluenticons plugins: look up real Microsoft Fluent UI icon names while you code.",
+  "owner": {
+    "name": "Colton Griffith",
+    "url": "https://fluenticons.co"
+  },
+  "plugins": [
+    {
+      "name": "fluenticons",
+      "source": "./plugins/fluenticons",
+      "description": "Search Microsoft's Fluent UI System Icons by meaning and get exact @fluentui/react-icons component names and code.",
+      "category": "development",
+      "tags": ["icons", "fluent-ui", "react", "design-system", "mcp"]
+    }
+  ]
+}

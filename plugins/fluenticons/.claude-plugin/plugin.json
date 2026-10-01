@@ -1,0 +1,15 @@
+{
+  "name": "fluenticons",
+  "displayName": "Fluenticons",
+  "version": "1.0.0",
+  "description": "Search Microsoft's Fluent UI System Icons by meaning and get exact @fluentui/react-icons component names and code, instead of guessing.",
+  "author": {
+    "name": "Colton Griffith",
+    "url": "https://fluenticons.co"
+  },
+  "homepage": "https://fluenticons.co/ai/",
+  "repository": "https://github.com/coltongriffith/fluenticons",
+  "license": "MIT",
+  "keywords": ["icons", "fluent-ui", "fluentui", "react", "mcp"],
+  "mcpServers": "./mcp.json"
+}
