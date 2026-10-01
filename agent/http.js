@@ -33,10 +33,16 @@ export const RATE_LIMIT = 120; // requests per minute
 // servers, so one IP there carries many users.
 export const MCP_RATE_LIMIT = 1200;
 const windows = new Map();
+let sweptMinute = 0;
 export function rateLimit(request, max = RATE_LIMIT) {
   // One counter per IP for each limit, so /mcp traffic doesn't use up the API's.
   const key = `${max}|${request.headers.get("cf-connecting-ip") || "local"}`;
   const minute = Math.floor(Date.now() / 60000);
+  // Counters only last their minute: clear the previous minutes' once a minute.
+  if (minute !== sweptMinute) {
+    sweptMinute = minute;
+    for (const [k, old] of windows) if (old.minute !== minute) windows.delete(k);
+  }
   let w = windows.get(key);
   if (!w || w.minute !== minute) {
     w = { minute, count: 0 };

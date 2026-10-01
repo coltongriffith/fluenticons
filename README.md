@@ -123,6 +123,15 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
   `/mcp?via=plugin`, sent as the `via` event parameter. Website searches are joined to the
   icon people pick: `select_content`, `copy_icon`, `download_icon`, `favorite_add` and
   `copy_code` carry the `search_term` that was in the search box.
+- **Where AI usage shows up**:
+  - *Tool use* (MCP and API calls from Claude, ChatGPT, Codex, Cursor…): GA4 property
+    "Fluenticons API" → Reports → Engagement → Events (`mcp_*`, `api_*`, `agent_result_selected`,
+    `mcp_initialize`), or Realtime. Register `client_type`, `mcp_client`, `via` and `search_term`
+    as event-scoped custom dimensions to break them down.
+  - *Visits from AI answers*: the website properties log one `ai_referral` event per session that
+    came from an AI assistant (`app/plugins/ai-referral.client.js`: MCP result links with
+    `utm_medium=mcp`, ChatGPT's `utm_source=chatgpt.com`, and chatgpt.com, claude.ai, perplexity.ai,
+    gemini, copilot… referrers), with `ai_source` and `ai_medium` (`mcp` or `chat`).
 - **CLI**: `packages/cli`, packed into the site as `/cli.tgz` by the build:
   `npx -y https://fluenticons.co/cli.tgz search "user security"`. It can be published to npm
   as `fluenticons-cli` later (the name `fluenticons` is taken).

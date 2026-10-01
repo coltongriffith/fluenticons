@@ -81,16 +81,18 @@
           <strong>What we receive.</strong> Only what a tool call contains: search words, icon
           names, the labels and descriptions sent to <code>recommend_icons</code>, and the style,
           size and platform asked for. We also receive the client's name and version (such as
-          "claude-code" or "openai-mcp") and its User-Agent and IP address. We never receive
-          your conversation, code, files or account details from the AI app you use; that app's
-          own privacy policy covers them.
+          "claude-code" or "openai-mcp"), the MCP protocol version, and the User-Agent and IP
+          address. The AI app you use decides what goes into a tool call; our tools ask only
+          for icon search terms and names, and don't request your conversation, code, files or
+          account details, but anything an app puts in those fields reaches us. That app's own
+          privacy policy covers your conversation.
         </li>
         <li>
           <strong>What we record.</strong> In Google Analytics: the search words (first 100
           characters), recommended item labels, the icons returned or requested, the platform,
-          style and size, the kind of client, and whether it was set up through our plugin. We
-          don't record the descriptions sent to <code>recommend_icons</code> or any other request
-          content.
+          style and size, the kind of client, the client name and MCP protocol version it reports
+          when it connects, and whether it was set up through our plugin. We don't record the
+          descriptions sent to <code>recommend_icons</code> or any other request content.
         </li>
         <li>
           <strong>IP addresses.</strong> Used only to apply rate limits and, combined with the
@@ -98,10 +100,11 @@
           counted without identifying you. The address itself is not stored or sent to Google.
         </li>
         <li>
-          <strong>Retention.</strong> Rate-limit counters last one minute and recent searches are
-          kept in server memory for up to 30 minutes (to connect a search with the icon then
-          requested), and neither is written to storage. Google Analytics keeps event data for
-          up to 14 months.
+          <strong>Retention.</strong> Rate-limit counters and recent searches (used to connect a
+          search with the icon then requested) live only in server memory and are never written
+          to storage. Counters are discarded after one minute and recent searches after 30
+          minutes, at the latest when the server handles its next request or restarts. Google
+          Analytics keeps event data for up to 14 months.
         </li>
         <li>
           <strong>Sharing.</strong> We share this data only with Google (Analytics) and Cloudflare
