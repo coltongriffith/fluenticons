@@ -14,7 +14,7 @@ Fluenticons (https://fluenticons.co) is an independent site, not affiliated with
 - Code: `GET https://fluenticons.co/api/v1/icons/PersonLock/code?platform=react&style=regular&size=24`
 - Recommend a set: `POST https://fluenticons.co/api/v1/icons/recommend` with `{"items": [{"label": "Billing", "description": "invoices"}], "style": "regular", "size": 24}`
 - [Claude Code skill](https://fluenticons.co/ai/SKILL.md)
-- Claude Code and Codex plugin (MCP server + skill): marketplace `coltongriffith/fluenticons`, plugin `fluenticons@fluenticons`.
+- Claude Code and Codex plugin (MCP server + skill): marketplace `coltongriffith/fluenticons-plugin`, plugin `fluenticons@fluenticons`.
 
 ## Website
 

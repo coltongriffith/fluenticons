@@ -1,7 +1,7 @@
 # Plugin directory submissions
 
-Drafts for listing Fluenticons in Anthropic's and OpenAI's directories. The plugin itself is
-`plugins/fluenticons/`; the MCP server is `https://fluenticons.co/mcp` (no sign-in).
+Drafts for listing Fluenticons in Anthropic's and OpenAI's directories. The plugin itself is the
+[coltongriffith/fluenticons-plugin](https://github.com/coltongriffith/fluenticons-plugin) repository; the MCP server is `https://fluenticons.co/mcp` (no sign-in).
 
 ## Shared listing text
 
@@ -21,16 +21,16 @@ Drafts for listing Fluenticons in Anthropic's and OpenAI's directories. The plug
 - **Privacy policy:** https://fluenticons.co/privacy-policy/
 - **Terms:** https://fluenticons.co/terms/
 - **Support:** https://fluenticons.co/contact/ (colton@fluenticons.co)
-- **Icon:** `plugins/fluenticons/assets/icon.png` (512 × 512)
+- **Icon:** `assets/icon.png` in the plugin repository (512 × 512)
 - **Authentication:** none
 - **Tools (all read-only):** search_icons, recommend_icons, get_icon, get_icon_code, find_similar_icons
-- **Data handled:** search words and icon names only (counted for analytics); never code, files
-  or personal data.
+- **Data handled:** search words and icon names (counted for analytics); the tools don't ask for
+  code, files or personal data.
 
 ## Anthropic (claude.ai/directory/manage)
 
 Submit twice: as an **MCP connector** (URL above, "No sign-in") and as a **plugin**
-(marketplace `coltongriffith/fluenticons`, plugin `fluenticons`).
+(Plugin bundle, repository `coltongriffith/fluenticons-plugin`, no path).
 
 ## OpenAI (platform.openai.com plugins)
 

@@ -165,7 +165,7 @@ import { track } from "../utils/analytics";
 
 const MCP_URL = "https://fluenticons.co/mcp";
 const CLI = "npx -y https://fluenticons.co/cli.tgz";
-const PLUGIN_REPO = "coltongriffith/fluenticons";
+const PLUGIN_REPO = "coltongriffith/fluenticons-plugin";
 
 const instructions = `## Icons
 
@@ -175,10 +175,9 @@ This project uses Microsoft's Fluent UI icons (@fluentui/react-icons). Never gue
 - For several icons in one UI (navigation, menus, tabs), use recommend_icons so they share one style and size.
 - Before using another size or style, check it exists with get_icon; don't build names yourself.`;
 
-// The plugin marketplace is this site's GitHub repository; --sparse skips the site's files.
-const CLAUDE_PLUGIN = `claude plugin marketplace add ${PLUGIN_REPO} --sparse .claude-plugin plugins
+const CLAUDE_PLUGIN = `claude plugin marketplace add ${PLUGIN_REPO}
 claude plugin install fluenticons@fluenticons`;
-const CODEX_PLUGIN = `codex plugin marketplace add ${PLUGIN_REPO} --sparse .agents --sparse plugins
+const CODEX_PLUGIN = `codex plugin marketplace add ${PLUGIN_REPO}
 codex plugin add fluenticons@fluenticons`;
 
 const setupTabs = [
