@@ -8,10 +8,19 @@
   "plugins": [
     {
       "name": "fluenticons",
-      "source": "./plugins/fluenticons",
+      "source": {
+        "source": "github",
+        "repo": "coltongriffith/fluenticons-plugin"
+      },
       "description": "Search Microsoft's Fluent UI System Icons by meaning and get exact @fluentui/react-icons component names and code.",
       "category": "development",
-      "tags": ["icons", "fluent-ui", "react", "design-system", "mcp"]
+      "tags": [
+        "icons",
+        "fluent-ui",
+        "react",
+        "design-system",
+        "mcp"
+      ]
     }
   ]
 }
