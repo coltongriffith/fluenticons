@@ -29,8 +29,11 @@ const error = (status, code, message, extra = {}) => json({ error: { code, messa
 // enough to stop a runaway loop. (A Cloudflare rate limiting rule can be
 // added in front of it without code changes.)
 export const RATE_LIMIT = 120; // requests per minute
+// ChatGPT, claude.ai and other hosted clients reach /mcp from their own
+// servers, so one IP there carries many users.
+export const MCP_RATE_LIMIT = 1200;
 const windows = new Map();
-export function rateLimit(request) {
+export function rateLimit(request, max = RATE_LIMIT) {
   const ip = request.headers.get("cf-connecting-ip") || "local";
   const minute = Math.floor(Date.now() / 60000);
   let w = windows.get(ip);
@@ -40,14 +43,14 @@ export function rateLimit(request) {
     if (windows.size > 10000) windows.delete(windows.keys().next().value);
   }
   w.count++;
-  const remaining = Math.max(0, RATE_LIMIT - w.count);
-  const headers = { "x-ratelimit-limit": String(RATE_LIMIT), "x-ratelimit-remaining": String(remaining) };
-  if (w.count <= RATE_LIMIT) return { headers };
+  const remaining = Math.max(0, max - w.count);
+  const headers = { "x-ratelimit-limit": String(max), "x-ratelimit-remaining": String(remaining) };
+  if (w.count <= max) return { headers };
   const retry = String(60 - (Math.floor(Date.now() / 1000) % 60));
   return {
     headers,
     response: json(
-      { error: { code: "rate_limited", message: `Too many requests: the limit is ${RATE_LIMIT} per minute. Try again in ${retry} seconds.`, retryAfter: Number(retry) } },
+      { error: { code: "rate_limited", message: `Too many requests: the limit is ${max} per minute. Try again in ${retry} seconds.`, retryAfter: Number(retry) } },
       429,
       { ...headers, "retry-after": retry }
     ),

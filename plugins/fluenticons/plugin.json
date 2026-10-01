@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fluenticons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Search Microsoft's Fluent UI System Icons by meaning and get exact @fluentui/react-icons component names and code, instead of guessing.",
   "author": {
     "name": "Colton Griffith",

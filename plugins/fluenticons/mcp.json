@@ -3,7 +3,7 @@
   "mcpServers": {
     "fluent-icons": {
       "type": "streamable-http",
-      "url": "https://fluenticons.co/mcp"
+      "url": "https://fluenticons.co/mcp?via=plugin"
     }
   }
 }

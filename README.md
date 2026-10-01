@@ -110,14 +110,17 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
   `{ "billing": { "receipt_money": 0.2 } }` adds 0.2 to that icon's score for that exact query.
 - **Checks**: `node scripts/test-agent.mjs` after `yarn generate` (runs before every deploy).
   Locally: `npx wrangler pages dev dist` serves the site with the API and MCP server.
-- **Limits**: 120 requests per minute per IP (per worker), 200-character queries, 25 items per
+- **Limits**: 120 requests per minute per IP (per worker; 1,200 for `/mcp`, which hosted clients like
+  ChatGPT and claude.ai reach from shared IPs), 200-character queries, 25 items per
   recommendation, 16 KB bodies. Errors are JSON: `{ "error": { "code", "message" } }`.
 - **Analytics** are sent from the server as `api_*`, `mcp_*`,
   `agent_result_selected` and `mcp_initialize` events, in their own GA4 property
   ("Fluenticons API", G-LNV7W169XW; an `AGENT_GA_ID` variable on the Pages project overrides it), and
   set `GA_API_SECRET` (a Measurement Protocol secret of that property's stream) to use the Measurement
   Protocol; without it they're sent to the same endpoint gtag uses. Requests with an
-  `x-fluenticons-no-track` header (deploy checks, tests, the /ai demo) aren't counted. Website searches are joined to the
+  `x-fluenticons-no-track` header (deploy checks, tests, the /ai demo) aren't counted. MCP results
+  link icon pages with `utm_source=<client>&utm_medium=mcp`, and the plugin connects to
+  `/mcp?via=plugin`, sent as the `via` event parameter. Website searches are joined to the
   icon people pick: `select_content`, `copy_icon`, `download_icon`, `favorite_add` and
   `copy_code` carry the `search_term` that was in the search box.
 - **CLI**: `packages/cli`, packed into the site as `/cli.tgz` by the build:
