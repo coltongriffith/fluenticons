@@ -42,6 +42,7 @@ export default {
     { to: "/tag/", label: "Topics" },
     { to: "/new/", label: "New icons" },
     { to: "/guides/", label: "Guides" },
+    { to: "/microsoft-icons/", label: "Microsoft icons" },
     { to: "/ai/", label: "For AI agents" },
     { to: "/about/", label: "About" },
     { to: "/contact/", label: "Contact" },
