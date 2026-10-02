@@ -11,7 +11,7 @@ Microsoft publishes several icon sets, and the right one depends on what you're 
 | Icon set | What it is | Use it for | License |
 | --- | --- | --- | --- |
 | Fluent UI System Icons | 3,000+ interface icons in regular, filled and color styles | Any app or website: web, React, iOS, Android, Flutter, Windows | MIT |
-| Segoe Fluent Icons | The Windows 11 system icon font | Apps running on Windows | Windows apps only |
+| Segoe Fluent Icons | The Windows 11 system icon font | Apps running on Windows 11 (Windows 10 falls back to MDL2) | Windows apps only |
 | Segoe MDL2 Assets | The Windows 10 icon font, replaced by Segoe Fluent Icons | Older Windows apps | Ships with Windows |
 | Fabric MDL2 icons | The Office UI Fabric / Fluent UI React v8 icon font | Apps that work with Microsoft services | Microsoft Fabric Assets License |
 | Fluent Emoji | Emoji in 3D, color, flat and high-contrast styles | Chat, reactions, illustrations | MIT |
@@ -32,7 +32,7 @@ Fluenticons is a free viewer for this set: [search by name or meaning](/), [brow
 
 ## Segoe Fluent Icons
 
-Segoe Fluent Icons is the icon font built into Windows 11. Windows apps use it through `SymbolIcon` or a `FontIcon` with a glyph code point, for example `<FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE700;"/>`. Its glyphs follow the same Fluent design language as Fluent UI System Icons.
+Segoe Fluent Icons is the icon font built into Windows 11. Windows apps use it through `SymbolIcon` or a `FontIcon` with a glyph code point. Reference the font through the theme resource, `<FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE700;"/>`, rather than by name: Windows 10 doesn't include Segoe Fluent Icons, and the theme resource falls back to Segoe MDL2 Assets there. Its glyphs follow the same Fluent design language as Fluent UI System Icons.
 
 The font is licensed for apps running on Windows only. Microsoft offers a download for design and development, but that copy may not be shipped to other platforms, so don't use it on a website or in a cross-platform app. For those, use the matching icon from Fluent UI System Icons instead.
 
@@ -65,7 +65,7 @@ The "Fluency" icon style on Icons8 is inspired by Fluent design, but it's made a
 ## Which one should I use?
 
 - **A website, web app or cross-platform app:** Fluent UI System Icons.
-- **A Windows app built with WinUI:** Segoe Fluent Icons for system glyphs, or Fluent UI System Icons for anything it doesn't cover.
+- **A Windows app built with WinUI:** Segoe Fluent Icons for system glyphs (through `SymbolIcon` or `SymbolThemeFontFamily`, so Windows 10 gets Segoe MDL2 Assets), or Fluent UI System Icons for anything it doesn't cover.
 - **An existing Fluent UI React v8 or SharePoint project:** keep the Fabric MDL2 icons, and move to Fluent UI System Icons when you upgrade to v9.
 - **Emoji:** Fluent Emoji.
 - **Linking to Word, Excel or Teams:** the official Microsoft 365 app icons.
