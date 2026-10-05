@@ -57,6 +57,22 @@ export function sponsorLink(s: SponsorConfig, placement: string, source: string)
   return url.toString();
 }
 
+// Parsed, not pattern-matched: sponsorLink() calls new URL() on it.
+function isHttpsUrl(value: string): boolean {
+  try {
+    return new URL(value).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+// A real calendar date: Date.parse turns "2026-02-30" into March 2, so the
+// parsed date must come back as the same string.
+const isIsoDate = (value: string) =>
+  /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+  !Number.isNaN(dayStart(value)) &&
+  new Date(dayStart(value)).toISOString().slice(0, 10) === value;
+
 /** Problems with a sponsor config, checked when the site is built. */
 export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => boolean): string[] {
   const problems: string[] = [];
@@ -66,12 +82,12 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   if (!s.active) return problems;
   if (!s.name.trim()) problems.push("name is empty");
   if (!s.tagline.trim()) problems.push("tagline is empty");
-  if (!/^https:\/\/\S+$/.test(s.url)) problems.push(`url must be a full https:// link (got "${s.url}")`);
+  if (!isHttpsUrl(s.url)) problems.push(`url must be a full https:// link (got "${s.url}")`);
   if (!s.logo.startsWith("/")) problems.push(`logo must be a path in public/, like "/sponsors/name.png" (got "${s.logo}")`);
   else if (!logoExists(s.logo)) problems.push(`logo file not found: public${s.logo}`);
   if (!s.logoAlt.trim()) problems.push("logoAlt is empty");
   for (const key of ["startDate", "endDate"] as const) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(s[key]) || Number.isNaN(dayStart(s[key]))) {
+    if (!isIsoDate(s[key])) {
       problems.push(`${key} must be an ISO date like 2026-11-01 (got "${s[key]}")`);
     }
   }
