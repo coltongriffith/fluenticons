@@ -13,7 +13,9 @@ import { isLive, sponsorLink, sponsorSlug } from "../utils/sponsor";
 // shows it early with no events.
 export function useSponsor() {
   const state = useState("sponsor", () => ({ live: isLive(current), preview: false }));
-  const sponsor = computed(() => (state.value.live || state.value.preview ? current : null));
+  // The logo file found at build time (.svg, else .png; "" for initials).
+  const logo = useAppConfig().sponsorLogo || "";
+  const sponsor = computed(() => (state.value.live || state.value.preview ? { ...current, logo } : null));
   // utm_source: "fluenticons" for fluenticons.co, "materialicons" for materialicons.co.
   const source = new URL(site.url).hostname.split(".")[0];
   const send = (name, placement) =>

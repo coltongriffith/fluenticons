@@ -1,5 +1,5 @@
 <template>
-  <div ref="root" :class="$attrs.class">
+  <div v-if="s || variant === 'hero'" ref="root" :class="$attrs.class">
     <!-- The sponsor (app/sponsor.ts), or the sponsor page's example. -->
     <a
       v-if="s"
@@ -24,7 +24,7 @@
       <span class="min-w-0 flex-1" :class="variant === 'inline' && 'sm:flex sm:items-center sm:gap-6'">
         <span class="block min-w-0 sm:flex-1">
           <span class="flex items-baseline gap-2">
-            <span class="font-semibold text-gray-900 dark:text-white truncate">{{ s.name }}</span>
+            <span class="font-semibold text-gray-900 dark:text-white" :class="variant !== 'compact' && 'truncate'">{{ s.name }}</span>
             <span class="text-[11px] text-gray-400 dark:text-gray-500 flex-shrink-0">Sponsor</span>
           </span>
           <span class="block text-gray-600 dark:text-gray-300 leading-snug mt-0.5" :class="text">
@@ -41,10 +41,11 @@
       </span>
     </a>
 
-    <!-- No sponsor running: the placement advertises the spot itself, in the
-         same card a sponsor gets, so it doubles as a preview. -->
+    <!-- No sponsor running: the homepage hero advertises the spot itself, in
+         the same card a sponsor gets, so it doubles as a preview. The other
+         placements show nothing. -->
     <NuxtLink
-      v-else
+      v-else-if="variant === 'hero'"
       :to="site.sponsorPage"
       class="group flex gap-4 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       :class="shell"

@@ -8,9 +8,11 @@ export interface SponsorConfig {
   name: string;
   /** One line about the product, at most TAGLINE_MAX characters (checked at build time). */
   tagline: string;
-  /** Landing page. UTM parameters are added to it (see sponsorLink). */
+  /** Landing page. Used exactly as given if it already has UTM parameters (see sponsorLink). */
   url: string;
-  /** Square logo in public/, e.g. "/sponsors/acme.png" (96x96 or larger). */
+  /** Square logo in public/, e.g. "/sponsors/acme.svg" (96x96 or larger). If an
+   *  .svg is missing, the same name in .png is used; with neither, the card
+   *  shows the name's initials. */
   logo: string;
   logoAlt: string;
   /** First and last day shown, as ISO dates ("2026-11-01"). Whole days in UTC. */
@@ -40,21 +42,24 @@ export const sponsorSlug = (name = "") =>
     .replace(/^-|-$/g, "");
 
 /**
- * The sponsor's URL with utm_source, utm_medium, utm_campaign and utm_content
- * (the placement). A UTM parameter already in the sponsor's URL is kept as is.
+ * The sponsor's link. A URL that already carries UTM parameters (the sponsor
+ * tagged it) is used exactly as given; otherwise utm_source, utm_medium,
+ * utm_campaign and utm_content (the placement) are added.
  */
 export function sponsorLink(s: SponsorConfig, placement: string, source: string): string {
   const url = new URL(s.url);
-  const utm: Record<string, string> = {
-    utm_source: source,
-    utm_medium: "sponsor",
-    utm_campaign: sponsorSlug(s.name),
-    utm_content: placement,
-  };
-  for (const [key, value] of Object.entries(utm)) {
-    if (!url.searchParams.has(key)) url.searchParams.set(key, value);
-  }
+  if ([...url.searchParams.keys()].some((key) => key.startsWith("utm_"))) return s.url;
+  url.searchParams.set("utm_source", source);
+  url.searchParams.set("utm_medium", "sponsor");
+  url.searchParams.set("utm_campaign", sponsorSlug(s.name));
+  url.searchParams.set("utm_content", placement);
   return url.toString();
+}
+
+/** The logo file to show: `logo` if it exists, else the same name as .png, else "" (initials). */
+export function sponsorLogo(s: SponsorConfig, logoExists: (path: string) => boolean): string {
+  if (!s.logo.startsWith("/")) return "";
+  return [s.logo, s.logo.replace(/\.svg$/i, ".png")].find(logoExists) || "";
 }
 
 // Parsed, not pattern-matched: sponsorLink() calls new URL() on it.
@@ -84,7 +89,7 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   if (!s.tagline.trim()) problems.push("tagline is empty");
   if (!isHttpsUrl(s.url)) problems.push(`url must be a full https:// link (got "${s.url}")`);
   if (!s.logo.startsWith("/")) problems.push(`logo must be a path in public/, like "/sponsors/name.png" (got "${s.logo}")`);
-  else if (!logoExists(s.logo)) problems.push(`logo file not found: public${s.logo}`);
+  else if (!sponsorLogo(s, logoExists)) problems.push(`logo file not found: public${s.logo}`);
   if (!s.logoAlt.trim()) problems.push("logoAlt is empty");
   for (const key of ["startDate", "endDate"] as const) {
     if (!isIsoDate(s[key])) {
