@@ -24,7 +24,7 @@
       <span class="min-w-0 flex-1" :class="variant === 'inline' && 'sm:flex sm:items-center sm:gap-6'">
         <span class="block min-w-0 sm:flex-1">
           <span class="flex items-baseline gap-2">
-            <span class="font-semibold text-gray-900 dark:text-white" :class="variant !== 'compact' && 'truncate'">{{ s.name }}</span>
+            <span class="font-semibold text-gray-900 dark:text-white">{{ s.name }}</span>
             <span class="text-[11px] text-gray-400 dark:text-gray-500 flex-shrink-0">Sponsor</span>
           </span>
           <span class="block text-gray-600 dark:text-gray-300 leading-snug mt-0.5" :class="text">
