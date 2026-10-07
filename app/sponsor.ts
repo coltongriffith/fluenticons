@@ -19,15 +19,15 @@ import type { SponsorConfig } from "./utils/sponsor";
 // The build fails if the tagline is over 70 characters, or (when active) the
 // url isn't https, the logo file is missing or a date is malformed.
 const sponsor: SponsorConfig = {
-  // Preview only until Xceed has paid. To launch, set active: true and the dates.
-  active: false,
+  // Paid; runs three months, Oct 7, 2026 – Jan 6, 2027.
+  active: true,
   name: "Xceed Toolkit Plus for WPF",
   tagline: "Upgrade Your WPF UI with Xceed Toolkit Plus",
   url: "https://xceed.com/products/wpf/toolkit-plus-for-wpf/?utm_source=fluenticons.co&utm_medium=referral&utm_campaign=toolkit_plus_wpf",
   logo: "/sponsors/xceed.svg",
   logoAlt: "Xceed Toolkit Plus for WPF logo",
-  startDate: "2026-11-01",
-  endDate: "2026-11-30",
+  startDate: "2026-10-07",
+  endDate: "2027-01-06",
 };
 
 export default sponsor;
