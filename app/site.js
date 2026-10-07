@@ -63,17 +63,8 @@ export default {
   // The page about the agent API and MCP server, promoted in the editor.
   aiPage: "/ai/",
 
-  // The sitewide sponsor, one at a time. null shows a "your product here"
-  // card in the hero (linking to sponsorPage) and hides the other placements.
-  sponsor: null,
-  // sponsor: {
-  //   id: "acme-ui",                 // analytics + utm_content; lowercase, no spaces
-  //   name: "Acme UI",
-  //   tagline: "Fluent-style Blazor components. 100+ controls, free trial.",
-  //   url: "https://acme.dev",
-  //   logo: "/sponsors/acme-ui.png", // square, 96x96 or larger, in public/sponsors/
-  //   cta: "Try Acme UI",
-  // },
+  // The sitewide sponsor is set in app/sponsor.ts. With none running, every
+  // placement shows a "your product here" card linking to sponsorPage.
   sponsorPage: "/sponsor/",
   // Figures and terms on the sponsor page. Refresh monthly from GA4.
   sponsorKit: {

@@ -64,9 +64,7 @@ export default {
   errorBack: "Back to Material Icons",
   sister: { label: "Fluent Icons", url: "https://fluenticons.co/" },
 
-  // The sitewide sponsor, one at a time (same setup as fluenticons.co; see
-  // app/site.js there). null shows a "your product here" card in the hero.
-  sponsor: null,
+  // The sitewide sponsor is set in app/sponsor.ts (same setup as fluenticons.co).
   sponsorPage: "/sponsor/",
   // Figures and terms on the sponsor page. Traffic figures are left out until
   // the site has a month of GA4 data (the stats row is hidden without them).

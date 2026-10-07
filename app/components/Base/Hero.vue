@@ -49,7 +49,7 @@
               >
             </div>
           </div>
-          <SponsorSlot variant="hero" placement="hero" class="md:flex md:flex-col md:items-end md:justify-center" />
+          <SponsorCard variant="hero" placement="homepage" class="md:flex md:flex-col md:items-end md:justify-center" />
         </div>
       </div>
     </div>

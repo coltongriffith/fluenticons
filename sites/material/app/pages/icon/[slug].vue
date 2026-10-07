@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <SponsorSlot variant="inline" placement="icon_page" class="mb-12 max-w-3xl" />
+    <SponsorCard variant="inline" placement="icon" class="mb-12 max-w-3xl" />
 
     <section id="styles" class="mb-12 max-w-5xl">
       <h2 class="text-2xl font-bold mb-2">Every style, fill and weight</h2>
