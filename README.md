@@ -161,6 +161,12 @@ URL, missing logo or malformed date. Events for the monthly report: `sponsor_imp
 `sponsor_click`, each with `sponsor` and `placement` (homepage, icon, editor, guide, copy_toast,
 sponsor_page); clicks on the empty card are `sponsor_house_click`.
 
+To report on these in GA4, register `sponsor` and `placement` once as event-scoped custom
+dimensions (Admin → Custom definitions); they only apply to events from then on. Clicks count
+left, Ctrl/Cmd and middle clicks; "Open in new tab" from the right-click menu and visitors who
+block Google Analytics aren't counted. GA4's own outbound-click event (`click`, Link domain
+`xceed.com`) is an independent second count.
+
 ### Deploying
 
 fluenticons.co is served by the Cloudflare Pages project **fluenticons-3**, a direct-upload project with no Git connection. The **Deploy to Cloudflare Pages** GitHub Action deploys it:

@@ -6,6 +6,8 @@ import { isLive, sponsorLink, sponsorSlug } from "../utils/sponsor";
 // The sitewide sponsor (app/sponsor.ts), its tagged links and click/impression
 // events. Shared by every placement so the monthly report comes from one set of
 // events: sponsor_impression and sponsor_click, each with sponsor + placement.
+// A click is a left click (with or without Ctrl/Cmd/Shift) or a middle click;
+// "Open in new tab" from the right-click menu can't be seen by the page.
 //
 // Pages are prerendered, so `live` starts as it was when the site was built and
 // is checked again in the browser (plugins/sponsor.client.js): the sponsor

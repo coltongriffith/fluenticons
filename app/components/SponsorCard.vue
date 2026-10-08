@@ -8,6 +8,7 @@
       class="group flex gap-4 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       :class="shell"
       @click="onClick"
+      @auxclick.middle="real && click(placement)"
     >
       <span class="flex-shrink-0 rounded-lg bg-white ring-1 ring-gray-900/5 dark:ring-white/10 overflow-hidden flex-center" :class="box">
         <img

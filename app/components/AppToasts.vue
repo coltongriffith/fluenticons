@@ -19,6 +19,7 @@
           rel="sponsored noopener"
           class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center gap-2 text-xs font-normal text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100"
           @click="click('copy_toast')"
+          @auxclick.middle="click('copy_toast')"
         >
           <img
             v-if="sponsor.logo"
