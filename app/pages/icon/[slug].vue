@@ -160,7 +160,8 @@
               {{ tab.label }}
             </button>
           </div>
-          <div v-for="tab in codeTabs" v-show="tab.key === activeTab.key" :key="tab.key" role="tabpanel">
+          <!-- Only the selected tab's code is in the page, so shared snippets don't outweigh this icon's own text. -->
+          <div v-for="tab in codeTabs.filter((t) => t.key === activeTab.key)" :key="tab.key" role="tabpanel">
             <h3 class="sr-only">{{ icon.name }} icon in {{ tab.label }}</h3>
             <p v-if="tab.note" class="text-sm text-gray-600 dark:text-gray-300 mb-2">{{ tab.note }}</p>
             <div class="relative">
@@ -181,30 +182,18 @@
       <template v-if="!details.legacy">
         <h2>Use the {{ icon.name }} icon in React</h2>
         <p>
-          Install Microsoft's <code>@fluentui/react-icons</code> package, then import the
-          component. Icons inherit the current text color, and you can size them with CSS.
-        </p>
-        <pre><code>{{ reactCode }}</code></pre>
-        <p class="text-sm">
-          Coding agents can look up this component through the
+          Import
+          <template v-for="(n, i) in reactNames" :key="n"><code>{{ n }}</code>{{ i < reactNames.length - 1 ? " and " : "" }}</template>
+          from Microsoft's
+          <code>@fluentui/react-icons</code> package; the code tabs above have this and other platforms.
+          Coding agents can look the component up through the
           <NuxtLink to="/ai/" @click="track('ai_promo_click', { source: 'icon_page' })">Fluent Icons MCP server</NuxtLink>.
         </p>
       </template>
       <p v-else>
         This icon was retired from Microsoft's official packages. It's kept here so existing
-        links keep working, but for new work consider one of the related icons below.
+        links keep working, but for new work consider one of the similar icons below.
       </p>
-
-      <h2>Use it in HTML</h2>
-      <p>Reference the SVG file directly:</p>
-      <pre><code>{{ htmlCode }}</code></pre>
-      <template v-if="inlineCode">
-        <p>
-          Or paste the SVG markup inline. Setting <code>fill="currentColor"</code> makes the icon
-          follow the text color of its parent:
-        </p>
-        <pre><code>{{ inlineCode }}</code></pre>
-      </template>
 
       <h2>Details</h2>
       <table>
@@ -223,6 +212,10 @@
           <tr v-if="!variantStyles.length && !details.legacy">
             <th>React components</th>
             <td><code>{{ styles.filter((s) => s.variant).map((s) => s.component).join(", ") }}</code></td>
+          </tr>
+          <tr v-for="g in glyphs" :key="g.style">
+            <th>Font glyph ({{ g.label }}, {{ g.size }} px)</th>
+            <td><code>U+{{ g.hex }}</code> · <code>&amp;#x{{ g.hex }};</code></td>
           </tr>
           <tr><th>License</th><td><NuxtLink to="/license/">MIT</NuxtLink> (© Microsoft Corporation)</td></tr>
         </tbody>
@@ -255,7 +248,7 @@
     <IconTwin :twin="details.twin" :slug="slug" />
 
     <section v-if="related.length" class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">Related icons</h2>
+      <h2 class="text-2xl font-bold mb-4">Similar icons</h2>
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
         <NuxtLink
           v-for="item in related"
@@ -415,50 +408,28 @@ const activeTab = computed(
 );
 
 // ---- Copy and download ------------------------------------------------------
-const intro = computed(() => {
-  const name = icon.value.name;
-  const labels = availableStyles.value.map((s) => STYLE_INFO[s].short.toLowerCase());
-  const styleText =
-    labels.length === 1 ? `the ${labels[0]} style` : `${labels.slice(0, -1).join(", ")} and ${labels.at(-1)} styles`;
-  const sizes = allSizes.value;
-  const sizeText =
-    sizes.length > 1
-      ? `in ${sizes.length} sizes from ${sizes[0]} to ${sizes.at(-1)} px`
-      : `on a ${sizes[0] || styles.value[0]?.svg.size || 24} px grid`;
-  const description = details.value.description ? `${details.value.description} ` : "";
-  return `${description}The ${name} icon is part of Microsoft's Fluent UI System Icons, available here in ${styleText} ${sizeText}. Download it as SVG or PNG, or copy it as code — it's free to use under the MIT License.`;
-});
+// This icon's own text (scripts/icon-copy.mjs): Microsoft's design note, its
+// tags and similar icons.
+const intro = computed(() => details.value.usage);
+// The icon font's code point for the Regular and Filled 24 px glyphs (or the
+// nearest size), from @fluentui/svg-icons' variant data.
+const glyphs = computed(() =>
+  ["regular", "filled"]
+    .map((style) => {
+      const v = details.value.variants[style]?.find((x) => x[0] === defaultSize(style));
+      return v?.[1] ? { style, label: STYLE_INFO[style].short, size: v[0], hex: v[1].toString(16).toUpperCase() } : null;
+    })
+    .filter(Boolean)
+);
 
-const reactCode = computed(() => {
+const reactNames = computed(() => {
   const names = variantStyles.value.length
     ? variantStyles.value
         .filter((s) => s === "regular" || s === "filled")
         .map((s) => reactName(slug, defaultSize(s), s))
     : styles.value.filter((s) => s.variant).map((s) => s.component);
-  if (!names.length) names.push(reactName(slug, activeSize.value, activeStyle.value));
-  return `npm install @fluentui/react-icons
-
-import { ${names.join(", ")} } from "@fluentui/react-icons";
-
-export function Example() {
-  return <${names[0]} aria-label="${icon.value.name}" />;
-}`;
+  return names.length ? names : [reactName(slug, activeSize.value, activeStyle.value)];
 });
-
-const htmlCode = computed(() => {
-  const s = styles.value[0]?.svg;
-  if (!s) {
-    return `<img src="${activeSrc.value}" width="${activeSize.value}" height="${activeSize.value}" alt="${icon.value.name}">`;
-  }
-  return `<img src="${SITE_URL}/icons/${s.file}" width="${s.size}" height="${s.size}" alt="${icon.value.name}">`;
-});
-
-const inlineCode = computed(() => {
-  const s = styles.value.find((st) => st.svg.body)?.svg;
-  if (!s) return "";
-  return `<svg width="${s.size}" height="${s.size}" viewBox="0 0 ${s.size} ${s.size}" fill="none" xmlns="http://www.w3.org/2000/svg">${s.body}</svg>`;
-});
-
 async function copyText(text, label, platform) {
   try {
     await navigator.clipboard.writeText(text);
@@ -541,7 +512,7 @@ const styleText =
 const sentence = (n) => `Download the ${n} icon from Microsoft Fluent UI — free SVG & PNG, ${styleText}.`;
 let description = sentence(name);
 if (description.length > 155) description = sentence(clip(name, name.length - (description.length - 155)));
-for (const extra of [" Copy code for React, Flutter, Blazor and more.", " Copy React and Flutter code.", " MIT licensed."]) {
+for (const extra of [" Copy code for React, Blazor, WinUI and more.", " Copy React and SVG code.", " MIT licensed."]) {
   if (description.length < 120 && description.length + extra.length <= 155) description += extra;
 }
 function clip(text, max) {
@@ -570,7 +541,7 @@ if (primary) {
     "@context": "https://schema.org",
     "@type": "ImageObject",
     name: `${name} icon`,
-    description: details.value.description || `${name} icon from Microsoft's Fluent UI System Icons.`,
+    description: intro.value,
     contentUrl: `${SITE_URL}/icons/${primary.file}`,
     encodingFormat: "image/svg+xml",
     width: primary.size,

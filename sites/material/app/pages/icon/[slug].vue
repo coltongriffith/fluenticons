@@ -182,7 +182,8 @@
               {{ tab.label }}
             </button>
           </div>
-          <div v-for="tab in codeTabs" v-show="tab.key === activeTab.key" :key="tab.key" role="tabpanel">
+          <!-- Only the selected tab's code is in the page, so shared snippets don't outweigh this icon's own text. -->
+          <div v-for="tab in codeTabs.filter((t) => t.key === activeTab.key)" :key="tab.key" role="tabpanel">
             <h3 class="sr-only">{{ icon.name }} icon in {{ tab.label }}</h3>
             <p v-if="tab.note" class="text-sm text-gray-600 dark:text-gray-300 mb-2">{{ tab.note }}</p>
             <div class="relative">
@@ -206,7 +207,11 @@
         <tbody>
           <tr><th>Name</th><td>{{ icon.name }}</td></tr>
           <tr><th>Ligature</th><td><code>{{ slug }}</code></td></tr>
-          <tr v-if="details.codepoint"><th>Code point</th><td><code>U+{{ details.codepoint.toString(16).toUpperCase() }}</code></td></tr>
+          <template v-if="details.codepoint">
+            <tr><th>Unicode</th><td><code>U+{{ hex.toUpperCase() }}</code></td></tr>
+            <tr><th>HTML entity</th><td><code>&amp;#x{{ hex }};</code></td></tr>
+            <tr><th>CSS content</th><td><code>"\{{ hex }}"</code></td></tr>
+          </template>
           <tr v-if="details.category">
             <th>Category</th>
             <td>
@@ -221,7 +226,9 @@
             <td><code>@material-symbols/svg-400/outlined/{{ slug }}.svg</code>, <code>{{ slug }}-fill.svg</code></td>
           </tr>
           <tr v-if="details.flutter"><th>Flutter</th><td><code>Symbols.{{ details.flutter }}</code><template v-if="details.flutterIcon"> (Material Icons: <code>Icons.{{ details.flutterIcon }}</code>)</template></td></tr>
-          <tr v-if="details.mui"><th>MUI</th><td><code>@mui/icons-material/{{ details.mui }}</code></td></tr>
+          <tr v-if="details.mui"><th>MUI component</th><td><code>{{ details.mui }}Icon</code></td></tr>
+          <tr v-if="details.mui"><th>MUI import</th><td><code>import {{ details.mui }}Icon from "@mui/icons-material/{{ details.mui }}"</code></td></tr>
+          <tr><th>Popularity</th><td>#{{ popularity }}</td></tr>
           <tr><th>License</th><td><NuxtLink to="/license/">Apache License 2.0</NuxtLink> (© Google LLC)</td></tr>
         </tbody>
       </table>
@@ -253,7 +260,7 @@
     <IconTwin :twin="details.twin" :slug="slug" />
 
     <section v-if="related.length" class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">Related icons</h2>
+      <h2 class="text-2xl font-bold mb-4">Similar icons</h2>
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
         <NuxtLink
           v-for="item in related"
@@ -328,6 +335,8 @@ const details = computed(() => data.value.details);
 const related = computed(() => data.value.related);
 const keywords = computed(() => data.value.keywords || []);
 const category = computed(() => data.value.category);
+const hex = computed(() => details.value.codepoint?.toString(16));
+const popularity = computed(() => `${data.value.rank.toLocaleString("en-US")} of ${stats.listed.toLocaleString("en-US")} Material Symbols by use`);
 const letter = computed(() => letterOf(icon.value.name));
 // Icons / <category> / this icon, or Icons / Browse / <letter> without a category page.
 const crumbs = computed(() => [
@@ -690,8 +699,10 @@ async function downloadPng(src, name, ...variant) {
 }
 
 // ---- Copy for search engines -------------------------------------------------
-const intro = computed(() => {
-  const name = icon.value.name;
+// This icon's own text (scripts/icon-copy.mjs): its tags, category, similar
+// icons and popularity.
+const intro = computed(() => details.value.usage);
+const name = icon.value.name;
   const category = details.value.category ? ` from the ${details.value.category} category` : "";
   const popular =
     data.value.rank <= 100

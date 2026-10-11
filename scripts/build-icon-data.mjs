@@ -34,6 +34,7 @@ import { marked } from "marked";
 import { execFileSync } from "node:child_process";
 import { renameSync, rmSync } from "node:fs";
 import { matchIcons } from "./cross-links.mjs";
+import { usageText } from "./icon-copy.mjs";
 
 // Settings for fluenticons.co; other sites export the same shape.
 const FLUENT = {
@@ -114,36 +115,46 @@ const index = icons.map((icon) => {
   return row;
 });
 
-// Related icons: shared name words (and name words used as keywords) count
-// most, then shared keywords. Icons next to each other alphabetically fill
-// any remaining places so every page links to 12 others.
+// Similar icons: shared name words count most, then shared keywords and (on
+// sites with them) the same category, each weighted by how rare it is, so
+// "temperature" links Celsius to Fahrenheit while "ui actions", shared by
+// hundreds of icons, adds little. No alphabetical filler: an icon with few
+// real matches lists fewer.
 const RELATED = 12;
-const nameTokens = icons.map((i) => new Set(i.name.toLowerCase().split(/\s+/)));
-const keywordSets = icons.map((i) => new Set(i.keywords));
 const listed = icons.map((i) => Boolean(i.filled || i.regular));
+// Small words ("Zoom In", "Apps Add In") say nothing about what an icon shows.
+const NAME_STOP = new Set(["in", "on", "at", "to", "of", "the", "a", "and", "for", "with", "by"]);
+const nameTokens = icons.map((i) => new Set(i.name.toLowerCase().split(/\s+/).filter((t) => !NAME_STOP.has(t))));
+const keywordSets = icons.map((i) => new Set(i.keywords));
+const docFreq = {};
+const count = (key) => (docFreq[key] = (docFreq[key] || 0) + 1);
+icons.forEach((icon, i) => {
+  if (!listed[i]) return;
+  nameTokens[i].forEach((t) => count(`n:${t}`));
+  keywordSets[i].forEach((k) => count(`k:${k}`));
+  if (icon.category) count(`c:${icon.category}`);
+});
+const listedCount = listed.filter(Boolean).length;
+// 0 for a word every icon has, up to about 1 for one shared by two icons.
+const rarity = (key) => Math.max(0, Math.log(listedCount / (docFreq[key] || 1)) / Math.log(listedCount / 2));
 function related(i) {
   const scores = [];
   icons.forEach((other, j) => {
     if (i === j || !listed[j]) return;
     let score = 0;
     for (const t of nameTokens[i]) {
-      if (nameTokens[j].has(t)) score += 3;
-      else if (keywordSets[j].has(t)) score += 1;
+      if (nameTokens[j].has(t)) score += 3 * rarity(`n:${t}`);
+      else if (keywordSets[j].has(t)) score += rarity(`k:${t}`);
     }
-    for (const k of keywordSets[i]) if (keywordSets[j].has(k)) score += 1;
-    if (icons[j].legacy) score -= 0.5;
-    if (score > 0) scores.push([score, other.slug]);
+    for (const k of keywordSets[i]) if (keywordSets[j].has(k)) score += rarity(`k:${k}`);
+    if (icons[i].category && icons[i].category === other.category) score += 0.5 * rarity(`c:${other.category}`);
+    if (other.legacy) score *= 0.8;
+    if (score >= 0.6) scores.push([score, other.slug]);
   });
-  const slugs = scores
+  return scores
     .sort((a, b) => b[0] - a[0] || a[1].localeCompare(b[1]))
     .slice(0, RELATED)
     .map(([, slug]) => slug);
-  for (let d = 1; slugs.length < RELATED && d < icons.length; d++) {
-    for (const j of [i - d, i + d]) {
-      if (slugs.length < RELATED && listed[j] && !slugs.includes(icons[j].slug)) slugs.push(icons[j].slug);
-    }
-  }
-  return slugs;
 }
 
 // The same icon on the other site (scripts/cross-links.mjs): { slug, name, file }.
@@ -175,6 +186,22 @@ icons.forEach((icon, i) => {
     // Extra per-icon fields a site's pages use (see its build.config.mjs).
     ...Object.fromEntries((config.detailFields || []).filter((f) => icon[f] != null).map((f) => [f, icon[f]])),
   };
+});
+
+// "About this icon" text (scripts/icon-copy.mjs). Material icons are listed
+// most used first, so their position is their popularity rank.
+const nameOf = new Map(icons.map((i) => [i.slug, i.name]));
+const ranked = icons.some((i) => i.popularity);
+icons.forEach((icon, i) => {
+  details[icon.slug].usage = usageText({
+    icon,
+    kind: ranked ? "material" : "fluent",
+    similar: details[icon.slug].related.map((s) => nameOf.get(s)),
+    twin: twins[icon.slug],
+    rank: ranked ? i + 1 : 0,
+    total: listedCount,
+    rarity,
+  });
 });
 
 const colorIcons = icons.filter((i) => i.color).map((i) => [i.slug, i.name, i.color]);
