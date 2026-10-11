@@ -42,7 +42,7 @@
       <p class="text-sm text-gray-500 mb-3" aria-live="polite">
         {{ shown.length === glyphs.length ? `${glyphs.length.toLocaleString("en-US")} glyphs` : `${shown.length} of ${glyphs.length.toLocaleString("en-US")} glyphs` }}
       </p>
-      <div class="overflow-x-auto rounded-lg border dark:border-gray-700">
+      <div class="relative overflow-x-auto rounded-lg border dark:border-gray-700">
         <table class="w-full text-sm">
           <thead class="bg-gray-50 dark:bg-gray-800 text-left">
             <tr>
