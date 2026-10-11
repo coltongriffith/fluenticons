@@ -702,16 +702,6 @@ async function downloadPng(src, name, ...variant) {
 // This icon's own text (scripts/icon-copy.mjs): its tags, category, similar
 // icons and popularity.
 const intro = computed(() => details.value.usage);
-const name = icon.value.name;
-  const category = details.value.category ? ` from the ${details.value.category} category` : "";
-  const popular =
-    data.value.rank <= 100
-      ? ` It's one of the 100 most used Material Symbols.`
-      : data.value.rank <= 500
-        ? ` It's one of the 500 most used Material Symbols.`
-        : "";
-  return `${name} is a Google Material Symbol${category}.${popular} It comes in outlined, rounded and sharp styles, filled or unfilled, at seven weights from 100 to 700. Download it as SVG or PNG, or copy code for HTML, React, Vue, Angular, Flutter and Android — it's free to use under the Apache License 2.0.`;
-});
 
 const name = icon.value.name;
 // "Copy the arrow_upward Material Symbol as SVG, JSX, MUI, Flutter or font
