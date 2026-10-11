@@ -42,7 +42,9 @@ const FLUENT = {
   url: "https://fluenticons.co",
   defaultFile: (slug, style) => `ic_fluent_${slug}_24_${style}.svg`,
   // Grid pages besides the homepage, and other data pages.
-  extraRoutes: ["/outlined", "/color", "/ai", "/sponsor"],
+  extraRoutes: ["/outlined", "/color", "/ai", "/sponsor", "/segoe-fluent-icons"],
+  // Writes app/generated/segoe.json for /segoe-fluent-icons/ from data/segoe-fluent-icons.json.
+  segoe: true,
   // Writes app/generated/api-catalog.json for the agent API (agent/, functions/).
   apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
@@ -279,6 +281,16 @@ const newIcons = Object.keys(byDate)
   .slice(0, NEW_UPDATES)
   .map((date) => ({ date, icons: byDate[date] }));
 
+// Segoe Fluent Icons glyphs, each with the Fluent icon of the same name if
+// there is one: [codePoint, name, fluentSlug | 0][].
+if (config.segoe) {
+  const snake = (n) => n.replace(/(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])/g, "_").toLowerCase();
+  const listedSlugs = new Set(icons.filter((i, n) => listed[n]).map((i) => i.slug));
+  write(
+    "segoe.json",
+    JSON.parse(read("data/segoe-fluent-icons.json")).glyphs.map(([code, name]) => [code, name, listedSlugs.has(snake(name)) ? snake(name) : 0])
+  );
+}
 write("index.json", index);
 write("details.json", details);
 write("new.json", newIcons);
@@ -349,8 +361,11 @@ const guides = existsSync(guidesDir)
           // A guide can live at its own URL (front matter `path`) instead of /guides/<slug>.
           path: meta.path || `/guides/${f.replace(/\.md$/, "")}`,
           title: meta.title,
+          // Optional: the full <title>, when it should differ from the heading.
+          seoTitle: meta.seoTitle || "",
           description: meta.description,
           date: meta.date,
+          updated: meta.updated || meta.date,
           order: Number(meta.order || 99),
           html: marked.parse(body),
         };
