@@ -59,7 +59,13 @@ export default {
     "Fluenticons is an independent project and is not affiliated with or endorsed by Microsoft.",
   errorBack: "Back to Fluent Icons",
   // Our other site, linked from the toolbar above the icon grid.
-  sister: { label: "Material Icons", url: "https://materialicons.co/" },
+  sister: {
+    label: "Material Icons",
+    url: "https://materialicons.co/",
+    // Icon pages: the matching icon there (IconTwin.vue).
+    twinHeading: "Also in Material Symbols",
+    twinNote: "Google's version of this icon, on Materialicons",
+  },
   // The page about the agent API and MCP server, promoted in the editor.
   aiPage: "/ai/",
 

@@ -8,6 +8,8 @@ export default {
   dataPage: /^\/(?:$|filled|browse|tag|category|icon\/)/,
   // /category/<name> pages from each icon's Google category (see build-icon-data.mjs).
   categoryPages: true,
+  // "Also in Fluent" links to the matching icon on fluenticons.co.
+  crossSite: { url: "https://fluenticons.co", data: "../../data/icons.json", fluent: true },
   // Social preview images for icon pages (public/og/<slug>.png).
   ogImages: true,
   // Google tags icons generously; topic pages need at least 15 icons, and

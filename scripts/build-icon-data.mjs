@@ -33,6 +33,7 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 
 import { marked } from "marked";
 import { execFileSync } from "node:child_process";
 import { renameSync, rmSync } from "node:fs";
+import { matchIcons } from "./cross-links.mjs";
 
 // Settings for fluenticons.co; other sites export the same shape.
 const FLUENT = {
@@ -45,6 +46,8 @@ const FLUENT = {
   apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
   tagMin: 10,
+  // "Also in Material Symbols" links to the matching icon on materialicons.co.
+  crossSite: { url: "https://materialicons.co", data: "sites/material/data/icons.json", fluent: false },
   uiIcons: Object.fromEntries(
     [
       "search_24_filled",
@@ -143,9 +146,23 @@ function related(i) {
   return slugs;
 }
 
+// The same icon on the other site (scripts/cross-links.mjs): { slug, name, file }.
+const twins = {};
+if (config.crossSite) {
+  const others = JSON.parse(read(config.crossSite.data));
+  const otherBySlug = new Map(others.map((o) => [o.slug, o]));
+  const [fluentIcons, materialIcons] = config.crossSite.fluent ? [others, icons] : [icons, others];
+  const { materialToFluent, fluentToMaterial } = matchIcons(fluentIcons, materialIcons);
+  for (const [mine, theirs] of Object.entries(config.crossSite.fluent ? materialToFluent : fluentToMaterial)) {
+    const o = otherBySlug.get(theirs);
+    twins[mine] = { slug: theirs, name: o.name, file: o.regular || o.filled };
+  }
+}
+
 const details = {};
 icons.forEach((icon, i) => {
   details[icon.slug] = {
+    ...(twins[icon.slug] && { twin: twins[icon.slug] }),
     description: icon.description,
     legacy: Boolean(icon.legacy),
     related: related(i),

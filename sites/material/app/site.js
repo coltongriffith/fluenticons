@@ -62,7 +62,13 @@ export default {
   footerDisclaimer:
     "Materialicons is an independent project and is not affiliated with or endorsed by Google.",
   errorBack: "Back to Material Icons",
-  sister: { label: "Fluent Icons", url: "https://fluenticons.co/" },
+  sister: {
+    label: "Fluent Icons",
+    url: "https://fluenticons.co/",
+    // Icon pages: the matching icon there (IconTwin.vue).
+    twinHeading: "Also in Fluent",
+    twinNote: "Microsoft's version of this icon, on Fluenticons",
+  },
 
   // The sitewide sponsor is set in app/sponsor.ts (same setup as fluenticons.co).
   sponsorPage: "/sponsor/",

@@ -250,6 +250,8 @@
       </template>
     </div>
 
+    <IconTwin :twin="details.twin" :slug="slug" />
+
     <section v-if="related.length" class="mt-12">
       <h2 class="text-2xl font-bold mb-4">Related icons</h2>
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
