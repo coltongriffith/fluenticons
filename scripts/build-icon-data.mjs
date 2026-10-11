@@ -33,6 +33,8 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 
 import { marked } from "marked";
 import { execFileSync } from "node:child_process";
 import { renameSync, rmSync } from "node:fs";
+import { matchIcons } from "./cross-links.mjs";
+import { usageText } from "./icon-copy.mjs";
 
 // Settings for fluenticons.co; other sites export the same shape.
 const FLUENT = {
@@ -40,11 +42,20 @@ const FLUENT = {
   url: "https://fluenticons.co",
   defaultFile: (slug, style) => `ic_fluent_${slug}_24_${style}.svg`,
   // Grid pages besides the homepage, and other data pages.
-  extraRoutes: ["/outlined", "/color", "/ai", "/sponsor"],
+  extraRoutes: ["/outlined", "/color", "/ai", "/sponsor", "/segoe-fluent-icons"],
+  // Writes app/generated/segoe.json for /segoe-fluent-icons/ from data/segoe-fluent-icons.json.
+  segoe: true,
+  // Homepage link blocks (home.json). Fluent has no usage data, so "Common
+  // icons" is a fixed list of everyday interface icons; sites with popularity
+  // data show their most used icons instead.
+  homeCommon: "home search settings person add delete edit mail calendar chat share arrow_left arrow_right chevron_down checkmark dismiss star heart alert document folder cart lock_closed globe".split(" "),
+  homeTopics: "edit arrow file text chart document image video camera audio person contact message email device mobile web cloud security settings time travel money ai".split(" "),
   // Writes app/generated/api-catalog.json for the agent API (agent/, functions/).
   apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
   tagMin: 10,
+  // "Also in Material Symbols" links to the matching icon on materialicons.co.
+  crossSite: { url: "https://materialicons.co", data: "sites/material/data/icons.json", fluent: false },
   uiIcons: Object.fromEntries(
     [
       "search_24_filled",
@@ -111,41 +122,65 @@ const index = icons.map((icon) => {
   return row;
 });
 
-// Related icons: shared name words (and name words used as keywords) count
-// most, then shared keywords. Icons next to each other alphabetically fill
-// any remaining places so every page links to 12 others.
+// Similar icons: shared name words count most, then shared keywords and (on
+// sites with them) the same category, each weighted by how rare it is, so
+// "temperature" links Celsius to Fahrenheit while "ui actions", shared by
+// hundreds of icons, adds little. No alphabetical filler: an icon with few
+// real matches lists fewer.
 const RELATED = 12;
-const nameTokens = icons.map((i) => new Set(i.name.toLowerCase().split(/\s+/)));
-const keywordSets = icons.map((i) => new Set(i.keywords));
 const listed = icons.map((i) => Boolean(i.filled || i.regular));
+// Small words ("Zoom In", "Apps Add In") say nothing about what an icon shows.
+const NAME_STOP = new Set(["in", "on", "at", "to", "of", "the", "a", "and", "for", "with", "by"]);
+const nameTokens = icons.map((i) => new Set(i.name.toLowerCase().split(/\s+/).filter((t) => !NAME_STOP.has(t))));
+const keywordSets = icons.map((i) => new Set(i.keywords));
+const docFreq = {};
+const count = (key) => (docFreq[key] = (docFreq[key] || 0) + 1);
+icons.forEach((icon, i) => {
+  if (!listed[i]) return;
+  nameTokens[i].forEach((t) => count(`n:${t}`));
+  keywordSets[i].forEach((k) => count(`k:${k}`));
+  if (icon.category) count(`c:${icon.category}`);
+});
+const listedCount = listed.filter(Boolean).length;
+// 0 for a word every icon has, up to about 1 for one shared by two icons.
+const rarity = (key) => Math.max(0, Math.log(listedCount / (docFreq[key] || 1)) / Math.log(listedCount / 2));
 function related(i) {
   const scores = [];
   icons.forEach((other, j) => {
     if (i === j || !listed[j]) return;
     let score = 0;
     for (const t of nameTokens[i]) {
-      if (nameTokens[j].has(t)) score += 3;
-      else if (keywordSets[j].has(t)) score += 1;
+      if (nameTokens[j].has(t)) score += 3 * rarity(`n:${t}`);
+      else if (keywordSets[j].has(t)) score += rarity(`k:${t}`);
     }
-    for (const k of keywordSets[i]) if (keywordSets[j].has(k)) score += 1;
-    if (icons[j].legacy) score -= 0.5;
-    if (score > 0) scores.push([score, other.slug]);
+    for (const k of keywordSets[i]) if (keywordSets[j].has(k)) score += rarity(`k:${k}`);
+    if (icons[i].category && icons[i].category === other.category) score += 0.5 * rarity(`c:${other.category}`);
+    if (other.legacy) score *= 0.8;
+    if (score >= 0.6) scores.push([score, other.slug]);
   });
-  const slugs = scores
+  return scores
     .sort((a, b) => b[0] - a[0] || a[1].localeCompare(b[1]))
     .slice(0, RELATED)
     .map(([, slug]) => slug);
-  for (let d = 1; slugs.length < RELATED && d < icons.length; d++) {
-    for (const j of [i - d, i + d]) {
-      if (slugs.length < RELATED && listed[j] && !slugs.includes(icons[j].slug)) slugs.push(icons[j].slug);
-    }
+}
+
+// The same icon on the other site (scripts/cross-links.mjs): { slug, name, file }.
+const twins = {};
+if (config.crossSite) {
+  const others = JSON.parse(read(config.crossSite.data));
+  const otherBySlug = new Map(others.map((o) => [o.slug, o]));
+  const [fluentIcons, materialIcons] = config.crossSite.fluent ? [others, icons] : [icons, others];
+  const { materialToFluent, fluentToMaterial } = matchIcons(fluentIcons, materialIcons);
+  for (const [mine, theirs] of Object.entries(config.crossSite.fluent ? materialToFluent : fluentToMaterial)) {
+    const o = otherBySlug.get(theirs);
+    twins[mine] = { slug: theirs, name: o.name, file: o.regular || o.filled };
   }
-  return slugs;
 }
 
 const details = {};
 icons.forEach((icon, i) => {
   details[icon.slug] = {
+    ...(twins[icon.slug] && { twin: twins[icon.slug] }),
     description: icon.description,
     legacy: Boolean(icon.legacy),
     related: related(i),
@@ -158,6 +193,22 @@ icons.forEach((icon, i) => {
     // Extra per-icon fields a site's pages use (see its build.config.mjs).
     ...Object.fromEntries((config.detailFields || []).filter((f) => icon[f] != null).map((f) => [f, icon[f]])),
   };
+});
+
+// "About this icon" text (scripts/icon-copy.mjs). Material icons are listed
+// most used first, so their position is their popularity rank.
+const nameOf = new Map(icons.map((i) => [i.slug, i.name]));
+const ranked = icons.some((i) => i.popularity);
+icons.forEach((icon, i) => {
+  details[icon.slug].usage = usageText({
+    icon,
+    kind: ranked ? "material" : "fluent",
+    similar: details[icon.slug].related.map((s) => nameOf.get(s)),
+    twin: twins[icon.slug],
+    rank: ranked ? i + 1 : 0,
+    total: listedCount,
+    rarity,
+  });
 });
 
 const colorIcons = icons.filter((i) => i.color).map((i) => [i.slug, i.name, i.color]);
@@ -235,6 +286,36 @@ const newIcons = Object.keys(byDate)
   .slice(0, NEW_UPDATES)
   .map((date) => ({ date, icons: byDate[date] }));
 
+// Segoe Fluent Icons glyphs, each with the Fluent icon of the same name if
+// there is one: [codePoint, name, fluentSlug | 0][].
+if (config.segoe) {
+  const snake = (n) => n.replace(/(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])/g, "_").toLowerCase();
+  const listedSlugs = new Set(icons.filter((i, n) => listed[n]).map((i) => i.slug));
+  write(
+    "segoe.json",
+    JSON.parse(read("data/segoe-fluent-icons.json")).glyphs.map(([code, name]) => [code, name, listedSlugs.has(snake(name)) ? snake(name) : 0])
+  );
+}
+// Homepage links: popular (or common) icons, the latest new icons, and the
+// main categories or topics, so crawlers reach deep pages from the homepage.
+{
+  const bySlug = new Map(icons.map((i) => [i.slug, i]));
+  const card = (i) => [i.slug, i.name, i.regular || i.filled];
+  const popular = config.homeCommon
+    ? config.homeCommon.map((s) => bySlug.get(s)).filter(Boolean)
+    : icons.filter((i, n) => listed[n]).slice(0, 24);
+  const groups = config.categoryPages
+    ? Object.entries(categories).sort(([, a], [, b]) => b.slugs.length - a.slugs.length).map(([s, c]) => [`/category/${s}/`, c.name, c.slugs.length])
+    : (config.homeTopics || []).filter((t) => tags[t]).map((t) => [`/tag/${t}/`, tags[t].name, tags[t].slugs.length]);
+  write("home.json", {
+    popularLabel: config.homeCommon ? "Common icons" : "Popular icons",
+    popular: popular.map(card),
+    newest: (newIcons[0]?.icons || []).slice(0, 12),
+    newestDate: newIcons[0]?.date || "",
+    groupsLabel: config.categoryPages ? "Categories" : "Topics",
+    groups,
+  });
+}
 write("index.json", index);
 write("details.json", details);
 write("new.json", newIcons);
@@ -305,8 +386,11 @@ const guides = existsSync(guidesDir)
           // A guide can live at its own URL (front matter `path`) instead of /guides/<slug>.
           path: meta.path || `/guides/${f.replace(/\.md$/, "")}`,
           title: meta.title,
+          // Optional: the full <title>, when it should differ from the heading.
+          seoTitle: meta.seoTitle || "",
           description: meta.description,
           date: meta.date,
+          updated: meta.updated || meta.date,
           order: Number(meta.order || 99),
           html: marked.parse(body),
         };

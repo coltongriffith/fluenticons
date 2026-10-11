@@ -1,11 +1,12 @@
 <template>
   <section class="container mx-auto px-4 sm:px-8 pb-8">
+    <HomeLinks />
     <div class="prose dark:prose-invert max-w-3xl">
       <h2>Free Google Material Symbols, ready to drop into your project</h2>
       <p>
-        Material Symbols are the icons Google designed for Material Design — the same family you
-        see across Android, Gmail, Google Drive and thousands of web apps. Google publishes them as
-        open source under the Apache License 2.0. Materialicons puts all
+        Material Symbols are the Google icons designed for Material Design — the same family you
+        see across Android, Gmail, Google Drive and thousands of web apps, and the successor to
+        Google Material Icons. Google publishes them as open source under the Apache License 2.0. Materialicons puts all
         {{ stats.designs.toLocaleString("en-US") }} of them in one fast, searchable place, each in
         three styles (<strong>outlined</strong>, <strong>rounded</strong> and
         <strong>sharp</strong>), filled or unfilled, at seven weights.
@@ -97,6 +98,11 @@ const faq = [
     q: "Are Material Symbols free for commercial use?",
     a: "Yes. Google releases Material Symbols under the Apache License 2.0, which allows commercial and personal use, modification and redistribution. If you redistribute the icons themselves, include a copy of the license. Using them in an app or website's interface is the normal, intended use.",
     html: 'Yes. Google releases Material Symbols under the Apache License 2.0, which allows commercial and personal use, modification and redistribution. If you redistribute the icons themselves, include a copy of the license. Using them in an app or website\'s interface is the normal, intended use. See the <a href="/license/">license page</a> and the <a href="/guides/material-symbols-license/">license guide</a>.',
+  },
+  {
+    q: "What's the difference between Google icons, Google Material Icons and Material Symbols?",
+    a: "They're names for the same family. \"Google icons\" usually means the icons Google designs for Material Design. Google Material Icons is the original set, with five fixed styles, which Google no longer updates. Material Symbols is the current version: the same icons and many more, in a variable font and SVGs with adjustable fill and weight. Materialicons has every Material Symbol, and each icon page gives the older Material Icons name for MUI and Flutter where there is one.",
+    html: 'They\'re names for the same family. "Google icons" usually means the icons Google designs for Material Design. Google Material Icons is the original set, with five fixed styles, which Google no longer updates. Material Symbols is the current version: the same icons and many more, in a variable font and SVGs with adjustable fill and weight. Materialicons has every Material Symbol, and each icon page gives the older Material Icons name for MUI and Flutter where there is one. The <a href="/material-icons-vs-material-symbols/">comparison guide</a> covers the differences.',
   },
   {
     q: "Is Materialicons made by Google?",

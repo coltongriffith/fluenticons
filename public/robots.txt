@@ -1,4 +1,6 @@
 User-agent: *
-Disallow:
+# Search results (/?q=…) are noindex copies of the grid; don't spend crawls on them.
+Disallow: /*?q=
+Disallow: /*&q=
 
 Sitemap: https://fluenticons.co/sitemap.xml

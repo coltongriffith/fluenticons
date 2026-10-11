@@ -23,7 +23,7 @@ const routesFile = local("./app/generated/routes.json");
 const routes = existsSync(routesFile) ? JSON.parse(readFileSync(routesFile, "utf8")) : ["/"];
 
 // Pages of the base layer that this site doesn't have.
-const FLUENT_ONLY = new Set(["/outlined", "/color", "/ai", "/microsoft-icons"]);
+const FLUENT_ONLY = new Set(["/outlined", "/color", "/ai", "/microsoft-icons", "/segoe-fluent-icons"]);
 
 export default defineNuxtConfig({
   extends: [local("../../")],

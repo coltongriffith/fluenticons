@@ -45,6 +45,7 @@ const formattedDate = new Date(`${guide.value.date}T00:00:00Z`).toLocaleDateStri
 
 useSeo({
   title: guide.value.title,
+  fullTitle: guide.value.seoTitle || undefined,
   description: guide.value.description,
   path: guide.value.path,
   type: "article",
@@ -56,7 +57,7 @@ useJsonLd({
   headline: guide.value.title,
   description: guide.value.description,
   datePublished: guide.value.date,
-  dateModified: guide.value.date,
+  dateModified: guide.value.updated || guide.value.date,
   author: { "@type": "Person", name: "Colton Griffith" },
   publisher: { "@type": "Organization", name: site.name, url: `${SITE_URL}/` },
   mainEntityOfPage: `${SITE_URL}${guide.value.path}/`,

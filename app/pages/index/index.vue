@@ -16,10 +16,5 @@ useJsonLd({
   name: site.name,
   url: `${SITE_URL}/`,
   description: SITE_DESCRIPTION,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${SITE_URL}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
 });
 </script>

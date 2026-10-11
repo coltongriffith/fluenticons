@@ -1,5 +1,6 @@
 <template>
   <section class="container mx-auto px-4 sm:px-8 pb-8">
+    <HomeLinks />
     <div class="prose dark:prose-invert max-w-3xl">
       <h2>Free Fluent UI System Icons, ready to drop into your project</h2>
       <p>

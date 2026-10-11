@@ -8,7 +8,17 @@
       <span>{{ icon.name }}</span>
     </nav>
 
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4">{{ icon.name }} icon</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold break-all">{{ slug }}</h1>
+    <p class="text-gray-500 dark:text-gray-400 mt-1 mb-4">{{ icon.name }} icon · Material Symbols</p>
+    <div class="flex items-stretch max-w-md mb-6 rounded-lg border dark:border-gray-700 overflow-hidden">
+      <code class="flex-1 min-w-0 px-4 py-2.5 text-base bg-gray-50 dark:bg-gray-800 truncate" aria-label="Icon code name">{{ slug }}</code>
+      <button
+        class="flex items-center gap-1.5 px-4 text-sm font-medium border-l dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+        @click="copyText(slug, 'icon name', 'name')"
+      >
+        <FluentSvg ui="copy_24_regular" class="h-4 w-4" /><span>Copy name</span>
+      </button>
+    </div>
     <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mb-8">
       {{ intro }}
     </p>
@@ -172,7 +182,8 @@
               {{ tab.label }}
             </button>
           </div>
-          <div v-for="tab in codeTabs" v-show="tab.key === activeTab.key" :key="tab.key" role="tabpanel">
+          <!-- Only the selected tab's code is in the page, so shared snippets don't outweigh this icon's own text. -->
+          <div v-for="tab in codeTabs.filter((t) => t.key === activeTab.key)" :key="tab.key" role="tabpanel">
             <h3 class="sr-only">{{ icon.name }} icon in {{ tab.label }}</h3>
             <p v-if="tab.note" class="text-sm text-gray-600 dark:text-gray-300 mb-2">{{ tab.note }}</p>
             <div class="relative">
@@ -196,7 +207,11 @@
         <tbody>
           <tr><th>Name</th><td>{{ icon.name }}</td></tr>
           <tr><th>Ligature</th><td><code>{{ slug }}</code></td></tr>
-          <tr v-if="details.codepoint"><th>Code point</th><td><code>U+{{ details.codepoint.toString(16).toUpperCase() }}</code></td></tr>
+          <template v-if="details.codepoint">
+            <tr><th>Unicode</th><td><code>U+{{ hex.toUpperCase() }}</code></td></tr>
+            <tr><th>HTML entity</th><td><code>&amp;#x{{ hex }};</code></td></tr>
+            <tr><th>CSS content</th><td><code>"\{{ hex }}"</code></td></tr>
+          </template>
           <tr v-if="details.category">
             <th>Category</th>
             <td>
@@ -211,7 +226,9 @@
             <td><code>@material-symbols/svg-400/outlined/{{ slug }}.svg</code>, <code>{{ slug }}-fill.svg</code></td>
           </tr>
           <tr v-if="details.flutter"><th>Flutter</th><td><code>Symbols.{{ details.flutter }}</code><template v-if="details.flutterIcon"> (Material Icons: <code>Icons.{{ details.flutterIcon }}</code>)</template></td></tr>
-          <tr v-if="details.mui"><th>MUI</th><td><code>@mui/icons-material/{{ details.mui }}</code></td></tr>
+          <tr v-if="details.mui"><th>MUI component</th><td><code>{{ details.mui }}Icon</code></td></tr>
+          <tr v-if="details.mui"><th>MUI import</th><td><code>import {{ details.mui }}Icon from "@mui/icons-material/{{ details.mui }}"</code></td></tr>
+          <tr><th>Popularity</th><td>#{{ popularity }}</td></tr>
           <tr><th>License</th><td><NuxtLink to="/license/">Apache License 2.0</NuxtLink> (© Google LLC)</td></tr>
         </tbody>
       </table>
@@ -240,8 +257,10 @@
       </template>
     </div>
 
+    <IconTwin :twin="details.twin" :slug="slug" />
+
     <section v-if="related.length" class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">Related icons</h2>
+      <h2 class="text-2xl font-bold mb-4">Similar icons</h2>
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
         <NuxtLink
           v-for="item in related"
@@ -316,6 +335,8 @@ const details = computed(() => data.value.details);
 const related = computed(() => data.value.related);
 const keywords = computed(() => data.value.keywords || []);
 const category = computed(() => data.value.category);
+const hex = computed(() => details.value.codepoint?.toString(16));
+const popularity = computed(() => `${data.value.rank.toLocaleString("en-US")} of ${stats.listed.toLocaleString("en-US")} Material Symbols by use`);
 const letter = computed(() => letterOf(icon.value.name));
 // Icons / <category> / this icon, or Icons / Browse / <letter> without a category page.
 const crumbs = computed(() => [
@@ -630,7 +651,7 @@ function trackVariant(name, format, style = activeStyle.value, fill = activeFill
 async function copyText(text, label, platform) {
   try {
     await navigator.clipboard.writeText(text);
-    toast.show(`Copied ${label} code`, "info", { promo: true });
+    toast.show(platform === "name" ? `Copied ${text}` : `Copied ${label} code`, "info", { promo: true });
     track("copy_code", { icon: slug, platform });
   } catch (err) {
     toast.error(err.message);
@@ -678,36 +699,19 @@ async function downloadPng(src, name, ...variant) {
 }
 
 // ---- Copy for search engines -------------------------------------------------
-const intro = computed(() => {
-  const name = icon.value.name;
-  const category = details.value.category ? ` from the ${details.value.category} category` : "";
-  const popular =
-    data.value.rank <= 100
-      ? ` It's one of the 100 most used Material Symbols.`
-      : data.value.rank <= 500
-        ? ` It's one of the 500 most used Material Symbols.`
-        : "";
-  return `${name} is a Google Material Symbol${category}.${popular} It comes in outlined, rounded and sharp styles, filled or unfilled, at seven weights from 100 to 700. Download it as SVG or PNG, or copy code for HTML, React, Vue, Angular, Flutter and Android — it's free to use under the Apache License 2.0.`;
-});
+// This icon's own text (scripts/icon-copy.mjs): its tags, category, similar
+// icons and popularity.
+const intro = computed(() => details.value.usage);
 
 const name = icon.value.name;
-// A unique description from the icon's name, category and first few keywords
-// (ones that don't repeat the name or category), kept under 160 characters.
+// "Copy the arrow_upward Material Symbol as SVG, JSX, MUI, Flutter or font
+// ligature. …", naming MUI and Flutter only for icons those packages have.
 function describe() {
-  const cat = details.value.category;
-  const skip = new Set([...name.toLowerCase().split(" "), cat?.toLowerCase()]);
-  const tags = icon.value.keywords.filter((k) => !skip.has(k) && !k.split(" ").every((w) => skip.has(w)));
-  const head = `${name} icon${cat ? ` (${cat})` : ""} from Google's Material Symbols`;
-  for (const tail of [" Free SVG, PNG, JSX, MUI, Flutter and font code.", " Free SVG, PNG and code."]) {
-    for (let n = Math.min(4, tags.length); n >= 0; n--) {
-      const text = `${head}${n ? `: ${tags.slice(0, n).join(", ")}.` : "."}${tail}`;
-      if (text.length <= 160) return text;
-    }
-  }
-  return `${head}.`;
+  const formats = ["SVG", "JSX", details.value.mui && "MUI", (details.value.flutter || details.value.flutterIcon) && "Flutter", "font ligature"].filter(Boolean);
+  return `Copy the ${slug} Material Symbol as ${formats.slice(0, -1).join(", ")} or ${formats.at(-1)}. Outlined, rounded, sharp, filled.`;
 }
 useSeo({
-  fullTitle: `${name} Icon — Material Icons & Symbols (SVG, JSX, Font)`,
+  fullTitle: `${slug} — Material Symbol | Copy SVG, JSX & Font Code`,
   description: describe(),
   path: slugToPath(slug).replace(/\/$/, ""),
   image: details.value.og ? `/og/${slug}.png` : undefined,

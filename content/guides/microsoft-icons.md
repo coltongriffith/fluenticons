@@ -1,7 +1,9 @@
 ---
-title: "Microsoft icons: every official set explained"
-description: Fluent UI System Icons, Segoe Fluent Icons, Fabric MDL2, Fluent Emoji, Office and Azure icons. What each Microsoft icon set is for and how it's licensed.
+title: "Microsoft icons library: every official set explained"
+seoTitle: "Microsoft Icons Library — Free Fluent UI System Icons"
+description: Microsoft's icon library in one place. Free Fluent UI System Icons by topic, plus Segoe Fluent Icons, Fabric MDL2, Office, Fluent Emoji and Azure icons, and how each is licensed.
 date: 2026-10-02
+updated: 2026-10-11
 path: /microsoft-icons
 order: 10
 ---
@@ -28,11 +30,22 @@ The icons come as packages for each platform:
 - **SVG:** `@fluentui/svg-icons`, for plain HTML, Vue, Svelte or any other framework.
 - **Flutter, Android and iOS:** native packages from the same repository.
 
-Fluenticons is a free viewer for this set: [search by name or meaning](/), [browse them A–Z](/browse/), and copy the SVG, PNG or code for any icon.
+Fluenticons is a free viewer for this set: [search by name or meaning](/), [browse them A–Z](/browse/), and copy the SVG, PNG or code for any icon. See the [filled](/), [outlined](/outlined/) and [color](/color/) icons, or [what's new](/new/) in the latest release.
+
+### Browse Microsoft's icons by topic
+
+- **Interface and editing:** [edit](/tag/edit/), [arrows](/tag/arrow/), [alignment](/tag/alignment/), [layout](/tag/layout/), [shapes](/tag/shape/), [settings](/tag/settings/), [navigation](/tag/navigation/)
+- **Documents and data:** [files](/tag/file/), [documents](/tag/document/), [text](/tag/text/), [charts](/tag/chart/), [data](/tag/data/), [Office](/tag/office/)
+- **People and communication:** [people](/tag/person/), [contacts](/tag/contact/), [messages](/tag/message/), [email](/tag/email/), [notifications](/tag/notification/)
+- **Media:** [images](/tag/image/), [video](/tag/video/), [cameras](/tag/camera/), [audio](/tag/audio/)
+- **Devices and the web:** [devices](/tag/device/), [mobile](/tag/mobile/), [web](/tag/web/), [cloud](/tag/cloud/), [security](/tag/security/)
+- **Everyday:** [time](/tag/time/), [travel](/tag/travel/), [money](/tag/money/), [health](/tag/health/), [home](/tag/home/), [AI](/tag/ai/)
+
+All [topics](/tag/) are listed on one page.
 
 ## Segoe Fluent Icons
 
-Segoe Fluent Icons is the icon font built into Windows 11. Windows apps use it through `SymbolIcon` or a `FontIcon` with a glyph code point. Reference the font through the theme resource, `<FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE700;"/>`, rather than by name: Windows 10 doesn't include Segoe Fluent Icons, and the theme resource falls back to Segoe MDL2 Assets there. Its glyphs follow the same Fluent design language as Fluent UI System Icons.
+Segoe Fluent Icons is the icon font built into Windows 11; see the [full Segoe Fluent Icons list](/segoe-fluent-icons/) with every glyph's Unicode code point. Windows apps use it through `SymbolIcon` or a `FontIcon` with a glyph code point. Reference the font through the theme resource, `<FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE700;"/>`, rather than by name: Windows 10 doesn't include Segoe Fluent Icons, and the theme resource falls back to Segoe MDL2 Assets there. Its glyphs follow the same Fluent design language as Fluent UI System Icons.
 
 The font is licensed for apps running on Windows only. Microsoft offers a download for design and development, but that copy may not be shipped to other platforms, so don't use it on a website or in a cross-platform app. For those, use the matching icon from Fluent UI System Icons instead.
 
@@ -50,7 +63,15 @@ The package's code is MIT licensed, but the icons and fonts it loads are covered
 
 [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) is Microsoft's emoji set, in 3D, color, flat and high-contrast styles. It's MIT licensed, so it works well for chat apps, reactions and friendly illustrations next to Fluent UI icons.
 
-## Office and Microsoft 365 app icons
+## Office icons
+
+"Office icons" can mean three different things:
+
+- **The icons inside Office apps.** Today's Word, Excel, Outlook and Teams interfaces use Fluent UI System Icons, so the toolbar and ribbon icons you see are the same family as the [Office topic](/tag/office/) and the rest of this site.
+- **Office UI Fabric icons.** The older Office web icon font, now Fabric MDL2 (below).
+- **The Microsoft 365 app icons.** The logos for Word, Excel, PowerPoint, Teams and the other apps.
+
+### Office and Microsoft 365 app icons
 
 The icons for Word, Excel, PowerPoint, Teams and the other Microsoft 365 apps are brand assets, not interface icons. You can use them to link to or open those apps, or to show that your product works with them. You can't use them to represent your own product, change them, or use them in a way that suggests Microsoft endorses you.
 
