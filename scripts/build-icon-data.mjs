@@ -45,6 +45,11 @@ const FLUENT = {
   extraRoutes: ["/outlined", "/color", "/ai", "/sponsor", "/segoe-fluent-icons"],
   // Writes app/generated/segoe.json for /segoe-fluent-icons/ from data/segoe-fluent-icons.json.
   segoe: true,
+  // Homepage link blocks (home.json). Fluent has no usage data, so "Common
+  // icons" is a fixed list of everyday interface icons; sites with popularity
+  // data show their most used icons instead.
+  homeCommon: "home search settings person add delete edit mail calendar chat share arrow_left arrow_right chevron_down checkmark dismiss star heart alert document folder cart lock_closed globe".split(" "),
+  homeTopics: "edit arrow file text chart document image video camera audio person contact message email device mobile web cloud security settings time travel money ai".split(" "),
   // Writes app/generated/api-catalog.json for the agent API (agent/, functions/).
   apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
@@ -290,6 +295,26 @@ if (config.segoe) {
     "segoe.json",
     JSON.parse(read("data/segoe-fluent-icons.json")).glyphs.map(([code, name]) => [code, name, listedSlugs.has(snake(name)) ? snake(name) : 0])
   );
+}
+// Homepage links: popular (or common) icons, the latest new icons, and the
+// main categories or topics, so crawlers reach deep pages from the homepage.
+{
+  const bySlug = new Map(icons.map((i) => [i.slug, i]));
+  const card = (i) => [i.slug, i.name, i.regular || i.filled];
+  const popular = config.homeCommon
+    ? config.homeCommon.map((s) => bySlug.get(s)).filter(Boolean)
+    : icons.filter((i, n) => listed[n]).slice(0, 24);
+  const groups = config.categoryPages
+    ? Object.entries(categories).sort(([, a], [, b]) => b.slugs.length - a.slugs.length).map(([s, c]) => [`/category/${s}/`, c.name, c.slugs.length])
+    : (config.homeTopics || []).filter((t) => tags[t]).map((t) => [`/tag/${t}/`, tags[t].name, tags[t].slugs.length]);
+  write("home.json", {
+    popularLabel: config.homeCommon ? "Common icons" : "Popular icons",
+    popular: popular.map(card),
+    newest: (newIcons[0]?.icons || []).slice(0, 12),
+    newestDate: newIcons[0]?.date || "",
+    groupsLabel: config.categoryPages ? "Categories" : "Topics",
+    groups,
+  });
 }
 write("index.json", index);
 write("details.json", details);
