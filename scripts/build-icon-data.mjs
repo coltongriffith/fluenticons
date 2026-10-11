@@ -498,12 +498,12 @@ ${feedItems.join("\n")}
 `
 );
 // Pages built from the icon data change when it's re-imported; guides carry
-// their own date. Other pages (about, legal) have no reliable date.
+// their own date (`updated`, else `date`). Other pages (about, legal) have no reliable date.
 const dataPage = config.dataPage;
 const lastmod = (path) => {
   const guide = guides.find((g) => path === g.path);
-  if (guide) return guide.date;
-  if (path === "/guides") return guides.map((g) => g.date).sort().pop();
+  if (guide) return guide.updated;
+  if (path === "/guides") return guides.map((g) => g.updated).sort().pop();
   if (path === "/new") return newIcons[0]?.date || null;
   return dataPage.test(path) ? meta.updated : null;
 };
