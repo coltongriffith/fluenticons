@@ -96,8 +96,9 @@ Coding agents can search the icons by meaning and get real `@fluentui/react-icon
 Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/ai/).
 
 - **HTTP API** `/api/v1/…` and **MCP server** `/mcp` (Streamable HTTP, stateless, no auth) run as
-  Cloudflare Pages Functions (`functions/`), deployed with the site. `public/_routes.json` limits
-  them to `/api/*` and `/mcp`; every other URL is still a static file.
+  Cloudflare Pages Functions (`functions/`), deployed with the site. Pages also pass through
+  `functions/_middleware.js` (it hides sponsors in countries listed in their `hiddenIn`);
+  `public/_routes.json` keeps assets (`/_nuxt/*`, `/icons/*`, images…) static files.
 - **Code** is in `agent/`: `icons.js` (lookup, search, recommendations, code), `tools.js` (the
   operations both the API and MCP call: validation + analytics), `http.js`, `mcp.js`, `track.js`,
   `synonyms.js`. Code snippets come from `app/utils/iconCode.js`, which the icon pages use too.
@@ -147,16 +148,17 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
 
 ### Sponsors
 
-One sponsor at a time, set in `app/sponsor.ts` (materialicons.co: `sites/material/app/sponsor.ts`):
-add a square logo to `public/sponsors/` (`.svg`, or `.png` under the same name), fill in the
-fields, set `active: true` and deploy. The
-card shows from `startDate` to `endDate` (whole days, UTC, checked again in the browser) on the
+Sponsors are listed in `app/sponsor.ts` (materialicons.co: `sites/material/app/sponsor.ts`):
+add a square logo to `public/sponsors/` (`.svg`, or `.png` under the same name; an animated
+`.gif` with a `-still.png` for reduced motion), add the sponsor, set `active: true` and deploy.
+Several can run at once: each placement shows every running sponsor (the top one changes from
+page to page) and the copy credit takes turns. Each card shows from `startDate` to `endDate` (whole days, UTC, checked again in the browser) on the
 homepage, icon pages, the icon editor, guides and as a credit on copies 1, 6, 11… of a visit;
 otherwise the hero shows a "Your product here" card linking to `/sponsor/` and the other spots
 show nothing. A `url` that already has UTM parameters is used exactly as given; otherwise
 `utm_source`/`medium`/`campaign`/`content` are added. AdSense is off
-while a sponsor is running (as of the build). `?sponsor_preview=1` shows the configured sponsor
-early, with no events. The build fails on a tagline over 70 characters or, when active, a bad
+while a sponsor is running (as of the build). `?sponsor_preview=1` shows every configured
+sponsor early (`=<slug>` for one), with no events. The build fails on a tagline over 70 characters or, when active, a bad
 URL, missing logo or malformed date. Events for the monthly report: `sponsor_impression` and
 `sponsor_click`, each with `sponsor` and `placement` (homepage, icon, editor, guide, copy_toast,
 sponsor_page); clicks on the empty card are `sponsor_house_click`.

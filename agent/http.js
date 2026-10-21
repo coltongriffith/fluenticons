@@ -1,6 +1,5 @@
 // The HTTP API (/api/v1/…), served by the Cloudflare Pages Function in
-// functions/api/v1/[[path]].js. Only /api/* and /mcp run code (see
-// public/_routes.json); every other URL is a static file as before.
+// functions/api/v1/[[path]].js.
 import { InputError, LIMITS, about, getIcon, iconCode, recommendIcons, searchIcons, similarIcons } from "./tools.js";
 
 export const CORS = {

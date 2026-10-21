@@ -3,9 +3,8 @@
     <div class="max-w-3xl">
       <h1 class="text-3xl sm:text-4xl font-bold mb-4">Sponsor {{ site.name }}</h1>
       <p class="text-lg text-gray-600 dark:text-gray-300 mb-10">
-        Developers come here to find {{ kit.iconName }} and copy the code. One sponsor at a
-        time gets a clearly labeled spot across the site, in front of people who are building
-        something right now.
+        Developers come here to find {{ kit.iconName }} and copy the code. Sponsors get a clearly
+        labeled spot across the site, in front of people who are building something right now.
       </p>
 
       <template v-if="kit.users">
@@ -33,10 +32,10 @@
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-3">Where your product appears</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6">
-          The same card runs sitewide for the month. This is how it looks:
+          Your card runs sitewide for the month. This is how it looks:
         </p>
         <div class="rounded-xl border dark:border-gray-700 bg-slate-50 dark:bg-[#0B1120] p-6 sm:p-8 mb-6">
-          <SponsorCard variant="hero" placement="sponsor_page" :example="example" />
+          <SponsorCard variant="hero" placement="sponsor_page" :example="example" :max="1" />
         </div>
         <ul class="space-y-3 text-gray-700 dark:text-gray-200">
           <li v-for="p in placements" :key="p.title" class="flex gap-3">
@@ -49,7 +48,7 @@
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-3">How it works</h2>
         <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
-          <li>One sponsor per month. No other ads run while you're booked.</li>
+          <li>Sponsor cards only: no display ads run on the site while you're booked.</li>
           <li>Labeled “Sponsor”, with <code class="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-sm">rel="sponsored"</code> links tagged with UTM parameters so you can see the traffic in your own analytics.</li>
           <li>No third-party scripts or tracking pixels. The card is part of the page, so ad blockers don't hide it.</li>
           <li>At the end of the month you get a report of impressions and clicks by placement.</li>
@@ -110,7 +109,7 @@ const mailto = `mailto:${kit.email}?subject=${encodeURIComponent(`Sponsoring ${s
 
 useSeo({
   title: "Sponsor",
-  description: `${kit.users ? `Reach about ${kit.users} developers a month` : "Reach developers"} building with ${kit.iconSet}. One labeled sponsor at a time, $${kit.price} per month.`,
+  description: `${kit.users ? `Reach about ${kit.users} developers a month` : "Reach developers"} building with ${kit.iconSet}. Labeled sponsor cards across the site, $${kit.price} per month.`,
   path: "/sponsor",
 });
 </script>

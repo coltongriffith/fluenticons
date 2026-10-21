@@ -13,23 +13,23 @@
       >
         {{ toast.message }}
         <a
-          v-if="toast.sponsored && sponsor"
-          :href="href('copy_toast')"
+          v-if="toast.sponsored"
+          :href="href(toast.sponsored, 'copy_toast')"
           target="_blank"
           rel="sponsored noopener"
           class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center gap-2 text-xs font-normal text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100"
-          @click="click('copy_toast')"
-          @auxclick.middle="click('copy_toast')"
+          @click="click(toast.sponsored, 'copy_toast')"
+          @auxclick.middle="click(toast.sponsored, 'copy_toast')"
         >
           <img
-            v-if="sponsor.logo"
-            :src="sponsor.logo"
-            :alt="sponsor.logoAlt || ''"
+            v-if="toast.sponsored.logo"
+            :src="toast.sponsored.logo"
+            :alt="toast.sponsored.logoAlt || ''"
             width="16"
             height="16"
             class="h-4 w-4 rounded object-contain"
           />
-          <span>Sponsored by <span class="font-medium underline underline-offset-2">{{ sponsor.name }}</span></span>
+          <span>Sponsored by <span class="font-medium underline underline-offset-2">{{ toast.sponsored.name }}</span></span>
         </a>
       </div>
     </TransitionGroup>
@@ -38,7 +38,7 @@
 
 <script setup>
 const { toasts } = useToast();
-const { sponsor, href, click } = useSponsor();
+const { href, click } = useSponsor();
 </script>
 
 <style scoped>

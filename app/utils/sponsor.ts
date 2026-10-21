@@ -1,18 +1,23 @@
-// Types and helpers for the sitewide sponsor. Each site's sponsor is set in its
-// own app/sponsor.ts; every placement reads it through useSponsor().
+// Types and helpers for the site's sponsors. Each site sets them in its own
+// app/sponsor.ts (one sponsor or a list); every placement reads them through
+// useSponsor().
 
 export interface SponsorConfig {
   /** Turn the sponsor on. With false, every placement shows the "Your product here" card. */
   active: boolean;
-  /** Product name, shown in bold. */
+  /** Advertiser or product name: the card title unless `headline` is set, the
+   *  copy-confirmation credit ("Sponsored by …") and the analytics name. */
   name: string;
+  /** Optional card title when it should differ from the name, e.g. a campaign line. */
+  headline?: string;
   /** One line about the product, at most TAGLINE_MAX characters (checked at build time). */
   tagline: string;
   /** Landing page. Used exactly as given if it already has UTM parameters (see sponsorLink). */
   url: string;
   /** Square logo in public/, e.g. "/sponsors/acme.svg" (96x96 or larger). If an
    *  .svg is missing, the same name in .png is used; with neither, the card
-   *  shows the name's initials. */
+   *  shows the name's initials. An animated .gif works; add the same name with
+   *  -still.png (e.g. acme-still.png) for visitors who turn off animations. */
   logo: string;
   logoAlt: string;
   /** First and last day shown, as ISO dates ("2026-11-01"). Whole days in UTC. */
@@ -20,7 +25,29 @@ export interface SponsorConfig {
   endDate: string;
   /** Optional call to action under the tagline, e.g. "Try Acme free". */
   ctaText?: string;
+  /** Optional brand color ("#34C694") for the call to action. Dark mode uses it as
+   *  is; light mode a darker shade that reads on white. */
+  ctaColor?: string;
+  /** Optional countries (ISO codes, e.g. ["PL"]) whose visitors don't see this
+   *  sponsor. The card is hidden in the page before it's sent
+   *  (functions/_middleware.js), so it never shows there, not even briefly. */
+  hiddenIn?: string[];
 }
+
+/** app/sponsor.ts exports one sponsor or a list; this always gives a list. */
+export const sponsorList = (cfg: SponsorConfig | SponsorConfig[]): SponsorConfig[] => (Array.isArray(cfg) ? cfg : [cfg]);
+
+const luminance = ([r, g, b]: number[]) =>
+  [r, g, b].map((c) => (c /= 255) <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4).reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
+
+/** `hex` darkened just enough to reach 4.5:1 contrast on white (for light mode). */
+export function readableOnWhite(hex: string): string {
+  let rgb = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  while (1.05 / (luminance(rgb) + 0.05) < 4.5) rgb = rgb.map((c) => Math.floor(c * 0.92));
+  return `#${rgb.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+}
+
+export const HEADLINE_MAX = 40;
 
 export const TAGLINE_MAX = 70;
 
@@ -62,6 +89,12 @@ export function sponsorLogo(s: SponsorConfig, logoExists: (path: string) => bool
   return [s.logo, s.logo.replace(/\.svg$/i, ".png")].find(logoExists) || "";
 }
 
+/** A still frame for an animated .gif logo (name-still.png), shown with reduced motion; "" if none. */
+export function sponsorLogoStill(s: SponsorConfig, logoExists: (path: string) => boolean): string {
+  const still = s.logo.replace(/\.gif$/i, "-still.png");
+  return still !== s.logo && logoExists(still) ? still : "";
+}
+
 // Parsed, not pattern-matched: sponsorLink() calls new URL() on it.
 function isHttpsUrl(value: string): boolean {
   try {
@@ -91,6 +124,11 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   if (!s.logo.startsWith("/")) problems.push(`logo must be a path in public/, like "/sponsors/name.png" (got "${s.logo}")`);
   else if (!sponsorLogo(s, logoExists)) problems.push(`logo file not found: public${s.logo}`);
   if (!s.logoAlt.trim()) problems.push("logoAlt is empty");
+  if (s.headline && s.headline.length > HEADLINE_MAX) problems.push(`headline is ${s.headline.length} characters; the limit is ${HEADLINE_MAX}`);
+  if (s.ctaColor && !/^#[0-9a-f]{6}$/i.test(s.ctaColor)) problems.push(`ctaColor must be a hex color like #34C694 (got "${s.ctaColor}")`);
+  for (const code of s.hiddenIn || []) {
+    if (!/^[A-Z]{2}$/.test(code)) problems.push(`hiddenIn takes two-letter country codes like "PL" (got "${code}")`);
+  }
   for (const key of ["startDate", "endDate"] as const) {
     if (!isIsoDate(s[key])) {
       problems.push(`${key} must be an ISO date like 2026-11-01 (got "${s[key]}")`);
@@ -98,4 +136,17 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   }
   if (dayStart(s.endDate) < dayStart(s.startDate)) problems.push("endDate is before startDate");
   return problems;
+}
+
+/**
+ * Checks every sponsor (throws, listing the problems, so the build stops) and
+ * returns each one's logo files: { [slug]: { logo, still } }.
+ */
+export function checkSponsors(list: SponsorConfig[], logoExists: (path: string) => boolean, file: string) {
+  const problems = list.flatMap((s) => sponsorProblems(s, logoExists).map((p) => `${s.name || "sponsor"}: ${p}`));
+  const slugs = list.map((s) => sponsorSlug(s.name));
+  const dupe = slugs.find((slug, i) => slugs.indexOf(slug) !== i);
+  if (dupe) problems.push(`two sponsors are named "${dupe}"`);
+  if (problems.length) throw new Error(`${file}: ${problems.join("; ")}`);
+  return Object.fromEntries(list.map((s, i) => [slugs[i], { logo: sponsorLogo(s, logoExists), still: sponsorLogoStill(s, logoExists) }]));
 }
