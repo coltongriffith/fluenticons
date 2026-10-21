@@ -41,9 +41,10 @@ export function useJsonLd(data) {
 // Loads Google AdSense (Auto ads) on pages with real content. Utility pages
 // (favorites, 404, legal pages) don't call this, so no ads are shown there.
 // Off while any sponsor is running (app/sponsor.ts, as of the build): sponsor
-// slots are sold without other ads next to them.
+// slots are sold without other ads next to them. Off on a site with no
+// adsenseClient (materialicons.co).
 export function useAdsense() {
-  if (sponsorList(sponsorConfig).some((s) => isLive(s))) return;
+  if (!ADSENSE_CLIENT || sponsorList(sponsorConfig).some((s) => isLive(s))) return;
   useHead({
     script: [
       {

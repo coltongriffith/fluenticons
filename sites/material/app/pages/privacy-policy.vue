@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 sm:px-8 py-8">
     <div class="prose dark:prose-invert max-w-3xl">
       <h1>Privacy Policy</h1>
-      <p class="text-sm">Last updated: 24 September 2026</p>
+      <p class="text-sm">Last updated: 21 October 2026</p>
       <p>
         This policy explains what information is collected when you use materialicons.co (the
         "Site"), why, and the choices you have. The Site is operated by Colton Griffith
@@ -13,7 +13,7 @@
       <ul>
         <li>You don't need an account, and we don't ask for your name or email to use the Site.</li>
         <li>Your favorites and theme choice are stored only in your own browser.</li>
-        <li>We use Google Analytics and Ahrefs Web Analytics to understand how the Site is used, and Google AdSense to show ads. Google Analytics and AdSense use cookies or similar technologies and collect usage data.</li>
+        <li>We use Google Analytics and Ahrefs Web Analytics to understand how the Site is used. Google Analytics uses cookies or similar technologies and collects usage data.</li>
         <li>We don't sell your personal information.</li>
       </ul>
 
@@ -49,30 +49,13 @@
         <a href="https://ahrefs.com/web-analytics" target="_blank" rel="noopener">Ahrefs Web Analytics</a>.
       </p>
 
-      <h3>Advertising</h3>
+      <h3>Sponsors</h3>
       <p>
-        We use Google AdSense to show ads, which keeps the Site free. Google and its partners use
-        cookies and similar technologies to serve ads, measure their performance and, where
-        permitted, personalize them based on your visits to this and other websites.
+        The Site shows labeled cards from sponsors, which keep it free. They're part of the page,
+        with no ad network, ad cookies or tracking pixels. When you see or click a sponsor card,
+        Google Analytics records it so we can report totals to the sponsor; the sponsor gets no
+        information about you from the Site.
       </p>
-      <ul>
-        <li>
-          You can turn off personalized ads in
-          <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google's Ads Settings</a>,
-          or opt out of some third-party vendors' use of cookies at
-          <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener">aboutads.info</a>.
-        </li>
-        <li>
-          Learn more in
-          <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a>.
-        </li>
-        <li>
-          Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for
-          consent through Google's consent message before personalized ads or non-essential
-          cookies are used. You can change your choice at any time from the privacy link shown
-          in that message.
-        </li>
-      </ul>
 
       <h2>Information you send us</h2>
       <p>
@@ -82,7 +65,7 @@
 
       <h2>Legal bases (EEA/UK visitors)</h2>
       <p>
-        We rely on your consent for analytics and advertising cookies where the law requires it,
+        We rely on your consent for analytics cookies where the law requires it,
         and on our legitimate interest in operating, securing and improving the Site for hosting
         logs and aggregate measurement.
       </p>
@@ -93,7 +76,6 @@
         to the processing of your personal information, and to withdraw consent. Because we
         don't hold accounts or profiles, most data about your visit is held by Google and
         Cloudflare. Use the controls linked above, or email us and we'll help where we can.
-        California residents can use the same controls to opt out of personalized advertising.
       </p>
 
       <h2>Children</h2>
@@ -126,7 +108,7 @@
 useSeo({
   title: "Privacy Policy",
   description:
-    "What information materialicons.co collects, how Google Analytics and Google AdSense use cookies, and the choices you have.",
+    "What information materialicons.co collects, how Google Analytics uses cookies, and the choices you have.",
   path: "/privacy-policy",
 });
 </script>
