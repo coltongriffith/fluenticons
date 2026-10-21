@@ -77,13 +77,12 @@ jobs:
 
       - name: Check build output
         run: |
-          for f in index.html filled/index.html icon/home/index.html guides/index.html license/index.html material-symbols/index.html category/index.html material-icons-vs-material-symbols/index.html og/home.png ads.txt sitemap.xml _headers _redirects icons/home.svg; do
+          for f in index.html filled/index.html icon/home/index.html guides/index.html license/index.html material-symbols/index.html category/index.html material-icons-vs-material-symbols/index.html og/home.png sitemap.xml _headers _redirects icons/home.svg; do
             test -s "sites/material/dist/$f" || { echo "Missing sites/material/dist/$f"; exit 1; }
           done
           files=$(find sites/material/dist -type f | wc -l)
           echo "Files: $files"
           test "$files" -lt 20000
-          grep -q "pub-9128081695641229" sites/material/dist/ads.txt
           grep -q "<title>Material Icons &amp; Symbols" sites/material/dist/index.html
           build_id=$(grep -o 'buildId:"[^"]*"' sites/material/dist/index.html | head -1)
           test -n "$build_id" || { echo "No buildId in index.html"; exit 1; }
@@ -101,8 +100,9 @@ jobs:
             npx --yes wrangler@4 pages project create "$PROJECT" --production-branch main
           fi
 
-      # Run from sites/material so wrangler doesn't pick up the repo root's
-      # functions/ (fluenticons.co's agent API), which this site doesn't serve.
+      # Run from sites/material so wrangler deploys this site's functions/
+      # (the sponsor middleware) and not the repo root's (fluenticons.co's agent
+      # API, which this site doesn't serve).
       - name: Deploy
         working-directory: sites/material
         env:
@@ -120,7 +120,6 @@ jobs:
         run: |
           for _ in $(seq 1 18); do
             if curl -fsS "$SITE_URL/" | grep -qF "$BUILD_ID" \
-              && curl -fsS "$SITE_URL/ads.txt" | grep -q "pub-9128081695641229" \
               && curl -fsS -o /dev/null "$SITE_URL/icon/home/"; then
               echo "$SITE_URL is serving $BUILD_ID"
               exit 0

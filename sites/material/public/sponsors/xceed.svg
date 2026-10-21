@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+  <defs>
+    <clipPath id="clip-Product_-_Toolkit_plus_for_WPF">
+      <rect width="150" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="Product_-_Toolkit_plus_for_WPF" data-name="Product - Toolkit plus for WPF" clip-path="url(#clip-Product_-_Toolkit_plus_for_WPF)">
+    <rect width="150" height="150" fill="#fff"/>
+    <g id="Group_496" data-name="Group 496" transform="translate(-68 -526)">
+      <rect id="Rectangle_171" data-name="Rectangle 171" width="150" height="150" transform="translate(68 526)" fill="#ff671b"/>
+      <path id="home_repair_service_FILL0_wght300_GRAD0_opsz40" d="M148.751-731.94ZM100-703.025v-49.8a7.727,7.727,0,0,1,2.359-5.667,7.728,7.728,0,0,1,5.667-2.359h16.349v-11.119a7.728,7.728,0,0,1,2.359-5.667A7.728,7.728,0,0,1,132.4-780h32.7a7.728,7.728,0,0,1,5.667,2.359,7.728,7.728,0,0,1,2.359,5.667v11.119h16.349a7.728,7.728,0,0,1,5.667,2.359,7.727,7.727,0,0,1,2.359,5.667v49.8ZM125.4-728.716v6.382h-6.447v-6.382h-12.5v19.244h84.606v-19.244h-12.5v6.382h-6.447v-6.382Zm-18.947-24.112v17.665h12.5v-6.382H125.4v6.382h46.711v-6.382h6.447v6.382h12.5v-17.665a1.509,1.509,0,0,0-.493-1.086,1.51,1.51,0,0,0-1.086-.494H108.027a1.509,1.509,0,0,0-1.086.494,1.509,1.509,0,0,0-.494,1.086Zm24.375-8.026h35.855v-11.119a1.509,1.509,0,0,0-.493-1.086,1.51,1.51,0,0,0-1.086-.493H132.4a1.51,1.51,0,0,0-1.086.493,1.509,1.509,0,0,0-.493,1.086Z" transform="translate(-5.001 1337.499)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
