@@ -31,7 +31,10 @@ export default defineNuxtConfig({
   // site.js), not the base layer's.
   experimental: { localLayerAliases: false },
   dir: { public: "public" },
-  appConfig: { sponsorLogo: sponsorUtils.sponsorLogo(sponsor, logoExists) },
+  appConfig: {
+    sponsorLogo: sponsorUtils.sponsorLogo(sponsor, logoExists),
+    sponsorLogoStill: sponsorUtils.sponsorLogoStill(sponsor, logoExists),
+  },
   app: {
     head: {
       htmlAttrs: { lang: "en" },

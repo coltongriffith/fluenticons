@@ -11,29 +11,41 @@
       @auxclick.middle="real && click(placement)"
     >
       <span class="flex-shrink-0 rounded-lg bg-white ring-1 ring-gray-900/5 dark:ring-white/10 overflow-hidden flex-center" :class="box">
-        <img
-          v-if="s.logo"
-          :src="s.logo"
-          :alt="s.logoAlt || ''"
-          :width="boxPx"
-          :height="boxPx"
-          class="h-full w-full object-contain"
-        />
+        <picture v-if="s.logo" class="contents">
+          <!-- An animated logo holds still for visitors who turn off animations. -->
+          <source v-if="s.logoStill" :srcset="s.logoStill" media="(prefers-reduced-motion: reduce)" />
+          <img
+            :src="s.logo"
+            :alt="s.logoAlt || ''"
+            :width="boxPx"
+            :height="boxPx"
+            class="h-full w-full object-contain"
+          />
+        </picture>
         <span v-else class="h-full w-full flex-center bg-blue-600 text-white text-sm font-semibold">{{ initials(s.name) }}</span>
       </span>
 
       <span class="min-w-0 flex-1" :class="variant === 'inline' && 'sm:flex sm:items-center sm:gap-6'">
         <span class="block min-w-0 sm:flex-1">
           <span class="flex items-baseline gap-2">
-            <span class="font-semibold text-gray-900 dark:text-white">{{ s.name }}</span>
+            <span class="font-semibold text-gray-900 dark:text-white">{{ s.headline || s.name }}</span>
             <span class="text-[11px] text-gray-400 dark:text-gray-500 flex-shrink-0">Sponsor</span>
           </span>
           <span class="block text-gray-600 dark:text-gray-300 leading-snug mt-0.5" :class="text">
             {{ s.tagline }}
           </span>
         </span>
+        <!-- With ctaColor, the call to action is a small button in the sponsor's color. -->
         <span
-          v-if="variant !== 'compact' && s.ctaText"
+          v-if="variant !== 'compact' && s.ctaText && s.ctaColor"
+          class="mt-2.5 inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-semibold transition-[filter] group-hover:brightness-95"
+          :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
+          :style="{ backgroundColor: s.ctaColor, color: readableOn(s.ctaColor) }"
+        >
+          {{ s.ctaText }} <span aria-hidden="true">→</span>
+        </span>
+        <span
+          v-else-if="variant !== 'compact' && s.ctaText"
           class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
           :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
         >
@@ -116,6 +128,12 @@ const s = computed(() => sponsor.value || props.example);
 const link = computed(() => (real.value ? href(props.placement) : "#"));
 
 // Fixed logo box so nothing moves when the logo loads.
+// Dark or white text, whichever reads better on the button color.
+function readableOn(hex) {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.18 ? "#0f172a" : "#ffffff";
+}
+
 const boxPx = computed(() => (props.variant === "compact" ? 36 : 44));
 const box = computed(() => (props.variant === "compact" ? "h-9 w-9" : "h-11 w-11"));
 const text = computed(() => (props.variant === "compact" ? "text-xs" : "text-sm"));

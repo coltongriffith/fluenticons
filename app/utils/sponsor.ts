@@ -4,15 +4,19 @@
 export interface SponsorConfig {
   /** Turn the sponsor on. With false, every placement shows the "Your product here" card. */
   active: boolean;
-  /** Product name, shown in bold. */
+  /** Advertiser or product name: the card title unless `headline` is set, the
+   *  copy-confirmation credit ("Sponsored by …") and the analytics name. */
   name: string;
+  /** Optional card title when it should differ from the name, e.g. a campaign line. */
+  headline?: string;
   /** One line about the product, at most TAGLINE_MAX characters (checked at build time). */
   tagline: string;
   /** Landing page. Used exactly as given if it already has UTM parameters (see sponsorLink). */
   url: string;
   /** Square logo in public/, e.g. "/sponsors/acme.svg" (96x96 or larger). If an
    *  .svg is missing, the same name in .png is used; with neither, the card
-   *  shows the name's initials. */
+   *  shows the name's initials. An animated .gif works; add the same name with
+   *  -still.png (e.g. acme-still.png) for visitors who turn off animations. */
   logo: string;
   logoAlt: string;
   /** First and last day shown, as ISO dates ("2026-11-01"). Whole days in UTC. */
@@ -20,7 +24,11 @@ export interface SponsorConfig {
   endDate: string;
   /** Optional call to action under the tagline, e.g. "Try Acme free". */
   ctaText?: string;
+  /** Optional brand color ("#34C694") that turns the call to action into a small button. */
+  ctaColor?: string;
 }
+
+export const HEADLINE_MAX = 40;
 
 export const TAGLINE_MAX = 70;
 
@@ -62,6 +70,12 @@ export function sponsorLogo(s: SponsorConfig, logoExists: (path: string) => bool
   return [s.logo, s.logo.replace(/\.svg$/i, ".png")].find(logoExists) || "";
 }
 
+/** A still frame for an animated .gif logo (name-still.png), shown with reduced motion; "" if none. */
+export function sponsorLogoStill(s: SponsorConfig, logoExists: (path: string) => boolean): string {
+  const still = s.logo.replace(/\.gif$/i, "-still.png");
+  return still !== s.logo && logoExists(still) ? still : "";
+}
+
 // Parsed, not pattern-matched: sponsorLink() calls new URL() on it.
 function isHttpsUrl(value: string): boolean {
   try {
@@ -91,6 +105,8 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   if (!s.logo.startsWith("/")) problems.push(`logo must be a path in public/, like "/sponsors/name.png" (got "${s.logo}")`);
   else if (!sponsorLogo(s, logoExists)) problems.push(`logo file not found: public${s.logo}`);
   if (!s.logoAlt.trim()) problems.push("logoAlt is empty");
+  if (s.headline && s.headline.length > HEADLINE_MAX) problems.push(`headline is ${s.headline.length} characters; the limit is ${HEADLINE_MAX}`);
+  if (s.ctaColor && !/^#[0-9a-f]{6}$/i.test(s.ctaColor)) problems.push(`ctaColor must be a hex color like #34C694 (got "${s.ctaColor}")`);
   for (const key of ["startDate", "endDate"] as const) {
     if (!isIsoDate(s[key])) {
       problems.push(`${key} must be an ISO date like 2026-11-01 (got "${s[key]}")`);
