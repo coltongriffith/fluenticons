@@ -34,6 +34,8 @@ const sponsors: SponsorConfig[] = [
     logoAlt: "Xceed Toolkit Plus for WPF logo",
     startDate: "2026-10-07",
     endDate: "2027-01-06",
+    ctaText: "See Toolkit Plus",
+    ctaColor: "#FF671B",
   },
   {
     // Not live yet: set the dates and active: true once approved.

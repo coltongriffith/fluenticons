@@ -70,7 +70,7 @@ export default {
     twinNote: "Microsoft's version of this icon, on Fluenticons",
   },
 
-  // The sitewide sponsor is set in app/sponsor.ts (same setup as fluenticons.co).
+  // Sponsors are set in app/sponsor.ts (same setup as fluenticons.co).
   sponsorPage: "/sponsor/",
   // Figures and terms on the sponsor page. Traffic figures are left out until
   // the site has a month of GA4 data (the stats row is hidden without them).

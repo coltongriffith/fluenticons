@@ -70,8 +70,8 @@ export default {
   // The page about the agent API and MCP server, promoted in the editor.
   aiPage: "/ai/",
 
-  // The sitewide sponsor is set in app/sponsor.ts. With none running, every
-  // placement shows a "your product here" card linking to sponsorPage.
+  // Sponsors are set in app/sponsor.ts. With none running, the homepage hero
+  // shows a "your product here" card linking to sponsorPage.
   sponsorPage: "/sponsor/",
   // Figures and terms on the sponsor page. Refresh monthly from GA4.
   sponsorKit: {
