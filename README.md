@@ -96,8 +96,9 @@ Coding agents can search the icons by meaning and get real `@fluentui/react-icon
 Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/ai/).
 
 - **HTTP API** `/api/v1/…` and **MCP server** `/mcp` (Streamable HTTP, stateless, no auth) run as
-  Cloudflare Pages Functions (`functions/`), deployed with the site. `public/_routes.json` limits
-  them to `/api/*` and `/mcp`; every other URL is still a static file.
+  Cloudflare Pages Functions (`functions/`), deployed with the site. Pages also pass through
+  `functions/_middleware.js` (it hides sponsors in countries listed in their `hiddenIn`);
+  `public/_routes.json` keeps assets (`/_nuxt/*`, `/icons/*`, images…) static files.
 - **Code** is in `agent/`: `icons.js` (lookup, search, recommendations, code), `tools.js` (the
   operations both the API and MCP call: validation + analytics), `http.js`, `mcp.js`, `track.js`,
   `synonyms.js`. Code snippets come from `app/utils/iconCode.js`, which the icon pages use too.

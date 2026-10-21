@@ -23,12 +23,14 @@ export const previewSlugs = (param) =>
   all.filter((s) => s.name && s.url && (param === "1" || param === s.slug)).map((s) => s.slug);
 
 export function useSponsor() {
-  const state = useState("sponsor", () => ({ live: liveSlugs(), preview: [] }));
+  // `country`: the visitor's, set after hydration (plugins/sponsor.client.js).
+  const state = useState("sponsor", () => ({ live: liveSlugs(), preview: [], country: "" }));
   // Each sponsor's logo files, found at build time (.svg, else .png; "" for initials).
   const logos = useAppConfig().sponsorLogos || {};
   const sponsors = computed(() => {
     const shown = state.value.preview.length ? state.value.preview : state.value.live;
-    return all.filter((s) => shown.includes(s.slug)).map((s) => ({ ...s, logo: logos[s.slug]?.logo || "", logoStill: logos[s.slug]?.still || "" }));
+    const here = (s) => !(state.value.country && s.hiddenIn?.includes(state.value.country));
+    return all.filter((s) => shown.includes(s.slug) && here(s)).map((s) => ({ ...s, logo: logos[s.slug]?.logo || "", logoStill: logos[s.slug]?.still || "" }));
   });
   const preview = computed(() => state.value.preview.length > 0);
   // utm_source: "fluenticons" for fluenticons.co, "materialicons" for materialicons.co.

@@ -6,6 +6,7 @@
         v-for="s in ads"
         :key="s.slug || 'example'"
         :ref="(el) => watchAd(s, el)"
+        :data-hidden-in="s.hiddenIn?.join(' ')"
         :href="real ? href(s, placement) : '#'"
         v-bind="real ? { target: '_blank', rel: 'sponsored noopener' } : {}"
         class="group flex gap-4 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"

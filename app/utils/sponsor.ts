@@ -28,6 +28,10 @@ export interface SponsorConfig {
   /** Optional brand color ("#34C694") for the call to action. Dark mode uses it as
    *  is; light mode a darker shade that reads on white. */
   ctaColor?: string;
+  /** Optional countries (ISO codes, e.g. ["PL"]) whose visitors don't see this
+   *  sponsor. The card is hidden in the page before it's sent
+   *  (functions/_middleware.js), so it never shows there, not even briefly. */
+  hiddenIn?: string[];
 }
 
 /** app/sponsor.ts exports one sponsor or a list; this always gives a list. */
@@ -122,6 +126,9 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   if (!s.logoAlt.trim()) problems.push("logoAlt is empty");
   if (s.headline && s.headline.length > HEADLINE_MAX) problems.push(`headline is ${s.headline.length} characters; the limit is ${HEADLINE_MAX}`);
   if (s.ctaColor && !/^#[0-9a-f]{6}$/i.test(s.ctaColor)) problems.push(`ctaColor must be a hex color like #34C694 (got "${s.ctaColor}")`);
+  for (const code of s.hiddenIn || []) {
+    if (!/^[A-Z]{2}$/.test(code)) problems.push(`hiddenIn takes two-letter country codes like "PL" (got "${code}")`);
+  }
   for (const key of ["startDate", "endDate"] as const) {
     if (!isIsoDate(s[key])) {
       problems.push(`${key} must be an ISO date like 2026-11-01 (got "${s[key]}")`);
