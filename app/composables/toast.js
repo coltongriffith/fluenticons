@@ -2,8 +2,9 @@ let nextId = 0;
 
 // Copy confirmations (`{ promo: true }`) carry a one-line sponsor credit on the
 // first copy of a visit and every 5th after it (copies 1, 6, 11…), so it never
-// nags. The count is kept in sessionStorage: it carries across pages and resets
-// with a new visit (new tab or browser session).
+// nags. With more than one sponsor running, they take turns. The count is kept
+// in sessionStorage: it carries across pages and resets with a new visit (new
+// tab or browser session).
 const PROMO_EVERY = 5;
 const PROMO_KEY = "sponsor_copy_count";
 let memoryCount = 0; // fallback when sessionStorage is unavailable
@@ -20,14 +21,19 @@ function nextCopyCount() {
 
 export function useToast() {
   const toasts = useState("toasts", () => []);
-  const { sponsor, impression } = useSponsor();
+  const { sponsors, impression } = useSponsor();
 
   function show(message, type = "info", { promo = false } = {}) {
     const id = ++nextId;
-    let sponsored = false;
-    if (promo && sponsor.value && type === "info") {
-      sponsored = nextCopyCount() % PROMO_EVERY === 0;
-      if (sponsored) impression("copy_toast");
+    // The credited sponsor; with several, they take turns (copy 1: the first,
+    // copy 6: the second, …).
+    let sponsored = null;
+    if (promo && sponsors.value.length && type === "info") {
+      const count = nextCopyCount();
+      if (count % PROMO_EVERY === 0) {
+        sponsored = sponsors.value[(count / PROMO_EVERY) % sponsors.value.length];
+        impression(sponsored, "copy_toast");
+      }
     }
     toasts.value = [...toasts.value, { id, message, type, sponsored }];
     setTimeout(() => {

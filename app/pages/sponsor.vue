@@ -36,7 +36,7 @@
           The same card runs sitewide for the month. This is how it looks:
         </p>
         <div class="rounded-xl border dark:border-gray-700 bg-slate-50 dark:bg-[#0B1120] p-6 sm:p-8 mb-6">
-          <SponsorCard variant="hero" placement="sponsor_page" :example="example" />
+          <SponsorCard variant="hero" placement="sponsor_page" :example="example" :max="1" />
         </div>
         <ul class="space-y-3 text-gray-700 dark:text-gray-200">
           <li v-for="p in placements" :key="p.title" class="flex gap-3">

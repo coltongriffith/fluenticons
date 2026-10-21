@@ -147,16 +147,17 @@ Setup instructions for users are on [fluenticons.co/ai](https://fluenticons.co/a
 
 ### Sponsors
 
-One sponsor at a time, set in `app/sponsor.ts` (materialicons.co: `sites/material/app/sponsor.ts`):
-add a square logo to `public/sponsors/` (`.svg`, or `.png` under the same name), fill in the
-fields, set `active: true` and deploy. The
-card shows from `startDate` to `endDate` (whole days, UTC, checked again in the browser) on the
+Sponsors are listed in `app/sponsor.ts` (materialicons.co: `sites/material/app/sponsor.ts`):
+add a square logo to `public/sponsors/` (`.svg`, or `.png` under the same name; an animated
+`.gif` with a `-still.png` for reduced motion), add the sponsor, set `active: true` and deploy.
+Several can run at once: each placement shows every running sponsor (the top one changes from
+page to page) and the copy credit takes turns. Each card shows from `startDate` to `endDate` (whole days, UTC, checked again in the browser) on the
 homepage, icon pages, the icon editor, guides and as a credit on copies 1, 6, 11… of a visit;
 otherwise the hero shows a "Your product here" card linking to `/sponsor/` and the other spots
 show nothing. A `url` that already has UTM parameters is used exactly as given; otherwise
 `utm_source`/`medium`/`campaign`/`content` are added. AdSense is off
-while a sponsor is running (as of the build). `?sponsor_preview=1` shows the configured sponsor
-early, with no events. The build fails on a tagline over 70 characters or, when active, a bad
+while a sponsor is running (as of the build). `?sponsor_preview=1` shows every configured
+sponsor early (`=<slug>` for one), with no events. The build fails on a tagline over 70 characters or, when active, a bad
 URL, missing logo or malformed date. Events for the monthly report: `sponsor_impression` and
 `sponsor_click`, each with `sponsor` and `placement` (homepage, icon, editor, guide, copy_toast,
 sponsor_page); clicks on the empty card are `sponsor_house_click`.

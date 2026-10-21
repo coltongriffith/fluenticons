@@ -1,7 +1,7 @@
 import { stats, roughCount } from "./icons";
 import site from "~/site.js";
-import sponsor from "~/sponsor";
-import { isLive } from "../utils/sponsor";
+import sponsorConfig from "~/sponsor";
+import { isLive, sponsorList } from "../utils/sponsor";
 
 const SITE_NAME = site.name;
 const ADSENSE_CLIENT = site.adsenseClient;
@@ -40,10 +40,10 @@ export function useJsonLd(data) {
 
 // Loads Google AdSense (Auto ads) on pages with real content. Utility pages
 // (favorites, 404, legal pages) don't call this, so no ads are shown there.
-// Off while a sponsor is running (app/sponsor.ts, as of the build): the sponsor
-// slot is sold as the only ad.
+// Off while any sponsor is running (app/sponsor.ts, as of the build): sponsor
+// slots are sold without other ads next to them.
 export function useAdsense() {
-  if (isLive(sponsor)) return;
+  if (sponsorList(sponsorConfig).some((s) => isLive(s))) return;
   useHead({
     script: [
       {

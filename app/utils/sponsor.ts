@@ -1,5 +1,6 @@
-// Types and helpers for the sitewide sponsor. Each site's sponsor is set in its
-// own app/sponsor.ts; every placement reads it through useSponsor().
+// Types and helpers for the site's sponsors. Each site sets them in its own
+// app/sponsor.ts (one sponsor or a list); every placement reads them through
+// useSponsor().
 
 export interface SponsorConfig {
   /** Turn the sponsor on. With false, every placement shows the "Your product here" card. */
@@ -24,8 +25,22 @@ export interface SponsorConfig {
   endDate: string;
   /** Optional call to action under the tagline, e.g. "Try Acme free". */
   ctaText?: string;
-  /** Optional brand color ("#34C694") that turns the call to action into a small button. */
+  /** Optional brand color ("#34C694") for the call to action. Dark mode uses it as
+   *  is; light mode a darker shade that reads on white. */
   ctaColor?: string;
+}
+
+/** app/sponsor.ts exports one sponsor or a list; this always gives a list. */
+export const sponsorList = (cfg: SponsorConfig | SponsorConfig[]): SponsorConfig[] => (Array.isArray(cfg) ? cfg : [cfg]);
+
+const luminance = ([r, g, b]: number[]) =>
+  [r, g, b].map((c) => (c /= 255) <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4).reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
+
+/** `hex` darkened just enough to reach 4.5:1 contrast on white (for light mode). */
+export function readableOnWhite(hex: string): string {
+  let rgb = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  while (1.05 / (luminance(rgb) + 0.05) < 4.5) rgb = rgb.map((c) => Math.floor(c * 0.92));
+  return `#${rgb.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
 }
 
 export const HEADLINE_MAX = 40;
@@ -114,4 +129,17 @@ export function sponsorProblems(s: SponsorConfig, logoExists: (path: string) => 
   }
   if (dayStart(s.endDate) < dayStart(s.startDate)) problems.push("endDate is before startDate");
   return problems;
+}
+
+/**
+ * Checks every sponsor (throws, listing the problems, so the build stops) and
+ * returns each one's logo files: { [slug]: { logo, still } }.
+ */
+export function checkSponsors(list: SponsorConfig[], logoExists: (path: string) => boolean, file: string) {
+  const problems = list.flatMap((s) => sponsorProblems(s, logoExists).map((p) => `${s.name || "sponsor"}: ${p}`));
+  const slugs = list.map((s) => sponsorSlug(s.name));
+  const dupe = slugs.find((slug, i) => slugs.indexOf(slug) !== i);
+  if (dupe) problems.push(`two sponsors are named "${dupe}"`);
+  if (problems.length) throw new Error(`${file}: ${problems.join("; ")}`);
+  return Object.fromEntries(list.map((s, i) => [slugs[i], { logo: sponsorLogo(s, logoExists), still: sponsorLogoStill(s, logoExists) }]));
 }
