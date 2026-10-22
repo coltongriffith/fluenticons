@@ -1,25 +1,5 @@
 {
   "version": 1,
-  "include": ["/*"],
-  "exclude": [
-    "/_nuxt/*",
-    "/icons/*",
-    "/sponsors/*",
-    "/sw.js",
-    "/favicon.ico",
-    "/icon.png",
-    "/social.png",
-    "/gradient.png",
-    "/gradient-bg-dark.jpg",
-    "/gradient-bg-white.jpg",
-    "/thumbs-up.png",
-    "/exploration-maps-banner.jpg",
-    "/manifest.webmanifest",
-    "/robots.txt",
-    "/sitemap.xml",
-    "/feed.xml",
-    "/llms.txt",
-    "/ads.txt",
-    "/cli.tgz"
-  ]
+  "include": ["/api/*", "/mcp"],
+  "exclude": []
 }

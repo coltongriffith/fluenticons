@@ -21,10 +21,13 @@ export const liveSlugs = (now = Date.now()) => all.filter((s) => isLive(s, now))
 // ?sponsor_preview=1: every configured sponsor; ?sponsor_preview=<slug>: that one.
 export const previewSlugs = (param) =>
   all.filter((s) => s.name && s.url && (param === "1" || param === s.slug)).map((s) => s.slug);
+// Whether any of these sponsors is hidden in some countries (`hiddenIn`).
+export const hasHiddenIn = (slugs) => all.some((s) => slugs.includes(s.slug) && s.hiddenIn?.length);
 
 export function useSponsor() {
-  // `country`: the visitor's, set after hydration (plugins/sponsor.client.js).
-  const state = useState("sponsor", () => ({ live: liveSlugs(), preview: [], country: "" }));
+  // `country`: the visitor's, and `geo`: whether it has been looked up, both
+  // set after hydration (plugins/sponsor.client.js).
+  const state = useState("sponsor", () => ({ live: liveSlugs(), preview: [], country: "", geo: false }));
   // Each sponsor's logo files, found at build time (.svg, else .png; "" for initials).
   const logos = useAppConfig().sponsorLogos || {};
   const sponsors = computed(() => {
@@ -43,6 +46,8 @@ export function useSponsor() {
   return {
     sponsors,
     preview,
+    // False while a sponsor hidden in some countries may still be removed.
+    geoReady: computed(() => state.value.geo),
     href: (s, placement) => sponsorLink(s, placement, source),
     click: (s, placement) => send("sponsor_click", s, placement),
     impression: (s, placement) => send("sponsor_impression", s, placement),

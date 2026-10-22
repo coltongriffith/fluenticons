@@ -100,3 +100,10 @@ html.dark {
 .prose :where(code):not(:where(pre *)) {
   @apply rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 font-medium;
 }
+
+/* A sponsor hidden in some countries (`hiddenIn`, app/sponsor.ts) keeps its
+   space but stays invisible until the browser knows the visitor's country
+   (plugins/sponsor.client.js sets data-geo), so it never flashes there. */
+html:not([data-geo]) [data-hidden-in] {
+  visibility: hidden;
+}
