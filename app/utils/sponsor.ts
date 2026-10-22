@@ -30,7 +30,7 @@ export interface SponsorConfig {
   ctaColor?: string;
   /** Optional countries (ISO codes, e.g. ["PL"]) whose visitors don't see this
    *  sponsor. Its card stays invisible until the browser has looked up the
-   *  visitor's country (plugins/sponsor.client.js), so it never shows there. */
+   *  visitor's country (plugins/sponsor-geo.server.js), so it never shows there. */
   hiddenIn?: string[];
 }
 
