@@ -2,7 +2,7 @@ import type { SponsorConfig } from "../../../app/utils/sponsor";
 
 // materialicons.co's sponsors. Works the same way as fluenticons.co's
 // (see app/sponsor.ts in the repository root for the steps), including
-// `hiddenIn` (sites/material/functions/_middleware.js).
+// `hiddenIn`.
 const sponsors: SponsorConfig[] = [
   {
     // Same booking as on fluenticons.co: Oct 7, 2026 – Jan 6, 2027.

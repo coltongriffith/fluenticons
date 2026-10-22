@@ -21,17 +21,19 @@ function nextCopyCount() {
 
 export function useToast() {
   const toasts = useState("toasts", () => []);
-  const { sponsors, impression } = useSponsor();
+  const { sponsors, impression, geoReady } = useSponsor();
 
   function show(message, type = "info", { promo = false } = {}) {
     const id = ++nextId;
     // The credited sponsor; with several, they take turns (copy 1: the first,
     // copy 6: the second, …).
     let sponsored = null;
-    if (promo && sponsors.value.length && type === "info") {
+    // Not a sponsor hidden in some countries until the visitor's is known.
+    const pool = sponsors.value.filter((s) => geoReady.value || !s.hiddenIn?.length);
+    if (promo && pool.length && type === "info") {
       const count = nextCopyCount();
       if (count % PROMO_EVERY === 0) {
-        sponsored = sponsors.value[(count / PROMO_EVERY) % sponsors.value.length];
+        sponsored = pool[(count / PROMO_EVERY) % pool.length];
         impression(sponsored, "copy_toast");
       }
     }

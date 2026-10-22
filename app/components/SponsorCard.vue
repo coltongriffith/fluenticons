@@ -124,7 +124,7 @@ const props = defineProps({
   max: { type: Number, default: Infinity },
 });
 
-const { sponsors, href, click, impression } = useSponsor();
+const { sponsors, href, click, impression, geoReady } = useSponsor();
 const route = useRoute();
 const kit = site.sponsorKit || {};
 const pitch = kit.users
@@ -162,11 +162,14 @@ function onClick(event, s) {
 
 // One impression per sponsor per placement per page view, once half its card
 // is on screen. Cards can appear after hydration (a start date passed since
-// the build), so each is observed as it mounts. No events in preview mode.
+// the build), so each is observed as it mounts. A sponsor with `hiddenIn` is
+// observed only once the visitor's country is known (it's invisible until
+// then). No events in preview mode.
 const seen = new Set();
 let observer;
 function watchAd(s, el) {
   if (!el || !real.value || !s.slug || seen.has(s.slug) || typeof IntersectionObserver === "undefined") return;
+  if (s.hiddenIn?.length && !geoReady.value) return;
   observer ||= new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {

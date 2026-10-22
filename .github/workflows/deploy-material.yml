@@ -100,9 +100,8 @@ jobs:
             npx --yes wrangler@4 pages project create "$PROJECT" --production-branch main
           fi
 
-      # Run from sites/material so wrangler deploys this site's functions/
-      # (the sponsor middleware) and not the repo root's (fluenticons.co's agent
-      # API, which this site doesn't serve).
+      # Run from sites/material so wrangler doesn't pick up the repo root's
+      # functions/ (fluenticons.co's agent API), which this site doesn't serve.
       - name: Deploy
         working-directory: sites/material
         env:

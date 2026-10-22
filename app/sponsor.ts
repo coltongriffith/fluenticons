@@ -21,7 +21,7 @@ import type { SponsorConfig } from "./utils/sponsor";
 // lordicon) for one. Preview sends no analytics events.
 //
 // `hiddenIn: ["PL"]` keeps a sponsor from visitors in those countries (by
-// Cloudflare's country for the visitor; functions/_middleware.js).
+// Cloudflare's country for the visitor; plugins/sponsor.client.js).
 //
 // The build fails if a tagline is over 70 characters, a headline over 40, or
 // (when active) the url isn't https, the logo file is missing or a date is

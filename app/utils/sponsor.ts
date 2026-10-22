@@ -29,8 +29,8 @@ export interface SponsorConfig {
    *  is; light mode a darker shade that reads on white. */
   ctaColor?: string;
   /** Optional countries (ISO codes, e.g. ["PL"]) whose visitors don't see this
-   *  sponsor. The card is hidden in the page before it's sent
-   *  (functions/_middleware.js), so it never shows there, not even briefly. */
+   *  sponsor. Its card stays invisible until the browser has looked up the
+   *  visitor's country (plugins/sponsor.client.js), so it never shows there. */
   hiddenIn?: string[];
 }
 
