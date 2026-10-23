@@ -44,7 +44,8 @@ const sponsors: SponsorConfig[] = [
   },
   {
     // Runs one month, Oct 21 – Nov 20, 2026.
-    active: true,
+    // Off until Lordicon pays; set back to true to show it.
+    active: false,
     name: "Lordicon",
     headline: "Make Your Icons Move",
     tagline: "Bring your UI to life with customizable animated icons for web & apps.",
