@@ -21,7 +21,7 @@ import type { SponsorConfig } from "./utils/sponsor";
 // lordicon) for one. Preview sends no analytics events.
 //
 // `hiddenIn: ["PL"]` keeps a sponsor from visitors in those countries (by
-// Cloudflare's country for the visitor; plugins/sponsor.client.js).
+// Cloudflare's country for the visitor; plugins/sponsor-geo.server.js).
 //
 // The build fails if a tagline is over 70 characters, a headline over 40, or
 // (when active) the url isn't https, the logo file is missing or a date is
@@ -44,7 +44,8 @@ const sponsors: SponsorConfig[] = [
   },
   {
     // Runs one month, Oct 21 – Nov 20, 2026.
-    active: true,
+    // Off until Lordicon pays; set back to true to show it.
+    active: false,
     name: "Lordicon",
     headline: "Make Your Icons Move",
     tagline: "Bring your UI to life with customizable animated icons for web & apps.",

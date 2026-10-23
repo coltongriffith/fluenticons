@@ -1,7 +1,7 @@
 <template>
   <div v-if="ads.length || variant === 'hero'" :class="$attrs.class">
     <!-- The running sponsors (app/sponsor.ts), stacked, or the sponsor page's example. -->
-    <div v-if="ads.length" class="flex flex-col" :class="variant === 'compact' ? 'gap-2' : 'gap-3'">
+    <div v-if="ads.length" class="relative flex flex-col" :class="variant === 'compact' ? 'gap-2' : 'gap-3'">
       <a
         v-for="s in ads"
         :key="s.slug || 'example'"
@@ -57,6 +57,15 @@
           </span>
         </span>
       </a>
+      <!-- On wider screens it hangs below the cards without taking space, so the
+           cards themselves are centered next to the heading. -->
+      <NuxtLink
+        v-if="advertise"
+        :to="site.sponsorPage"
+        class="self-start -mt-1 text-xs md:absolute md:top-full md:right-0 md:mt-2 whitespace-nowrap text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:underline"
+      >
+        Advertise here
+      </NuxtLink>
     </div>
 
     <!-- No sponsor running: the homepage hero advertises the spot itself, in
@@ -95,13 +104,6 @@
       </span>
     </NuxtLink>
 
-    <NuxtLink
-      v-if="variant === 'hero' && real && site.sponsorPage && placement !== 'sponsor_page'"
-      :to="site.sponsorPage"
-      class="mt-2 inline-block text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:underline"
-    >
-      Advertise here
-    </NuxtLink>
   </div>
 </template>
 
@@ -141,6 +143,8 @@ const ads = computed(() => {
   const shift = [...route.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % list.length;
   return [...list.slice(shift), ...list.slice(0, shift)].slice(0, props.max);
 });
+
+const advertise = computed(() => props.variant === "hero" && real.value && site.sponsorPage && props.placement !== "sponsor_page");
 
 // Fixed logo box so nothing moves when the logo loads.
 const boxPx = computed(() => (props.variant === "compact" ? 36 : 44));

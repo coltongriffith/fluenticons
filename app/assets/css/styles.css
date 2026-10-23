@@ -103,7 +103,7 @@ html.dark {
 
 /* A sponsor hidden in some countries (`hiddenIn`, app/sponsor.ts) keeps its
    space but stays invisible until the browser knows the visitor's country
-   (plugins/sponsor.client.js sets data-geo), so it never flashes there. */
+   (plugins/sponsor-geo.server.js sets data-geo), so it never flashes there. */
 html:not([data-geo]) [data-hidden-in] {
   visibility: hidden;
 }
