@@ -90,6 +90,19 @@ Icons Microsoft has retired stay on the site (marked `legacy`) so existing links
 
 It uses the same Cloudflare secrets as fluenticons.co. Pushes that only change `sites/material/` don't redeploy fluenticons.co.
 
+### The Lucide Icons site (lucideicons.co)
+
+`sites/lucide/` is a third site on the same code, for [Lucide](https://lucide.dev/). It works like the Material site, with these differences:
+
+- `node scripts/import-lucide.mjs <version>` imports `lucide-static`: one SVG per icon in Lucide's own format (stroke settings on the `<svg>`, color written as `#212121`), tags, icon-font code points and the license, plus categories from lucide.dev. Old names (aliases) are found by identical drawings and are searchable.
+- Lucide icons are strokes, not fills. `app/utils/svgBody.mjs` turns any icon file into inline markup in `currentColor`, for both kinds.
+- Icon pages have a size and stroke-width picker, and code for React, Vue, Svelte, Angular, plain HTML, the icon font, React Native, Solid and SVG.
+- Every icon page on each of the three sites links to the matching icon on the other two ("Also in …", `scripts/cross-links.mjs`).
+- `yarn lucide:dev` / `yarn lucide:generate` build it into `sites/lucide/dist` (about 8,300 files). The weekly icon update checks for new Lucide releases too.
+- GA4: set the property's measurement ID in `sites/lucide/nuxt.config.js` (`gaId`); it's empty until then.
+
+**Deploying it** (`.github/workflows/deploy-lucide.yml`) runs on every push to `main` that can change it, into the Cloudflare Pages project `lucideicons` (or `LUCIDE_PAGES_PROJECT`), created on the first run. Attach `lucideicons.co` to that project in Cloudflare, then set `LUCIDE_SITE_URL` to `https://lucideicons.co` so production runs check the live site.
+
 ### Agent API, MCP server and CLI (fluenticons.co/ai)
 
 Coding agents can search the icons by meaning and get real `@fluentui/react-icons` names.

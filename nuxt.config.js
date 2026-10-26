@@ -2,10 +2,10 @@ import { defineNuxtConfig } from "nuxt/config";
 import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
-// This is fluenticons.co's config, and also the base layer of the Material
-// Icons site (sites/material), which sets ICON_SITE=material before loading
-// it. Everything specific to fluenticons.co applies only when building it.
-const fluent = process.env.ICON_SITE !== "material";
+// This is fluenticons.co's config, and also the base layer of the other icon
+// sites (sites/material, sites/lucide), which set ICON_SITE before loading it.
+// Everything specific to fluenticons.co applies only when building it.
+const fluent = !process.env.ICON_SITE;
 const local = (path) => fileURLToPath(new URL(path, import.meta.url));
 
 const gaId = "G-VGSV4M0LY9";

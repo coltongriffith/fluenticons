@@ -33,8 +33,9 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 
 import { marked } from "marked";
 import { execFileSync } from "node:child_process";
 import { renameSync, rmSync } from "node:fs";
-import { matchIcons } from "./cross-links.mjs";
+import { matchSites } from "./cross-links.mjs";
 import { usageText } from "./icon-copy.mjs";
+import { svgParts } from "../app/utils/svgBody.mjs";
 
 // Settings for fluenticons.co; other sites export the same shape.
 const FLUENT = {
@@ -54,8 +55,13 @@ const FLUENT = {
   apiCatalog: true,
   dataPage: /^\/(?:$|outlined|color|browse|tag|icon\/)/,
   tagMin: 10,
-  // "Also in Material Symbols" links to the matching icon on materialicons.co.
-  crossSite: { url: "https://materialicons.co", data: "sites/material/data/icons.json", fluent: false },
+  // Which icon set this is ("fluent" | "material" | "lucide"), and the sister
+  // sites whose matching icons icon pages link to ("Also in …").
+  kind: "fluent",
+  crossSites: [
+    { key: "material", kind: "material", data: "sites/material/data/icons.json" },
+    { key: "lucide", kind: "lucide", data: "sites/lucide/data/icons.json" },
+  ],
   uiIcons: Object.fromEntries(
     [
       "search_24_filled",
@@ -96,14 +102,9 @@ const write = (name, data) =>
 const SITE = config.url;
 
 function readSvg(file, { body = true } = {}) {
-  const svg = read(`public/icons/${file}`);
-  const match = svg.match(/^<svg[^>]*\bwidth="(\d+)"[^>]*>([\s\S]*)<\/svg>\s*$/);
-  if (!match) throw new Error(`Unexpected SVG format: ${file}`);
-  return {
-    file,
-    size: Number(match[1]),
-    ...(body && { body: match[2].trim().replace(/fill="#212121"/g, 'fill="currentColor"') }),
-  };
+  const parts = svgParts(read(`public/icons/${file}`));
+  if (!parts) throw new Error(`Unexpected SVG format: ${file}`);
+  return { file, size: parts.size, ...(body && { body: parts.body }) };
 }
 
 // ---- Icons ---------------------------------------------------------------
@@ -113,7 +114,9 @@ const defaultFile = config.defaultFile;
 
 const index = icons.map((icon) => {
   const styles = (icon.filled ? 1 : 0) + (icon.regular ? 2 : 0);
-  const row = [icon.slug, icon.name, styles, icon.keywords.join(",")];
+  // Older names (Lucide's aliases, e.g. home → house) are searchable too.
+  const words = [...icon.keywords, ...(icon.aliases || []).map((a) => a.replace(/-/g, " "))];
+  const row = [icon.slug, icon.name, styles, words.join(",")];
   const f = icon.filled && icon.filled !== defaultFile(icon.slug, "filled") ? icon.filled : 0;
   const r = icon.regular && icon.regular !== defaultFile(icon.slug, "regular") ? icon.regular : 0;
   if (f || r) row.push(f, r);
@@ -164,23 +167,22 @@ function related(i) {
     .map(([, slug]) => slug);
 }
 
-// The same icon on the other site (scripts/cross-links.mjs): { slug, name, file }.
+// The same icon on each sister site (scripts/cross-links.mjs):
+// twins[slug] = { [siteKey]: { slug, name, file } }.
 const twins = {};
-if (config.crossSite) {
-  const others = JSON.parse(read(config.crossSite.data));
+for (const sister of config.crossSites || []) {
+  const others = JSON.parse(read(sister.data));
   const otherBySlug = new Map(others.map((o) => [o.slug, o]));
-  const [fluentIcons, materialIcons] = config.crossSite.fluent ? [others, icons] : [icons, others];
-  const { materialToFluent, fluentToMaterial } = matchIcons(fluentIcons, materialIcons);
-  for (const [mine, theirs] of Object.entries(config.crossSite.fluent ? materialToFluent : fluentToMaterial)) {
+  for (const [mine, theirs] of Object.entries(matchSites(icons, config.kind, others, sister.kind))) {
     const o = otherBySlug.get(theirs);
-    twins[mine] = { slug: theirs, name: o.name, file: o.regular || o.filled };
+    (twins[mine] ||= {})[sister.key] = { slug: theirs, name: o.name, file: o.regular || o.filled };
   }
 }
 
 const details = {};
 icons.forEach((icon, i) => {
   details[icon.slug] = {
-    ...(twins[icon.slug] && { twin: twins[icon.slug] }),
+    ...(twins[icon.slug] && { twins: twins[icon.slug] }),
     description: icon.description,
     legacy: Boolean(icon.legacy),
     related: related(i),
@@ -202,9 +204,9 @@ const ranked = icons.some((i) => i.popularity);
 icons.forEach((icon, i) => {
   details[icon.slug].usage = usageText({
     icon,
-    kind: ranked ? "material" : "fluent",
+    kind: config.kind,
     similar: details[icon.slug].related.map((s) => nameOf.get(s)),
-    twin: twins[icon.slug],
+    twins: twins[icon.slug] || {},
     rank: ranked ? i + 1 : 0,
     total: listedCount,
     rarity,
@@ -235,9 +237,12 @@ const categorySlug = (name) =>
   name.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const categories = {};
 if (config.categoryPages) {
+  // An icon can be in several categories (Lucide); `category` is its main one.
   icons.forEach((icon, i) => {
-    if (!listed[i] || !icon.category) return;
-    (categories[categorySlug(icon.category)] ||= { name: icon.category, slugs: [] }).slugs.push(icon.slug);
+    if (!listed[i]) return;
+    for (const name of icon.categories || (icon.category ? [icon.category] : [])) {
+      (categories[categorySlug(name)] ||= { name, slugs: [] }).slugs.push(icon.slug);
+    }
   });
   // Too few icons for a useful page (Google's "Brand" has two).
   for (const [slug, c] of Object.entries(categories)) if (c.slugs.length < TAG_MIN) delete categories[slug];
@@ -443,7 +448,8 @@ if (config.ogImages) {
   renderOgImages(
     chosen.map((i) => ({ slug: i.slug, name: i.name, category: i.category, body: details[i.slug].regular.body })),
     ogDir,
-    new URL(SITE).hostname
+    new URL(SITE).hostname,
+    config.ogImages
   );
   for (const i of chosen) details[i.slug].og = true;
   write("details.json", details);

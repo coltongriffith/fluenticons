@@ -54,6 +54,11 @@
           Material Symbols: every style, fill and weight, with code for HTML, React, Flutter and
           Android.
         </li>
+        <li>
+          <strong>Lucide Icons.</strong> <a href="https://lucideicons.co/">Lucideicons</a> covers
+          Lucide, the open-source line icons behind shadcn/ui, with code for React, Vue, Svelte and
+          Angular.
+        </li>
       </ul>
 
       <h2>How to use Fluenticons</h2>

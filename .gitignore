@@ -102,3 +102,9 @@ sites/material/app/generated
 sites/material/dist
 sites/material/.nuxt
 sites/material/.output
+
+# Lucide Icons site (sites/lucide) build output
+sites/lucide/app/generated
+sites/lucide/dist
+sites/lucide/.nuxt
+sites/lucide/.output

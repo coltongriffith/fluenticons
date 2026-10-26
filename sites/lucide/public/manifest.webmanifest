@@ -1,0 +1,11 @@
+{
+  "name": "Lucideicons",
+  "short_name": "Lucideicons",
+  "description": "Search, customize and download Lucide icons as SVG, PNG and code.",
+  "lang": "en",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [{ "src": "/icon.png", "sizes": "512x512", "type": "image/png" }]
+}

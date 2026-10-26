@@ -29,6 +29,12 @@ on:
       - "content/**"
       - ".github/workflows/deploy.yml"
       - ".github/workflows/update-icons.yml"
+      - ".github/workflows/deploy-lucide.yml"
+      # The Lucide Icons site (its data is read for "Also in" links)
+      - "sites/lucide/app/**"
+      - "sites/lucide/public/**"
+      - "sites/lucide/content/**"
+      - "scripts/import-lucide.mjs"
       # fluenticons.co's agent API, MCP server and CLI
       - "agent/**"
       - "functions/**"
