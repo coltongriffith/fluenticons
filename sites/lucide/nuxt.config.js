@@ -9,8 +9,8 @@ process.env.ICON_SITE = "lucide";
 
 const local = (path) => fileURLToPath(new URL(path, import.meta.url));
 // GA4 measurement ID for lucideicons.co (its own property, like
-// materialicons.co's). Empty until the property exists: no analytics tags.
-const gaId = "";
+// materialicons.co's).
+const gaId = "G-PB8K7W1ZY2";
 
 // The sponsors (app/sponsor.ts) are checked when the site is built, and their
 // logo files picked (see the root nuxt.config.js).
