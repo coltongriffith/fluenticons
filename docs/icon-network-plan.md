@@ -86,16 +86,18 @@ included "fluent icons", so the numbers are on one scale.
 **Calibration from our own sites**
 - Fluenticons: ~5,800 visitors a month on 1× demand. Microsoft has no viewer of its own, so
   Fluenticons is *the* viewer. That's the best case: about 5,800 visitors a month per 1× of demand.
-- Materialicons: ~800–1,000 visitors a month (a couple hundred a week) on 10.4× demand, within its
-  first months, up against Google's own icon pages and many other sites. That's the crowded case:
-  about 90 a month per 1× early on, rising as the site ages.
+- Materialicons: ~800–1,000 visitors a month (a couple hundred a week) on 10.4× demand, up against
+  Google's own icon pages and many other sites. That's the crowded case, but it's only about 4½ weeks
+  old (launched Sept 24, 2026). New sites take months to be indexed and ranked, so this is a floor,
+  not where Materialicons will settle: about 90 a month per 1× in the first weeks. Check it again at 3
+  and 6 months to firm up these estimates.
 
 **Rough monthly visitors.** These are order-of-magnitude estimates, easily off by 2–3× either way.
 They don't count the long tail of per-icon searches, which drives much of Fluenticons' traffic.
 
 | Site | Demand | Situation | First ~3 months | After ~12 months |
 | --- | --- | --- | --- | --- |
-| Lucide | 7.3× | Crowded, like Material | ~400–900 | ~1,500–5,000 |
+| Lucide | 7.3× | Crowded, like Material (whose numbers are only from its first weeks) | ~400–900 | ~1,500–5,000+ |
 | Heroicons | 3.6× | The official site is a single page with no per-icon pages, but it takes the "heroicons" searches itself | ~200–600 | ~800–2,500 |
 | Fluent Emoji | 0.4× | No official viewer, like Fluent; the only competitor is thin | ~200–500 | ~800–2,300, plus any per-emoji "3d … emoji png" searches it wins |
 
