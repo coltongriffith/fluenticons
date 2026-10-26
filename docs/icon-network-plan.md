@@ -47,22 +47,47 @@ used set by a wide margin.
   pages that are already good.
 - **Font Awesome:** a mixed license, Pro icons can't be shown, and fontawesome.com dominates.
 
-## Recommended order
+## Final review and domains (Oct 26)
 
-1. **Heroicons.** Smallest set, clearest gap, and an audience (Tailwind developers) that sponsors pay
-   well for. A good test of how fast a new site can be live.
-2. **Fluent Emoji.** The most natural sister to Fluenticons: same brand, linked from every Fluenticons
-   page, and a broader audience than developers. One page per emoji showing all 4 styles, with
-   PNG/SVG downloads and the Unicode code point.
-3. **Lucide.** The largest demand. Harder to rank, so it launches once the network can pass it links.
-   The angle is what lucide.dev doesn't do: equivalents in other sets, more frameworks
-   (Blazor/Flutter/XAML-style snippets) and "Lucide vs Heroicons"-type guides.
-4. **Phosphor.** No official per-icon pages and 6 weights, so many indexable pages.
-5. **Tabler Icons.** The biggest set. Its official icon pages share one title, which leaves room.
+A second pass found existing third-party sites for several sets, and checked domains. `.co`
+availability is from DNS: a name with no records almost always means unregistered. `.com` was
+confirmed with the Verisign registry. Confirm each at a registrar before buying, since some `.co` names
+are sold at premium prices.
 
-At roughly one site every 3–4 weeks, all five are live within about 4–5 months. Each one gets the same
-launch checklist as Materialicons: sitemap, Search Console, directory submissions, and links from the
-existing sites.
+| Set | Existing third-party site | Searches people make (Google autocomplete) | Domain | Status |
+| --- | --- | --- | --- | --- |
+| **Fluent Emoji** | fluentemoji.com: a bare single-page app with no per-emoji pages or sitemap | "fluent emoji 3d / flat / gallery", "microsoft 3d emoji download / list" | **fluentemoji.co** | Free |
+| **Lucide** | lucide.dev (official, per-icon pages); shadcn.io and others | "lucide icon names / list / search / filled", "heroicons vs lucide" | **lucideicons.co** (+ lucideicons.com) | Both free |
+| **Heroicons** | heroicons.dev: a single-page app with no per-icon pages | "heroicons vs lucide", "heroicons alternative" | heroicons.co is free, but it's a lookalike of the official heroicons.com. Independent names that are free: **heroiconlist.co**, allheroicons.co, heroiconsearch.co | Free |
+| Phosphor | none found | "phosphor icons vs lucide", "phosphor icons duotone" | phosphoricons.co and phosphor-icons.co are free, but both are lookalikes of the official phosphoricons.com | Free (risky) |
+| Tabler Icons | **tablericons.com**: static per-icon pages and a sitemap, plus the official per-icon URLs | "tabler icons list / svg / cdn" | tablericons.co | Free |
+
+For comparison: fluenticons.com and materialicons.com are owned by other people (no site and an
+unrelated font site). Your existing domains aren't lookalikes of an official icon site.
+
+## Recommended order (revised)
+
+1. **Fluent Emoji: fluentemoji.co.** Start here. The strongest pick on every count:
+   - The only existing site is thin.
+   - The demand reaches beyond developers ("microsoft 3d emoji download").
+   - The domain is free and isn't a lookalike.
+   - It's the same Fluent brand, so every Fluenticons page can link to it from day one.
+
+   One page per emoji showing its 3D, color, flat and high-contrast styles, with PNG/SVG downloads, the
+   character to copy, the Unicode code point and the name. Only the static emoji are open source
+   (MIT); the animated Teams emoji aren't, so leave them out.
+2. **Lucide: lucideicons.co** (also register lucideicons.com and redirect it). The biggest developer
+   demand. It's harder to rank against lucide.dev, but by launch it gets links from three sites. Lead
+   with what lucide.dev doesn't do: equivalents in other sets, more frameworks and "vs" guides.
+3. **Heroicons: heroiconlist.co** (or another non-lookalike name). The weakest existing competition
+   and a premium Tailwind audience, but the smallest set (~320 icons), so the fewest pages.
+
+Phosphor drops out for now because every good domain is a lookalike of the official site. Tabler drops
+because tablericons.com already does what we'd build.
+
+One at a time works: launch Fluent Emoji, give it about 4 weeks to be indexed and linked, then start
+Lucide. Each launch gets the Materialicons checklist: sitemap, Search Console, directory submissions,
+and links from the existing sites.
 
 ## What makes it a network
 
@@ -83,10 +108,7 @@ existing sites.
 
 - **Domains: don't use a lookalike of the official site.** `heroicons.co` next to Tailwind's
   `heroicons.com`, or `phosphoricons.co` next to `phosphoricons.com`, risks a trademark or domain
-  complaint and looks like typosquatting. Fluenticons and Materialicons don't sit one TLD away from an
-  official domain. Pick names that are clearly independent (e.g. "heroicon library", "lucide icon
-  search" style), and keep the "not affiliated with …" line every site has. I couldn't check
-  availability from here (the `.co` registry lookup isn't reachable); check at a registrar.
+  complaint and looks like typosquatting. Keep the "not affiliated with …" line every site has.
 - **Not a doorway network.** Google penalizes groups of near-identical sites that exist to link to
   each other. Each site must stand alone: a different icon set, its own per-icon copy (as done for
   Fluent and Material), and links that help the reader (the matching icon) rather than sitewide
