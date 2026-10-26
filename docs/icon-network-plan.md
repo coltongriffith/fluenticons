@@ -65,29 +65,62 @@ are sold at premium prices.
 For comparison: fluenticons.com and materialicons.com are owned by other people (no site and an
 unrelated font site). Your existing domains aren't lookalikes of an official icon site.
 
-## Recommended order (revised)
+## Traffic estimate (Oct 26)
 
-1. **Fluent Emoji: fluentemoji.co.** Start here. The strongest pick on every count:
-   - The only existing site is thin.
-   - The demand reaches beyond developers ("microsoft 3d emoji download").
-   - The domain is free and isn't a lookalike.
-   - It's the same Fluent brand, so every Fluenticons page can link to it from day one.
+Google Trends, worldwide over the last 12 months, measured against "fluent icons". Each comparison
+included "fluent icons", so the numbers are on one scale.
 
-   One page per emoji showing its 3D, color, flat and high-contrast styles, with PNG/SVG downloads, the
-   character to copy, the Unicode code point and the name. Only the static emoji are open source
-   (MIT); the animated Teams emoji aren't, so leave them out.
-2. **Lucide: lucideicons.co** (also register lucideicons.com and redirect it). The biggest developer
-   demand. It's harder to rank against lucide.dev, but by launch it gets links from three sites. Lead
-   with what lucide.dev doesn't do: equivalents in other sets, more frameworks and "vs" guides.
-3. **Heroicons: heroiconlist.co** (or another non-lookalike name). The weakest existing competition
-   and a premium Tailwind audience, but the smallest set (~320 icons), so the fewest pages.
+| Search term | Interest vs "fluent icons" |
+| --- | --- |
+| material icons | 10.4× |
+| lucide icons | 7.3× |
+| bootstrap icons | 6.0× |
+| heroicons | 3.6× |
+| tabler icons | 2.6× |
+| phosphor icons | 2.3× |
+| fluent icons | 1× |
+| fluent emoji | 0.4× |
+| microsoft 3d emoji | 0.07× |
+| 3d emoji (generic) | 4.9× |
+
+**Calibration from our own sites**
+- Fluenticons: ~5,800 visitors a month on 1× demand. Microsoft has no viewer of its own, so
+  Fluenticons is *the* viewer. That's the best case: about 5,800 visitors a month per 1× of demand.
+- Materialicons: ~800–1,000 visitors a month (a couple hundred a week) on 10.4× demand, within its
+  first months, up against Google's own icon pages and many other sites. That's the crowded case:
+  about 90 a month per 1× early on, rising as the site ages.
+
+**Rough monthly visitors.** These are order-of-magnitude estimates, easily off by 2–3× either way.
+They don't count the long tail of per-icon searches, which drives much of Fluenticons' traffic.
+
+| Site | Demand | Situation | First ~3 months | After ~12 months |
+| --- | --- | --- | --- | --- |
+| Lucide | 7.3× | Crowded, like Material | ~400–900 | ~1,500–5,000 |
+| Heroicons | 3.6× | The official site is a single page with no per-icon pages, but it takes the "heroicons" searches itself | ~200–600 | ~800–2,500 |
+| Fluent Emoji | 0.4× | No official viewer, like Fluent; the only competitor is thin | ~200–500 | ~800–2,300, plus any per-emoji "3d … emoji png" searches it wins |
+
+## Recommended order (final)
+
+The Trends data changes the order. Fluent Emoji's own search demand is small (0.4× Fluenticons'), so
+even winning it outright caps it around Fluenticons' level or below. Lucide has 7× the demand, and
+Materialicons already shows this kind of site gets traffic quickly even against a strong official site.
+
+1. **Lucide: lucideicons.co** (also register lucideicons.com and redirect it). The most traffic, near
+   Materialicons' demand. It gets the "lucide icon names / list / search" searches and "vs" guides,
+   plus equivalents in Fluent and Material that lucide.dev doesn't show.
+2. **Fluent Emoji: fluentemoji.co.** The surest to rank and the easiest cross-promotion with
+   Fluenticons, but a smaller ceiling. Its upside is ranking per-emoji pages for the much bigger generic
+   "3d emoji" searches (4.9×). Only the static emoji are open source (MIT); leave the animated Teams
+   emoji out.
+3. **Heroicons: heroiconlist.co** (not heroicons.co, a lookalike of the official site). A premium
+   Tailwind audience, but the official site keeps the main searches and the set is small (~320 icons).
 
 Phosphor drops out for now because every good domain is a lookalike of the official site. Tabler drops
 because tablericons.com already does what we'd build.
 
-One at a time works: launch Fluent Emoji, give it about 4 weeks to be indexed and linked, then start
-Lucide. Each launch gets the Materialicons checklist: sitemap, Search Console, directory submissions,
-and links from the existing sites.
+Since each site costs little to build, Lucide and Fluent Emoji can go up close together: they cover
+the biggest upside and the surest win. Each launch gets the Materialicons checklist: sitemap, Search
+Console, directory submissions, and links from the existing sites.
 
 ## What makes it a network
 
