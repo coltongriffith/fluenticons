@@ -124,6 +124,48 @@ Since each site costs little to build, Lucide and Fluent Emoji can go up close t
 the biggest upside and the surest win. Each launch gets the Materialicons checklist: sitemap, Search
 Console, directory submissions, and links from the existing sites.
 
+## Final pass: what to build next (Oct 26)
+
+A wider Google Trends check, 12-month averages, measured against "lucide icons". The trend column
+compares the last 3 months with the first 3.
+
+| Search term | vs "lucide icons" | Trend |
+| --- | --- | --- |
+| font awesome | 4.4× | −54% |
+| react icons | 1.3× | −57% |
+| **lucide icons** | **1×** | **−20%** |
+| bootstrap icons | 0.8× | −44% |
+| heroicons | 0.5× | −64% |
+| simple icons | 0.5× | −32% |
+| tabler icons | 0.3× | −39% |
+| phosphor icons | 0.3× | +5% |
+| ionicons / remix icon | 0.24× | −42% |
+| hugeicons | 0.14× | −14% |
+| fluent emoji | 0.05× | +38% |
+
+Searches for icon libraries are falling across the board, probably as developers ask AI tools
+instead. Lucide is falling least of the big sets.
+
+- **Font Awesome** is bigger, but fontawesome.com owns those searches, its license is mixed, and Pro
+  icons can't be shown. Skip it.
+- **React Icons** is bigger than Lucide, and its official site has no per-icon pages or sitemap
+  (reacticons.co is free). But it bundles ~50,000 icons from ~30 sets, each with its own license, which
+  is far over Cloudflare Pages' free limit of 20,000 files per site. Revisit it as a later hub site,
+  limited to the top sets or on the paid Pages plan.
+- **Heroicons** drops to the back: half Lucide's demand and falling fastest (−64%).
+
+**Next site: Lucide on lucideicons.co** (also buy lucideicons.com and redirect it).
+- Lucide has the highest demand of any set we can build cleanly: ISC license, ~1,650 icons, about
+  5,000 files.
+- It's the default icon set in shadcn/ui, so it has a large developer audience, which suits sponsors.
+- Its competition looks like Material's, and Materialicons is already getting traffic only weeks after
+  launch.
+- It cross-links naturally with Fluent and Material (matching icons, "vs" guides).
+- Both domains are free.
+
+Fluent Emoji (fluentemoji.co) stays the quick second site. Its demand is small but growing, it's easy
+to rank, and it's the natural sister site for Fluenticons.
+
 ## What makes it a network
 
 - **"Same icon in other sets":** every icon page links to the matching icon on each sister site (home
