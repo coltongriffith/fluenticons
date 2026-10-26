@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 sm:px-8 py-8">
     <div class="prose dark:prose-invert max-w-3xl">
       <h1>Terms of Use</h1>
-      <p class="text-sm">Last updated: 24 September 2026</p>
+      <p class="text-sm">Last updated: 26 October 2026</p>
       <p>
         These terms apply to your use of materialicons.co (the "Site"). By using the Site, you
         agree to them. If you don't agree, please don't use the Site.
@@ -38,11 +38,11 @@
         <li>use the Site to suggest that your product is made or endorsed by Google or Materialicons.</li>
       </ul>
 
-      <h2>5. Advertising and third parties</h2>
+      <h2>5. Sponsors and third parties</h2>
       <p>
-        The Site shows ads served by Google and links to third-party websites. We're not
-        responsible for the content or practices of third-party sites or advertisers. See our
-        <NuxtLink to="/privacy-policy/">privacy policy</NuxtLink> for how advertising uses data.
+        The Site shows labeled sponsor cards and links to third-party websites. We're not
+        responsible for the content or practices of third-party sites or sponsors. See our
+        <NuxtLink to="/privacy-policy/">privacy policy</NuxtLink> for what data sponsor cards use.
       </p>
 
       <h2>6. No warranty</h2>

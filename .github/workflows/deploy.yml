@@ -30,6 +30,9 @@ on:
       # The Material Icons site (deployed by deploy-material.yml)
       - "sites/material/**"
       - "scripts/import-material.mjs"
+      # The Lucide Icons site (deployed by deploy-lucide.yml)
+      - "sites/lucide/**"
+      - "scripts/import-lucide.mjs"
   workflow_dispatch:
     inputs:
       branch:

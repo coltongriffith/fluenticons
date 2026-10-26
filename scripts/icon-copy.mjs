@@ -1,7 +1,7 @@
 // The "about this icon" text on icon pages: two or three sentences built from
-// the icon's own data (its tags, category, similar icons, popularity and the
-// matching icon on the other site), so no two pages read the same. Used by
-// build-icon-data.mjs.
+// the icon's own data (its tags, category, similar icons, popularity, older
+// names and the matching icons on the sister sites), so no two pages read the
+// same. Used by build-icon-data.mjs.
 
 // Tags too generic to say anything about an icon.
 const STOP = new Set([
@@ -40,11 +40,24 @@ function telling(icon, rarity) {
     .slice(0, 3);
 }
 
-// { icon, kind: "fluent" | "material", similar: [names], twin, rank, total, rarity }
-export function usageText({ icon, kind, similar, twin, rank, total, rarity }) {
+// { icon, kind: "fluent" | "material" | "lucide", similar: [names],
+//   twins: { fluent?, material?, lucide? }, rank, total, rarity }
+export function usageText({ icon, kind, similar, twins, rank, total, rarity }) {
   const tags = telling(icon, rarity);
   const sentences = [];
   const sim = list(similar.slice(0, 3));
+  if (kind === "lucide") {
+    const name = icon.slug.replace(/_/g, "-");
+    const cats = icon.categories || [];
+    if (tags.length) sentences.push(`Lucide tags ${name} with ${list(tags)}.`);
+    if (icon.aliases?.length) sentences.push(`It was previously named ${list(icon.aliases)}, which still works as an alias.`);
+    else if (sim) sentences.push(`${cats.length ? `It's in Lucide's ${list(cats.slice(0, 2))} ${cats.length > 1 ? "categories" : "category"}; similar` : "Similar"} icons include ${sim}.`);
+    const others = [twins.fluent && `${twins.fluent.name} in Microsoft's Fluent icons`, twins.material && `${twins.material.slug} in Google's Material Symbols`].filter(Boolean);
+    if (others.length) sentences.push(`The matching icon${others.length > 1 ? "s are" : " is"} ${list(others)}.`);
+    if (sentences.length < 2) sentences.unshift(`${icon.name} is one of Lucide's ${total.toLocaleString("en-US")} open-source icons.`);
+    return sentences.slice(0, 3).join(" ");
+  }
+  const twin = kind === "material" ? twins.fluent : twins.material;
   if (kind === "material") {
     const code = icon.slug;
     if (tags.length) sentences.push(`Google tags ${code} with ${list(tags)}.`);

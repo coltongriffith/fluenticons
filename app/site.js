@@ -52,6 +52,7 @@ export default {
     { to: "/terms/", label: "Terms" },
     { to: "/privacy-policy/", label: "Privacy" },
     { to: "https://materialicons.co/", label: "Material Icons" },
+    { to: "https://lucideicons.co/", label: "Lucide Icons" },
   ],
   // Footer notice: "{copyright} <license link>. {disclaimer}"
   footerCopyright: "Fluent UI System Icons are © Microsoft Corporation and released under the",
@@ -63,10 +64,12 @@ export default {
   sister: {
     label: "Material Icons",
     url: "https://materialicons.co/",
-    // Icon pages: the matching icon there (IconTwin.vue).
-    twinHeading: "Also in Material Symbols",
-    twinNote: "Google's version of this icon, on Materialicons",
   },
+  // Icon pages: the matching icon on each sister site (IconTwin.vue).
+  twinSites: [
+    { key: "material", url: "https://materialicons.co/", heading: "Also in Material Symbols", note: "Google's version of this icon, on Materialicons" },
+    { key: "lucide", url: "https://lucideicons.co/", heading: "Also in Lucide", note: "Lucide's version of this icon, on Lucideicons" },
+  ],
   // The page about the agent API and MCP server, promoted in the editor.
   aiPage: "/ai/",
 

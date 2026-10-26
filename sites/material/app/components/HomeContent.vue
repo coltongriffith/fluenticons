@@ -79,10 +79,13 @@
         </li>
       </ul>
 
-      <h2>Looking for Microsoft's Fluent icons?</h2>
+      <h2>Looking for Fluent or Lucide icons?</h2>
       <p>
-        Our sister site <a href="https://fluenticons.co/">Fluenticons</a> does the same for
-        Microsoft's Fluent UI System Icons, the icons of Windows 11 and Microsoft 365.
+        Our sister sites do the same for other open-source sets:
+        <a href="https://fluenticons.co/">Fluenticons</a> for Microsoft's Fluent UI System Icons,
+        the icons of Windows 11 and Microsoft 365, and
+        <a href="https://lucideicons.co/">Lucideicons</a> for Lucide, the line icons behind
+        shadcn/ui.
       </p>
     </div>
   </section>

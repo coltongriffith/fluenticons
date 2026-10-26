@@ -8,10 +8,15 @@ export default {
   dataPage: /^\/(?:$|filled|browse|tag|category|icon\/)/,
   // /category/<name> pages from each icon's Google category (see build-icon-data.mjs).
   categoryPages: true,
-  // "Also in Fluent" links to the matching icon on fluenticons.co.
-  crossSite: { url: "https://fluenticons.co", data: "../../data/icons.json", fluent: true },
-  // Social preview images for icon pages (public/og/<slug>.png).
-  ogImages: true,
+  // Which icon set this is, and the sister sites whose matching icons icon
+  // pages link to ("Also in …"; see build-icon-data.mjs).
+  kind: "material",
+  crossSites: [
+    { key: "fluent", kind: "fluent", data: "../../data/icons.json" },
+    { key: "lucide", kind: "lucide", data: "../lucide/data/icons.json" },
+  ],
+  // Social preview images for icon pages (public/og/<slug>.png), with this text.
+  ogImages: { label: "Material Icons & Symbols", formats: "SVG · JSX · MUI · Flutter · Font" },
   // Google tags icons generously; topic pages need at least 15 icons, and
   // the 250 largest topics are kept.
   tagMin: 15,

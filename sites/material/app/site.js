@@ -57,6 +57,7 @@ export default {
     { to: "/terms/", label: "Terms" },
     { to: "/privacy-policy/", label: "Privacy" },
     { to: "https://fluenticons.co/", label: "Fluent Icons" },
+    { to: "https://lucideicons.co/", label: "Lucide Icons" },
   ],
   footerCopyright: "Material Symbols are © Google LLC and released under the",
   footerLicense: "Apache License 2.0",
@@ -66,10 +67,12 @@ export default {
   sister: {
     label: "Fluent Icons",
     url: "https://fluenticons.co/",
-    // Icon pages: the matching icon there (IconTwin.vue).
-    twinHeading: "Also in Fluent",
-    twinNote: "Microsoft's version of this icon, on Fluenticons",
   },
+  // Icon pages: the matching icon on each sister site (IconTwin.vue).
+  twinSites: [
+    { key: "fluent", url: "https://fluenticons.co/", heading: "Also in Fluent", note: "Microsoft's version of this icon, on Fluenticons" },
+    { key: "lucide", url: "https://lucideicons.co/", heading: "Also in Lucide", note: "Lucide's version of this icon, on Lucideicons" },
+  ],
 
   // Sponsors are set in app/sponsor.ts (same setup as fluenticons.co).
   sponsorPage: "/sponsor/",

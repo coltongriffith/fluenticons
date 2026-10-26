@@ -11,7 +11,10 @@
     "postinstall": "nuxt prepare",
     "material:icons": "node scripts/build-icon-data.mjs sites/material",
     "material:dev": "yarn material:icons && nuxt dev sites/material",
-    "material:generate": "yarn material:icons && node -e \"require('fs').rmSync('sites/material/dist',{recursive:true,force:true})\" && nuxt generate sites/material"
+    "material:generate": "yarn material:icons && node -e \"require('fs').rmSync('sites/material/dist',{recursive:true,force:true})\" && nuxt generate sites/material",
+    "lucide:icons": "node scripts/build-icon-data.mjs sites/lucide",
+    "lucide:dev": "yarn lucide:icons && nuxt dev sites/lucide",
+    "lucide:generate": "yarn lucide:icons && node -e \"require('fs').rmSync('sites/lucide/dist',{recursive:true,force:true})\" && nuxt generate sites/lucide"
   },
   "dependencies": {
     "file-saver": "^2.0.5",

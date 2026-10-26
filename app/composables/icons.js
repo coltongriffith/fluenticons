@@ -2,6 +2,7 @@ import uiIcons from "~/generated/ui-icons.json";
 import siteStats from "~/generated/stats.json";
 import site from "~/site.js";
 import { cdnUrl, reactName } from "../utils/iconCode";
+import { svgParts } from "../utils/svgBody.mjs";
 
 export const PAGE_SIZE = 48;
 export const SITE_URL = site.url;
@@ -87,7 +88,7 @@ export function loadTags() {
 }
 
 const svgCache = new Map();
-// { size, body } for an icon file, with #212121 mapped to currentColor.
+// { size, body } for an icon file, drawn in currentColor (utils/svgBody.js).
 export function fetchIconSvg(file) {
   if (!svgCache.has(file)) {
     svgCache.set(
@@ -97,13 +98,7 @@ export function fetchIconSvg(file) {
           if (!res.ok) throw new Error(`Could not load ${file}`);
           return res.text();
         })
-        .then((svg) => {
-          const match = svg.match(/^<svg[^>]*\bwidth="(\d+)"[^>]*>([\s\S]*)<\/svg>\s*$/);
-          return {
-            size: Number(match?.[1] || 24),
-            body: (match?.[2] || "").trim().replace(/fill="#212121"/g, 'fill="currentColor"'),
-          };
-        })
+        .then((svg) => svgParts(svg) || { size: 24, body: "" })
         .catch((err) => {
           svgCache.delete(file);
           throw err;

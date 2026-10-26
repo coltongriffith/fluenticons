@@ -1,0 +1,6 @@
+User-agent: *
+# Search results (/?q=…) are noindex copies of the grid; don't spend crawls on them.
+Disallow: /*?q=
+Disallow: /*&q=
+
+Sitemap: https://lucideicons.co/sitemap.xml

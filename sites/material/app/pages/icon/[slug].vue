@@ -257,7 +257,7 @@
       </template>
     </div>
 
-    <IconTwin :twin="details.twin" :slug="slug" />
+    <IconTwin :twins="details.twins" :slug="slug" />
 
     <section v-if="related.length" class="mt-12">
       <h2 class="text-2xl font-bold mb-4">Similar icons</h2>

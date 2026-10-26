@@ -14,12 +14,14 @@
 # A second job does the same for the Material Icons site (sites/material):
 # it compares @material-symbols/svg-400 on npm with
 # sites/material/data/meta.json, imports with scripts/import-material.mjs and
-# opens a pull request from material-icons/<version>.
+# opens a pull request from material-icons/<version>. A third does the same for
+# the Lucide Icons site (sites/lucide): lucide-static on npm vs
+# sites/lucide/data/meta.json, scripts/import-lucide.mjs, lucide-icons/<version>.
 #
 # Run it by hand from the Actions tab (Run workflow) to check right away.
 # If GitHub Actions isn't allowed to open pull requests in this repository,
 # the run still pushes the branch and links to it in the run summary.
-name: Update icons from Microsoft and Google
+name: Update icons from Microsoft, Google and Lucide
 
 on:
   schedule:
@@ -213,6 +215,88 @@ jobs:
             echo "The Material Icons site builds with these changes. Merging deploys it (deploy-material.yml)."
           } > "$RUNNER_TEMP/body.md"
           if gh pr create --base main --head "$branch" --title "Update Material Symbols to $VERSION" --body-file "$RUNNER_TEMP/body.md"; then
+            echo "Opened a pull request for $branch." >> "$GITHUB_STEP_SUMMARY"
+          else
+            url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1"
+            echo "::warning::Pushed $branch but couldn't open a pull request. Open it here: $url"
+            echo "Pushed \`$branch\`. [Open a pull request]($url)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  update-lucide:
+    if: github.repository == 'coltongriffith/fluenticons'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Check for a new release
+        id: check
+        run: |
+          latest=$(npm view lucide-static version)
+          current=$(node -p "require('./sites/lucide/data/meta.json').version")
+          echo "version=$latest" >> "$GITHUB_OUTPUT"
+          if [ "$latest" = "$current" ]; then
+            echo "Up to date: lucide-static $current" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          elif git ls-remote --exit-code --heads origin "lucide-icons/$latest" > /dev/null; then
+            echo "Branch lucide-icons/$latest already exists; review or merge its pull request." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "New Lucide release: $current -> $latest" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "update=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.check.outputs.update == 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Import the release
+        if: steps.check.outputs.update == 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.version }}
+        run: node scripts/import-lucide.mjs "$VERSION" | tee "$RUNNER_TEMP/import.log"
+
+      - name: Build the site
+        if: steps.check.outputs.update == 'true'
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn lucide:generate
+          files=$(find sites/lucide/dist -type f | wc -l)
+          echo "Files: $files"
+          test "$files" -lt 20000
+
+      - name: Open a pull request
+        if: steps.check.outputs.update == 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.version }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="lucide-icons/$VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add -A sites/lucide/data sites/lucide/public/icons sites/lucide/content/lucide-license.txt
+          if git diff --cached --quiet; then
+            echo "No changes to the icon data." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -q -m "Update Lucide to lucide-static $VERSION"
+          git push origin "$branch"
+          {
+            echo "Imports Lucide from \`lucide-static@$VERSION\` and lucide.dev's categories."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/import.log"
+            echo '```'
+            echo
+            echo "The Lucide Icons site builds with these changes. Merging deploys it (deploy-lucide.yml)."
+          } > "$RUNNER_TEMP/body.md"
+          if gh pr create --base main --head "$branch" --title "Update Lucide to $VERSION" --body-file "$RUNNER_TEMP/body.md"; then
             echo "Opened a pull request for $branch." >> "$GITHUB_STEP_SUMMARY"
           else
             url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1"
