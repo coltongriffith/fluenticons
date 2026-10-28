@@ -5,6 +5,20 @@ import type { SponsorConfig } from "../../../app/utils/sponsor";
 // `hiddenIn`.
 const sponsors: SponsorConfig[] = [
   {
+    // Same booking as on fluenticons.co: $150/mo from Oct 27, 2026, now covering lucideicons.co too.
+    // Set active: false if Ramy (Roundicons) cancels.
+    active: true,
+    name: "Getillustrations",
+    tagline: "130,000+ illustrations & icons by real designers",
+    url: "https://getillustrations.com",
+    logo: "/sponsors/getillustrations.svg",
+    logoAlt: "Getillustrations logo",
+    startDate: "2026-10-27",
+    endDate: "2027-10-26",
+    ctaText: "Browse illustrations",
+    ctaColor: "#FFFFFF",
+  },
+  {
     // Same booking as on fluenticons.co: Oct 7, 2026 – Jan 6, 2027.
     active: true,
     name: "Xceed Toolkit Plus for WPF",
