@@ -5,7 +5,8 @@ import { isLive, sponsorLink, sponsorList, sponsorSlug } from "../utils/sponsor"
 
 // The site's sponsors (app/sponsor.ts), their tagged links and click/impression
 // events. Shared by every placement so the monthly report comes from one set of
-// events: sponsor_impression and sponsor_click, each with sponsor + placement.
+// events: sponsor_impression and sponsor_click, each with sponsor, placement
+// and ad_id (the creative; see adIdOf).
 // A click is a left click (with or without Ctrl/Cmd/Shift) or a middle click;
 // "Open in new tab" from the right-click menu can't be seen by the page.
 //
@@ -16,7 +17,18 @@ import { isLive, sponsorLink, sponsorList, sponsorSlug } from "../utils/sponsor"
 // site was built and is checked again in the browser (plugins/sponsor.client.js):
 // sponsors appear and disappear on their dates without a redeploy, and
 // ?sponsor_preview=1 (or =<sponsor slug>) shows them early with no events.
-const all = sponsorList(config).map((s) => ({ ...s, slug: sponsorSlug(s.name) }));
+// A sponsor's creative: `adId` if set, else slug + a hash of what the card shows.
+function adIdOf(s, slug) {
+  if (s.adId) return s.adId;
+  const text = [s.headline || s.name, s.tagline, s.ctaText, s.logo, s.url].join("|");
+  let h = 5381;
+  for (const c of text) h = ((h * 33) ^ c.charCodeAt(0)) >>> 0;
+  return `${slug}-${h.toString(36).slice(0, 6)}`;
+}
+const all = sponsorList(config).map((s) => {
+  const slug = sponsorSlug(s.name);
+  return { ...s, slug, adId: adIdOf(s, slug) };
+});
 export const liveSlugs = (now = Date.now()) => all.filter((s) => isLive(s, now)).map((s) => s.slug);
 // ?sponsor_preview=1: every configured sponsor; ?sponsor_preview=<slug>: that one.
 export const previewSlugs = (param) =>
@@ -41,7 +53,7 @@ export function useSponsor() {
   // No events in preview, including before the preview state is set after
   // hydration (a live sponsor's card can be on screen by then).
   const previewing = () => preview.value || (import.meta.client && new URLSearchParams(location.search).has("sponsor_preview"));
-  const send = (name, s, placement) => !previewing() && track(name, { sponsor: s.slug, placement });
+  const send = (name, s, placement) => !previewing() && track(name, { sponsor: s.slug, placement, ad_id: s.adId });
 
   return {
     sponsors,

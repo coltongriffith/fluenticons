@@ -32,6 +32,10 @@ export interface SponsorConfig {
    *  sponsor. Its card stays invisible until the browser has looked up the
    *  visitor's country (plugins/sponsor-geo.server.js), so it never shows there. */
   hiddenIn?: string[];
+  /** Optional id for this creative, sent as ad_id with every event. Without
+   *  one, it's the sponsor's slug plus a short hash of the card's text, logo
+   *  and link, so changing the creative gives its events a new ad_id. */
+  adId?: string;
 }
 
 /** app/sponsor.ts exports one sponsor or a list; this always gives a list. */
