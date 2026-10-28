@@ -14,7 +14,7 @@
         @click="onClick($event, s)"
         @auxclick.middle="real && click(s, placement)"
       >
-        <span class="flex-shrink-0 rounded-lg bg-white ring-1 ring-gray-900/5 dark:ring-white/10 overflow-hidden flex-center" :class="box">
+        <span class="flex-shrink-0 rounded-lg bg-white ring-1 ring-gray-900/5 dark:ring-white/10 overflow-hidden flex-center" :class="box" :style="s.logoBg && { background: s.logoBg }">
           <picture v-if="s.logo" class="contents">
             <!-- An animated logo holds still for visitors who turn off animations. -->
             <source v-if="s.logoStill" :srcset="s.logoStill" media="(prefers-reduced-motion: reduce)" />
