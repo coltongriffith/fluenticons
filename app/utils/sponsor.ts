@@ -20,6 +20,9 @@ export interface SponsorConfig {
    *  -still.png (e.g. acme-still.png) for visitors who turn off animations. */
   logo: string;
   logoAlt: string;
+  /** Optional color behind the logo (default white). Set it to the logo's own
+   *  background for a full-bleed logo, so no white shows at its rounded edges. */
+  logoBg?: string;
   /** First and last day shown, as ISO dates ("2026-11-01"). Whole days in UTC. */
   startDate: string;
   endDate: string;

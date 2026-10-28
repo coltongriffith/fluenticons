@@ -36,6 +36,7 @@ const sponsors: SponsorConfig[] = [
     url: "https://getillustrations.com",
     logo: "/sponsors/getillustrations.svg",
     logoAlt: "Getillustrations logo",
+    logoBg: "#111",
     startDate: "2026-10-27",
     endDate: "2027-01-26",
     ctaText: "Browse illustrations",
