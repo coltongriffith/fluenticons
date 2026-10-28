@@ -172,11 +172,14 @@ show nothing. A `url` that already has UTM parameters is used exactly as given; 
 while a sponsor is running (as of the build). `?sponsor_preview=1` shows every configured
 sponsor early (`=<slug>` for one), with no events. The build fails on a tagline over 70 characters or, when active, a bad
 URL, missing logo or malformed date. Events for the monthly report: `sponsor_impression` and
-`sponsor_click`, each with `sponsor` and `placement` (homepage, icon, editor, guide, copy_toast,
-sponsor_page); clicks on the empty card are `sponsor_house_click`.
+`sponsor_click`, each with `sponsor`, `placement` (homepage, icon, editor, guide, copy_toast;
+the sponsor page's example card sends nothing) and `ad_id` (the creative: the sponsor's `adId`,
+or its slug plus a hash of the card's text, logo and link, so a new creative gets a new id).
+Clicks on the empty card are `sponsor_house_click`. The page is GA4's own Page path dimension.
 
-To report on these in GA4, register `sponsor` and `placement` once as event-scoped custom
-dimensions (Admin → Custom definitions); they only apply to events from then on. Clicks count
+To report on these in GA4, register `sponsor`, `placement` and `ad_id` once as event-scoped
+custom dimensions in each site's property (Admin → Custom definitions); they only apply to
+events from then on, so earlier events show "(not set)". Clicks count
 left, Ctrl/Cmd and middle clicks; "Open in new tab" from the right-click menu and visitors who
 block Google Analytics aren't counted. GA4's own outbound-click event (`click`, Link domain
 `xceed.com`) is an independent second count.

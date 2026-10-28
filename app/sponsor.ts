@@ -53,12 +53,10 @@ const sponsors: SponsorConfig[] = [
     endDate: "2027-01-06",
     ctaText: "See Toolkit Plus",
     ctaColor: "#FF671B",
-    // Not shown in Poland while Lordicon (based there) runs; remove after.
-    hiddenIn: ["PL"],
   },
   {
-    // Runs one month, Oct 21 – Nov 20, 2026.
-    // Off until Lordicon pays; set back to true to show it.
+    // Off: Lordicon never paid or replied (Oct 2026). Kept so it can be
+    // switched back on (with new dates) if that changes.
     active: false,
     name: "Lordicon",
     headline: "Make Your Icons Move",
