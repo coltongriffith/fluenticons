@@ -5,7 +5,7 @@ import type { SponsorConfig } from "../../../app/utils/sponsor";
 // `hiddenIn`.
 const sponsors: SponsorConfig[] = [
   {
-    // Same booking as on fluenticons.co: $150/mo from Oct 27, 2026, now covering lucideicons.co too.
+    // Same booking as on fluenticons.co: Oct 27, 2026 – Jan 26, 2027, covering lucideicons.co too.
     // Set active: false if Ramy (Roundicons) cancels.
     active: true,
     name: "Getillustrations",
@@ -14,7 +14,7 @@ const sponsors: SponsorConfig[] = [
     logo: "/sponsors/getillustrations.svg",
     logoAlt: "Getillustrations logo",
     startDate: "2026-10-27",
-    endDate: "2027-10-26",
+    endDate: "2027-01-26",
     ctaText: "Browse illustrations",
     ctaColor: "#FFFFFF",
   },
