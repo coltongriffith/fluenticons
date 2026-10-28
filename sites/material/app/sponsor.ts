@@ -6,7 +6,7 @@ import type { SponsorConfig } from "../../../app/utils/sponsor";
 const sponsors: SponsorConfig[] = [
   {
     // Paid monthly ($150/mo, Stripe subscription) for fluenticons.co + materialicons.co,
-    // from Oct 27, 2026. Set active: false if Ramy (Roundicons) cancels.
+    // runs three months, Oct 27, 2026 – Jan 26, 2027. Set active: false if Ramy (Roundicons) cancels.
     active: true,
     name: "Getillustrations",
     tagline: "130,000+ illustrations & icons by real designers",
@@ -14,7 +14,7 @@ const sponsors: SponsorConfig[] = [
     logo: "/sponsors/getillustrations.svg",
     logoAlt: "Getillustrations logo",
     startDate: "2026-10-27",
-    endDate: "2027-10-26",
+    endDate: "2027-01-26",
     ctaText: "Browse illustrations",
     ctaColor: "#FFFFFF",
   },
