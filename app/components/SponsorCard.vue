@@ -1,7 +1,7 @@
 <template>
   <div v-if="ads.length || variant === 'hero'" :class="$attrs.class">
     <!-- The running sponsors (app/sponsor.ts), stacked, or the sponsor page's example. -->
-    <div v-if="ads.length" class="relative flex flex-col" :class="variant === 'compact' ? 'gap-2' : 'gap-3'">
+    <div v-if="ads.length" class="relative flex flex-col gap-2">
       <a
         v-for="s in ads"
         :key="s.slug || 'example'"
@@ -42,7 +42,7 @@
           <!-- With ctaColor, the call to action is a link in the sponsor's color. -->
           <span
             v-if="variant !== 'compact' && s.ctaText && s.ctaColor"
-            class="sponsor-cta mt-2 inline-flex items-center gap-1 text-sm font-medium text-[color:var(--cta-light)] dark:text-[color:var(--cta)] group-hover:underline underline-offset-2"
+            class="sponsor-cta mt-1 inline-flex items-center gap-1 text-sm font-medium text-[color:var(--cta-light)] dark:text-[color:var(--cta)] group-hover:underline underline-offset-2"
             :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
             :style="{ '--cta': s.ctaColor, '--cta-light': readableOnWhite(s.ctaColor) }"
           >
@@ -50,7 +50,7 @@
           </span>
           <span
             v-else-if="variant !== 'compact' && s.ctaText"
-            class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
+            class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
             :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
           >
             {{ s.ctaText }}<FluentSvg ui="open_24_regular" class="h-3.5 w-3.5" />
@@ -96,7 +96,7 @@
         </span>
         <span
           v-if="variant !== 'compact'"
-          class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
+          class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
           :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
         >
           Become a sponsor
@@ -181,8 +181,8 @@ const text = computed(() => (props.variant === "compact" ? "text-xs" : "text-sm"
 const shell = computed(
   () =>
     ({
-      hero: "w-full max-w-sm p-4 bg-white/80 dark:bg-slate-800/70 hover:bg-white dark:hover:bg-slate-800 shadow-sm",
-      inline: "p-4 sm:px-5 bg-gray-50 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-800",
+      hero: "w-full max-w-md px-4 py-3 bg-white/80 dark:bg-slate-800/70 hover:bg-white dark:hover:bg-slate-800 shadow-sm",
+      inline: "px-4 py-3 sm:px-5 bg-gray-50 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-800",
       compact: "p-3 gap-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/60",
     })[props.variant]
 );
