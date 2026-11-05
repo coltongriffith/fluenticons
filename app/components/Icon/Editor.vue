@@ -139,7 +139,7 @@
     >
       MCP server &amp; API for coding agents
     </NuxtLink>
-    <SponsorCard v-if="icon.id !== 'placeholder'" variant="compact" placement="editor" class="px-4 pt-4" />
+    <SponsorCard v-if="icon.id !== 'placeholder'" variant="compact" placement="editor" rotate class="px-4 pt-4" />
     <BuyMeCoffee />
   </aside>
 </template>

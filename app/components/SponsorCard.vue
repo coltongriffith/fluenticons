@@ -124,7 +124,23 @@ const props = defineProps({
   example: { type: Object, default: null },
   // At most this many sponsors (the sponsor page shows one as an example).
   max: { type: Number, default: Infinity },
+  // One sponsor at a time, a different one each page view (the icon editor).
+  rotate: { type: Boolean, default: false },
 });
+
+// Counts page views per placement for `rotate`, from a random start so the
+// first page of a visit isn't always the same sponsor; kept for the visit
+// (sessionStorage), random each time when that is unavailable.
+function nextTurn(key) {
+  try {
+    const stored = sessionStorage.getItem(key);
+    const n = stored === null ? Math.floor(Math.random() * 1000) : Number(stored) || 0;
+    sessionStorage.setItem(key, String(n + 1));
+    return n;
+  } catch {
+    return Math.floor(Math.random() * 1000);
+  }
+}
 
 const { sponsors, href, click, impression, geoReady } = useSponsor();
 const route = useRoute();
@@ -134,14 +150,26 @@ const pitch = kit.users
   : `Reach developers building with ${kit.iconSet}.`;
 
 // The running sponsors, else the example (if any), else the placeholder. With
-// two or more, the one on top changes from page to page (fixed per page, so
-// nothing moves after the page loads), and `max` limits how many are shown.
+// two or more, the order changes from page to page (fixed per page, so nothing
+// moves after the page loads); a sponsor with position: "middle" stays in the
+// middle and the others take turns around it.
+// `rotate` (the icon editor) shows one sponsor at a time instead, a different
+// one each page view: chosen once mounted, as the editor only opens in the browser.
 const real = computed(() => sponsors.value.length > 0);
+const turn = ref(-1);
+onMounted(() => {
+  if (props.rotate) turn.value = nextTurn(`sponsor_turn_${props.placement}`);
+});
 const ads = computed(() => {
   if (!real.value) return props.example ? [props.example] : [];
   const list = sponsors.value;
-  const shift = [...route.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % list.length;
-  return [...list.slice(shift), ...list.slice(0, shift)].slice(0, props.max);
+  if (props.rotate) return turn.value < 0 ? [] : [list[turn.value % list.length]];
+  const middle = list.filter((s) => s.position === "middle");
+  const rest = list.filter((s) => s.position !== "middle");
+  const shift = [...route.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % (rest.length || 1);
+  const order = [...rest.slice(shift), ...rest.slice(0, shift)];
+  order.splice(Math.floor(order.length / 2), 0, ...middle);
+  return order.slice(0, props.max);
 });
 
 const advertise = computed(() => props.variant === "hero" && real.value && site.sponsorPage && props.placement !== "sponsor_page");

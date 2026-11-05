@@ -35,6 +35,9 @@ export interface SponsorConfig {
    *  sponsor. Its card stays invisible until the browser has looked up the
    *  visitor's country (plugins/sponsor-geo.server.js), so it never shows there. */
   hiddenIn?: string[];
+  /** Optional fixed spot when several sponsors are stacked: "middle" keeps
+   *  this one in the middle (second of three); the others take turns around it. */
+  position?: "middle";
   /** Optional id for this creative, sent as ad_id with every event. Without
    *  one, it's the sponsor's slug plus a short hash of the card's text, logo
    *  and link, so changing the creative gives its events a new ad_id. */
