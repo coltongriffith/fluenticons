@@ -13,6 +13,7 @@ const sponsors: SponsorConfig[] = [
     url: "https://getillustrations.com",
     logo: "/sponsors/getillustrations.svg",
     logoAlt: "Getillustrations logo",
+    logoBg: "#111",
     startDate: "2026-10-27",
     endDate: "2027-01-26",
     ctaText: "Browse illustrations",
@@ -32,19 +33,20 @@ const sponsors: SponsorConfig[] = [
     ctaColor: "#FF671B",
   },
   {
-    // Off: Lordicon never paid or replied (Oct 2026). Kept so it can be
-    // switched back on (with new dates) if that changes.
-    active: false,
+    // Paid (Nov 2026); runs one month, Nov 5 – Dec 4, 2026. Always the middle
+    // card when the sponsors are stacked (position: "middle").
+    active: true,
     name: "Lordicon",
     headline: "Make Your Icons Move",
     tagline: "Bring your UI to life with customizable animated icons for web & apps.",
     url: "https://lordicon.com/?utm_source=fluenticons&utm_medium=paid_referral&utm_campaign=make_your_icons_move",
     logo: "/sponsors/lordicon.gif",
     logoAlt: "Lordicon logo",
-    startDate: "2026-10-21",
-    endDate: "2026-11-20",
+    startDate: "2026-11-05",
+    endDate: "2026-12-04",
     ctaText: "Explore Lordicon",
     ctaColor: "#34C694",
+    position: "middle",
   },
 ];
 

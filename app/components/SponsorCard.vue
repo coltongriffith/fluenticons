@@ -1,7 +1,7 @@
 <template>
   <div v-if="ads.length || variant === 'hero'" :class="$attrs.class">
     <!-- The running sponsors (app/sponsor.ts), stacked, or the sponsor page's example. -->
-    <div v-if="ads.length" class="relative flex flex-col" :class="variant === 'compact' ? 'gap-2' : 'gap-3'">
+    <div v-if="ads.length" class="relative flex flex-col gap-2">
       <a
         v-for="s in ads"
         :key="s.slug || 'example'"
@@ -14,7 +14,7 @@
         @click="onClick($event, s)"
         @auxclick.middle="real && click(s, placement)"
       >
-        <span class="flex-shrink-0 rounded-lg bg-white ring-1 ring-gray-900/5 dark:ring-white/10 overflow-hidden flex-center" :class="box">
+        <span class="flex-shrink-0 rounded-lg bg-white ring-1 ring-gray-900/5 dark:ring-white/10 overflow-hidden flex-center" :class="box" :style="s.logoBg && { background: s.logoBg }">
           <picture v-if="s.logo" class="contents">
             <!-- An animated logo holds still for visitors who turn off animations. -->
             <source v-if="s.logoStill" :srcset="s.logoStill" media="(prefers-reduced-motion: reduce)" />
@@ -42,7 +42,7 @@
           <!-- With ctaColor, the call to action is a link in the sponsor's color. -->
           <span
             v-if="variant !== 'compact' && s.ctaText && s.ctaColor"
-            class="sponsor-cta mt-2 inline-flex items-center gap-1 text-sm font-medium text-[color:var(--cta-light)] dark:text-[color:var(--cta)] group-hover:underline underline-offset-2"
+            class="sponsor-cta mt-1 inline-flex items-center gap-1 text-sm font-medium text-[color:var(--cta-light)] dark:text-[color:var(--cta)] group-hover:underline underline-offset-2"
             :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
             :style="{ '--cta': s.ctaColor, '--cta-light': readableOnWhite(s.ctaColor) }"
           >
@@ -50,7 +50,7 @@
           </span>
           <span
             v-else-if="variant !== 'compact' && s.ctaText"
-            class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
+            class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
             :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
           >
             {{ s.ctaText }}<FluentSvg ui="open_24_regular" class="h-3.5 w-3.5" />
@@ -96,7 +96,7 @@
         </span>
         <span
           v-if="variant !== 'compact'"
-          class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
+          class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-2"
           :class="variant === 'inline' && 'sm:mt-0 sm:flex-shrink-0'"
         >
           Become a sponsor
@@ -124,7 +124,23 @@ const props = defineProps({
   example: { type: Object, default: null },
   // At most this many sponsors (the sponsor page shows one as an example).
   max: { type: Number, default: Infinity },
+  // One sponsor at a time, a different one each page view (the icon editor).
+  rotate: { type: Boolean, default: false },
 });
+
+// Counts page views per placement for `rotate`, from a random start so the
+// first page of a visit isn't always the same sponsor; kept for the visit
+// (sessionStorage), random each time when that is unavailable.
+function nextTurn(key) {
+  try {
+    const stored = sessionStorage.getItem(key);
+    const n = stored === null ? Math.floor(Math.random() * 1000) : Number(stored) || 0;
+    sessionStorage.setItem(key, String(n + 1));
+    return n;
+  } catch {
+    return Math.floor(Math.random() * 1000);
+  }
+}
 
 const { sponsors, href, click, impression, geoReady } = useSponsor();
 const route = useRoute();
@@ -134,14 +150,26 @@ const pitch = kit.users
   : `Reach developers building with ${kit.iconSet}.`;
 
 // The running sponsors, else the example (if any), else the placeholder. With
-// two or more, the one on top changes from page to page (fixed per page, so
-// nothing moves after the page loads), and `max` limits how many are shown.
+// two or more, the order changes from page to page (fixed per page, so nothing
+// moves after the page loads); a sponsor with position: "middle" stays in the
+// middle and the others take turns around it.
+// `rotate` (the icon editor) shows one sponsor at a time instead, a different
+// one each page view: chosen once mounted, as the editor only opens in the browser.
 const real = computed(() => sponsors.value.length > 0);
+const turn = ref(-1);
+onMounted(() => {
+  if (props.rotate) turn.value = nextTurn(`sponsor_turn_${props.placement}`);
+});
 const ads = computed(() => {
   if (!real.value) return props.example ? [props.example] : [];
   const list = sponsors.value;
-  const shift = [...route.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % list.length;
-  return [...list.slice(shift), ...list.slice(0, shift)].slice(0, props.max);
+  if (props.rotate) return turn.value < 0 ? [] : [list[turn.value % list.length]];
+  const middle = list.filter((s) => s.position === "middle");
+  const rest = list.filter((s) => s.position !== "middle");
+  const shift = [...route.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % (rest.length || 1);
+  const order = [...rest.slice(shift), ...rest.slice(0, shift)];
+  order.splice(Math.floor(order.length / 2), 0, ...middle);
+  return order.slice(0, props.max);
 });
 
 const advertise = computed(() => props.variant === "hero" && real.value && site.sponsorPage && props.placement !== "sponsor_page");
@@ -153,8 +181,8 @@ const text = computed(() => (props.variant === "compact" ? "text-xs" : "text-sm"
 const shell = computed(
   () =>
     ({
-      hero: "w-full max-w-sm p-4 bg-white/80 dark:bg-slate-800/70 hover:bg-white dark:hover:bg-slate-800 shadow-sm",
-      inline: "p-4 sm:px-5 bg-gray-50 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-800",
+      hero: "w-full max-w-md px-4 py-3 bg-white/80 dark:bg-slate-800/70 hover:bg-white dark:hover:bg-slate-800 shadow-sm",
+      inline: "px-4 py-3 sm:px-5 bg-gray-50 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-800",
       compact: "p-3 gap-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/60",
     })[props.variant]
 );

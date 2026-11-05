@@ -8,10 +8,12 @@ import type { SponsorConfig } from "./utils/sponsor";
 // 2. Add the sponsor to the list below, set the dates and set active: true.
 // 3. Deploy. Each card shows from its startDate to endDate (whole days, UTC) in
 //    every placement: homepage hero, icon pages, the icon editor, copy
-//    confirmations and guides. With two or more running, every placement shows
-//    each of them (the one on top changes from page to page) and the copy
-//    credit takes turns. With none running, the hero shows the "Your product
-//    here" card and the other placements show nothing.
+//    confirmations and guides. With two or more running, the homepage, icon
+//    pages and guides show each of them, stacked (the order changes from page
+//    to page; position: "middle" pins one in the middle); the icon editor shows
+//    one at a time, a different one each page view, and the copy credit takes
+//    turns. With none running, the hero shows the "Your product here" card and
+//    the other placements show nothing.
 //
 // `url` is used exactly as given when it already has UTM parameters (as the
 // sponsor sent it); without any, utm_source/medium/campaign/content are added.
@@ -36,6 +38,7 @@ const sponsors: SponsorConfig[] = [
     url: "https://getillustrations.com",
     logo: "/sponsors/getillustrations.svg",
     logoAlt: "Getillustrations logo",
+    logoBg: "#111",
     startDate: "2026-10-27",
     endDate: "2027-01-26",
     ctaText: "Browse illustrations",
@@ -55,19 +58,20 @@ const sponsors: SponsorConfig[] = [
     ctaColor: "#FF671B",
   },
   {
-    // Off: Lordicon never paid or replied (Oct 2026). Kept so it can be
-    // switched back on (with new dates) if that changes.
-    active: false,
+    // Paid (Nov 2026); runs one month, Nov 5 – Dec 4, 2026. Always the middle
+    // card when the sponsors are stacked (position: "middle").
+    active: true,
     name: "Lordicon",
     headline: "Make Your Icons Move",
     tagline: "Bring your UI to life with customizable animated icons for web & apps.",
     url: "https://lordicon.com/?utm_source=fluenticons&utm_medium=paid_referral&utm_campaign=make_your_icons_move",
     logo: "/sponsors/lordicon.gif",
     logoAlt: "Lordicon logo",
-    startDate: "2026-10-21",
-    endDate: "2026-11-20",
+    startDate: "2026-11-05",
+    endDate: "2026-12-04",
     ctaText: "Explore Lordicon",
     ctaColor: "#34C694",
+    position: "middle",
   },
 ];
 
