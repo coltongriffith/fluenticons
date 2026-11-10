@@ -91,6 +91,12 @@ Lucide icons are decorative by default (`aria-hidden="true"`). When an icon carr
 </button>
 ```
 
+<!-- flag:guideAnswers -->
+## An icon name from a tutorial isn't found
+
+Lucide renames icons now and then to keep names consistent: `home` became `house`, and `edit-2` became `pen`. `lucide-react` still exports the old names as aliases (`Home`, `Edit2`), so older code keeps working, but new code should use the current name. If a name from a tutorial or an AI answer gives "has no exported member", check that your installed `lucide-react` is recent enough to have the icon, then search the name here: search matches old names too, and each icon page lists them under "Old names" next to the current import.
+
+<!-- /flag -->
 ## Finding the right icon
 
 Search on [the homepage](/) matches names, Lucide's tags and old names: "home" finds House, and "trash" finds every delete icon. Each icon page has its React import ready to copy, along with Vue, Svelte, Angular and plain HTML.
