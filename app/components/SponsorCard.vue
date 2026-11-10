@@ -5,7 +5,7 @@
       <a
         v-for="s in ads"
         :key="s.slug || 'example'"
-        :ref="(el) => watchAd(s, el)"
+        :ref="(el) => (watchAd(s, el), watchViewable(s, el))"
         :data-hidden-in="s.hiddenIn?.join(' ')"
         :href="real ? href(s, placement) : '#'"
         v-bind="real ? { target: '_blank', rel: 'sponsored noopener' } : {}"
@@ -109,6 +109,7 @@
 
 <script setup>
 import site from "~/site.js";
+import flags from "~/generated/flags.json";
 import { track } from "../utils/analytics";
 import { readableOnWhite } from "../utils/sponsor";
 
@@ -142,7 +143,7 @@ function nextTurn(key) {
   }
 }
 
-const { sponsors, href, click, impression, geoReady } = useSponsor();
+const { sponsors, href, click, impression, viewable, geoReady } = useSponsor();
 const route = useRoute();
 const kit = site.sponsorKit || {};
 const pitch = kit.users
@@ -218,5 +219,69 @@ function watchAd(s, el) {
   el.__sponsor = s;
   observer.observe(el);
 }
-onBeforeUnmount(() => observer?.disconnect());
+
+// sponsor_viewable_impression (flag viewableImpressions): a second, stricter
+// event next to sponsor_impression, which is unchanged. Sent once per sponsor
+// per placement per page view, after at least half the card has been on
+// screen for one continuous second with the tab visible. Scrolling the card
+// away or hiding the tab starts the second again. Same sponsor, placement and
+// ad_id as the other events; none in preview mode. A new page (or the editor
+// showing its next sponsor) is a new card and can count again. The copy
+// credit (copy_toast) isn't a card and has no viewable event.
+const VIEWABLE_MS = 1000;
+const viewed = new Set();
+const halfVisible = new Set();
+const timers = new Map();
+let viewObserver;
+function stopTimer(el) {
+  clearTimeout(timers.get(el));
+  timers.delete(el);
+}
+function startTimer(el) {
+  if (timers.has(el) || document.visibilityState !== "visible") return;
+  timers.set(
+    el,
+    setTimeout(() => {
+      timers.delete(el);
+      const ad = el.__sponsor;
+      if (!ad || viewed.has(ad.slug) || !halfVisible.has(el) || document.visibilityState !== "visible") return;
+      viewed.add(ad.slug);
+      halfVisible.delete(el);
+      viewObserver.unobserve(el);
+      viewable(ad, props.placement);
+    }, VIEWABLE_MS)
+  );
+}
+const onVisibility = () => halfVisible.forEach(document.visibilityState === "visible" ? startTimer : stopTimer);
+function watchViewable(s, el) {
+  if (!flags.viewableImpressions || !el || !real.value || !s.slug || viewed.has(s.slug)) return;
+  if (typeof IntersectionObserver === "undefined" || el.__viewable === s.slug) return;
+  if (s.hiddenIn?.length && !geoReady.value) return;
+  if (!viewObserver) {
+    viewObserver = new IntersectionObserver(
+      (entries) => {
+        for (const { target, isIntersecting } of entries) {
+          if (isIntersecting) {
+            halfVisible.add(target);
+            startTimer(target);
+          } else {
+            halfVisible.delete(target);
+            stopTimer(target);
+          }
+        }
+      },
+      { threshold: 0.5 }
+    );
+    document.addEventListener("visibilitychange", onVisibility);
+  }
+  el.__sponsor = s;
+  el.__viewable = s.slug;
+  viewObserver.observe(el);
+}
+onBeforeUnmount(() => {
+  observer?.disconnect();
+  viewObserver?.disconnect();
+  timers.forEach((timer) => clearTimeout(timer));
+  if (viewObserver) document.removeEventListener("visibilitychange", onVisibility);
+});
 </script>
