@@ -60,7 +60,7 @@ const FLUENT = {
   // sites whose matching icons icon pages link to ("Also in …").
   kind: "fluent",
   // Additions that stay off until reviewed (see FLAGS below).
-  flags: { guideIconLinks: false, guideAnswers: false, viewableImpressions: false },
+  flags: { guideIconLinks: true, guideAnswers: false, viewableImpressions: false },
   crossSites: [
     { key: "material", kind: "material", data: "sites/material/data/icons.json" },
     { key: "lucide", kind: "lucide", data: "sites/lucide/data/icons.json" },
