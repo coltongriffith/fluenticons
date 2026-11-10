@@ -44,6 +44,8 @@ export function Icon({ name, fill = 0, weight = 400, size = 24, label }) {
 <Icon name="favorite" fill={1} />
 ```
 
+<!-- icon-links (Icons used in these examples): favorite, home -->
+
 ### Vue
 
 ```vue

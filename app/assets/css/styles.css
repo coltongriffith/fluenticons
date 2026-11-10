@@ -101,6 +101,21 @@ html.dark {
   @apply rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 font-medium;
 }
 
+/* Guides: a row of links to the icons an example uses (the icon-links
+   comment in a guide, scripts/build-icon-data.mjs). */
+.guide-icons {
+  @apply my-4 flex flex-wrap items-center gap-2 text-sm;
+}
+.guide-icons-label {
+  @apply mr-1 text-gray-500 dark:text-gray-400;
+}
+.guide-icons a {
+  @apply inline-flex min-h-[2.5rem] items-center gap-2 rounded-lg border border-gray-200 px-3 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-800;
+}
+.guide-icons .icon-mask {
+  @apply h-5 w-5 shrink-0;
+}
+
 /* A sponsor hidden in some countries (`hiddenIn`, app/sponsor.ts) keeps its
    space but stays invisible until the browser knows the visitor's country
    (plugins/sponsor-geo.server.js sets data-geo), so it never flashes there. */

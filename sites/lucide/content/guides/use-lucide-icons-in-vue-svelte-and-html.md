@@ -79,6 +79,8 @@ Without a framework, add `data-lucide` placeholders and let the `lucide` script 
 </script>
 ```
 
+<!-- icon-links (Icons used in these examples): house, search -->
+
 Pin a version (`lucide@1.61.0` rather than `@latest`) in production so icons can't change under you.
 
 ## The icon font

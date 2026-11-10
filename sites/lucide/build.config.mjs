@@ -15,6 +15,8 @@ export default {
   // Which icon set this is, and the sister sites whose matching icons icon
   // pages link to ("Also in …"; see build-icon-data.mjs).
   kind: "lucide",
+  // Additions that stay off until reviewed (FLAGS in scripts/build-icon-data.mjs).
+  flags: { guideIconLinks: false, guideAnswers: false, viewableImpressions: false },
   crossSites: [
     { key: "fluent", kind: "fluent", data: "../../data/icons.json" },
     { key: "material", kind: "material", data: "../material/data/icons.json" },

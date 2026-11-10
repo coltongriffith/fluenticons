@@ -71,6 +71,9 @@ Choosing an icon set early saves a lot of rework later. Changing icons halfway t
 - A community-driven continuation of Feather Icons, with a large and growing set.
 - Stroke-based, so you can change **stroke width** globally for a lighter or bolder feel.
 - Official packages for many frameworks.
+<!-- flag:guideIconLinks -->
+- You can search every Lucide icon and copy its React, Vue or Svelte code on our sister site [Lucideicons](https://lucideicons.co/).
+<!-- /flag -->
 
 **Trade-offs**
 

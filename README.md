@@ -184,6 +184,29 @@ left, Ctrl/Cmd and middle clicks; "Open in new tab" from the right-click menu an
 block Google Analytics aren't counted. GA4's own outbound-click event (`click`, Link domain
 `xceed.com`) is an independent second count.
 
+### Preview flags
+
+Additions that should be reviewed before they go live are built behind flags (`FLAGS` in
+`scripts/build-icon-data.mjs`): `guideIconLinks` (links from guides to the icons their examples
+use), `guideAnswers` (extra guide sections) and `viewableImpressions` (the
+`sponsor_viewable_impression` event). All are off. Each site turns one on in its build settings
+(`flags` in `scripts/build-icon-data.mjs` for fluenticons.co, `sites/<site>/build.config.mjs` for the
+others); set it back to `false` to undo it. To see them without changing a file, build with
+`PREVIEW_FLAGS=all` (or a comma-separated list), locally or with the `flags` input of a manual
+preview deploy:
+
+```bash
+PREVIEW_FLAGS=all yarn lucide:generate && npx serve sites/lucide/dist
+```
+
+In a guide, `<!-- icon-links: house, search -->` adds a row of links to those icons' pages, and
+`<!-- flag:guideAnswers -->` … `<!-- /flag -->` wraps a part that only shows while that flag is on.
+
+`sponsor_viewable_impression` is sent once per sponsor per placement per page view, after at least
+half the card has been on screen for one continuous second with the tab visible, with the same
+`sponsor`, `placement` and `ad_id` as `sponsor_impression` (which is unchanged: half the card on
+screen at any moment). The copy credit (`copy_toast`) has no viewable event.
+
 ### Deploying
 
 fluenticons.co is served by the Cloudflare Pages project **fluenticons-3**, a direct-upload project with no Git connection. The **Deploy to Cloudflare Pages** GitHub Action deploys it:

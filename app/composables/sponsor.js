@@ -63,6 +63,8 @@ export function useSponsor() {
     href: (s, placement) => sponsorLink(s, placement, source),
     click: (s, placement) => send("sponsor_click", s, placement),
     impression: (s, placement) => send("sponsor_impression", s, placement),
+    // Stricter and separate: half the card on screen for a second (SponsorCard.vue).
+    viewable: (s, placement) => send("sponsor_viewable_impression", s, placement),
   };
 }
 

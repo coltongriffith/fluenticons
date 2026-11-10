@@ -29,12 +29,17 @@
       <NuxtLink to="/tag/" class="underline">Topics</NuxtLink>
       <span class="mx-2 text-gray-400">·</span>
       <NuxtLink to="/browse/" class="underline">Browse A–Z</NuxtLink>
+      <template v-if="guide">
+        <span class="mx-2 text-gray-400">·</span>
+        <NuxtLink :to="guide.to" class="underline">{{ guide.label }}</NuxtLink>
+      </template>
     </p>
   </div>
 </template>
 
 <script setup>
 import categories from "~/generated/categories.json";
+import flags from "~/generated/flags.json";
 
 const name = String(useRoute().params.name);
 
@@ -54,6 +59,12 @@ if (!data.value?.icons.length) {
   throw createError({ statusCode: 404, statusMessage: "Page not found", fatal: true });
 }
 const icons = computed(() => data.value.icons);
+
+// A guide that goes with this category, linked under the icons (flag guideIconLinks).
+const GUIDES = {
+  "coding-and-development": { to: "/guides/use-lucide-icons-in-react/", label: "Using Lucide icons in React and Next.js" },
+};
+const guide = flags.guideIconLinks ? GUIDES[name] : null;
 
 const title = `${data.value.name} Lucide Icons`;
 const description = `${icons.value.length} free ${data.value.name} icons from Lucide. Download SVG or PNG, or copy React, Vue, Svelte and HTML code.`;

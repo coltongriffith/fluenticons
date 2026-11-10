@@ -39,6 +39,8 @@ The full font is large because it contains every symbol. If you only need a few,
 
 Each icon page on this site gives you a link that loads just that icon.
 
+<!-- icon-links (Icons used in these examples): home, search, settings -->
+
 ### Size, color, fill and weight
 
 The icon is text, so ordinary CSS works:
