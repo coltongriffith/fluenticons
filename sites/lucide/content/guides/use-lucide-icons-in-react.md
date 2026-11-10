@@ -30,6 +30,8 @@ export function Toolbar() {
 }
 ```
 
+<!-- icon-links: house, search, settings -->
+
 Named imports are tree-shaken by Vite, Next.js and other modern bundlers, so only the icons you import end up in your bundle.
 
 Each icon is also exported as `HouseIcon` and `LucideHouse`, which helps when a name clashes with one of your own components (an `Image` icon next to Next.js's `Image`, for example).
@@ -92,3 +94,7 @@ Lucide icons are decorative by default (`aria-hidden="true"`). When an icon carr
 ## Finding the right icon
 
 Search on [the homepage](/) matches names, Lucide's tags and old names: "home" finds House, and "trash" finds every delete icon. Each icon page has its React import ready to copy, along with Vue, Svelte, Angular and plain HTML.
+<!-- flag:guideIconLinks -->
+
+To browse instead of search, start from a [category](/category/), such as [Coding & development](/category/coding-and-development/).
+<!-- /flag -->

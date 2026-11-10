@@ -27,6 +27,8 @@ Component names follow a predictable pattern: the icon name in PascalCase, then 
 
 Every icon page on Fluenticons shows the exact import for its 24&nbsp;px versions, so the quickest route is to search for the icon here and copy the import line.
 
+<!-- icon-links (Icons used in this guide): add_circle, calendar, delete, heart -->
+
 There are also **unsized** components such as `DeleteRegular` and `DeleteFilled`. They render at `1em`, so they scale with the surrounding font size. That's handy inside buttons and text. Use the sized components when you want exact pixel dimensions.
 
 ## Render an icon
