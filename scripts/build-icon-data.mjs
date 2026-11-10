@@ -20,6 +20,7 @@
 //   ui-icons.json     inner SVG markup for the site's own UI icons
 //   api-catalog.json  fluenticons.co only: the agent API's catalogue (see agent/catalog.js)
 //   guides.json       [{ slug, path, title, description, date, html }]
+//   flags.json        { [flag]: boolean }: additions that are off until reviewed (see FLAGS)
 //   categories.json   sites with categoryPages: { [slug]: { name, slugs } } from each icon's category
 //   category-names.json  { [slug]: name } of those
 //   mui.json          sites whose icons have MUI names: [slug, name, mui][]
@@ -58,6 +59,8 @@ const FLUENT = {
   // Which icon set this is ("fluent" | "material" | "lucide"), and the sister
   // sites whose matching icons icon pages link to ("Also in …").
   kind: "fluent",
+  // Additions that stay off until reviewed (see FLAGS below).
+  flags: { guideIconLinks: false, guideAnswers: false, viewableImpressions: false },
   crossSites: [
     { key: "material", kind: "material", data: "sites/material/data/icons.json" },
     { key: "lucide", kind: "lucide", data: "sites/lucide/data/icons.json" },
@@ -100,6 +103,27 @@ const write = (name, data) =>
   writeFileSync(new URL(name, outDir), typeof data === "string" ? data : JSON.stringify(data));
 
 const SITE = config.url;
+
+// ---- Preview flags ---------------------------------------------------------
+// Additions that are off on the live sites until they've been reviewed. Each
+// site turns one on in its build settings (`flags` above, or its
+// build.config.mjs); set it back to false to undo it. For a preview build,
+// PREVIEW_FLAGS=all (or a comma-separated list) turns them on without
+// changing any file:  PREVIEW_FLAGS=all yarn lucide:generate
+//   guideIconLinks       guides: "Icons used in this example" rows and the
+//                        other links marked <!-- flag:guideIconLinks -->
+//   guideAnswers         guides: sections marked <!-- flag:guideAnswers -->
+//   viewableImpressions  sponsor cards also send sponsor_viewable_impression
+const FLAGS = ["guideIconLinks", "guideAnswers", "viewableImpressions"];
+const previewFlags = (process.env.PREVIEW_FLAGS || "").split(",").map((f) => f.trim()).filter(Boolean);
+for (const f of [...previewFlags.filter((f) => f !== "all"), ...Object.keys(config.flags || {})]) {
+  if (!FLAGS.includes(f)) throw new Error(`Unknown flag "${f}" (flags: ${FLAGS.join(", ")})`);
+}
+const flags = Object.fromEntries(
+  FLAGS.map((f) => [f, config.flags?.[f] === true || previewFlags.includes("all") || previewFlags.includes(f)])
+);
+write("flags.json", flags);
+if (Object.values(flags).some(Boolean)) console.log(`flags on: ${FLAGS.filter((f) => flags[f]).join(", ")}`);
 
 function readSvg(file, { body = true } = {}) {
   const parts = svgParts(read(`public/icons/${file}`));
@@ -380,6 +404,39 @@ function parseFrontMatter(source) {
   return { meta, body: match[2] };
 }
 
+// Flagged parts of a guide, resolved before the Markdown is rendered:
+//   <!-- flag:NAME --> … <!-- /flag -->   kept only while that flag is on
+//   <!-- icon-links: house, search -->    a row of links to those icons' pages
+//   <!-- icon-links (Label): a, b -->     the same, with its own label
+// (flag guideIconLinks). An unknown flag or icon stops the build. With the
+// flags off, a guide renders exactly as it did without these comments.
+const iconBySlug = new Map(icons.map((i) => [i.slug, i]));
+const escapeHtml = (s) => String(s).replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" })[c]);
+function iconLinks(label, names, file) {
+  const links = names.split(",").map((n) => {
+    const slug = n.trim().replace(/-/g, "_");
+    const icon = iconBySlug.get(slug);
+    if (!icon) throw new Error(`${file}: icon-links names "${n.trim()}", which isn't an icon`);
+    const svg = icon.regular || icon.filled;
+    return `<a href="/icon/${slug.replace(/_/g, "-")}/"><span class="icon-mask" style="--icon:url(/icons/${svg})" aria-hidden="true"></span>${escapeHtml(icon.name)}</a>`;
+  });
+  return `<p class="guide-icons not-prose"><span class="guide-icons-label">${escapeHtml(label)}</span> ${links.join(" ")}</p>`;
+}
+function applyFlags(body, file) {
+  if (body.split("<!-- flag:").length !== body.split("<!-- /flag -->").length) throw new Error(`${file}: unclosed <!-- flag: … -->`);
+  // Each comment is removed with its own line, so with the flags off the
+  // Markdown is exactly what it would be without them.
+  return body
+    .replace(/<!-- flag:(\w+) -->\n([\s\S]*?)<!-- \/flag -->\n/g, (_, name, inner) => {
+      if (!FLAGS.includes(name)) throw new Error(`${file}: unknown flag "${name}"`);
+      return flags[name] ? inner : "";
+    })
+    .replace(/\n<!-- icon-links(?: \(([^)]+)\))?: ([^>]+?) -->\n/g, (_, label, names) => {
+      const row = iconLinks(label || "Icons used in this example", names, file);
+      return flags.guideIconLinks ? `\n${row}\n` : "";
+    });
+}
+
 const guidesDir = new URL("content/guides/", root);
 const guides = existsSync(guidesDir)
   ? readdirSync(guidesDir)
@@ -397,7 +454,7 @@ const guides = existsSync(guidesDir)
           date: meta.date,
           updated: meta.updated || meta.date,
           order: Number(meta.order || 99),
-          html: marked.parse(body),
+          html: marked.parse(applyFlags(body, f)),
         };
       })
       .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title))
