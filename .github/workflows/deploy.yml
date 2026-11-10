@@ -41,6 +41,12 @@ on:
           only; "main" deploys to production.
         required: true
         default: preview
+      flags:
+        description: >-
+          Preview flags to turn on for this build (PREVIEW_FLAGS in
+          scripts/build-icon-data.mjs), e.g. "all". Ignored for "main".
+        required: false
+        default: ""
       project:
         description: Cloudflare Pages project
         required: true
@@ -79,6 +85,10 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - run: yarn generate
+        env:
+          # Reviewed-later additions, for previews only; production reads each
+          # site's build settings.
+          PREVIEW_FLAGS: ${{ github.event_name == 'workflow_dispatch' && inputs.branch != 'main' && inputs.flags || '' }}
 
       - name: Check the agent API
         run: node scripts/test-agent.mjs
