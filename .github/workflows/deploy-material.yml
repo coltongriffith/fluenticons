@@ -88,7 +88,6 @@ jobs:
           # Reviewed-later additions, for previews only; production reads each
           # site's build settings.
           PREVIEW_FLAGS: ${{ github.event_name == 'workflow_dispatch' && inputs.branch != 'main' && inputs.flags || '' }}
-        env:
           NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Check build output
