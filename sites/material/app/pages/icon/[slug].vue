@@ -8,8 +8,8 @@
       <span>{{ icon.name }}</span>
     </nav>
 
-    <h1 class="text-3xl sm:text-4xl font-bold break-all">{{ slug }}</h1>
-    <p class="text-gray-500 dark:text-gray-400 mt-1 mb-4">{{ icon.name }} icon · Material Symbols</p>
+    <h1 class="text-3xl sm:text-4xl font-bold" :class="{ 'break-all': !useReadableName }">{{ heading }}</h1>
+    <p class="text-gray-500 dark:text-gray-400 mt-1 mb-4">{{ subtitle }}</p>
     <div class="flex items-stretch max-w-md mb-6 rounded-lg border dark:border-gray-700 overflow-hidden">
       <code class="flex-1 min-w-0 px-4 py-2.5 text-base bg-gray-50 dark:bg-gray-800 truncate" aria-label="Icon code name">{{ slug }}</code>
       <button
@@ -704,6 +704,20 @@ async function downloadPng(src, name, ...variant) {
 const intro = computed(() => details.value.usage);
 
 const name = icon.value.name;
+// Limit the readable-title pilot to Material pages with prior search impressions.
+// Keep the ligature in the title and in the existing copy-name control.
+const useReadableName = new Set([
+  "arrow_upward",
+  "mobile_lock_portrait",
+  "arrow_forward",
+  "more_vert",
+  "move_to_inbox",
+]).has(slug);
+const heading = useReadableName ? `${name} icon` : slug;
+const subtitle = useReadableName ? "Material Symbols" : `${name} icon · Material Symbols`;
+const fullTitle = useReadableName
+  ? `${name} Icon (${slug}) | Material Symbols`
+  : `${slug} — Material Symbol | Copy SVG, JSX & Font Code`;
 // "Copy the arrow_upward Material Symbol as SVG, JSX, MUI, Flutter or font
 // ligature. …", naming MUI and Flutter only for icons those packages have.
 function describe() {
@@ -711,7 +725,7 @@ function describe() {
   return `Copy the ${slug} Material Symbol as ${formats.slice(0, -1).join(", ")} or ${formats.at(-1)}. Outlined, rounded, sharp, filled.`;
 }
 useSeo({
-  fullTitle: `${slug} — Material Symbol | Copy SVG, JSX & Font Code`,
+  fullTitle,
   description: describe(),
   path: slugToPath(slug).replace(/\/$/, ""),
   image: details.value.og ? `/og/${slug}.png` : undefined,
