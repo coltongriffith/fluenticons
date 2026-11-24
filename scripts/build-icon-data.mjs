@@ -568,7 +568,12 @@ const lastmod = (path) => {
   if (guide) return guide.updated;
   if (path === "/guides") return guides.map((g) => g.updated).sort().pop();
   if (path === "/new") return newIcons[0]?.date || null;
-  return dataPage.test(path) ? meta.updated : null;
+  if (!dataPage.test(path)) return null;
+  // A site can set templateUpdated ({ pages, date }) when a page template
+  // changes, so the sitemap tells crawlers those pages changed even without a
+  // data re-import.
+  const t = config.templateUpdated;
+  return [meta.updated, t?.pages.test(path) && t.date].filter(Boolean).sort().pop();
 };
 write(
   "public/sitemap.xml",
