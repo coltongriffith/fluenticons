@@ -6,6 +6,8 @@ export default {
   defaultFile: (slug, style) => (style === "filled" ? `${slug}-fill.svg` : `${slug}.svg`),
   extraRoutes: ["/filled", "/sponsor", "/material-symbols", "/mui-material-icons", "/angular-material-icons"],
   dataPage: /^\/(?:$|filled|browse|tag|category|icon\/)/,
+  // Last change to the icon page template (readable titles on every icon page).
+  templateUpdated: { pages: /^\/icon\//, date: "2026-11-24" },
   // /category/<name> pages from each icon's Google category (see build-icon-data.mjs).
   categoryPages: true,
   // Which icon set this is, and the sister sites whose matching icons icon

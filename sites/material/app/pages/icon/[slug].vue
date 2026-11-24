@@ -8,7 +8,7 @@
       <span>{{ icon.name }}</span>
     </nav>
 
-    <h1 class="text-3xl sm:text-4xl font-bold" :class="{ 'break-all': !useReadableName }">{{ heading }}</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold">{{ heading }}</h1>
     <p class="text-gray-500 dark:text-gray-400 mt-1 mb-4">{{ subtitle }}</p>
     <div class="flex items-stretch max-w-md mb-6 rounded-lg border dark:border-gray-700 overflow-hidden">
       <code class="flex-1 min-w-0 px-4 py-2.5 text-base bg-gray-50 dark:bg-gray-800 truncate" aria-label="Icon code name">{{ slug }}</code>
@@ -704,25 +704,31 @@ async function downloadPng(src, name, ...variant) {
 const intro = computed(() => details.value.usage);
 
 const name = icon.value.name;
-// Limit the readable-title pilot to Material pages with prior search impressions.
-// Keep the ligature in the title and in the existing copy-name control.
-const useReadableName = new Set([
-  "arrow_upward",
-  "mobile_lock_portrait",
-  "arrow_forward",
-  "more_vert",
-  "move_to_inbox",
-]).has(slug);
-const heading = useReadableName ? `${name} icon` : slug;
-const subtitle = useReadableName ? "Material Symbols" : `${name} icon · Material Symbols`;
-const fullTitle = useReadableName
-  ? `${name} Icon (${slug}) | Material Symbols`
-  : `${slug} — Material Symbol | Copy SVG, JSX & Font Code`;
-// "Copy the arrow_upward Material Symbol as SVG, JSX, MUI, Flutter or font
-// ligature. …", naming MUI and Flutter only for icons those packages have.
+// Readable name first in the title and H1 on every icon page (the code-name
+// titles shipped Oct 10, 2026 coincided with the site dropping out of Google;
+// #81 piloted this on five pages). The ligature stays in the title when it
+// differs from the name, and in the copy-name control below the H1.
+// Single-word ligatures ("cabin") match the name; multi-word ones
+// ("keyboard_arrow_right") are what developers search for, so they stay.
+const sameAsName = slug === name.toLowerCase();
+const heading = `${name} icon`;
+const subtitle = "Material Symbols";
+const fullTitle = sameAsName ? `${name} Icon | Material Symbols` : `${name} Icon (${slug}) | Material Symbols`;
+// A description from this icon's own name, category and first few keywords
+// (ones that don't repeat the name or category), kept under 160 characters,
+// so no two icon pages share the same description.
 function describe() {
-  const formats = ["SVG", "JSX", details.value.mui && "MUI", (details.value.flutter || details.value.flutterIcon) && "Flutter", "font ligature"].filter(Boolean);
-  return `Copy the ${slug} Material Symbol as ${formats.slice(0, -1).join(", ")} or ${formats.at(-1)}. Outlined, rounded, sharp, filled.`;
+  const cat = details.value.category;
+  const skip = new Set([...name.toLowerCase().split(" "), cat?.toLowerCase()]);
+  const tags = icon.value.keywords.filter((k) => !skip.has(k) && !k.split(" ").every((w) => skip.has(w)));
+  const head = `${name} icon${cat ? ` (${cat})` : ""} from Google's Material Symbols`;
+  for (const tail of [" Free SVG, PNG, JSX, MUI, Flutter and font code.", " Free SVG, PNG and code."]) {
+    for (let n = Math.min(4, tags.length); n >= 0; n--) {
+      const text = `${head}${n ? `: ${tags.slice(0, n).join(", ")}.` : "."}${tail}`;
+      if (text.length <= 160) return text;
+    }
+  }
+  return `${head}.`;
 }
 useSeo({
   fullTitle,
