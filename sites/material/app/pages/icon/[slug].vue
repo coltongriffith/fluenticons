@@ -722,7 +722,10 @@ function describe() {
   const skip = new Set([...name.toLowerCase().split(" "), cat?.toLowerCase()]);
   const tags = icon.value.keywords.filter((k) => !skip.has(k) && !k.split(" ").every((w) => skip.has(w)));
   const head = `${name} icon${cat ? ` (${cat})` : ""} from Google's Material Symbols`;
-  for (const tail of [" Free SVG, PNG, JSX, MUI, Flutter and font code.", " Free SVG, PNG and code."]) {
+  // Name MUI and Flutter only for icons those packages have.
+  const formats = ["SVG", "PNG", "JSX", details.value.mui && "MUI", (details.value.flutter || details.value.flutterIcon) && "Flutter", "font code"].filter(Boolean);
+  const full = ` Free ${formats.slice(0, -1).join(", ")} and ${formats.at(-1)}.`;
+  for (const tail of [full, " Free SVG, PNG and code."]) {
     for (let n = Math.min(4, tags.length); n >= 0; n--) {
       const text = `${head}${n ? `: ${tags.slice(0, n).join(", ")}.` : "."}${tail}`;
       if (text.length <= 160) return text;
